@@ -1,0 +1,36 @@
+{
+  "name": "power_progress",
+  "version": "1.0.0",
+  "description": "Powerlifting progress tracking mobile app",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.1.0"
+  },
+  "scripts": {
+    "test": "flutter test",
+    "update-codecov": "flutter test --coverage; codecov -f ./coverage/lcov.info -t $(cat ./codecov_token)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiritchoukC/power_progress.git"
+  },
+  "keywords": [
+    "flutter"
+  ],
+  "author": "KiritchoukC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KiritchoukC/power_progress/issues"
+  },
+  "homepage": "https://github.com/KiritchoukC/power_progress#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
