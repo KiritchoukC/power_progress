@@ -1,9 +1,6 @@
 name: CD on release
 
 on: 
-  push:
-    branches: 
-      - release
   pull_request:
     branches: 
       - release
@@ -21,14 +18,14 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.18.0'
-          channel: 'master'
+          channel: 'stable'
       - run: flutter test
       
       - name: Build apk
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.18.0'
-          channel: 'master'
+          channel: 'stable'
       - run: flutter build apk
 
       - name: Firebase apk distribution
