@@ -6,7 +6,7 @@ on:
       - release
 
 jobs:
-  checkout:
+  apk-deploy:
     
     runs-on: [ubuntu-latest]
     
