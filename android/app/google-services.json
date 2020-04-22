@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "499159273020",
+    "firebase_url": "https://power-progress-a6226.firebaseio.com",
+    "project_id": "power-progress-a6226",
+    "storage_bucket": "power-progress-a6226.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499159273020:android:e69660270716dd902ffd39",
+        "android_client_info": {
+          "package_name": "com.kiritchoukc.powerprogress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499159273020-9qu2jtefgidr7mneu1bchp8umpicaptp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgmnqyW7gba2qC0_3lNuVaYZWz6vellv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499159273020-9qu2jtefgidr7mneu1bchp8umpicaptp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+name: CD on release
+
+on: 
+  push:
+    branches: 
+      - release
+  pull_request:
+    branches: 
+      - release
+
+jobs:
+  checkout:
+    
+    runs-on: [ubuntu-latest]
+    
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        
+      - name: Launch flutter tests
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.18.0'
+          channel: 'master'
+      - run: flutter test
+      
+      - name: Build apk
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.18.0'
+          channel: 'master'
+      - run: flutter build apk
+
+      - name: Firebase apk distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.1.1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: Default
+          file: ./build/app/outputs/apk/release/app-release.apk
