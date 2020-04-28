@@ -30,7 +30,7 @@ jobs:
       - name: Fill google-services.json
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
-        run: echo $GOOGLE_SERVICES > android/app/google-services.json
+        run: sudo echo $GOOGLE_SERVICES > android/app/google-services.json
 
       - name: Build apk
         uses: subosito/flutter-action@v1
