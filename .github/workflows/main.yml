@@ -28,7 +28,7 @@ jobs:
           FILE_DATA: ""
 
       - name: Make google-services.json editable
-        run: sudo chmod +wx ./android/app/google-services.json
+        run: sudo chmod +rwx ./android/app/google-services.json
 
       - name: Fill google-services.json
         env:
