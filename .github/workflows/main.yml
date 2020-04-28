@@ -20,7 +20,13 @@ jobs:
           flutter-version: '1.18.0-dev.5.0'
           channel: 'dev'
       - run: flutter test
-      
+
+      - name: Add google-services.json
+        uses: finnp/create-file-action@master
+        env:
+          FILE_NAME: "./android/app/google-services.json"
+          FILE_DATA: ${{ secrets.GOOGLE_SERVICES }}
+
       - name: Build apk
         uses: subosito/flutter-action@v1
         with:
