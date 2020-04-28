@@ -5,6 +5,7 @@ const fs = require('fs');
 const pubspecFile = './pubspec.yaml';
 
 let doc = yaml.safeLoad(fs.readFileSync(pubspecFile, 'utf8'));
+
 doc.version = pkg.version;
 
 fs.writeFile(pubspecFile, yaml.safeDump(doc), (err) => {
