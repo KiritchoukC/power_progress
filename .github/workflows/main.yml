@@ -21,15 +21,6 @@ jobs:
           channel: 'dev'
       - run: flutter test
 
-      - name: Add empty google-services.json
-        uses: finnp/create-file-action@master
-        env:
-          FILE_NAME: "./android/app/google-services.json"
-          FILE_DATA: ""
-
-      - name: Make google-services.json editable
-        run: sudo chmod +rwx ./android/app/google-services.json
-
       - name: Fill google-services.json
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}

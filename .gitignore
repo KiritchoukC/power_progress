@@ -98,4 +98,4 @@ android/app/key.jks
 # Private config
 web/firebase.config.debug.json
 secrets.json
-android/app/google-services.json
+# android/app/google-services.json
