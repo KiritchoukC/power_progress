@@ -1,7 +1,7 @@
 name: power_progress
 description: Powerlifting tracking app.
 publish_to: none
-version: 1.1.20
+version: 1.1.21
 environment:
   sdk: '>=2.7.0 <3.0.0'
 dependencies:
