@@ -1,6 +1,6 @@
 {
-    "name": "power_progress",
-    "short_name": "power_progress",
+    "name": "Power Progress",
+    "short_name": "PowPro",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
