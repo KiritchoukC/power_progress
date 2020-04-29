@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/KiritchoukC/power_progress/compare/v1.1.30...v1.2.0) (2020-04-29)
+
+
+### Features
+
+* **onboarding:** implement onboarding welcome page ([ef19d4b](https://github.com/KiritchoukC/power_progress/commit/ef19d4b)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
 ### [1.1.30](https://github.com/KiritchoukC/power_progress/compare/v1.1.29...v1.1.30) (2020-04-29)
 
 ### [1.1.29](https://github.com/KiritchoukC/power_progress/compare/v1.1.28...v1.1.29) (2020-04-29)
