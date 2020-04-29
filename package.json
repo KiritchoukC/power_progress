@@ -18,9 +18,7 @@
     "update-codecov": "flutter test --coverage; codecov -f ./coverage/lcov.info -t $(cat ./codecov_token)",
     "update-pubspec-version": "node .\\tools\\update_version.js"
   },
-  "pre-commit": [
-    "update-pubspec-version"
-  ],
+  "pre-commit": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KiritchoukC/power_progress.git"
