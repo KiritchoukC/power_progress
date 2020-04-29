@@ -1,6 +1,6 @@
 {
   "name": "power_progress",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "Powerlifting progress tracking mobile app",
   "main": "index.js",
   "directories": {
@@ -16,7 +16,7 @@
     "start": "flutter run",
     "test": "flutter test",
     "update-codecov": "flutter test --coverage; codecov -f ./coverage/lcov.info -t $(cat ./codecov_token)",
-    "update-pubspec-version": "node .\\tools\\update_version.js"
+    "update-pubspec-version": "node ./tools/update_version.js"
   },
   "pre-commit": [],
   "repository": {
