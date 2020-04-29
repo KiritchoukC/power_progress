@@ -14,6 +14,12 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
         
+      - name: Update version
+        uses: actions/setup-node@v1
+        with:
+          node-version: 8.x
+      - run: npm run update-pubspec-version
+        
       - name: Launch flutter tests
         uses: subosito/flutter-action@v1
         with:
