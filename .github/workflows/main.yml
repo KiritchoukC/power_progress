@@ -14,10 +14,13 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
         
-      - name: Update version
+      - name: Use NodeJs 8.x
         uses: actions/setup-node@v1
         with:
           node-version: 8.x
+
+      - name: Update version
+      - run: npm install
       - run: npm run update-pubspec-version
         
       - name: Launch flutter tests
