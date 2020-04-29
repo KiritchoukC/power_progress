@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Power Progress',
-      initialRoute: RoutePaths.onboarding,
+      initialRoute: RoutePaths.onboarding_welcome,
       onGenerateRoute: Router.generateRoute,
     );
   }
