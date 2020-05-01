@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../features/exercise/presentation/pages/onboarding_exercise_page.dart';
+import '../../features/exercise/presentation/pages/onboarding_informations_page.dart';
 import '../../features/exercise/presentation/pages/onboarding_welcome_page.dart';
 import 'route_paths.dart';
 
@@ -11,19 +12,30 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       // Game route
-      case RoutePaths.onboarding_welcome:
+      case RoutePaths.onboardingWelcome:
         return MaterialPageRoute(
           builder: (_) => OnboardingWelcomePage(),
           settings: const RouteSettings(
-            name: RoutePaths.onboarding_welcome,
+            name: RoutePaths.onboardingWelcome,
           ),
         );
 
-      case RoutePaths.onboarding_exercise:
+      case RoutePaths.onboardingExercise:
         return MaterialPageRoute(
           builder: (_) => OnboardingExercisePage(),
           settings: const RouteSettings(
-            name: RoutePaths.onboarding_exercise,
+            name: RoutePaths.onboardingExercise,
+          ),
+        );
+
+      case RoutePaths.onboardingInformations:
+        final args = settings.arguments as OnboardingInformationsPageArguments;
+        return MaterialPageRoute(
+          builder: (_) => OnboardingInformationsPage(
+            exerciseName: args.exerciseName,
+          ),
+          settings: const RouteSettings(
+            name: RoutePaths.onboardingInformations,
           ),
         );
 

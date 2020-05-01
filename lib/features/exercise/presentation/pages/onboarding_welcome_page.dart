@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/core/router/route_paths.dart';
-import 'package:power_progress/core/util/spacing.dart';
+
+import '../../../../core/router/route_paths.dart';
+import '../../../../core/util/spacing.dart';
 
 class OnboardingWelcomePage extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class OnboardingWelcomePage extends StatelessWidget {
                 children: [
                   RaisedButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(RoutePaths.onboarding_exercise);
+                      Navigator.of(context).pushNamed(RoutePaths.onboardingExercise);
                     },
                     child: Text('Continue'),
                   )
