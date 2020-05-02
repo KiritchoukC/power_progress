@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
 import '../../../../../shared/pp_form_field.dart';
 
@@ -99,7 +100,9 @@ class _InformationsFormState extends State<_InformationsForm> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(RoutePaths.onboardingLoading);
+                },
                 child: const Text('Continue'),
               )
             ],
