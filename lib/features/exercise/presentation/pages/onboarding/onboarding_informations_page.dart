@@ -88,19 +88,19 @@ class _InformationsFormState extends State<_InformationsForm> {
           Text(
             widget.exerciseName,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24.0),
+            style: const TextStyle(fontSize: 24.0),
           ),
-          VSpacing.medium(),
+          const VSpacing.medium(),
           _oneRmField,
-          VSpacing.extraSmall(),
+          const VSpacing.extraSmall(),
           _stepsField,
-          VSpacing.small(),
+          const VSpacing.small(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               RaisedButton(
                 onPressed: () {},
-                child: Text('Continue'),
+                child: const Text('Continue'),
               )
             ],
           )

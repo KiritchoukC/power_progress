@@ -49,14 +49,14 @@ class _ExerciseFormState extends State<_ExerciseForm> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'On which exercise do you want to progress ?',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24.0),
           ),
-          VSpacing.medium(),
+          const VSpacing.medium(),
           _exerciseField,
-          VSpacing.small(),
+          const VSpacing.small(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -69,7 +69,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                     ),
                   );
                 },
-                child: Text('Continue'),
+                child: const Text('Continue'),
               )
             ],
           )

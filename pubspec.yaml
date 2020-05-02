@@ -19,6 +19,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_launcher_icons: ^0.7.5
+  lint: ^1.1.1
   
 flutter_icons:
   android: true

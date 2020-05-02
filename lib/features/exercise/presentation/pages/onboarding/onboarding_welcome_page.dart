@@ -15,18 +15,18 @@ class OnboardingWelcomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Welcome to power progress, this app use mathematics to plan your workouts.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 24.0),
               ),
-              VSpacing.medium(),
-              Text(
+              const VSpacing.medium(),
+              const Text(
                 'Let\'s start already!',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18.0),
               ),
-              VSpacing.small(),
+              const VSpacing.small(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -34,7 +34,7 @@ class OnboardingWelcomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushNamed(RoutePaths.onboardingExercise);
                     },
-                    child: Text('Continue'),
+                    child: const Text('Continue'),
                   )
                 ],
               )
