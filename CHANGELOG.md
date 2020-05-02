@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/KiritchoukC/power_progress/compare/v1.4.2...v1.5.0) (2020-05-02)
+
+
+### Features
+
+* **onboarding:** add loading screen ([412ff24](https://github.com/KiritchoukC/power_progress/commit/412ff24)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
 ### [1.4.2](https://github.com/KiritchoukC/power_progress/compare/v1.4.1...v1.4.2) (2020-05-02)
 
 ### [1.4.1](https://github.com/KiritchoukC/power_progress/compare/v1.4.0...v1.4.1) (2020-05-02)
