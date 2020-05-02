@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/router/route_paths.dart';
-import '../../../../core/util/spacing.dart';
+import '../../../../../core/router/route_paths.dart';
+import '../../../../../core/util/spacing.dart';
 
 class OnboardingWelcomePage extends StatelessWidget {
   @override

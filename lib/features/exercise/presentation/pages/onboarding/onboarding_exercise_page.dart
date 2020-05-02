@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/router/route_paths.dart';
-import '../../../../core/util/spacing.dart';
-import '../../../../shared/pp_form_field.dart';
+import '../../../../../core/router/route_paths.dart';
+import '../../../../../core/util/spacing.dart';
+import '../../../../../shared/pp_form_field.dart';
 import 'onboarding_informations_page.dart';
 
 class OnboardingExercisePage extends StatelessWidget {

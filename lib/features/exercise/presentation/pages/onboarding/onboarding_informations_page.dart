@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/util/spacing.dart';
-import '../../../../shared/pp_form_field.dart';
+import '../../../../../core/util/spacing.dart';
+import '../../../../../shared/pp_form_field.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;
@@ -18,7 +18,7 @@ class OnboardingInformationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: Colors.deepPurple,
+          color: Colors.red,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: _InformationsForm(
