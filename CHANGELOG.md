@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/KiritchoukC/power_progress/compare/v1.4.2...v1.5.0) (2020-05-02)
+
+
+### Features
+
+* **onboarding:** add loading screen ([412ff24](https://github.com/KiritchoukC/power_progress/commit/412ff24)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
+### [1.4.2](https://github.com/KiritchoukC/power_progress/compare/v1.4.1...v1.4.2) (2020-05-02)
+
+### [1.4.1](https://github.com/KiritchoukC/power_progress/compare/v1.4.0...v1.4.1) (2020-05-02)
+
+## [1.4.0](https://github.com/KiritchoukC/power_progress/compare/v1.3.0...v1.4.0) (2020-05-01)
+
+
+### Features
+
+* **onboarding:** add third screen with informations form ([9a69935](https://github.com/KiritchoukC/power_progress/commit/9a69935)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
+## [1.3.0](https://github.com/KiritchoukC/power_progress/compare/v1.2.0...v1.3.0) (2020-04-29)
+
+
+### Features
+
+* **onboarding:** add second boarding page for exercise picking ([26df528](https://github.com/KiritchoukC/power_progress/commit/26df528)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
+## [1.2.0](https://github.com/KiritchoukC/power_progress/compare/v1.1.30...v1.2.0) (2020-04-29)
+
+
+### Features
+
+* **onboarding:** implement onboarding welcome page ([ef19d4b](https://github.com/KiritchoukC/power_progress/commit/ef19d4b)), closes [#1](https://github.com/KiritchoukC/power_progress/issues/1)
+
+### [1.1.30](https://github.com/KiritchoukC/power_progress/compare/v1.1.29...v1.1.30) (2020-04-29)
+
 ### [1.1.29](https://github.com/KiritchoukC/power_progress/compare/v1.1.28...v1.1.29) (2020-04-29)
 
 ### [1.1.28](https://github.com/KiritchoukC/power_progress/compare/v1.1.27...v1.1.28) (2020-04-29)
