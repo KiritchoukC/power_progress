@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/KiritchoukC/power_progress/compare/v1.7.0...v1.8.0) (2020-05-03)
+
+
+### Features
+
+* **add-exercise:** setup hive ([9c4e8a2](https://github.com/KiritchoukC/power_progress/commit/9c4e8a2)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ## [1.7.0](https://github.com/KiritchoukC/power_progress/compare/v1.6.0...v1.7.0) (2020-05-03)
 
 
