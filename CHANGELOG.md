@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/KiritchoukC/power_progress/compare/v1.6.0...v1.7.0) (2020-05-03)
+
+
+### Features
+
+* **appbar:** add appbar at the bottom of the dashboard page ([5a8f173](https://github.com/KiritchoukC/power_progress/commit/5a8f173)), closes [#3](https://github.com/KiritchoukC/power_progress/issues/3)
+
 ## [1.6.0](https://github.com/KiritchoukC/power_progress/compare/v1.5.0...v1.6.0) (2020-05-03)
 
 
