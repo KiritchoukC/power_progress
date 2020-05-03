@@ -2,10 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 
 import 'core/router/route_paths.dart';
 import 'core/router/router.dart';
+import 'dependency_injection.dart' as di;
 
 Future main() async {
   // configure Logging
@@ -15,11 +18,25 @@ Future main() async {
   // init logging of BLoC transitions
   initBlocLogging();
 
+  // init hive local storage
+  await initHive();
+
+  // dependency injection
+  await di.init();
+
   // ensure the widgets binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
   // run the app
   runApp(MyApp());
+}
+
+Future initHive() async {
+  // no need to init hive for browser
+  if (!kIsWeb) {
+    // init Hive for mobile
+    await Hive.initFlutter();
+  }
 }
 
 void initBlocLogging() {
