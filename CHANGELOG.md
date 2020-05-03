@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/KiritchoukC/power_progress/compare/v1.5.0...v1.6.0) (2020-05-03)
+
+
+### Features
+
+* **dashboard:** add dashboard page ([4c17c33](https://github.com/KiritchoukC/power_progress/commit/4c17c33)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
 ## [1.5.0](https://github.com/KiritchoukC/power_progress/compare/v1.4.2...v1.5.0) (2020-05-02)
 
 
