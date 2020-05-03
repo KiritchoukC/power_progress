@@ -6,6 +6,25 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: _Body(),
       appBar: _AppBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 4.0,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
