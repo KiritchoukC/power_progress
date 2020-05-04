@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/KiritchoukC/power_progress/compare/v1.11.0...v1.12.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** add bloc implementation ([f699d84](https://github.com/KiritchoukC/power_progress/commit/f699d84)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ## [1.11.0](https://github.com/KiritchoukC/power_progress/compare/v1.10.0...v1.11.0) (2020-05-04)
 
 
