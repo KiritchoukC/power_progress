@@ -16,12 +16,15 @@ dependencies:
   logging: ^0.11.4
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
+  copy_with_extension: ^1.1.0
 dev_dependencies:
   # flutter_test: 
   #   sdk: flutter
 
   flutter_launcher_icons: ^0.7.5
   lint: ^1.1.1
+  build_runner: ^1.9.0
+  copy_with_extension_gen: ^1.1.0
   
 flutter_icons:
   android: true

@@ -3,7 +3,9 @@ import 'package:hive/hive.dart';
 
 import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
 import 'features/exercise/data/datasources/i_exercise_datasource.dart';
+import 'features/exercise/data/repositories/exercise_repository.dart';
 import 'features/exercise/domain/entities/exercise.dart';
+import 'features/exercise/domain/repositories/i_exercise_repository.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -32,8 +34,8 @@ void initExerciseFeature() {
   // sl.registerLazySingleton(() => UpdateBoard(boardRepository: sl<BoardRepository>()));
 
   // Repositories
-  // sl.registerLazySingleton<BoardRepository>(
-  //     () => LocalBoardRepository(datasource: sl<BoardDataSource>()));
+  sl.registerLazySingleton<IExerciseRepository>(
+      () => ExerciseRepository(datasource: sl<IExerciseDatasource>()));
 
   // Datasource
   sl.registerLazySingleton<IExerciseDatasource>(
