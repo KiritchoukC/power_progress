@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:power_progress/features/exercise/domain/usecases/add_exercise.dart';
 
 import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
 import 'features/exercise/data/datasources/i_exercise_datasource.dart';
@@ -31,7 +32,7 @@ void initExerciseFeature() {
   // );
 
   // Usecases
-  // sl.registerLazySingleton(() => UpdateBoard(boardRepository: sl<BoardRepository>()));
+  sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
