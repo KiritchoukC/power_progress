@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/KiritchoukC/power_progress/compare/v1.10.0...v1.11.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** setup add_exercise usecase dependency injection ([d70c01b](https://github.com/KiritchoukC/power_progress/commit/d70c01b)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ## [1.10.0](https://github.com/KiritchoukC/power_progress/compare/v1.9.0...v1.10.0) (2020-05-04)
 
 
