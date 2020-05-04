@@ -1,12 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/features/exercise/domain/usecases/add_exercise.dart';
 
 import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
 import 'features/exercise/data/datasources/i_exercise_datasource.dart';
 import 'features/exercise/data/repositories/exercise_repository.dart';
 import 'features/exercise/domain/entities/exercise.dart';
 import 'features/exercise/domain/repositories/i_exercise_repository.dart';
+import 'features/exercise/domain/usecases/add_exercise.dart';
+import 'features/exercise/presentation/bloc/exercise_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -25,11 +26,11 @@ Future<void> init() async {
 /// Register the dependencies needed for the game feature
 void initExerciseFeature() {
   // Bloc
-  // sl.registerFactory(
-  //   () => GameBloc(
-  //     // updateBoard: sl<UpdateBoard>(),
-  //   ),
-  // );
+  sl.registerFactory(
+    () => ExerciseBloc(
+      addExercise: sl<AddExercise>(),
+    ),
+  );
 
   // Usecases
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
