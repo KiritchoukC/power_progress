@@ -1,5 +1,5 @@
-import '../../domain/entities/exercise.dart';
+import '../models/exercise_model.dart';
 
 abstract class IExerciseDatasource {
-  Future<Exercise> add(Exercise exercise);
+  Future<ExerciseModel> add(ExerciseModel exercise);
 }

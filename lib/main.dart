@@ -9,6 +9,7 @@ import 'package:logging/logging.dart';
 import 'core/router/route_paths.dart';
 import 'core/router/router.dart';
 import 'dependency_injection.dart' as di;
+import 'features/exercise/presentation/bloc/exercise_bloc.dart';
 
 Future main() async {
   // configure Logging
@@ -49,11 +50,16 @@ void initBlocLogging() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Power Progress',
-      initialRoute: RoutePaths.dashboard,
-      onGenerateRoute: Router.generateRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ExerciseBloc>(create: (_) => di.sl<ExerciseBloc>()),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Power Progress',
+        initialRoute: RoutePaths.onboardingWelcome,
+        onGenerateRoute: Router.generateRoute,
+      ),
     );
   }
 }

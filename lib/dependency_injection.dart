@@ -3,8 +3,8 @@ import 'package:hive/hive.dart';
 
 import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
 import 'features/exercise/data/datasources/i_exercise_datasource.dart';
+import 'features/exercise/data/models/exercise_model.dart';
 import 'features/exercise/data/repositories/exercise_repository.dart';
-import 'features/exercise/domain/entities/exercise.dart';
 import 'features/exercise/domain/repositories/i_exercise_repository.dart';
 import 'features/exercise/domain/usecases/add_exercise.dart';
 import 'features/exercise/presentation/bloc/exercise_bloc.dart';
@@ -19,8 +19,9 @@ Future<void> init() async {
   //! CORE
 
   //! EXTERNAL
-  final box = await Hive.openBox<Exercise>('exercises');
-  sl.registerLazySingleton<Box<Exercise>>(() => box);
+  Hive.registerAdapter(ExerciseModelAdapter());
+  final box = await Hive.openBox<ExerciseModel>('exercises');
+  sl.registerLazySingleton<Box<ExerciseModel>>(() => box);
 }
 
 /// Register the dependencies needed for the game feature
@@ -41,6 +42,6 @@ void initExerciseFeature() {
 
   // Datasource
   sl.registerLazySingleton<IExerciseDatasource>(
-    () => HiveExerciseDatasource(localStorage: sl<Box<Exercise>>()),
+    () => HiveExerciseDatasource(localStorage: sl<Box<ExerciseModel>>()),
   );
 }
