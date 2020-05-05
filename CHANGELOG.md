@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/KiritchoukC/power_progress/compare/v1.12.0...v1.13.0) (2020-05-05)
+
+
+### Features
+
+* **add-exercise:** setup hive adaptater and add from onboarding ([d95f671](https://github.com/KiritchoukC/power_progress/commit/d95f671)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ## [1.12.0](https://github.com/KiritchoukC/power_progress/compare/v1.11.0...v1.12.0) (2020-05-04)
 
 
