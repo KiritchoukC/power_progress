@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/KiritchoukC/power_progress/compare/v1.13.0...v1.14.0) (2020-05-06)
+
+
+### Features
+
+* **add-exercise:** add exercise form and routing ([2f07783](https://github.com/KiritchoukC/power_progress/commit/2f07783)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ## [1.13.0](https://github.com/KiritchoukC/power_progress/compare/v1.12.0...v1.13.0) (2020-05-05)
 
 
