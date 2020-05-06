@@ -111,7 +111,7 @@ class _InformationsFormState extends State<_InformationsForm> {
             children: [
               BlocListener<ExerciseBloc, ExerciseState>(
                 listener: (BuildContext context, ExerciseState state) {
-                  if (state is AddExerciseLoadingState) {
+                  if (state is ExerciseLoadingState) {
                     Navigator.of(context).pushNamed(RoutePaths.onboardingLoading);
                   }
                 },

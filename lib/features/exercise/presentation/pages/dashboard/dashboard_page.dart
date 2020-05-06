@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/router/route_paths.dart';
+import '../../widgets/pp_appbar.dart';
+
 class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _Body(),
-      appBar: _AppBar(),
+      appBar: PPAppBar(
+        titleLabel: 'Dashboard',
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(RoutePaths.exerciseAdd);
+        },
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -51,7 +58,9 @@ class _DummyCard extends StatelessWidget {
       color: Colors.grey.shade100,
       elevation: 0,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed(RoutePaths.exerciseAdd);
+        },
         child: Container(
           height: 100,
           child: Row(
@@ -137,18 +146,4 @@ class _ExerciseCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class _AppBar extends AppBar {
-  _AppBar()
-      : super(
-          title: const Text(
-            'Dashboard',
-            style: TextStyle(color: Colors.black),
-          ),
-          brightness: Brightness.light,
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          elevation: 0,
-        );
 }

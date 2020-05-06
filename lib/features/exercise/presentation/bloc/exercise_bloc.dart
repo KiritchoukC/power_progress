@@ -28,7 +28,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   }
 
   Stream<ExerciseState> _handleAddExerciseEvent(AddExerciseEvent event) async* {
-    yield AddExerciseLoadingState();
+    yield ExerciseLoadingState();
 
     final addedExercise = await addExercise(AddExerciseParams(exercise: event.exercise));
 

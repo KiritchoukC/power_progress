@@ -9,7 +9,7 @@ abstract class ExerciseState extends Equatable {
 
 class ExerciseInitialState extends ExerciseState {}
 
-class AddExerciseLoadingState extends ExerciseState {}
+class ExerciseLoadingState extends ExerciseState {}
 
 class AddExerciseLoadedState extends ExerciseState {
   final Exercise exercise;
