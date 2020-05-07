@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/KiritchoukC/power_progress/compare/v1.14.0...v1.15.0) (2020-05-07)
+
+
+### Features
+
+* **dashboard:** add exercises retrieve from local datasource ([b9629f7](https://github.com/KiritchoukC/power_progress/commit/b9629f7)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
 ## [1.14.0](https://github.com/KiritchoukC/power_progress/compare/v1.13.0...v1.14.0) (2020-05-06)
 
 
