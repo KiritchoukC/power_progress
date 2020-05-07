@@ -118,7 +118,7 @@ class _InformationsFormState extends State<_InformationsForm> {
                 child: RaisedButton(
                   onPressed: () {
                     BlocProvider.of<ExerciseBloc>(context)
-                        .add(AddExerciseEvent(exercise: _exercise));
+                        .add(ExerciseAddEvent(exercise: _exercise));
                   },
                   child: const Text('Continue'),
                 ),

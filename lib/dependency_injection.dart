@@ -7,6 +7,7 @@ import 'features/exercise/data/models/exercise_model.dart';
 import 'features/exercise/data/repositories/exercise_repository.dart';
 import 'features/exercise/domain/repositories/i_exercise_repository.dart';
 import 'features/exercise/domain/usecases/add_exercise.dart';
+import 'features/exercise/domain/usecases/get_exercises.dart';
 import 'features/exercise/presentation/bloc/exercise_bloc.dart';
 
 final GetIt sl = GetIt.instance;
@@ -30,11 +31,13 @@ void initExerciseFeature() {
   sl.registerFactory(
     () => ExerciseBloc(
       addExercise: sl<AddExercise>(),
+      getExercises: sl<GetExercises>(),
     ),
   );
 
   // Usecases
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => GetExercises(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(

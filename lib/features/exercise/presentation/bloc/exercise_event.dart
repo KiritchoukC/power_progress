@@ -7,11 +7,13 @@ abstract class ExerciseEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AddExerciseEvent extends ExerciseEvent {
+class ExerciseAddEvent extends ExerciseEvent {
   final Exercise exercise;
 
-  const AddExerciseEvent({@required this.exercise});
+  const ExerciseAddEvent({@required this.exercise});
 
   @override
   List<Object> get props => [exercise];
 }
+
+class ExerciseGetEvent extends ExerciseEvent {}

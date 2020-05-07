@@ -10,7 +10,7 @@ class OnboardingLoadingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ExerciseBloc, ExerciseState>(
       listener: (BuildContext context, ExerciseState state) {
-        if (state is AddExerciseLoadedState) {
+        if (state is ExerciseAddLoadedState) {
           Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
         }
       },

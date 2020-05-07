@@ -16,4 +16,10 @@ class ExerciseRepository implements IExerciseRepository {
     final addedModel = await datasource.add(model);
     return Future.value(ExerciseModel.toEntity(addedModel));
   }
+
+  @override
+  Future<List<Exercise>> get() async {
+    final models = await datasource.get();
+    return Future.value(models.map(ExerciseModel.toEntity).toList());
+  }
 }

@@ -20,4 +20,9 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
     return exercise;
   }
+
+  @override
+  Future<List<ExerciseModel>> get() {
+    return Future.value(localStorage.values.toList());
+  }
 }

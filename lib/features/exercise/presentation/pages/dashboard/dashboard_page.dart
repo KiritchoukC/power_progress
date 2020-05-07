@@ -1,13 +1,31 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/router/route_paths.dart';
+import '../../../domain/entities/exercise.dart';
+import '../../bloc/exercise_bloc.dart';
+import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _Body(),
+      body: BlocBuilder<ExerciseBloc, ExerciseState>(
+        builder: (context, state) {
+          if (state is! ExerciseGetLoadedState) {
+            BlocProvider.of<ExerciseBloc>(context).add(ExerciseGetEvent());
+          }
+
+          if (state is ExerciseGetLoadedState) {
+            return _Body(exercises: state.exercises);
+          }
+
+          return CenteredLoading();
+        },
+      ),
       appBar: PPAppBar(
         titleLabel: 'Dashboard',
       ),
@@ -37,15 +55,19 @@ class DashboardPage extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
+  final List<Exercise> exercises;
+
+  const _Body({Key key, this.exercises}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: ListView(
-        children: [
-          _ExerciseCard(),
-          _DummyCard(),
-        ],
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: exercises.length,
+        itemBuilder: (context, index) => _ExerciseCard(exercise: exercises[index]),
       ),
     );
   }
@@ -83,6 +105,10 @@ class _DummyCard extends StatelessWidget {
 }
 
 class _ExerciseCard extends StatelessWidget {
+  final Exercise exercise;
+
+  const _ExerciseCard({Key key, @required this.exercise}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -102,13 +128,13 @@ class _ExerciseCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      'Chest press',
+                      exercise.name,
                       style: Theme.of(context).textTheme.headline6.apply(
                             color: Colors.grey.shade700,
                           ),
                     ),
                     Text(
-                      '100 Kg',
+                      '${exercise.oneRm} Kg',
                       style: Theme.of(context).textTheme.subtitle1.apply(
                             color: Colors.black54,
                           ),
