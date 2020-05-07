@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
 import '../../../../../shared/pp_form_field.dart';
+import '../../../domain/entities/exercise.dart';
+import '../../bloc/exercise_bloc.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;
@@ -78,6 +81,13 @@ class _InformationsFormState extends State<_InformationsForm> {
         focusNode: _stepsFocusNode,
       );
 
+  Exercise get _exercise => Exercise(
+        id: 0,
+        oneRm: double.parse(_oneRmController.value.text),
+        name: widget.exerciseName,
+        incrementation: double.parse(_stepsController.value.text),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -99,11 +109,19 @@ class _InformationsFormState extends State<_InformationsForm> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              RaisedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(RoutePaths.onboardingLoading);
+              BlocListener<ExerciseBloc, ExerciseState>(
+                listener: (BuildContext context, ExerciseState state) {
+                  if (state is ExerciseLoadingState) {
+                    Navigator.of(context).pushNamed(RoutePaths.onboardingLoading);
+                  }
                 },
-                child: const Text('Continue'),
+                child: RaisedButton(
+                  onPressed: () {
+                    BlocProvider.of<ExerciseBloc>(context)
+                        .add(ExerciseAddEvent(exercise: _exercise));
+                  },
+                  child: const Text('Continue'),
+                ),
               )
             ],
           )

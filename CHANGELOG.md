@@ -2,6 +2,69 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/KiritchoukC/power_progress/compare/v1.14.0...v1.15.0) (2020-05-07)
+
+
+### Features
+
+* **dashboard:** add exercises retrieve from local datasource ([b9629f7](https://github.com/KiritchoukC/power_progress/commit/b9629f7)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+## [1.14.0](https://github.com/KiritchoukC/power_progress/compare/v1.13.0...v1.14.0) (2020-05-06)
+
+
+### Features
+
+* **add-exercise:** add exercise form and routing ([2f07783](https://github.com/KiritchoukC/power_progress/commit/2f07783)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.13.0](https://github.com/KiritchoukC/power_progress/compare/v1.12.0...v1.13.0) (2020-05-05)
+
+
+### Features
+
+* **add-exercise:** setup hive adaptater and add from onboarding ([d95f671](https://github.com/KiritchoukC/power_progress/commit/d95f671)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.12.0](https://github.com/KiritchoukC/power_progress/compare/v1.11.0...v1.12.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** add bloc implementation ([f699d84](https://github.com/KiritchoukC/power_progress/commit/f699d84)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.11.0](https://github.com/KiritchoukC/power_progress/compare/v1.10.0...v1.11.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** setup add_exercise usecase dependency injection ([d70c01b](https://github.com/KiritchoukC/power_progress/commit/d70c01b)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.10.0](https://github.com/KiritchoukC/power_progress/compare/v1.9.0...v1.10.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** add add_exercise usecase implementation ([4c5374f](https://github.com/KiritchoukC/power_progress/commit/4c5374f)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.9.0](https://github.com/KiritchoukC/power_progress/compare/v1.8.0...v1.9.0) (2020-05-04)
+
+
+### Features
+
+* **add-exercise:** add datasource and repository implementation ([2d01130](https://github.com/KiritchoukC/power_progress/commit/2d01130)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.8.0](https://github.com/KiritchoukC/power_progress/compare/v1.7.0...v1.8.0) (2020-05-03)
+
+
+### Features
+
+* **add-exercise:** setup hive ([9c4e8a2](https://github.com/KiritchoukC/power_progress/commit/9c4e8a2)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
+## [1.7.0](https://github.com/KiritchoukC/power_progress/compare/v1.6.0...v1.7.0) (2020-05-03)
+
+
+### Features
+
+* **appbar:** add appbar at the bottom of the dashboard page ([5a8f173](https://github.com/KiritchoukC/power_progress/commit/5a8f173)), closes [#3](https://github.com/KiritchoukC/power_progress/issues/3)
+
 ## [1.6.0](https://github.com/KiritchoukC/power_progress/compare/v1.5.0...v1.6.0) (2020-05-03)
 
 
