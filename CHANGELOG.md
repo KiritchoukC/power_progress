@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.1](https://github.com/KiritchoukC/power_progress/compare/v1.15.0...v1.15.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* **test:** fix path dependency ([7a6b81c](https://github.com/KiritchoukC/power_progress/commit/7a6b81c))
+
 ## [1.15.0](https://github.com/KiritchoukC/power_progress/compare/v1.14.0...v1.15.0) (2020-05-07)
 
 
