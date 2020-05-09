@@ -5,7 +5,6 @@ import '../../features/exercise/presentation/pages/dashboard/dashboard_page.dart
 import '../../features/exercise/presentation/pages/exercise/exercise_form_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_exercise_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_informations_page.dart';
-import '../../features/exercise/presentation/pages/onboarding/onboarding_loading_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_welcome_page.dart';
 import 'route_paths.dart';
 

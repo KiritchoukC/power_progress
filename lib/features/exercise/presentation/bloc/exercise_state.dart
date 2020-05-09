@@ -26,6 +26,17 @@ class ExerciseFetchedState extends ExerciseState {
   List<Object> get props => [exercises];
 }
 
+// Onboarding
+class OnboardingMarkingDoneState extends ExerciseState {}
+
+class OnboardingMarkedDoneState extends ExerciseState {}
+
+class OnboardingIsDoneLoadingState extends ExerciseState {}
+
+class OnboardingIsDoneState extends ExerciseState {}
+
+class OnboardingIsNotDoneState extends ExerciseState {}
+
 class ExerciseErrorState extends ExerciseState {
   final String message;
 

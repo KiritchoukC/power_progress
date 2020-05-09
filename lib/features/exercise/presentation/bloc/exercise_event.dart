@@ -17,3 +17,7 @@ class ExerciseAddEvent extends ExerciseEvent {
 }
 
 class ExerciseFetchEvent extends ExerciseEvent {}
+
+class OnboardingDoneEvent extends ExerciseEvent {}
+
+class OnboardingIsDoneEvent extends ExerciseEvent {}

@@ -40,6 +40,8 @@ void initExerciseFeature() {
     () => ExerciseBloc(
       addExercise: sl<AddExercise>(),
       fetchExercises: sl<FetchExercises>(),
+      doneOnboarding: sl<DoneOnboarding>(),
+      isDoneOnboarding: sl<IsDoneOnboarding>(),
     ),
   );
 
