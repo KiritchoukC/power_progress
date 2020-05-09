@@ -122,7 +122,8 @@ class _InformationsFormState extends State<_InformationsForm> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           BlocProvider.of<ExerciseBloc>(context)
-                              .add(ExerciseAddEvent(exercise: _exercise));
+                            ..add(ExerciseAddEvent(exercise: _exercise))
+                            ..add(OnboardingDoneEvent());
                         }
                       },
                       child: const Text('Continue'),

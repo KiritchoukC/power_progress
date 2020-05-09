@@ -10,6 +10,7 @@ import 'core/router/route_paths.dart';
 import 'core/router/router.dart';
 import 'dependency_injection.dart' as di;
 import 'features/exercise/presentation/bloc/exercise_bloc.dart';
+import 'features/exercise/presentation/widgets/centered_loading.dart';
 
 Future main() async {
   // configure Logging
@@ -54,10 +55,34 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ExerciseBloc>(create: (_) => di.sl<ExerciseBloc>()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
-        initialRoute: RoutePaths.onboardingWelcome,
+        // initialRoute: RoutePaths.onboardingWelcome,
+        home: BlocListener<ExerciseBloc, ExerciseState>(
+          listener: (context, state) {
+            if (state is OnboardingIsDoneState) {
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+              });
+            }
+
+            if (state is OnboardingIsNotDoneState) {
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
+              });
+            }
+          },
+          child: BlocBuilder<ExerciseBloc, ExerciseState>(
+            builder: (context, state) {
+              if (state is ExerciseInitialState) {
+                BlocProvider.of<ExerciseBloc>(context).add(OnboardingIsDoneEvent());
+              }
+
+              return Scaffold(body: CenteredLoading());
+            },
+          ),
+        ),
         onGenerateRoute: Router.generateRoute,
       ),
     );
