@@ -48,15 +48,14 @@ class DashboardPage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
+        elevation: 10,
         shape: const CircularNotchedRectangle(),
-        notchMargin: 4.0,
+        notchMargin: 10.0,
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {},
+            Container(
+              height: 40,
             ),
           ],
         ),
