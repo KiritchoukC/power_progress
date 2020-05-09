@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](https://github.com/KiritchoukC/power_progress/compare/v1.19.0...v1.20.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-done:** add bloc implementation ([5ffea4e](https://github.com/KiritchoukC/power_progress/commit/5ffea4e)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
 ## [1.19.0](https://github.com/KiritchoukC/power_progress/compare/v1.18.1...v1.19.0) (2020-05-09)
 
 
