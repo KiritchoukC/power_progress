@@ -74,12 +74,18 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: exercises.length,
-        itemBuilder: (context, index) => _ExerciseCard(exercise: exercises[index]),
-      ),
+      child: exercises.isEmpty
+          ? ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              children: [_DummyCard()],
+            )
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: exercises.length,
+              itemBuilder: (context, index) => _ExerciseCard(exercise: exercises[index]),
+            ),
     );
   }
 }
