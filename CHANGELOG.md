@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/KiritchoukC/power_progress/compare/v1.17.0...v1.18.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-done:** add datasource and repository implementation ([6affb5a](https://github.com/KiritchoukC/power_progress/commit/6affb5a)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
 ## [1.17.0](https://github.com/KiritchoukC/power_progress/compare/v1.16.1...v1.17.0) (2020-05-09)
 
 
