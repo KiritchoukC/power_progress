@@ -20,12 +20,12 @@ class ExerciseFormPage extends StatelessWidget {
       appBar: PPAppBar(titleLabel: 'New exercise'),
       body: BlocListener<ExerciseBloc, ExerciseState>(
         listener: (context, state) {
-          if (state is ExerciseAddLoadedState) {
+          if (state is ExerciseAddedState) {
             Navigator.of(context).pop();
           }
         },
         child: BlocBuilder<ExerciseBloc, ExerciseState>(builder: (context, state) {
-          if (state is ExerciseLoadingState) {
+          if (state is ExerciseAddingState) {
             return CenteredLoading();
           }
 

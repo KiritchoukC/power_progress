@@ -18,14 +18,14 @@ class DashboardPage extends StatelessWidget {
         child: BlocBuilder<ExerciseBloc, ExerciseState>(
           builder: (context, state) {
             // fetch exercises on initial state or when an exercise gets added
-            if (state is ExerciseInitialState || state is ExerciseAddLoadedState) {
+            if (state is ExerciseInitialState || state is ExerciseAddedState) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                BlocProvider.of<ExerciseBloc>(context).add(ExerciseGetEvent());
+                BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
               });
             }
 
             // show exercises when they're loaded
-            if (state is ExerciseGetLoadedState) {
+            if (state is ExerciseFetchedState) {
               return _Body(exercises: state.exercises);
             }
 

@@ -31,41 +31,41 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     ExerciseEvent event,
   ) async* {
     if (event is ExerciseAddEvent) {
-      yield* _handleAddExerciseEvent(event);
+      yield* _handleExerciseAddEvent(event);
     }
 
-    if (event is ExerciseGetEvent) {
-      yield* _handleGetExerciseEvent(event);
+    if (event is ExerciseFetchEvent) {
+      yield* _handleExerciseFetchEvent(event);
     }
   }
 
-  Stream<ExerciseState> _handleAddExerciseEvent(ExerciseAddEvent event) async* {
-    yield ExerciseLoadingState();
+  Stream<ExerciseState> _handleExerciseAddEvent(ExerciseAddEvent event) async* {
+    yield ExerciseAddingState();
 
     final output = await addExercise(AddExerciseParams(exercise: event.exercise));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseGetFailedState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseAddFailedState(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield ExerciseAddLoadedState();
+      yield ExerciseAddedState();
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<ExerciseState> _handleGetExerciseEvent(ExerciseGetEvent event) async* {
-    yield ExerciseLoadingState();
+  Stream<ExerciseState> _handleExerciseFetchEvent(ExerciseFetchEvent event) async* {
+    yield ExerciseFetchingState();
 
     final output = await getExercises(NoParams());
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseGetFailedState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseFetchFailedState(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(List<Exercise> exercises) async* {
-      yield ExerciseGetLoadedState(exercises: exercises);
+      yield ExerciseFetchedState(exercises: exercises);
     }
 
     yield* output.fold(onFailure, onSuccess);

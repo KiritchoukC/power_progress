@@ -9,23 +9,36 @@ abstract class ExerciseState extends Equatable {
 
 class ExerciseInitialState extends ExerciseState {}
 
-class ExerciseLoadingState extends ExerciseState {}
+// Adding
+class ExerciseAddingState extends ExerciseState {}
 
-class ExerciseAddLoadedState extends ExerciseState {}
+class ExerciseAddedState extends ExerciseState {}
 
-class ExerciseGetLoadedState extends ExerciseState {
+class ExerciseAddFailedState extends ExerciseState {
+  final String message;
+
+  const ExerciseAddFailedState({@required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+// Fetching
+class ExerciseFetchingState extends ExerciseState {}
+
+class ExerciseFetchedState extends ExerciseState {
   final List<Exercise> exercises;
 
-  const ExerciseGetLoadedState({@required this.exercises});
+  const ExerciseFetchedState({@required this.exercises});
 
   @override
   List<Object> get props => [exercises];
 }
 
-class ExerciseGetFailedState extends ExerciseState {
+class ExerciseFetchFailedState extends ExerciseState {
   final String message;
 
-  const ExerciseGetFailedState({@required this.message});
+  const ExerciseFetchFailedState({@required this.message});
 
   @override
   List<Object> get props => [message];

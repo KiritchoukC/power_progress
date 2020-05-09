@@ -28,7 +28,7 @@ class OnboardingInformationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ExerciseBloc, ExerciseState>(
       listener: (BuildContext context, ExerciseState state) {
-        if (state is ExerciseAddLoadedState) {
+        if (state is ExerciseAddedState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
           });
@@ -37,7 +37,7 @@ class OnboardingInformationsPage extends StatelessWidget {
       child: Scaffold(
         body: BlocBuilder<ExerciseBloc, ExerciseState>(
           builder: (context, state) {
-            if (state is ExerciseLoadingState) {
+            if (state is ExerciseAddingState) {
               return OnboardingLoadingPage();
             }
 
