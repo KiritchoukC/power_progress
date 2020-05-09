@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/KiritchoukC/power_progress/compare/v1.20.0...v1.21.0) (2020-05-09)
+
+
+### Features
+
+* **onboading-done:** make initial route dynamic depending on the onboarding done status ([8c1d216](https://github.com/KiritchoukC/power_progress/commit/8c1d216)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
 ## [1.20.0](https://github.com/KiritchoukC/power_progress/compare/v1.19.0...v1.20.0) (2020-05-09)
 
 
