@@ -11,14 +11,7 @@ class ExerciseInitialState extends ExerciseState {}
 
 class ExerciseLoadingState extends ExerciseState {}
 
-class ExerciseAddLoadedState extends ExerciseState {
-  final Exercise exercise;
-
-  const ExerciseAddLoadedState({@required this.exercise});
-
-  @override
-  List<Object> get props => [exercise];
-}
+class ExerciseAddLoadedState extends ExerciseState {}
 
 class ExerciseGetLoadedState extends ExerciseState {
   final List<Exercise> exercises;
@@ -27,4 +20,13 @@ class ExerciseGetLoadedState extends ExerciseState {
 
   @override
   List<Object> get props => [exercises];
+}
+
+class ExerciseGetFailedState extends ExerciseState {
+  final String message;
+
+  const ExerciseGetFailedState({@required this.message});
+
+  @override
+  List<Object> get props => [message];
 }

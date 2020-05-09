@@ -7,7 +7,7 @@ class PPTextFormFieldWidget extends TextFormField {
     @required TextEditingController controller,
     bool obscureText = false,
     bool autocorrect = false,
-    String Function(String) validator,
+    FormFieldValidator<String> validator,
     TextStyle style = const TextStyle(color: Colors.white),
     InputDecoration decoration,
     String labelText,
@@ -15,6 +15,7 @@ class PPTextFormFieldWidget extends TextFormField {
     IconData prefixIcon,
     VoidCallback onEditingComplete,
     FocusNode focusNode,
+    TextInputType keyboardType = TextInputType.text,
   }) : super(
           key: key,
           controller: controller,
@@ -25,6 +26,7 @@ class PPTextFormFieldWidget extends TextFormField {
           textInputAction: textInputAction,
           onEditingComplete: onEditingComplete,
           focusNode: focusNode,
+          keyboardType: keyboardType,
           decoration: decoration ??
               InputDecoration(
                 border: const OutlineInputBorder(),

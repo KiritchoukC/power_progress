@@ -13,18 +13,25 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<ExerciseBloc, ExerciseState>(
-        builder: (context, state) {
-          if (state is! ExerciseGetLoadedState) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseGetEvent());
-          }
+      body: BlocListener<ExerciseBloc, ExerciseState>(
+        listener: (context, state) {},
+        child: BlocBuilder<ExerciseBloc, ExerciseState>(
+          builder: (context, state) {
+            // fetch exercises on initial state or when an exercise gets added
+            if (state is ExerciseInitialState || state is ExerciseAddLoadedState) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                BlocProvider.of<ExerciseBloc>(context).add(ExerciseGetEvent());
+              });
+            }
 
-          if (state is ExerciseGetLoadedState) {
-            return _Body(exercises: state.exercises);
-          }
+            // show exercises when they're loaded
+            if (state is ExerciseGetLoadedState) {
+              return _Body(exercises: state.exercises);
+            }
 
-          return CenteredLoading();
-        },
+            return CenteredLoading();
+          },
+        ),
       ),
       appBar: PPAppBar(
         titleLabel: 'Dashboard',
@@ -128,13 +135,13 @@ class _ExerciseCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      exercise.name,
+                      exercise.name.getOrCrash(),
                       style: Theme.of(context).textTheme.headline6.apply(
                             color: Colors.grey.shade700,
                           ),
                     ),
                     Text(
-                      '${exercise.oneRm} Kg',
+                      '${exercise.oneRm.getOrCrash()} Kg',
                       style: Theme.of(context).textTheme.subtitle1.apply(
                             color: Colors.black54,
                           ),

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/features/exercise/presentation/pages/onboarding/onboarding_loading_page.dart';
 
 import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
-import '../../../../../shared/pp_form_field.dart';
 import '../../../domain/entities/exercise.dart';
+import '../../../domain/entities/value_objects/exercise_name.dart';
+import '../../../domain/entities/value_objects/incrementation.dart';
+import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
+import '../../widgets/centered_loading.dart';
+import '../../widgets/inputs/incrementation_input.dart';
+import '../../widgets/inputs/one_rm_input.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;
@@ -20,15 +26,25 @@ class OnboardingInformationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          color: Colors.red,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: _InformationsForm(
-              exerciseName: exerciseName,
-            ),
-          )),
+    return BlocListener<ExerciseBloc, ExerciseState>(
+      listener: (BuildContext context, ExerciseState state) {
+        if (state is ExerciseAddLoadedState) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+          });
+        }
+      },
+      child: Scaffold(
+        body: BlocBuilder<ExerciseBloc, ExerciseState>(
+          builder: (context, state) {
+            if (state is ExerciseLoadingState) {
+              return OnboardingLoadingPage();
+            }
+
+            return _InformationsForm(exerciseName: exerciseName);
+          },
+        ),
+      ),
     );
   }
 }
@@ -45,88 +61,78 @@ class _InformationsForm extends StatefulWidget {
 class _InformationsFormState extends State<_InformationsForm> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _oneRmController;
-  TextEditingController _stepsController;
-  FocusNode _stepsFocusNode;
+  TextEditingController _incrementationController;
+  FocusNode _incrementationFocusNode;
 
   @override
   void initState() {
     _oneRmController = TextEditingController();
-    _stepsController = TextEditingController();
-    _stepsFocusNode = FocusNode();
+    _incrementationController = TextEditingController();
+    _incrementationFocusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     _oneRmController?.dispose();
-    _stepsController?.dispose();
-    _stepsFocusNode?.dispose();
+    _incrementationController?.dispose();
+    _incrementationFocusNode?.dispose();
     super.dispose();
   }
 
-  Widget get _oneRmField => PPTextFormFieldWidget(
-        controller: _oneRmController,
-        labelText: '1RM',
-        textInputAction: TextInputAction.next,
-        prefixIcon: Icons.confirmation_number,
-        onEditingComplete: () {
-          _stepsFocusNode.requestFocus();
-        },
-      );
-
-  Widget get _stepsField => PPTextFormFieldWidget(
-        controller: _stepsController,
-        labelText: 'Steps',
-        prefixIcon: Icons.shutter_speed,
-        focusNode: _stepsFocusNode,
-      );
-
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: double.parse(_oneRmController.value.text),
-        name: widget.exerciseName,
-        incrementation: double.parse(_stepsController.value.text),
+        oneRm: OneRm.parse(_oneRmController.value.text),
+        name: ExerciseName(widget.exerciseName),
+        incrementation: Incrementation.parse(_incrementationController.value.text),
       );
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            widget.exerciseName,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 24.0),
-          ),
-          const VSpacing.medium(),
-          _oneRmField,
-          const VSpacing.extraSmall(),
-          _stepsField,
-          const VSpacing.small(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              BlocListener<ExerciseBloc, ExerciseState>(
-                listener: (BuildContext context, ExerciseState state) {
-                  if (state is ExerciseLoadingState) {
-                    Navigator.of(context).pushNamed(RoutePaths.onboardingLoading);
-                  }
-                },
-                child: RaisedButton(
-                  onPressed: () {
-                    BlocProvider.of<ExerciseBloc>(context)
-                        .add(ExerciseAddEvent(exercise: _exercise));
-                  },
-                  child: const Text('Continue'),
+    return Container(
+        color: Colors.red,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            autovalidate: true,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  widget.exerciseName,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 24.0),
                 ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                const VSpacing.medium(),
+                OneRmInput(
+                  controller: _oneRmController,
+                  nextFocusNode: _incrementationFocusNode,
+                ),
+                const VSpacing.extraSmall(),
+                IncrementationInput(
+                  controller: _incrementationController,
+                  focusNode: _incrementationFocusNode,
+                ),
+                const VSpacing.small(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          BlocProvider.of<ExerciseBloc>(context)
+                              .add(ExerciseAddEvent(exercise: _exercise));
+                        }
+                      },
+                      child: const Text('Continue'),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

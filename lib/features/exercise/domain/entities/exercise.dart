@@ -1,15 +1,16 @@
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/foundation.dart';
 
-part 'exercise.g.dart';
+import 'value_objects/exercise_name.dart';
+import 'value_objects/incrementation.dart';
+import 'value_objects/note.dart';
+import 'value_objects/one_rm.dart';
 
-@CopyWith()
 class Exercise {
   final int id;
-  final double oneRm;
-  final String name;
-  final double incrementation;
-  final String note;
+  final OneRm oneRm;
+  final ExerciseName name;
+  final Incrementation incrementation;
+  final Note note;
 
   Exercise({
     @required this.id,
