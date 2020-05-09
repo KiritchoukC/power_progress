@@ -32,12 +32,8 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   }
 
   @override
-  Future<List<ExerciseModel>> get() async {
-    final exercises = tryOrCrash(
-      () => localStorage.values.toList(),
-      (_) => throw Exception(),
-    );
-
-    return exercises;
-  }
+  Future<List<ExerciseModel>> get exercises async => tryOrCrash(
+        () => localStorage.values.toList(),
+        (_) => throw Exception(),
+      );
 }

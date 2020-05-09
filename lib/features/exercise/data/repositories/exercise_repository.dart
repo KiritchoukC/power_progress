@@ -26,7 +26,7 @@ class ExerciseRepository implements IExerciseRepository {
   @override
   Future<Either<ExerciseFailure, List<Exercise>>> get() async {
     try {
-      final models = await datasource.get();
+      final models = await datasource.exercises;
       return right(models.map(ExerciseModel.toEntity).toList());
     } on Exception {
       return left(const ExerciseFailure.storageError());

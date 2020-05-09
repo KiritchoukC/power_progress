@@ -4,5 +4,5 @@ import '../models/exercise_model.dart';
 
 abstract class IExerciseDatasource {
   Future<Unit> add(ExerciseModel exercise);
-  Future<List<ExerciseModel>> get();
+  Future<List<ExerciseModel>> get exercises;
 }
