@@ -17,11 +17,11 @@ part 'exercise_state.dart';
 
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final AddExercise addExercise;
-  final GetExercises getExercises;
+  final FetchExercises fetchExercises;
 
   ExerciseBloc({
     @required this.addExercise,
-    @required this.getExercises,
+    @required this.fetchExercises,
   });
 
   @override
@@ -58,7 +58,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   Stream<ExerciseState> _handleExerciseFetchEvent(ExerciseFetchEvent event) async* {
     yield ExerciseFetchingState();
 
-    final output = await getExercises(NoParams());
+    final output = await fetchExercises(NoParams());
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
       yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));

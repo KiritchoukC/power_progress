@@ -37,13 +37,13 @@ void initExerciseFeature() {
   sl.registerFactory(
     () => ExerciseBloc(
       addExercise: sl<AddExercise>(),
-      getExercises: sl<GetExercises>(),
+      fetchExercises: sl<FetchExercises>(),
     ),
   );
 
   // Usecases
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerLazySingleton(() => GetExercises(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
