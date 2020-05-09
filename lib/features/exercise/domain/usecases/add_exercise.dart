@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:power_progress/features/exercise/domain/entities/exercise_failure.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../entities/exercise.dart';
+import '../entities/exercise_failure.dart';
 import '../repositories/i_exercise_repository.dart';
 
 class AddExercise implements UseCase<Unit, ExerciseFailure, AddExerciseParams> {

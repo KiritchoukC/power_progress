@@ -45,7 +45,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     final output = await addExercise(AddExerciseParams(exercise: event.exercise));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseAddFailedState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
@@ -61,7 +61,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     final output = await getExercises(NoParams());
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseFetchFailedState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(List<Exercise> exercises) async* {

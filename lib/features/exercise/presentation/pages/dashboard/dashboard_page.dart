@@ -14,7 +14,11 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<ExerciseBloc, ExerciseState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is ExerciseErrorState) {
+            Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+          }
+        },
         child: BlocBuilder<ExerciseBloc, ExerciseState>(
           builder: (context, state) {
             // fetch exercises on initial state or when an exercise gets added

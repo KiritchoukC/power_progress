@@ -1,9 +1,10 @@
 import 'package:hive/hive.dart';
-import 'package:power_progress/features/exercise/domain/entities/exercise.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/exercise_name.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/incrementation.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/note.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/one_rm.dart';
+
+import '../../domain/entities/exercise.dart';
+import '../../domain/entities/value_objects/exercise_name.dart';
+import '../../domain/entities/value_objects/incrementation.dart';
+import '../../domain/entities/value_objects/note.dart';
+import '../../domain/entities/value_objects/one_rm.dart';
 
 part 'exercise_model.g.dart';
 

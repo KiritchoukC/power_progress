@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/one_rm.dart';
-import 'package:power_progress/shared/pp_form_field.dart';
+
+import '../../../../../shared/pp_form_field.dart';
+import '../../../domain/entities/value_objects/one_rm.dart';
 
 class OneRmInput extends StatelessWidget {
   final TextEditingController controller;

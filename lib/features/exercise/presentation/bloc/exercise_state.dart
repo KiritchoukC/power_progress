@@ -14,15 +14,6 @@ class ExerciseAddingState extends ExerciseState {}
 
 class ExerciseAddedState extends ExerciseState {}
 
-class ExerciseAddFailedState extends ExerciseState {
-  final String message;
-
-  const ExerciseAddFailedState({@required this.message});
-
-  @override
-  List<Object> get props => [message];
-}
-
 // Fetching
 class ExerciseFetchingState extends ExerciseState {}
 
@@ -35,10 +26,10 @@ class ExerciseFetchedState extends ExerciseState {
   List<Object> get props => [exercises];
 }
 
-class ExerciseFetchFailedState extends ExerciseState {
+class ExerciseErrorState extends ExerciseState {
   final String message;
 
-  const ExerciseFetchFailedState({@required this.message});
+  const ExerciseErrorState({@required this.message});
 
   @override
   List<Object> get props => [message];

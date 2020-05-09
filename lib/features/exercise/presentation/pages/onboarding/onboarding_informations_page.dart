@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/features/exercise/presentation/pages/onboarding/onboarding_loading_page.dart';
 
 import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
@@ -9,9 +8,9 @@ import '../../../domain/entities/value_objects/exercise_name.dart';
 import '../../../domain/entities/value_objects/incrementation.dart';
 import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
-import '../../widgets/centered_loading.dart';
 import '../../widgets/inputs/incrementation_input.dart';
 import '../../widgets/inputs/one_rm_input.dart';
+import 'onboarding_loading_page.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/exercise_name.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/incrementation.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/one_rm.dart';
-import 'package:power_progress/features/exercise/presentation/widgets/inputs/exercise_name_input.dart';
-import 'package:power_progress/features/exercise/presentation/widgets/inputs/incrementation_input.dart';
-import 'package:power_progress/features/exercise/presentation/widgets/inputs/one_rm_input.dart';
 
 import '../../../../../core/util/spacing.dart';
 import '../../../domain/entities/exercise.dart';
+import '../../../domain/entities/value_objects/exercise_name.dart';
+import '../../../domain/entities/value_objects/incrementation.dart';
+import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/centered_loading.dart';
+import '../../widgets/inputs/exercise_name_input.dart';
+import '../../widgets/inputs/incrementation_input.dart';
+import '../../widgets/inputs/one_rm_input.dart';
 import '../../widgets/pp_appbar.dart';
 
 class ExerciseFormPage extends StatelessWidget {
