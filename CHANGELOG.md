@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.23.0](https://github.com/KiritchoukC/power_progress/compare/v1.22.0...v1.23.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-skip:** add a skip button to the onboarding welcome page ([7cf89f4](https://github.com/KiritchoukC/power_progress/commit/7cf89f4))
+
 ## [1.22.0](https://github.com/KiritchoukC/power_progress/compare/v1.21.0...v1.22.0) (2020-05-09)
 
 
