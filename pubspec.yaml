@@ -16,7 +16,8 @@ dependencies:
   logging: ^0.11.4
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
-  copy_with_extension: ^1.1.0
+  freezed_annotation: ^0.7.1
+  
 dev_dependencies:
   flutter_test: 
     sdk: flutter
@@ -24,9 +25,9 @@ dev_dependencies:
   flutter_launcher_icons: ^0.7.5
   lint: ^1.1.1
   build_runner: ^1.9.0
-  copy_with_extension_gen: ^1.1.0
   hive_generator: ^0.7.0+2
   dartx: ^0.2.0
+  freezed: ^0.10.8
   
 dependency_overrides: 
   path: 1.7.0

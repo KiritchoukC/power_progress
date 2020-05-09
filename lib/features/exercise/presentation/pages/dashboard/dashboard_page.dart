@@ -13,18 +13,29 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<ExerciseBloc, ExerciseState>(
-        builder: (context, state) {
-          if (state is! ExerciseGetLoadedState) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseGetEvent());
+      body: BlocListener<ExerciseBloc, ExerciseState>(
+        listener: (context, state) {
+          if (state is ExerciseErrorState) {
+            Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
           }
-
-          if (state is ExerciseGetLoadedState) {
-            return _Body(exercises: state.exercises);
-          }
-
-          return CenteredLoading();
         },
+        child: BlocBuilder<ExerciseBloc, ExerciseState>(
+          builder: (context, state) {
+            // fetch exercises on initial state or when an exercise gets added
+            if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
+              });
+            }
+
+            // show exercises when they're loaded
+            if (state is ExerciseFetchedState) {
+              return _Body(exercises: state.exercises);
+            }
+
+            return CenteredLoading();
+          },
+        ),
       ),
       appBar: PPAppBar(
         titleLabel: 'Dashboard',
@@ -128,13 +139,13 @@ class _ExerciseCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      exercise.name,
+                      exercise.name.getOrCrash(),
                       style: Theme.of(context).textTheme.headline6.apply(
                             color: Colors.grey.shade700,
                           ),
                     ),
                     Text(
-                      '${exercise.oneRm} Kg',
+                      '${exercise.oneRm.getOrCrash()} Kg',
                       style: Theme.of(context).textTheme.subtitle1.apply(
                             color: Colors.black54,
                           ),

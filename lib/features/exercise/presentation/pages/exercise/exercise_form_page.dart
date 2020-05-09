@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/util/spacing.dart';
-import '../../../../../shared/pp_form_field.dart';
 import '../../../domain/entities/exercise.dart';
+import '../../../domain/entities/value_objects/exercise_name.dart';
+import '../../../domain/entities/value_objects/incrementation.dart';
+import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/centered_loading.dart';
+import '../../widgets/inputs/exercise_name_input.dart';
+import '../../widgets/inputs/incrementation_input.dart';
+import '../../widgets/inputs/one_rm_input.dart';
 import '../../widgets/pp_appbar.dart';
 
 class ExerciseFormPage extends StatelessWidget {
@@ -15,12 +20,12 @@ class ExerciseFormPage extends StatelessWidget {
       appBar: PPAppBar(titleLabel: 'New exercise'),
       body: BlocListener<ExerciseBloc, ExerciseState>(
         listener: (context, state) {
-          if (state is ExerciseAddLoadedState) {
+          if (state is ExerciseAddedState) {
             Navigator.of(context).pop();
           }
         },
         child: BlocBuilder<ExerciseBloc, ExerciseState>(builder: (context, state) {
-          if (state is ExerciseLoadingState) {
+          if (state is ExerciseAddingState) {
             return CenteredLoading();
           }
 
@@ -42,17 +47,17 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _exerciseNameController;
   TextEditingController _oneRmController;
-  TextEditingController _stepsController;
+  TextEditingController _incrementationController;
   FocusNode _oneRmFocusNode;
-  FocusNode _stepsFocusNode;
+  FocusNode _incrementationFocusNode;
 
   @override
   void initState() {
     _exerciseNameController = TextEditingController();
     _oneRmController = TextEditingController();
-    _stepsController = TextEditingController();
+    _incrementationController = TextEditingController();
     _oneRmFocusNode = FocusNode();
-    _stepsFocusNode = FocusNode();
+    _incrementationFocusNode = FocusNode();
     super.initState();
   }
 
@@ -60,45 +65,17 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   void dispose() {
     _exerciseNameController?.dispose();
     _oneRmController?.dispose();
-    _stepsController?.dispose();
+    _incrementationController?.dispose();
     _oneRmFocusNode?.dispose();
-    _stepsFocusNode?.dispose();
+    _incrementationFocusNode?.dispose();
     super.dispose();
   }
 
-  Widget get _exerciseNameField => PPTextFormFieldWidget(
-        controller: _exerciseNameController,
-        labelText: 'Exercise Name',
-        textInputAction: TextInputAction.next,
-        prefixIcon: Icons.fitness_center,
-        onEditingComplete: () {
-          _oneRmFocusNode.requestFocus();
-        },
-      );
-
-  Widget get _oneRmField => PPTextFormFieldWidget(
-        controller: _oneRmController,
-        labelText: '1RM',
-        textInputAction: TextInputAction.next,
-        prefixIcon: Icons.confirmation_number,
-        focusNode: _oneRmFocusNode,
-        onEditingComplete: () {
-          _stepsFocusNode.requestFocus();
-        },
-      );
-
-  Widget get _stepsField => PPTextFormFieldWidget(
-        controller: _stepsController,
-        labelText: 'Steps',
-        prefixIcon: Icons.shutter_speed,
-        focusNode: _stepsFocusNode,
-      );
-
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: double.parse(_oneRmController.value.text),
-        name: _exerciseNameController.value.text,
-        incrementation: double.parse(_stepsController.value.text),
+        oneRm: OneRm.parse(_oneRmController.value.text),
+        name: ExerciseName(_exerciseNameController.value.text),
+        incrementation: Incrementation.parse(_incrementationController.value.text),
       );
 
   @override
@@ -107,16 +84,27 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       padding: const EdgeInsets.all(16.0),
       child: Form(
         key: _formKey,
+        autovalidate: true,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _exerciseNameField,
+              ExerciseNameInput(
+                controller: _exerciseNameController,
+                nextFocusNode: _oneRmFocusNode,
+              ),
               const VSpacing.medium(),
-              _oneRmField,
+              OneRmInput(
+                controller: _oneRmController,
+                focusNode: _oneRmFocusNode,
+                nextFocusNode: _incrementationFocusNode,
+              ),
               const VSpacing.extraSmall(),
-              _stepsField,
+              IncrementationInput(
+                controller: _incrementationController,
+                focusNode: _incrementationFocusNode,
+              ),
               const VSpacing.small(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -124,8 +112,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                 children: [
                   RaisedButton(
                     onPressed: () {
-                      BlocProvider.of<ExerciseBloc>(context)
-                          .add(ExerciseAddEvent(exercise: _exercise));
+                      if (_formKey.currentState.validate()) {
+                        BlocProvider.of<ExerciseBloc>(context)
+                            .add(ExerciseAddEvent(exercise: _exercise));
+                      }
                     },
                     child: const Text('Add'),
                   )

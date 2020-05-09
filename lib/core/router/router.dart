@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:power_progress/features/exercise/presentation/pages/exercise/exercise_form_page.dart';
 
 import '../../features/exercise/presentation/pages/dashboard/dashboard_page.dart';
+import '../../features/exercise/presentation/pages/exercise/exercise_form_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_exercise_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_informations_page.dart';
-import '../../features/exercise/presentation/pages/onboarding/onboarding_loading_page.dart';
 import '../../features/exercise/presentation/pages/onboarding/onboarding_welcome_page.dart';
 import 'route_paths.dart';
 
@@ -54,14 +53,6 @@ class Router {
           ),
           settings: const RouteSettings(
             name: RoutePaths.onboardingInformations,
-          ),
-        );
-
-      case RoutePaths.onboardingLoading:
-        return MaterialPageRoute(
-          builder: (_) => OnboardingLoadingPage(),
-          settings: const RouteSettings(
-            name: RoutePaths.onboardingLoading,
           ),
         );
 

@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../core/util/util_functions.dart';
 import '../models/exercise_model.dart';
 import 'i_exercise_datasource.dart';
 
@@ -10,19 +12,28 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   HiveExerciseDatasource({@required this.localStorage}) : assert(localStorage != null);
 
   @override
-  Future<ExerciseModel> add(ExerciseModel exercise) async {
+  Future<Unit> add(ExerciseModel exercise) async {
     // insert and retrieve auto-increment id
-    final int id = await localStorage.add(exercise);
-    // add generated id to the exercise
-    exercise.id = id;
-    // update exercise with generated id
-    localStorage.put(id, exercise);
+    final int insertedId = await tryOrCrash(
+      () => localStorage.add(exercise),
+      (_) => throw Exception(),
+    );
 
-    return exercise;
+    // add generated id to the exercise
+    exercise.id = insertedId;
+
+    // update exercise with generated id
+    await tryOrCrash(
+      () => localStorage.put(insertedId, exercise),
+      (_) => throw Exception(),
+    );
+
+    return unit;
   }
 
   @override
-  Future<List<ExerciseModel>> get() {
-    return Future.value(localStorage.values.toList());
-  }
+  Future<List<ExerciseModel>> get exercises async => tryOrCrash(
+        () => localStorage.values.toList(),
+        (_) => throw Exception(),
+      );
 }

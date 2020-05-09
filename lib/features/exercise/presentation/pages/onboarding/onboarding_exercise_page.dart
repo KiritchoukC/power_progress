@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
-import '../../../../../shared/pp_form_field.dart';
+import '../../widgets/inputs/exercise_name_input.dart';
 import 'onboarding_informations_page.dart';
 
 class OnboardingExercisePage extends StatelessWidget {
@@ -35,16 +35,11 @@ class _ExerciseFormState extends State<_ExerciseForm> {
     super.initState();
   }
 
-  Widget get _exerciseField => PPTextFormFieldWidget(
-        controller: _exerciseController,
-        labelText: 'Exercise',
-        prefixIcon: Icons.fitness_center,
-      );
-
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
+      autovalidate: true,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,19 +50,21 @@ class _ExerciseFormState extends State<_ExerciseForm> {
             style: TextStyle(fontSize: 24.0),
           ),
           const VSpacing.medium(),
-          _exerciseField,
+          ExerciseNameInput(controller: _exerciseController),
           const VSpacing.small(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               RaisedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(
-                    RoutePaths.onboardingInformations,
-                    arguments: OnboardingInformationsPageArguments(
-                      exerciseName: _exerciseController.value.text,
-                    ),
-                  );
+                  if (_formKey.currentState.validate()) {
+                    Navigator.of(context).pushNamed(
+                      RoutePaths.onboardingInformations,
+                      arguments: OnboardingInformationsPageArguments(
+                        exerciseName: _exerciseController.value.text,
+                      ),
+                    );
+                  }
                 },
                 child: const Text('Continue'),
               )

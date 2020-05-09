@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/KiritchoukC/power_progress/compare/v1.20.0...v1.21.0) (2020-05-09)
+
+
+### Features
+
+* **onboading-done:** make initial route dynamic depending on the onboarding done status ([8c1d216](https://github.com/KiritchoukC/power_progress/commit/8c1d216)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
+## [1.20.0](https://github.com/KiritchoukC/power_progress/compare/v1.19.0...v1.20.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-done:** add bloc implementation ([5ffea4e](https://github.com/KiritchoukC/power_progress/commit/5ffea4e)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
+## [1.19.0](https://github.com/KiritchoukC/power_progress/compare/v1.18.1...v1.19.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-done:** add usecases done and isDone ([1ae1800](https://github.com/KiritchoukC/power_progress/commit/1ae1800)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
+### [1.18.1](https://github.com/KiritchoukC/power_progress/compare/v1.18.0...v1.18.1) (2020-05-09)
+
+## [1.18.0](https://github.com/KiritchoukC/power_progress/compare/v1.17.0...v1.18.0) (2020-05-09)
+
+
+### Features
+
+* **onboarding-done:** add datasource and repository implementation ([6affb5a](https://github.com/KiritchoukC/power_progress/commit/6affb5a)), closes [#46](https://github.com/KiritchoukC/power_progress/issues/46)
+
+## [1.17.0](https://github.com/KiritchoukC/power_progress/compare/v1.16.1...v1.17.0) (2020-05-09)
+
+
+### Features
+
+* **error:** show snackbar on error ([aa6f113](https://github.com/KiritchoukC/power_progress/commit/aa6f113))
+
+### [1.16.1](https://github.com/KiritchoukC/power_progress/compare/v1.16.0...v1.16.1) (2020-05-09)
+
+## [1.16.0](https://github.com/KiritchoukC/power_progress/compare/v1.15.2...v1.16.0) (2020-05-09)
+
+
+### Features
+
+* **add-exercise:** add validation ([a3b616c](https://github.com/KiritchoukC/power_progress/commit/a3b616c)), closes [#4](https://github.com/KiritchoukC/power_progress/issues/4)
+
 ### [1.15.2](https://github.com/KiritchoukC/power_progress/compare/v1.15.1...v1.15.2) (2020-05-08)
 
 

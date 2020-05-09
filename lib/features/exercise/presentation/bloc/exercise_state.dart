@@ -9,22 +9,39 @@ abstract class ExerciseState extends Equatable {
 
 class ExerciseInitialState extends ExerciseState {}
 
-class ExerciseLoadingState extends ExerciseState {}
+// Adding
+class ExerciseAddingState extends ExerciseState {}
 
-class ExerciseAddLoadedState extends ExerciseState {
-  final Exercise exercise;
+class ExerciseAddedState extends ExerciseState {}
 
-  const ExerciseAddLoadedState({@required this.exercise});
+// Fetching
+class ExerciseFetchingState extends ExerciseState {}
 
-  @override
-  List<Object> get props => [exercise];
-}
-
-class ExerciseGetLoadedState extends ExerciseState {
+class ExerciseFetchedState extends ExerciseState {
   final List<Exercise> exercises;
 
-  const ExerciseGetLoadedState({@required this.exercises});
+  const ExerciseFetchedState({@required this.exercises});
 
   @override
   List<Object> get props => [exercises];
+}
+
+// Onboarding
+class OnboardingMarkingDoneState extends ExerciseState {}
+
+class OnboardingMarkedDoneState extends ExerciseState {}
+
+class OnboardingIsDoneLoadingState extends ExerciseState {}
+
+class OnboardingIsDoneState extends ExerciseState {}
+
+class OnboardingIsNotDoneState extends ExerciseState {}
+
+class ExerciseErrorState extends ExerciseState {
+  final String message;
+
+  const ExerciseErrorState({@required this.message});
+
+  @override
+  List<Object> get props => [message];
 }

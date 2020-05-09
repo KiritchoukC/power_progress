@@ -16,12 +16,13 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ExerciseModel()
-      ..id = fields[0] as int
-      ..oneRm = fields[1] as double
-      ..name = fields[2] as String
-      ..incrementation = fields[3] as double
-      ..note = fields[4] as String;
+    return ExerciseModel(
+      id: fields[0] as int,
+      oneRm: fields[1] as double,
+      name: fields[2] as String,
+      incrementation: fields[3] as double,
+      note: fields[4] as String,
+    );
   }
 
   @override

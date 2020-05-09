@@ -16,4 +16,8 @@ class ExerciseAddEvent extends ExerciseEvent {
   List<Object> get props => [exercise];
 }
 
-class ExerciseGetEvent extends ExerciseEvent {}
+class ExerciseFetchEvent extends ExerciseEvent {}
+
+class OnboardingDoneEvent extends ExerciseEvent {}
+
+class OnboardingIsDoneEvent extends ExerciseEvent {}
