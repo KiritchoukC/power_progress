@@ -12,8 +12,8 @@ class RemoveExercises implements UseCase<Unit, ExerciseFailure, RemoveExercisesP
   RemoveExercises({@required this.exerciseRepository}) : assert(exerciseRepository != null);
 
   @override
-  Future<Either<ExerciseFailure, Unit>> call(RemoveExercisesParams params) async => right(unit);
-  // exerciseRepository.remove(params.exercise);
+  Future<Either<ExerciseFailure, Unit>> call(RemoveExercisesParams params) async =>
+      exerciseRepository.remove(params.ids);
 }
 
 class RemoveExercisesParams extends Equatable {

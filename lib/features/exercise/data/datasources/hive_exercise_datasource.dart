@@ -36,4 +36,14 @@ class HiveExerciseDatasource implements IExerciseDatasource {
         () => localStorage.values.toList(),
         (_) => throw Exception(),
       );
+
+  @override
+  Future<Unit> remove(List<int> ids) async {
+    await tryOrCrash(
+      () => localStorage.deleteAll(ids),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
 }

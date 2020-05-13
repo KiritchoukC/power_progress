@@ -148,7 +148,9 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
       yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
     }
 
-    Stream<ExerciseState> onSuccess(Unit unit) async* {}
+    Stream<ExerciseState> onSuccess(Unit unit) async* {
+      yield* _handleExerciseFetchEvent(ExerciseFetchEvent());
+    }
 
     yield* output.fold(onFailure, onSuccess);
   }

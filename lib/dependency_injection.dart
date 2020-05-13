@@ -50,6 +50,7 @@ void initExerciseFeature() {
   // Usecases
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => RemoveExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => DoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
   sl.registerLazySingleton(
       () => IsDoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));

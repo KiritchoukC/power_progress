@@ -32,4 +32,14 @@ class ExerciseRepository implements IExerciseRepository {
       return left(const ExerciseFailure.storageError());
     }
   }
+
+  @override
+  Future<Either<ExerciseFailure, Unit>> remove(List<int> ids) async {
+    try {
+      await datasource.remove(ids);
+      return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
 }
