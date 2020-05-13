@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0](https://github.com/KiritchoukC/power_progress/compare/v1.23.1...v1.24.0) (2020-05-13)
+
+
+### Features
+
+* **card-selection:** implement card selection feature on long press ([7a50a2c](https://github.com/KiritchoukC/power_progress/commit/7a50a2c)), closes [#5](https://github.com/KiritchoukC/power_progress/issues/5)
+
 ### [1.23.1](https://github.com/KiritchoukC/power_progress/compare/v1.23.0...v1.23.1) (2020-05-09)
 
 
