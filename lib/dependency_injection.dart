@@ -14,6 +14,7 @@ import 'features/exercise/domain/usecases/add_exercise.dart';
 import 'features/exercise/domain/usecases/done_onboarding.dart';
 import 'features/exercise/domain/usecases/get_exercises.dart';
 import 'features/exercise/domain/usecases/is_done_onboarding.dart';
+import 'features/exercise/domain/usecases/remove_exercises.dart';
 import 'features/exercise/presentation/bloc/exercise_bloc.dart';
 
 final GetIt sl = GetIt.instance;
@@ -42,6 +43,7 @@ void initExerciseFeature() {
       fetchExercises: sl<FetchExercises>(),
       doneOnboarding: sl<DoneOnboarding>(),
       isDoneOnboarding: sl<IsDoneOnboarding>(),
+      removeExercises: sl<RemoveExercises>(),
     ),
   );
 

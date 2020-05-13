@@ -37,6 +37,21 @@ class OnboardingIsDoneState extends ExerciseState {}
 
 class OnboardingIsNotDoneState extends ExerciseState {}
 
+// Removing
+
+class ExerciseRemovingState extends ExerciseState {}
+
+// Selection
+class ExerciseSelectionModeState extends ExerciseState {
+  final bool isInSelectionMode;
+  final List<int> selectedIds;
+
+  const ExerciseSelectionModeState({@required this.isInSelectionMode, @required this.selectedIds});
+
+  @override
+  List<Object> get props => [isInSelectionMode, selectedIds];
+}
+
 // Error
 class ExerciseErrorState extends ExerciseState {
   final String message;

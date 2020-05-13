@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PPAppBar extends AppBar {
-  final String titleLabel;
-  PPAppBar({@required this.titleLabel})
+  PPAppBar({@required String titleLabel, List<Widget> actions})
       : super(
           title: Text(
             titleLabel,
@@ -12,5 +11,6 @@ class PPAppBar extends AppBar {
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           elevation: 0,
+          actions: actions,
         );
 }

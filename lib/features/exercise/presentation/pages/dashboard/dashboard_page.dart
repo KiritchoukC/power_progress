@@ -16,6 +16,9 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<ExerciseBloc, ExerciseState>(
+        buildWhen: (previous, current) {
+          return current is! ExerciseSelectionModeState;
+        },
         listener: (context, state) {
           if (state is ExerciseErrorState) {
             Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
@@ -39,6 +42,9 @@ class DashboardPage extends StatelessWidget {
       ),
       appBar: PPAppBar(
         titleLabel: 'Dashboard',
+        actions: [
+          _RemoveButton(),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -78,7 +84,7 @@ class _BodyState extends State<_Body> {
 
   bool isInSelectionMode = false;
 
-  void select(int id) {
+  void select(int id, BuildContext context) {
     setState(() {
       if (selectedExerciseIds.contains(id)) {
         selectedExerciseIds.removeWhere((element) => element == id);
@@ -87,6 +93,9 @@ class _BodyState extends State<_Body> {
       }
 
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
+
+      context.bloc<ExerciseBloc>().add(ExerciseSelectionModeEvent(
+          isInSelectionMode: isInSelectionMode, selectedIds: selectedExerciseIds));
     });
   }
 
@@ -111,13 +120,40 @@ class _BodyState extends State<_Body> {
               itemBuilder: (context, index) => ExerciseCard(
                 key: Key(index.toString()),
                 onSelect: () {
-                  select(widget.exercises[index].id);
+                  select(widget.exercises[index].id, context);
                 },
                 exercise: widget.exercises[index],
                 isInSelectionMode: isInSelectionMode,
                 isSelected: isSelected(widget.exercises[index].id),
               ),
             ),
+    );
+  }
+}
+
+class _RemoveButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ExerciseBloc, ExerciseState>(
+      condition: (previous, current) {
+        if (current is ExerciseFetchedState) return false;
+        return true;
+      },
+      builder: (context, state) {
+        if (state is ExerciseSelectionModeState) {
+          if (state.isInSelectionMode) {
+            return IconButton(
+              icon: const Icon(Icons.delete),
+              color: Colors.black,
+              onPressed: () {
+                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: state.selectedIds));
+              },
+            );
+          }
+        }
+
+        return Container();
+      },
     );
   }
 }
