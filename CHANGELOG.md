@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.25.0](https://github.com/KiritchoukC/power_progress/compare/v1.24.0...v1.25.0) (2020-05-13)
+
+
+### Features
+
+* **exercise-remove:** implement UI, BLoC and Usecase for exercise removing ([ffa4ac7](https://github.com/KiritchoukC/power_progress/commit/ffa4ac7)), closes [#6](https://github.com/KiritchoukC/power_progress/issues/6)
+
 ## [1.24.0](https://github.com/KiritchoukC/power_progress/compare/v1.23.1...v1.24.0) (2020-05-13)
 
 
