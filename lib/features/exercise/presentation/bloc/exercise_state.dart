@@ -37,6 +37,7 @@ class OnboardingIsDoneState extends ExerciseState {}
 
 class OnboardingIsNotDoneState extends ExerciseState {}
 
+// Error
 class ExerciseErrorState extends ExerciseState {
   final String message;
 

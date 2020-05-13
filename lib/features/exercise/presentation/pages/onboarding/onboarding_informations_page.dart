@@ -25,7 +25,7 @@ class OnboardingInformationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ExerciseBloc, ExerciseState>(
+    return BlocConsumer<ExerciseBloc, ExerciseState>(
       listener: (BuildContext context, ExerciseState state) {
         if (state is ExerciseAddedState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -33,17 +33,15 @@ class OnboardingInformationsPage extends StatelessWidget {
           });
         }
       },
-      child: Scaffold(
-        body: BlocBuilder<ExerciseBloc, ExerciseState>(
-          builder: (context, state) {
-            if (state is ExerciseAddingState) {
-              return OnboardingLoadingPage();
-            }
-
-            return _InformationsForm(exerciseName: exerciseName);
-          },
-        ),
-      ),
+      builder: (context, state) {
+        return Scaffold(
+          body: state is ExerciseAddingState
+              ? OnboardingLoadingPage()
+              : _InformationsForm(
+                  exerciseName: exerciseName,
+                ),
+        );
+      },
     );
   }
 }

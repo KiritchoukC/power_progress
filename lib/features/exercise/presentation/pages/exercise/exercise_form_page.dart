@@ -18,19 +18,19 @@ class ExerciseFormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PPAppBar(titleLabel: 'New exercise'),
-      body: BlocListener<ExerciseBloc, ExerciseState>(
+      body: BlocConsumer<ExerciseBloc, ExerciseState>(
         listener: (context, state) {
           if (state is ExerciseAddedState) {
             Navigator.of(context).pop();
           }
         },
-        child: BlocBuilder<ExerciseBloc, ExerciseState>(builder: (context, state) {
+        builder: (context, state) {
           if (state is ExerciseAddingState) {
             return CenteredLoading();
           }
 
           return const _ExerciseForm();
-        }),
+        },
       ),
     );
   }
