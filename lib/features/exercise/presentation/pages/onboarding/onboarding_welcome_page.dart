@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/router/route_paths.dart';
 import '../../../../../core/util/spacing.dart';
+import '../../bloc/exercise_bloc.dart';
 
 class OnboardingWelcomePage extends StatelessWidget {
   @override
@@ -12,9 +14,11 @@ class OnboardingWelcomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const VSpacing.large(),
+              const VSpacing.large(),
               const Text(
                 'Welcome to power progress, this app use mathematics to plan your workouts.',
                 textAlign: TextAlign.center,
@@ -37,7 +41,20 @@ class OnboardingWelcomePage extends StatelessWidget {
                     child: const Text('Continue'),
                   )
                 ],
-              )
+              ),
+              const VSpacing.large(),
+              FlatButton(
+                onPressed: () {
+                  BlocProvider.of<ExerciseBloc>(context).add(OnboardingDoneEvent());
+                  Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                },
+                child: const Text(
+                  'Skip',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -4,15 +4,16 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/features/exercise/domain/usecases/done_onboarding.dart';
-import 'package:power_progress/features/exercise/domain/usecases/is_done_onboarding.dart';
 
 import '../../../../core/messages/errors.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../../domain/entities/exercise.dart';
 import '../../domain/entities/exercise_failure.dart';
 import '../../domain/usecases/add_exercise.dart';
+import '../../domain/usecases/done_onboarding.dart';
 import '../../domain/usecases/get_exercises.dart';
+import '../../domain/usecases/is_done_onboarding.dart';
+import '../../domain/usecases/remove_exercises.dart';
 
 part 'exercise_event.dart';
 part 'exercise_state.dart';
@@ -22,12 +23,14 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final FetchExercises fetchExercises;
   final DoneOnboarding doneOnboarding;
   final IsDoneOnboarding isDoneOnboarding;
+  final RemoveExercises removeExercises;
 
   ExerciseBloc({
     @required this.addExercise,
     @required this.fetchExercises,
     @required this.doneOnboarding,
     @required this.isDoneOnboarding,
+    @required this.removeExercises,
   });
 
   @override
@@ -50,6 +53,14 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
 
     if (event is OnboardingIsDoneEvent) {
       yield* _handleOnboardingIsDoneEvent(event);
+    }
+
+    if (event is ExerciseSelectionModeEvent) {
+      yield* _handleExerciseSelectionModeEvent(event);
+    }
+
+    if (event is ExerciseRemoveEvent) {
+      yield* _handleExerciseRemoveEvent(event);
     }
   }
 
@@ -116,6 +127,29 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
       } else {
         yield OnboardingIsNotDoneState();
       }
+    }
+
+    yield* output.fold(onFailure, onSuccess);
+  }
+
+  Stream<ExerciseState> _handleExerciseSelectionModeEvent(ExerciseSelectionModeEvent event) async* {
+    yield ExerciseSelectionModeState(
+      isInSelectionMode: event.isInSelectionMode,
+      selectedIds: event.selectedIds,
+    );
+  }
+
+  Stream<ExerciseState> _handleExerciseRemoveEvent(ExerciseRemoveEvent event) async* {
+    yield ExerciseRemovingState();
+
+    final output = await removeExercises(RemoveExercisesParams(ids: event.ids));
+
+    Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
+      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
+    }
+
+    Stream<ExerciseState> onSuccess(Unit unit) async* {
+      yield* _handleExerciseFetchEvent(ExerciseFetchEvent());
     }
 
     yield* output.fold(onFailure, onSuccess);

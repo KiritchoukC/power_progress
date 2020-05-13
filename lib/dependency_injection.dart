@@ -14,6 +14,7 @@ import 'features/exercise/domain/usecases/add_exercise.dart';
 import 'features/exercise/domain/usecases/done_onboarding.dart';
 import 'features/exercise/domain/usecases/get_exercises.dart';
 import 'features/exercise/domain/usecases/is_done_onboarding.dart';
+import 'features/exercise/domain/usecases/remove_exercises.dart';
 import 'features/exercise/presentation/bloc/exercise_bloc.dart';
 
 final GetIt sl = GetIt.instance;
@@ -42,12 +43,14 @@ void initExerciseFeature() {
       fetchExercises: sl<FetchExercises>(),
       doneOnboarding: sl<DoneOnboarding>(),
       isDoneOnboarding: sl<IsDoneOnboarding>(),
+      removeExercises: sl<RemoveExercises>(),
     ),
   );
 
   // Usecases
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => RemoveExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => DoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
   sl.registerLazySingleton(
       () => IsDoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
