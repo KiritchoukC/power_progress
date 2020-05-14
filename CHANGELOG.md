@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.30.0](https://github.com/KiritchoukC/power_progress/compare/v1.29.0...v1.30.0) (2020-05-14)
+
+
+### Features
+
+* **theme:** add light theme ([461741c](https://github.com/KiritchoukC/power_progress/commit/461741c)), closes [#52](https://github.com/KiritchoukC/power_progress/issues/52)
+
 ## [1.29.0](https://github.com/KiritchoukC/power_progress/compare/v1.28.0...v1.29.0) (2020-05-14)
 
 
