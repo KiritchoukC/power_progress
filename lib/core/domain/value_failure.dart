@@ -20,4 +20,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.notANumber({
     @required dynamic failedValue,
   }) = NotANumber<T>;
+  const factory ValueFailure.wrongWeek({
+    @required dynamic failedValue,
+  }) = WrongWeek<T>;
 }

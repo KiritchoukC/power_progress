@@ -43,6 +43,12 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+  WrongWeek<T> wrongWeek<T>({@required dynamic failedValue}) {
+    return WrongWeek<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -56,6 +62,7 @@ mixin _$ValueFailure<T> {
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -64,6 +71,7 @@ mixin _$ValueFailure<T> {
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -73,6 +81,7 @@ mixin _$ValueFailure<T> {
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -81,6 +90,7 @@ mixin _$ValueFailure<T> {
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   });
 }
@@ -185,12 +195,14 @@ class _$ExceedingLength<T>
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -202,6 +214,7 @@ class _$ExceedingLength<T>
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -219,12 +232,14 @@ class _$ExceedingLength<T>
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return exceedingLength(this);
   }
 
@@ -236,6 +251,7 @@ class _$ExceedingLength<T>
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -299,12 +315,14 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return empty();
   }
 
@@ -316,6 +334,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -333,12 +352,14 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return empty(this);
   }
 
@@ -350,6 +371,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -449,12 +471,14 @@ class _$NumberTooLarge<T>
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return numberTooLarge(failedValue, max);
   }
 
@@ -466,6 +490,7 @@ class _$NumberTooLarge<T>
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -483,12 +508,14 @@ class _$NumberTooLarge<T>
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return numberTooLarge(this);
   }
 
@@ -500,6 +527,7 @@ class _$NumberTooLarge<T>
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -594,12 +622,14 @@ class _$NumberUnderZero<T>
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return numberUnderZero(failedValue);
   }
 
@@ -611,6 +641,7 @@ class _$NumberUnderZero<T>
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -628,12 +659,14 @@ class _$NumberUnderZero<T>
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return numberUnderZero(this);
   }
 
@@ -645,6 +678,7 @@ class _$NumberUnderZero<T>
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -736,12 +770,14 @@ class _$NotANumber<T> with DiagnosticableTreeMixin implements NotANumber<T> {
     @required Result numberTooLarge(T failedValue, num max),
     @required Result numberUnderZero(T failedValue),
     @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return notANumber(failedValue);
   }
 
@@ -753,6 +789,7 @@ class _$NotANumber<T> with DiagnosticableTreeMixin implements NotANumber<T> {
     Result numberTooLarge(T failedValue, num max),
     Result numberUnderZero(T failedValue),
     Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -770,12 +807,14 @@ class _$NotANumber<T> with DiagnosticableTreeMixin implements NotANumber<T> {
     @required Result numberTooLarge(NumberTooLarge<T> value),
     @required Result numberUnderZero(NumberUnderZero<T> value),
     @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
     assert(numberTooLarge != null);
     assert(numberUnderZero != null);
     assert(notANumber != null);
+    assert(wrongWeek != null);
     return notANumber(this);
   }
 
@@ -787,6 +826,7 @@ class _$NotANumber<T> with DiagnosticableTreeMixin implements NotANumber<T> {
     Result numberTooLarge(NumberTooLarge<T> value),
     Result numberUnderZero(NumberUnderZero<T> value),
     Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -802,4 +842,150 @@ abstract class NotANumber<T> implements ValueFailure<T> {
 
   dynamic get failedValue;
   $NotANumberCopyWith<T, NotANumber<T>> get copyWith;
+}
+
+abstract class $WrongWeekCopyWith<T, $Res> {
+  factory $WrongWeekCopyWith(
+          WrongWeek<T> value, $Res Function(WrongWeek<T>) then) =
+      _$WrongWeekCopyWithImpl<T, $Res>;
+  $Res call({dynamic failedValue});
+}
+
+class _$WrongWeekCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $WrongWeekCopyWith<T, $Res> {
+  _$WrongWeekCopyWithImpl(
+      WrongWeek<T> _value, $Res Function(WrongWeek<T>) _then)
+      : super(_value, (v) => _then(v as WrongWeek<T>));
+
+  @override
+  WrongWeek<T> get _value => super._value as WrongWeek<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(WrongWeek<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as dynamic,
+    ));
+  }
+}
+
+class _$WrongWeek<T> with DiagnosticableTreeMixin implements WrongWeek<T> {
+  const _$WrongWeek({@required this.failedValue}) : assert(failedValue != null);
+
+  @override
+  final dynamic failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.wrongWeek(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.wrongWeek'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WrongWeek<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $WrongWeekCopyWith<T, WrongWeek<T>> get copyWith =>
+      _$WrongWeekCopyWithImpl<T, WrongWeek<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(),
+    @required Result numberTooLarge(T failedValue, num max),
+    @required Result numberUnderZero(T failedValue),
+    @required Result notANumber(dynamic failedValue),
+    @required Result wrongWeek(dynamic failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(numberTooLarge != null);
+    assert(numberUnderZero != null);
+    assert(notANumber != null);
+    assert(wrongWeek != null);
+    return wrongWeek(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(T failedValue, int max),
+    Result empty(),
+    Result numberTooLarge(T failedValue, num max),
+    Result numberUnderZero(T failedValue),
+    Result notANumber(dynamic failedValue),
+    Result wrongWeek(dynamic failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongWeek != null) {
+      return wrongWeek(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result numberTooLarge(NumberTooLarge<T> value),
+    @required Result numberUnderZero(NumberUnderZero<T> value),
+    @required Result notANumber(NotANumber<T> value),
+    @required Result wrongWeek(WrongWeek<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(numberTooLarge != null);
+    assert(numberUnderZero != null);
+    assert(notANumber != null);
+    assert(wrongWeek != null);
+    return wrongWeek(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result numberTooLarge(NumberTooLarge<T> value),
+    Result numberUnderZero(NumberUnderZero<T> value),
+    Result notANumber(NotANumber<T> value),
+    Result wrongWeek(WrongWeek<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (wrongWeek != null) {
+      return wrongWeek(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WrongWeek<T> implements ValueFailure<T> {
+  const factory WrongWeek({@required dynamic failedValue}) = _$WrongWeek<T>;
+
+  dynamic get failedValue;
+  $WrongWeekCopyWith<T, WrongWeek<T>> get copyWith;
 }

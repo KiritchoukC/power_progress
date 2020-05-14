@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/features/exercise/domain/entities/value_objects/month.dart';
 
 import '../../domain/entities/exercise.dart';
 import '../../domain/entities/value_objects/exercise_name.dart';
 import '../../domain/entities/value_objects/incrementation.dart';
+import '../../domain/entities/value_objects/month.dart';
 import '../../domain/entities/value_objects/note.dart';
 import '../../domain/entities/value_objects/one_rm.dart';
+import '../../domain/entities/value_objects/week.dart';
 
 part 'exercise_model.g.dart';
 
@@ -24,6 +25,8 @@ class ExerciseModel {
   String note;
   @HiveField(5)
   int month;
+  @HiveField(6)
+  int weekIndex;
 
   ExerciseModel({
     @required this.id,
@@ -31,6 +34,7 @@ class ExerciseModel {
     @required this.name,
     @required this.incrementation,
     @required this.month,
+    @required this.weekIndex,
     @required this.note,
   });
 
@@ -41,6 +45,7 @@ class ExerciseModel {
       name: exercise.name.getOrCrash(),
       incrementation: exercise.incrementation.getOrCrash(),
       month: exercise.month.getOrCrash(),
+      weekIndex: exercise.week.getOrCrash().index,
       note: exercise.note?.getOrCrash(),
     );
   }
@@ -51,7 +56,8 @@ class ExerciseModel {
       oneRm: OneRm(model.oneRm),
       name: ExerciseName(model.name),
       incrementation: Incrementation(model.incrementation),
-      month: Month(model.month),
+      month: Month(model.month ?? 1),
+      week: Week.parse(model.weekIndex ?? 0),
       note: Note(model.note),
     );
   }

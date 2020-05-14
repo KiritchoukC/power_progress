@@ -5,6 +5,7 @@ import 'value_objects/incrementation.dart';
 import 'value_objects/month.dart';
 import 'value_objects/note.dart';
 import 'value_objects/one_rm.dart';
+import 'value_objects/week.dart';
 
 class Exercise {
   final int id;
@@ -12,6 +13,7 @@ class Exercise {
   final ExerciseName name;
   final Incrementation incrementation;
   final Month month;
+  final Week week;
   final Note note;
 
   Exercise({
@@ -20,6 +22,7 @@ class Exercise {
     @required this.name,
     @required this.incrementation,
     @required this.month,
+    @required this.week,
     this.note,
   });
 }
