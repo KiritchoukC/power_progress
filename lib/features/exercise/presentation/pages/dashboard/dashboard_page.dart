@@ -8,6 +8,7 @@ import '../../../domain/entities/exercise.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
+import '../../widgets/remove_button.dart';
 import 'widgets/dummy_card.dart';
 import 'widgets/exercise_card.dart';
 
@@ -142,9 +143,7 @@ class _RemoveButton extends StatelessWidget {
       builder: (context, state) {
         if (state is ExerciseSelectionModeState) {
           if (state.isInSelectionMode) {
-            return IconButton(
-              icon: const Icon(Icons.delete),
-              color: Colors.black,
+            return RemoveButton(
               onPressed: () {
                 context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: state.selectedIds));
               },

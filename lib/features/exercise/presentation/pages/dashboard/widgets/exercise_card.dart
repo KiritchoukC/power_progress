@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:power_progress/core/router/route_paths.dart';
+import 'package:power_progress/features/exercise/presentation/pages/exercise/exercise_details_page.dart';
 
 import '../../../../domain/entities/exercise.dart';
 
@@ -33,7 +35,13 @@ class _ExerciseCardState extends State<ExerciseCard> {
         onTap: () {
           if (widget.isInSelectionMode) {
             widget.onSelect();
+            return;
           }
+
+          Navigator.of(context).pushNamed(
+            RoutePaths.exerciseDetails,
+            arguments: ExerciseDetailsPageArguments(exercise: widget.exercise),
+          );
         },
         child: Container(
           color: widget.isSelected ? Colors.blue.shade100 : null,

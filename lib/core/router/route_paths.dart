@@ -1,5 +1,6 @@
 class RoutePaths {
   static const String exerciseAdd = 'exercise/add';
+  static const String exerciseDetails = 'exercise/details';
   static const String dashboard = 'dashboard';
   static const String home = '/';
   static const String onboardingWelcome = 'onboarding/welcome';

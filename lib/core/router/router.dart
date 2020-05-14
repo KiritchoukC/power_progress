@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:power_progress/features/exercise/presentation/pages/exercise/exercise_details_page.dart';
 
 import '../../features/exercise/presentation/pages/dashboard/dashboard_page.dart';
 import '../../features/exercise/presentation/pages/exercise/exercise_form_page.dart';
@@ -26,6 +27,17 @@ class Router {
           builder: (_) => ExerciseFormPage(),
           settings: const RouteSettings(
             name: RoutePaths.exerciseAdd,
+          ),
+        );
+
+      case RoutePaths.exerciseDetails:
+        final args = settings.arguments as ExerciseDetailsPageArguments;
+        return MaterialPageRoute(
+          builder: (_) => ExerciseDetailsPage(
+            exercise: args.exercise,
+          ),
+          settings: const RouteSettings(
+            name: RoutePaths.exerciseDetails,
           ),
         );
 
