@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.30.0](https://github.com/KiritchoukC/power_progress/compare/v1.29.0...v1.30.0) (2020-05-14)
+
+
+### Features
+
+* **theme:** add light theme ([461741c](https://github.com/KiritchoukC/power_progress/commit/461741c)), closes [#52](https://github.com/KiritchoukC/power_progress/issues/52)
+
+## [1.29.0](https://github.com/KiritchoukC/power_progress/compare/v1.28.0...v1.29.0) (2020-05-14)
+
+
+### Features
+
+* **exercise-details:** add exercise details page ([a10c587](https://github.com/KiritchoukC/power_progress/commit/a10c587)), closes [#8](https://github.com/KiritchoukC/power_progress/issues/8)
+
+## [1.28.0](https://github.com/KiritchoukC/power_progress/compare/v1.27.0...v1.28.0) (2020-05-14)
+
+
+### Features
+
+* **model:** add week property ([e949e8f](https://github.com/KiritchoukC/power_progress/commit/e949e8f))
+
+## [1.27.0](https://github.com/KiritchoukC/power_progress/compare/v1.26.0...v1.27.0) (2020-05-14)
+
+
+### Features
+
+* **model:** add month property to exercise entity ([a1e6d6d](https://github.com/KiritchoukC/power_progress/commit/a1e6d6d))
+
 ## [1.26.0](https://github.com/KiritchoukC/power_progress/compare/v1.25.0...v1.26.0) (2020-05-13)
 
 

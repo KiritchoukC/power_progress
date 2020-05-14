@@ -149,6 +149,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
+      yield ExerciseRemovedState();
       yield* _handleExerciseFetchEvent(ExerciseFetchEvent());
     }
 
@@ -156,7 +157,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   }
 
   String mapFailureToErrorMessage(ExerciseFailure failure) {
-    if (failure is StorageError) return storageErrorMessage;
+    // if (failure is StorageError) return storageErrorMessage;
 
     return unknownErrorMessage;
   }

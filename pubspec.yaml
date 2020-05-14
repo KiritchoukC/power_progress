@@ -23,8 +23,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_launcher_icons: ^0.7.5
-  lint: ^1.1.1
-  build_runner: ^1.9.0
+  lint: ^1.2.0
+  build_runner: ^1.10.0
   hive_generator: ^0.7.0+2
   dartx: ^0.2.0
   freezed: ^0.10.8

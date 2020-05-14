@@ -8,7 +8,7 @@ class PPTextFormFieldWidget extends TextFormField {
     bool obscureText = false,
     bool autocorrect = false,
     FormFieldValidator<String> validator,
-    TextStyle style = const TextStyle(color: Colors.white),
+    TextStyle style,
     InputDecoration decoration,
     String labelText,
     TextInputAction textInputAction,

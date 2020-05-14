@@ -41,6 +41,8 @@ class OnboardingIsNotDoneState extends ExerciseState {}
 
 class ExerciseRemovingState extends ExerciseState {}
 
+class ExerciseRemovedState extends ExerciseState {}
+
 // Selection
 class ExerciseSelectionModeState extends ExerciseState {
   final bool isInSelectionMode;

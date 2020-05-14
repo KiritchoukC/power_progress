@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:power_progress/core/router/route_paths.dart';
+import 'package:power_progress/features/exercise/presentation/pages/exercise/exercise_details_page.dart';
 
 import '../../../../domain/entities/exercise.dart';
 
@@ -33,7 +35,13 @@ class _ExerciseCardState extends State<ExerciseCard> {
         onTap: () {
           if (widget.isInSelectionMode) {
             widget.onSelect();
+            return;
           }
+
+          Navigator.of(context).pushNamed(
+            RoutePaths.exerciseDetails,
+            arguments: ExerciseDetailsPageArguments(exercise: widget.exercise),
+          );
         },
         child: Container(
           color: widget.isSelected ? Colors.blue.shade100 : null,
@@ -82,7 +90,7 @@ class _Card extends StatelessWidget {
                     color: Theme.of(context).accentColor,
                   ),
                   Text(
-                    'Accumulation',
+                    exercise.week.displayName,
                     style: Theme.of(context).textTheme.bodyText1.apply(
                           color: Theme.of(context).accentColor,
                         ),
@@ -93,7 +101,7 @@ class _Card extends StatelessWidget {
           ),
           Column(children: [
             Text(
-              'Month 1',
+              'Month ${exercise.month.getOrCrash()}',
               style: Theme.of(context).textTheme.subtitle2.apply(
                     color: Colors.black54,
                   ),
