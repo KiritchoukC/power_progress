@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 import 'core/router/route_paths.dart';
 import 'core/router/router.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
+        theme: PPTheme.light(),
         // initialRoute: RoutePaths.onboardingWelcome,
         home: BlocListener<ExerciseBloc, ExerciseState>(
           listener: (context, state) {

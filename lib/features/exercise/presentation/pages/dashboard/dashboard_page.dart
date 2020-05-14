@@ -3,12 +3,12 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/router/route_paths.dart';
 import '../../../domain/entities/exercise.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
 import '../../widgets/remove_button.dart';
+import 'widgets/add_button.dart';
 import 'widgets/dummy_card.dart';
 import 'widgets/exercise_card.dart';
 
@@ -48,13 +48,9 @@ class DashboardPage extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(RoutePaths.exerciseAdd);
-        },
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: AddButton(),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
         elevation: 10,
         shape: const CircularNotchedRectangle(),
         notchMargin: 10.0,
