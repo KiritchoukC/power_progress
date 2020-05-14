@@ -6,6 +6,7 @@ import '../../../../../core/util/spacing.dart';
 import '../../../domain/entities/exercise.dart';
 import '../../../domain/entities/value_objects/exercise_name.dart';
 import '../../../domain/entities/value_objects/incrementation.dart';
+import '../../../domain/entities/value_objects/month.dart';
 import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/inputs/incrementation_input.dart';
@@ -82,6 +83,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.parse(_incrementationController.value.text),
+        month: Month(1),
       );
 
   @override

@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:power_progress/features/exercise/domain/entities/value_objects/month.dart';
 
 import '../../domain/entities/exercise.dart';
 import '../../domain/entities/value_objects/exercise_name.dart';
@@ -20,13 +22,16 @@ class ExerciseModel {
   double incrementation;
   @HiveField(4)
   String note;
+  @HiveField(5)
+  int month;
 
   ExerciseModel({
-    this.id,
-    this.oneRm,
-    this.name,
-    this.incrementation,
-    this.note,
+    @required this.id,
+    @required this.oneRm,
+    @required this.name,
+    @required this.incrementation,
+    @required this.month,
+    @required this.note,
   });
 
   factory ExerciseModel.fromEntity(Exercise exercise) {
@@ -35,6 +40,7 @@ class ExerciseModel {
       oneRm: exercise.oneRm.getOrCrash(),
       name: exercise.name.getOrCrash(),
       incrementation: exercise.incrementation.getOrCrash(),
+      month: exercise.month.getOrCrash(),
       note: exercise.note?.getOrCrash(),
     );
   }
@@ -45,6 +51,7 @@ class ExerciseModel {
       oneRm: OneRm(model.oneRm),
       name: ExerciseName(model.name),
       incrementation: Incrementation(model.incrementation),
+      month: Month(model.month),
       note: Note(model.note),
     );
   }

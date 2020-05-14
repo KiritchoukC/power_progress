@@ -93,7 +93,7 @@ class _Card extends StatelessWidget {
           ),
           Column(children: [
             Text(
-              'Month 1',
+              'Month ${exercise.month.getOrCrash()}',
               style: Theme.of(context).textTheme.subtitle2.apply(
                     color: Colors.black54,
                   ),

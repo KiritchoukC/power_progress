@@ -5,6 +5,7 @@ import '../../../../../core/util/spacing.dart';
 import '../../../domain/entities/exercise.dart';
 import '../../../domain/entities/value_objects/exercise_name.dart';
 import '../../../domain/entities/value_objects/incrementation.dart';
+import '../../../domain/entities/value_objects/month.dart';
 import '../../../domain/entities/value_objects/one_rm.dart';
 import '../../bloc/exercise_bloc.dart';
 import '../../widgets/centered_loading.dart';
@@ -76,6 +77,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
         oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(_exerciseNameController.value.text),
         incrementation: Incrementation.parse(_incrementationController.value.text),
+        month: Month(1),
       );
 
   @override
