@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.27.0](https://github.com/KiritchoukC/power_progress/compare/v1.26.0...v1.27.0) (2020-05-14)
+
+
+### Features
+
+* **model:** add month property to exercise entity ([a1e6d6d](https://github.com/KiritchoukC/power_progress/commit/a1e6d6d))
+
 ## [1.26.0](https://github.com/KiritchoukC/power_progress/compare/v1.25.0...v1.26.0) (2020-05-13)
 
 
