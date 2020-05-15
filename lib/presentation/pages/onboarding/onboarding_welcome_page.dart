@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 
-import '../../../application/exercise/exercise_bloc.dart';
 import '../../../core/util/spacing.dart';
 import '../../router/route_paths.dart';
 
@@ -45,7 +45,7 @@ class OnboardingWelcomePage extends StatelessWidget {
               const VSpacing.large(),
               FlatButton(
                 onPressed: () {
-                  BlocProvider.of<ExerciseBloc>(context).add(OnboardingDoneEvent());
+                  context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
                   Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
                 },
                 child: const Text(

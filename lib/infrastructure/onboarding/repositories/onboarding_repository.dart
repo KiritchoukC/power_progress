@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/exercise/entities/exercise_failure.dart';
-import '../../../domain/exercise/repositories/i_onboarding_repository.dart';
+import '../../../domain/onboarding/entities/onboarding_failure.dart';
+import '../../../domain/onboarding/repositories/i_onboarding_repository.dart';
 import '../datasources/i_onboarding_datasource.dart';
 
 class OnboardingRepository implements IOnboardingRepository {
@@ -11,21 +11,21 @@ class OnboardingRepository implements IOnboardingRepository {
   OnboardingRepository({@required this.datasource}) : assert(datasource != null);
 
   @override
-  Future<Either<ExerciseFailure, Unit>> done() async {
+  Future<Either<OnboardingFailure, Unit>> done() async {
     try {
       await datasource.done();
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const OnboardingFailure.storageError());
     }
   }
 
   @override
-  Future<Either<ExerciseFailure, bool>> get isDone async {
+  Future<Either<OnboardingFailure, bool>> get isDone async {
     try {
       return right(await datasource.isDone);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const OnboardingFailure.storageError());
     }
   }
 }

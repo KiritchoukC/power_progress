@@ -10,9 +10,7 @@ import '../../core/messages/errors.dart';
 import '../../core/usecases/usecase.dart';
 import '../../domain/exercise/entities/exercise_failure.dart';
 import '../../domain/exercise/usecases/add_exercise.dart';
-import '../../domain/exercise/usecases/done_onboarding.dart';
 import '../../domain/exercise/usecases/get_exercises.dart';
-import '../../domain/exercise/usecases/is_done_onboarding.dart';
 import '../../domain/exercise/usecases/remove_exercises.dart';
 
 part 'exercise_event.dart';
@@ -21,15 +19,11 @@ part 'exercise_state.dart';
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final AddExercise addExercise;
   final FetchExercises fetchExercises;
-  final DoneOnboarding doneOnboarding;
-  final IsDoneOnboarding isDoneOnboarding;
   final RemoveExercises removeExercises;
 
   ExerciseBloc({
     @required this.addExercise,
     @required this.fetchExercises,
-    @required this.doneOnboarding,
-    @required this.isDoneOnboarding,
     @required this.removeExercises,
   });
 
@@ -45,14 +39,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
 
     if (event is ExerciseFetchEvent) {
       yield* _handleExerciseFetchEvent(event);
-    }
-
-    if (event is OnboardingDoneEvent) {
-      yield* _handleOnboardingDoneEvent(event);
-    }
-
-    if (event is OnboardingIsDoneEvent) {
-      yield* _handleOnboardingIsDoneEvent(event);
     }
 
     if (event is ExerciseSelectionModeEvent) {
@@ -96,42 +82,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<ExerciseState> _handleOnboardingDoneEvent(OnboardingDoneEvent event) async* {
-    yield OnboardingMarkingDoneState();
-
-    final output = await doneOnboarding(NoParams());
-
-    Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
-    }
-
-    Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield OnboardingMarkedDoneState();
-    }
-
-    yield* output.fold(onFailure, onSuccess);
-  }
-
-  Stream<ExerciseState> _handleOnboardingIsDoneEvent(OnboardingIsDoneEvent event) async* {
-    yield OnboardingIsDoneLoadingState();
-
-    final output = await isDoneOnboarding(NoParams());
-
-    Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
-    }
-
-    Stream<ExerciseState> onSuccess(bool isDone) async* {
-      if (isDone) {
-        yield OnboardingIsDoneState();
-      } else {
-        yield OnboardingIsNotDoneState();
-      }
-    }
-
-    yield* output.fold(onFailure, onSuccess);
-  }
-
   Stream<ExerciseState> _handleExerciseSelectionModeEvent(ExerciseSelectionModeEvent event) async* {
     yield ExerciseSelectionModeState(
       isInSelectionMode: event.isInSelectionMode,
@@ -157,7 +107,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   }
 
   String mapFailureToErrorMessage(ExerciseFailure failure) {
-    // if (failure is StorageError) return storageErrorMessage;
+    if (failure is StorageError) return storageErrorMessage;
 
     return unknownErrorMessage;
   }

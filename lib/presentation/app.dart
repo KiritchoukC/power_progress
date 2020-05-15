@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../application/exercise/exercise_bloc.dart';
+import '../application/onboarding/onboarding_bloc.dart';
 import '../dependency_injection.dart' as di;
 import '../presentation/router/route_paths.dart';
 import '../presentation/router/router.dart';
@@ -14,13 +15,14 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ExerciseBloc>(create: (_) => di.sl<ExerciseBloc>()),
+        BlocProvider<OnboardingBloc>(create: (_) => di.sl<OnboardingBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
         theme: PPTheme.light(),
         // initialRoute: RoutePaths.onboardingWelcome,
-        home: BlocListener<ExerciseBloc, ExerciseState>(
+        home: BlocListener<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
             if (state is OnboardingIsDoneState) {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -34,10 +36,10 @@ class App extends StatelessWidget {
               });
             }
           },
-          child: BlocBuilder<ExerciseBloc, ExerciseState>(
+          child: BlocBuilder<OnboardingBloc, OnboardingState>(
             builder: (context, state) {
-              if (state is ExerciseInitialState) {
-                BlocProvider.of<ExerciseBloc>(context).add(OnboardingIsDoneEvent());
+              if (state is OnboardingInitialState) {
+                context.bloc<OnboardingBloc>().add(OnboardingIsDoneEvent());
               }
 
               return Scaffold(body: CenteredLoading());
