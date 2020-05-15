@@ -5,13 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
 
-import 'core/router/route_paths.dart';
-import 'core/router/router.dart';
 import 'dependency_injection.dart' as di;
-import 'features/exercise/presentation/bloc/exercise_bloc.dart';
-import 'features/exercise/presentation/widgets/centered_loading.dart';
+import 'presentation/app.dart';
 
 Future main() async {
   // configure Logging
@@ -31,7 +27,7 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // run the app
-  runApp(MyApp());
+  runApp(App());
 }
 
 Future initHive() async {
@@ -46,48 +42,6 @@ void initBlocLogging() {
   // only in debug mode
   if (!kReleaseMode) {
     BlocSupervisor.delegate = SimpleBlocDelegate();
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ExerciseBloc>(create: (_) => di.sl<ExerciseBloc>()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Power Progress',
-        theme: PPTheme.light(),
-        // initialRoute: RoutePaths.onboardingWelcome,
-        home: BlocListener<ExerciseBloc, ExerciseState>(
-          listener: (context, state) {
-            if (state is OnboardingIsDoneState) {
-              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
-              });
-            }
-
-            if (state is OnboardingIsNotDoneState) {
-              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
-              });
-            }
-          },
-          child: BlocBuilder<ExerciseBloc, ExerciseState>(
-            builder: (context, state) {
-              if (state is ExerciseInitialState) {
-                BlocProvider.of<ExerciseBloc>(context).add(OnboardingIsDoneEvent());
-              }
-
-              return Scaffold(body: CenteredLoading());
-            },
-          ),
-        ),
-        onGenerateRoute: Router.generateRoute,
-      ),
-    );
   }
 }
 

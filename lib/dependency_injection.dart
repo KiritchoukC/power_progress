@@ -1,21 +1,21 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
-import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
-import 'features/exercise/data/datasources/hive_onboarding_datasource.dart';
-import 'features/exercise/data/datasources/i_exercise_datasource.dart';
-import 'features/exercise/data/datasources/i_onboarding_datasource.dart';
-import 'features/exercise/data/models/exercise_model.dart';
-import 'features/exercise/data/repositories/exercise_repository.dart';
-import 'features/exercise/data/repositories/onboarding_repository.dart';
-import 'features/exercise/domain/repositories/i_exercise_repository.dart';
-import 'features/exercise/domain/repositories/i_onboarding_repository.dart';
-import 'features/exercise/domain/usecases/add_exercise.dart';
-import 'features/exercise/domain/usecases/done_onboarding.dart';
-import 'features/exercise/domain/usecases/get_exercises.dart';
-import 'features/exercise/domain/usecases/is_done_onboarding.dart';
-import 'features/exercise/domain/usecases/remove_exercises.dart';
-import 'features/exercise/presentation/bloc/exercise_bloc.dart';
+import 'application/exercise/exercise_bloc.dart';
+import 'domain/exercise/repositories/i_exercise_repository.dart';
+import 'domain/exercise/repositories/i_onboarding_repository.dart';
+import 'domain/exercise/usecases/add_exercise.dart';
+import 'domain/exercise/usecases/done_onboarding.dart';
+import 'domain/exercise/usecases/get_exercises.dart';
+import 'domain/exercise/usecases/is_done_onboarding.dart';
+import 'domain/exercise/usecases/remove_exercises.dart';
+import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
+import 'infrastructure/exercise/datasources/hive_onboarding_datasource.dart';
+import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
+import 'infrastructure/exercise/datasources/i_onboarding_datasource.dart';
+import 'infrastructure/exercise/models/exercise_model.dart';
+import 'infrastructure/exercise/repositories/exercise_repository.dart';
+import 'infrastructure/exercise/repositories/onboarding_repository.dart';
 
 final GetIt sl = GetIt.instance;
 
