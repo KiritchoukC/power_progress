@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/exercise/entities/exercise.dart';
-import '../../../router/route_paths.dart';
-import '../../exercise/details/exercise_details_page.dart';
+import '../../../../../domain/exercise/entities/exercise.dart';
+import '../../../../router/route_paths.dart';
+import '../../../exercise/details/exercise_details_page.dart';
 
 class ExerciseCard extends StatefulWidget {
   final Exercise exercise;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../router/route_paths.dart';
+import '../../../../router/route_paths.dart';
 
 class DummyCard extends StatelessWidget {
   @override

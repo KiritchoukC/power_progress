@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
 
 import '../../../../application/exercise/exercise_bloc.dart';
+import '../../../../domain/exercise/entities/exercise.dart';
 import '../../../widgets/pp_appbar.dart';
 import '../../../widgets/remove_button.dart';
 

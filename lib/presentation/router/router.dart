@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../pages/dashboard/dashboard_page.dart';
+import '../pages/exercise/dashboard/dashboard_page.dart';
 import '../pages/exercise/add/exercise_add_page.dart';
 import '../pages/exercise/details/exercise_details_page.dart';
 import '../pages/onboarding/onboarding_exercise_page.dart';

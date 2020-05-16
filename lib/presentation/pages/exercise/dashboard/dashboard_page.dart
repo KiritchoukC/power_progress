@@ -3,11 +3,11 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../application/exercise/exercise_bloc.dart';
-import '../../../domain/exercise/entities/exercise.dart';
-import '../../widgets/centered_loading.dart';
-import '../../widgets/pp_appbar.dart';
-import '../../widgets/remove_button.dart';
+import '../../../../application/exercise/exercise_bloc.dart';
+import '../../../../domain/exercise/entities/exercise.dart';
+import '../../../widgets/centered_loading.dart';
+import '../../../widgets/pp_appbar.dart';
+import '../../../widgets/remove_button.dart';
 import 'widgets/add_button.dart';
 import 'widgets/dummy_card.dart';
 import 'widgets/exercise_card.dart';
