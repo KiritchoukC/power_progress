@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.31.0](https://github.com/KiritchoukC/power_progress/compare/v1.30.2...v1.31.0) (2020-05-16)
+
+
+### Features
+
+* **workout:** add generate workout use case implementation ([28d3195](https://github.com/KiritchoukC/power_progress/commit/28d3195)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
 ### [1.30.2](https://github.com/KiritchoukC/power_progress/compare/v1.30.1...v1.30.2) (2020-05-16)
 
 ### [1.30.1](https://github.com/KiritchoukC/power_progress/compare/v1.30.0...v1.30.1) (2020-05-15)
