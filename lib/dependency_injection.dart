@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 
 import 'application/exercise/exercise_bloc.dart';
 import 'application/onboarding/onboarding_bloc.dart';
+import 'application/workout/workout_bloc.dart';
 import 'domain/exercise/repositories/i_exercise_repository.dart';
 import 'domain/exercise/usecases/add_exercise.dart';
 import 'domain/exercise/usecases/get_exercises.dart';
@@ -11,6 +11,7 @@ import 'domain/exercise/usecases/remove_exercises.dart';
 import 'domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'domain/onboarding/usecases/done_onboarding.dart';
 import 'domain/onboarding/usecases/is_done_onboarding.dart';
+import 'domain/workout/usecases/generate_workout.dart';
 import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'infrastructure/exercise/models/exercise_model.dart';
@@ -92,11 +93,11 @@ void initOnboardingFeature() {
 /// Register the dependencies needed for the onboarding feature
 void initWorkoutFeature() {
   // Bloc
-  // sl.registerFactory(
-  //   () => WorkoutBloc(
-  //     generateWorkout: sl<GenerateWorkout>(),
-  //   ),
-  // );
+  sl.registerFactory(
+    () => WorkoutBloc(
+      generateWorkout: sl<GenerateWorkout>(),
+    ),
+  );
 
   // Usecases
   sl.registerLazySingleton(() => GenerateWorkout());
