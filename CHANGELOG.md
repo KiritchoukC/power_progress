@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.32.0](https://github.com/KiritchoukC/power_progress/compare/v1.31.0...v1.32.0) (2020-05-16)
+
+
+### Features
+
+* **workout:** add bloc implementation for workout generate ([b70ab27](https://github.com/KiritchoukC/power_progress/commit/b70ab27)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
 ## [1.31.0](https://github.com/KiritchoukC/power_progress/compare/v1.30.2...v1.31.0) (2020-05-16)
 
 
