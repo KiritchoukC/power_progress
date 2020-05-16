@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/domain/value_failure.dart';
 import '../../../../core/domain/value_object.dart';
-import '../week_names.dart';
+import '../../../shared/entities/weeks.dart';
 
 class Week extends ValueObject<Weeks> {
   @override

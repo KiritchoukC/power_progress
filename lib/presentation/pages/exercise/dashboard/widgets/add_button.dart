@@ -12,16 +12,9 @@ class AddButton extends StatelessWidget {
       },
       child: Ink(
         decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                PPTheme.pink,
-                PPTheme.yellow,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: [0.3, 1],
-            ),
-            borderRadius: BorderRadius.circular(30.0)),
+          gradient: PPTheme.pinkYellowGradient,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
         child: Container(
           constraints: const BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
           alignment: Alignment.center,

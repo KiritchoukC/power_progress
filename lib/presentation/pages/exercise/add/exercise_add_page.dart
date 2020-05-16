@@ -9,7 +9,7 @@ import '../../../../domain/exercise/entities/value_objects/incrementation.dart';
 import '../../../../domain/exercise/entities/value_objects/month.dart';
 import '../../../../domain/exercise/entities/value_objects/one_rm.dart';
 import '../../../../domain/exercise/entities/value_objects/week.dart';
-import '../../../../domain/exercise/entities/week_names.dart';
+import '../../../../domain/shared/entities/weeks.dart';
 import '../../../widgets/centered_loading.dart';
 import '../../../widgets/inputs/exercise_name_input.dart';
 import '../../../widgets/inputs/incrementation_input.dart';

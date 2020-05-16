@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 
 import 'application/exercise/exercise_bloc.dart';
 import 'application/onboarding/onboarding_bloc.dart';
@@ -25,6 +26,7 @@ Future<void> init() async {
   //! FEATURES
   initExerciseFeature();
   initOnboardingFeature();
+  initWorkoutFeature();
 
   //! CORE
 
@@ -85,4 +87,17 @@ void initOnboardingFeature() {
   sl.registerLazySingleton<IOnboardingDatasource>(
     () => HiveOnboardingDatasource(localStorage: sl<Box<bool>>()),
   );
+}
+
+/// Register the dependencies needed for the onboarding feature
+void initWorkoutFeature() {
+  // Bloc
+  // sl.registerFactory(
+  //   () => WorkoutBloc(
+  //     generateWorkout: sl<GenerateWorkout>(),
+  //   ),
+  // );
+
+  // Usecases
+  sl.registerLazySingleton(() => GenerateWorkout());
 }

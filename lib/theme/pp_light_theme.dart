@@ -13,4 +13,14 @@ class PPTheme {
 
   static const Color pink = Color(0xFFED4264);
   static const Color yellow = Color(0xFFFFEDBC);
+
+  static LinearGradient pinkYellowGradient = const LinearGradient(
+    colors: [
+      PPTheme.pink,
+      PPTheme.yellow,
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: [0.3, 1],
+  );
 }

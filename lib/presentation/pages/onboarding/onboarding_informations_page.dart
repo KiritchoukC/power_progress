@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/domain/shared/entities/weeks.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/onboarding/onboarding_bloc.dart';
@@ -10,7 +11,6 @@ import '../../../domain/exercise/entities/value_objects/incrementation.dart';
 import '../../../domain/exercise/entities/value_objects/month.dart';
 import '../../../domain/exercise/entities/value_objects/one_rm.dart';
 import '../../../domain/exercise/entities/value_objects/week.dart';
-import '../../../domain/exercise/entities/week_names.dart';
 import '../../router/route_paths.dart';
 import '../../widgets/inputs/incrementation_input.dart';
 import '../../widgets/inputs/one_rm_input.dart';
