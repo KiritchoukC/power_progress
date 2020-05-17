@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.35.0](https://github.com/KiritchoukC/power_progress/compare/v1.34.0...v1.35.0) (2020-05-17)
+
+
+### Features
+
+* **weight:** add value object for weight and format it ([ab6e5d3](https://github.com/KiritchoukC/power_progress/commit/ab6e5d3))
+
 ## [1.34.0](https://github.com/KiritchoukC/power_progress/compare/v1.33.0...v1.34.0) (2020-05-17)
 
 

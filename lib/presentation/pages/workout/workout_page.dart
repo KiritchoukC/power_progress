@@ -208,7 +208,7 @@ class _ExerciseSet extends StatelessWidget {
         Container(
           width: 40,
           child: Text(
-            exerciseSet.weight.toString(),
+            exerciseSet.weight.formattedValue.getOrElse(() => 'E'),
             style: _getTextStyle(context),
           ),
         ),

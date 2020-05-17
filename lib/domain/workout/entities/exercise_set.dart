@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 
+import 'value_objects/weight.dart';
+
 class ExerciseSet {
   final int sets;
   final int reps;
-  final double weight;
+  final Weight weight;
   final bool isAmrap;
 
   const ExerciseSet({
