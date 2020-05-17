@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.33.0](https://github.com/KiritchoukC/power_progress/compare/v1.32.0...v1.33.0) (2020-05-17)
+
+
+### Features
+
+* **workout:** track the weeks done ([9f6599a](https://github.com/KiritchoukC/power_progress/commit/9f6599a)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
 ## [1.32.0](https://github.com/KiritchoukC/power_progress/compare/v1.31.0...v1.32.0) (2020-05-16)
 
 
