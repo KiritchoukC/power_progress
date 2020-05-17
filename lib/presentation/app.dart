@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../application/exercise/exercise_bloc.dart';
 import '../application/onboarding/onboarding_bloc.dart';
+import '../application/workout/workout_bloc.dart';
 import '../dependency_injection.dart' as di;
 import '../presentation/router/route_paths.dart';
 import '../presentation/router/router.dart';
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<ExerciseBloc>(create: (_) => di.sl<ExerciseBloc>()),
         BlocProvider<OnboardingBloc>(create: (_) => di.sl<OnboardingBloc>()),
+        BlocProvider<WorkoutBloc>(create: (_) => di.sl<WorkoutBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -4,11 +4,11 @@ import '../../../../core/domain/value_failure.dart';
 import '../../../../core/domain/value_object.dart';
 import '../../../core/entities/weeks.dart';
 
-class Week extends ValueObject<Weeks> {
+class Week extends ValueObject<WeekEnum> {
   @override
-  final Either<ValueFailure<Weeks>, Weeks> value;
+  final Either<ValueFailure<WeekEnum>, WeekEnum> value;
 
-  factory Week(Weeks input) {
+  factory Week(WeekEnum input) {
     assert(input != null);
     return Week._(
       validateWeek(input),
@@ -22,34 +22,17 @@ class Week extends ValueObject<Weeks> {
 
   const Week._(this.value);
 
-  String get displayName => mapToDisplayName(getOrCrash());
+  String get displayName => getOrCrash().toDisplayName();
 }
 
-String mapToDisplayName(Weeks weeks) {
-  if (weeks == Weeks.accumulation) {
-    return "Accumulation";
-  }
-  if (weeks == Weeks.intensification) {
-    return "Inensification";
-  }
-  if (weeks == Weeks.realization) {
-    return "Realization";
-  }
-  if (weeks == Weeks.deload) {
-    return "Deload";
-  }
-
-  return "UNEXPECTED VALUE";
-}
-
-Either<ValueFailure<Weeks>, Weeks> validateAndParseWeek(int input) {
-  if (input > Weeks.values.length) {
+Either<ValueFailure<WeekEnum>, WeekEnum> validateAndParseWeek(int input) {
+  if (input > WeekEnum.values.length) {
     return left(ValueFailure.wrongWeek(failedValue: input));
   }
 
-  return right(Weeks.values[input]);
+  return right(WeekEnum.values[input]);
 }
 
-Either<ValueFailure<Weeks>, Weeks> validateWeek(Weeks input) {
+Either<ValueFailure<WeekEnum>, WeekEnum> validateWeek(WeekEnum input) {
   return right(input);
 }

@@ -11,7 +11,14 @@ class WorkoutInitialState extends WorkoutState {}
 
 class WorkoutGeneratingState extends WorkoutState {}
 
-class WorkoutGeneratedState extends WorkoutState {}
+class WorkoutGeneratedState extends WorkoutState {
+  final Workout workout;
+
+  const WorkoutGeneratedState({@required this.workout});
+
+  @override
+  List<Object> get props => [workout];
+}
 
 // Error
 class WorkoutErrorState extends WorkoutState {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../domain/exercise/entities/exercise.dart';
 import '../../../../router/route_paths.dart';
-import '../../../exercise/details/exercise_details_page.dart';
+import '../../../workout/workout_page.dart';
 
 class ExerciseCard extends StatefulWidget {
   final Exercise exercise;
@@ -39,8 +39,8 @@ class _ExerciseCardState extends State<ExerciseCard> {
           }
 
           Navigator.of(context).pushNamed(
-            RoutePaths.exerciseDetails,
-            arguments: ExerciseDetailsPageArguments(exercise: widget.exercise),
+            RoutePaths.exerciseWorkout,
+            arguments: WorkoutPageArguments(exercise: widget.exercise),
           );
         },
         child: Container(

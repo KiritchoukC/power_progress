@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../pages/exercise/dashboard/dashboard_page.dart';
 import '../pages/exercise/add/exercise_add_page.dart';
-import '../pages/exercise/details/exercise_details_page.dart';
+import '../pages/exercise/dashboard/dashboard_page.dart';
 import '../pages/onboarding/onboarding_exercise_page.dart';
 import '../pages/onboarding/onboarding_informations_page.dart';
 import '../pages/onboarding/onboarding_welcome_page.dart';
+import '../pages/workout/workout_page.dart';
 import 'route_paths.dart';
 
 const String onboarding = "onboarding";
@@ -30,14 +30,14 @@ class Router {
           ),
         );
 
-      case RoutePaths.exerciseDetails:
-        final args = settings.arguments as ExerciseDetailsPageArguments;
+      case RoutePaths.exerciseWorkout:
+        final args = settings.arguments as WorkoutPageArguments;
         return MaterialPageRoute(
-          builder: (_) => ExerciseDetailsPage(
+          builder: (_) => WorkoutPage(
             exercise: args.exercise,
           ),
           settings: const RouteSettings(
-            name: RoutePaths.exerciseDetails,
+            name: RoutePaths.exerciseWorkout,
           ),
         );
 
