@@ -1,28 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:power_progress/domain/shared/entities/weeks.dart';
 
 import '../../../core/usecases/usecase.dart';
+import '../../core/entities/weeks.dart';
 import '../entities/exercise_set.dart';
+import '../entities/week_set.dart';
 import '../entities/workout.dart';
 import '../entities/workout_failure.dart';
 
 class GenerateWorkout implements UseCase<Workout, WorkoutFailure, GenerateWorkoutParams> {
   @override
   Future<Either<WorkoutFailure, Workout>> call(GenerateWorkoutParams params) async {
-    final weekSets = <Weeks, List<ExerciseSet>>{
-      Weeks.accumulation: getAccumulationSets(params.oneRm),
-      Weeks.intensification: getIntensificationSets(params.oneRm),
-      Weeks.realization: getRealizationSets(params.oneRm),
-      Weeks.deload: getDeloadSets(params.oneRm),
-    };
     return right(
       Workout(
-        incrementation: params.incrementation,
         month: params.month,
         oneRm: params.oneRm,
-        weekSets: weekSets,
+        weekSets: getWeekSets(params.oneRm),
       ),
     );
   }
@@ -31,16 +25,23 @@ class GenerateWorkout implements UseCase<Workout, WorkoutFailure, GenerateWorkou
 class GenerateWorkoutParams extends Equatable {
   final int month;
   final double oneRm;
-  final double incrementation;
 
   const GenerateWorkoutParams({
     @required this.month,
     @required this.oneRm,
-    @required this.incrementation,
   });
 
   @override
-  List<Object> get props => [oneRm, incrementation];
+  List<Object> get props => [oneRm];
+}
+
+List<WeekSet> getWeekSets(double oneRm) {
+  return [
+    WeekSet(week: Weeks.accumulation, sets: getAccumulationSets(oneRm), isDone: false),
+    WeekSet(week: Weeks.intensification, sets: getIntensificationSets(oneRm), isDone: false),
+    WeekSet(week: Weeks.realization, sets: getRealizationSets(oneRm), isDone: false),
+    WeekSet(week: Weeks.deload, sets: getDeloadSets(oneRm), isDone: false),
+  ];
 }
 
 List<ExerciseSet> getAccumulationSets(double oneRm) {

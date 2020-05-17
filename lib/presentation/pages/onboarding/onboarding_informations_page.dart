@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/domain/shared/entities/weeks.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/onboarding/onboarding_bloc.dart';
 import '../../../core/util/spacing.dart';
+import '../../../domain/core/entities/weeks.dart';
 import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/exercise/entities/value_objects/exercise_name.dart';
 import '../../../domain/exercise/entities/value_objects/incrementation.dart';

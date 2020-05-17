@@ -36,7 +36,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       GenerateWorkoutParams(
         month: event.month,
         oneRm: event.oneRm,
-        incrementation: event.incrementation,
       ),
     );
 
