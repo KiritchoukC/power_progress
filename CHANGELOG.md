@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.34.0](https://github.com/KiritchoukC/power_progress/compare/v1.33.0...v1.34.0) (2020-05-17)
+
+
+### Features
+
+* **workout:** add page showing the generated month workouts ([4f6f60d](https://github.com/KiritchoukC/power_progress/commit/4f6f60d)), closes [#9](https://github.com/KiritchoukC/power_progress/issues/9)
+
+## [1.33.0](https://github.com/KiritchoukC/power_progress/compare/v1.32.0...v1.33.0) (2020-05-17)
+
+
+### Features
+
+* **workout:** track the weeks done ([9f6599a](https://github.com/KiritchoukC/power_progress/commit/9f6599a)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
+## [1.32.0](https://github.com/KiritchoukC/power_progress/compare/v1.31.0...v1.32.0) (2020-05-16)
+
+
+### Features
+
+* **workout:** add bloc implementation for workout generate ([b70ab27](https://github.com/KiritchoukC/power_progress/commit/b70ab27)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
+## [1.31.0](https://github.com/KiritchoukC/power_progress/compare/v1.30.2...v1.31.0) (2020-05-16)
+
+
+### Features
+
+* **workout:** add generate workout use case implementation ([28d3195](https://github.com/KiritchoukC/power_progress/commit/28d3195)), closes [#7](https://github.com/KiritchoukC/power_progress/issues/7)
+
+### [1.30.2](https://github.com/KiritchoukC/power_progress/compare/v1.30.1...v1.30.2) (2020-05-16)
+
+### [1.30.1](https://github.com/KiritchoukC/power_progress/compare/v1.30.0...v1.30.1) (2020-05-15)
+
 ## [1.30.0](https://github.com/KiritchoukC/power_progress/compare/v1.29.0...v1.30.0) (2020-05-14)
 
 

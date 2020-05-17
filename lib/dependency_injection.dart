@@ -1,21 +1,24 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
-import 'features/exercise/data/datasources/hive_exercise_datasource.dart';
-import 'features/exercise/data/datasources/hive_onboarding_datasource.dart';
-import 'features/exercise/data/datasources/i_exercise_datasource.dart';
-import 'features/exercise/data/datasources/i_onboarding_datasource.dart';
-import 'features/exercise/data/models/exercise_model.dart';
-import 'features/exercise/data/repositories/exercise_repository.dart';
-import 'features/exercise/data/repositories/onboarding_repository.dart';
-import 'features/exercise/domain/repositories/i_exercise_repository.dart';
-import 'features/exercise/domain/repositories/i_onboarding_repository.dart';
-import 'features/exercise/domain/usecases/add_exercise.dart';
-import 'features/exercise/domain/usecases/done_onboarding.dart';
-import 'features/exercise/domain/usecases/get_exercises.dart';
-import 'features/exercise/domain/usecases/is_done_onboarding.dart';
-import 'features/exercise/domain/usecases/remove_exercises.dart';
-import 'features/exercise/presentation/bloc/exercise_bloc.dart';
+import 'application/exercise/exercise_bloc.dart';
+import 'application/onboarding/onboarding_bloc.dart';
+import 'application/workout/workout_bloc.dart';
+import 'domain/exercise/repositories/i_exercise_repository.dart';
+import 'domain/exercise/usecases/add_exercise.dart';
+import 'domain/exercise/usecases/get_exercises.dart';
+import 'domain/exercise/usecases/remove_exercises.dart';
+import 'domain/onboarding/repositories/i_onboarding_repository.dart';
+import 'domain/onboarding/usecases/done_onboarding.dart';
+import 'domain/onboarding/usecases/is_done_onboarding.dart';
+import 'domain/workout/usecases/generate_workout.dart';
+import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
+import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
+import 'infrastructure/exercise/models/exercise_model.dart';
+import 'infrastructure/exercise/repositories/exercise_repository.dart';
+import 'infrastructure/onboarding/datasources/hive_onboarding_datasource.dart';
+import 'infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
+import 'infrastructure/onboarding/repositories/onboarding_repository.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -23,6 +26,8 @@ final GetIt sl = GetIt.instance;
 Future<void> init() async {
   //! FEATURES
   initExerciseFeature();
+  initOnboardingFeature();
+  initWorkoutFeature();
 
   //! CORE
 
@@ -34,15 +39,13 @@ Future<void> init() async {
   sl.registerLazySingleton<Box<bool>>(() => onboardingBox);
 }
 
-/// Register the dependencies needed for the game feature
+/// Register the dependencies needed for the exercise feature
 void initExerciseFeature() {
   // Bloc
   sl.registerFactory(
     () => ExerciseBloc(
       addExercise: sl<AddExercise>(),
       fetchExercises: sl<FetchExercises>(),
-      doneOnboarding: sl<DoneOnboarding>(),
-      isDoneOnboarding: sl<IsDoneOnboarding>(),
       removeExercises: sl<RemoveExercises>(),
     ),
   );
@@ -51,21 +54,51 @@ void initExerciseFeature() {
   sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerLazySingleton(() => DoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
-  sl.registerLazySingleton(
-      () => IsDoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
       () => ExerciseRepository(datasource: sl<IExerciseDatasource>()));
-  sl.registerLazySingleton<IOnboardingRepository>(
-      () => OnboardingRepository(datasource: sl<IOnboardingDatasource>()));
 
   // Datasource
   sl.registerLazySingleton<IExerciseDatasource>(
     () => HiveExerciseDatasource(localStorage: sl<Box<ExerciseModel>>()),
   );
+}
+
+/// Register the dependencies needed for the onboarding feature
+void initOnboardingFeature() {
+  // Bloc
+  sl.registerFactory(
+    () => OnboardingBloc(
+      doneOnboarding: sl<DoneOnboarding>(),
+      isDoneOnboarding: sl<IsDoneOnboarding>(),
+    ),
+  );
+
+  // Usecases
+  sl.registerLazySingleton(() => DoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
+  sl.registerLazySingleton(
+      () => IsDoneOnboarding(onboardingRepository: sl<IOnboardingRepository>()));
+
+  // Repositories
+  sl.registerLazySingleton<IOnboardingRepository>(
+      () => OnboardingRepository(datasource: sl<IOnboardingDatasource>()));
+
+  // Datasource
   sl.registerLazySingleton<IOnboardingDatasource>(
     () => HiveOnboardingDatasource(localStorage: sl<Box<bool>>()),
   );
+}
+
+/// Register the dependencies needed for the onboarding feature
+void initWorkoutFeature() {
+  // Bloc
+  sl.registerFactory(
+    () => WorkoutBloc(
+      generateWorkout: sl<GenerateWorkout>(),
+    ),
+  );
+
+  // Usecases
+  sl.registerLazySingleton(() => GenerateWorkout());
 }
