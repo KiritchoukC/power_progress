@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'exercise_set.dart';
+import 'value_objects/weight.dart';
 import 'workout_failure.dart';
 
 class DeloadWorkout {
@@ -35,27 +36,27 @@ List<ExerciseSet> _getExerciseSets(int month, double oneRm) {
   switch (month) {
     case 1:
       return [
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.4),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.5),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.6),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.6)),
       ];
     case 2:
       return [
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.4),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.5),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.6),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.6)),
       ];
     case 3:
       return [
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.4),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.5),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.6),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.6)),
       ];
     case 4:
       return [
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.4),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.5),
-        ExerciseSet(reps: 5, sets: 1, weight: oneRm * 0.6),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight(oneRm * 0.6)),
       ];
     default:
       throw const UnexpectedError();

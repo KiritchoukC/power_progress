@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'exercise_set.dart';
+import 'value_objects/weight.dart';
 import 'workout_failure.dart';
 
 class AccumulationWorkout {
@@ -34,13 +35,13 @@ class AccumulationWorkout {
 List<ExerciseSet> _getExerciseSets(int month, double oneRm) {
   switch (month) {
     case 1:
-      return [ExerciseSet(reps: 10, sets: 5, weight: oneRm * 0.6)];
+      return [ExerciseSet(reps: 10, sets: 5, weight: Weight(oneRm * 0.6))];
     case 2:
-      return [ExerciseSet(reps: 8, sets: 5, weight: oneRm * 0.65)];
+      return [ExerciseSet(reps: 8, sets: 5, weight: Weight(oneRm * 0.65))];
     case 3:
-      return [ExerciseSet(reps: 5, sets: 6, weight: oneRm * 0.7)];
+      return [ExerciseSet(reps: 5, sets: 6, weight: Weight(oneRm * 0.7))];
     case 4:
-      return [ExerciseSet(reps: 3, sets: 7, weight: oneRm * 0.75)];
+      return [ExerciseSet(reps: 3, sets: 7, weight: Weight(oneRm * 0.75))];
     default:
       throw const UnexpectedError();
   }
