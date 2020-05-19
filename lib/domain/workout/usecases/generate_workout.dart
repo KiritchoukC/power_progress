@@ -36,5 +36,5 @@ class GenerateWorkoutParams extends Equatable {
   });
 
   @override
-  List<Object> get props => [oneRm];
+  List<Object> get props => [month, oneRm];
 }
