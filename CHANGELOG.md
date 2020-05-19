@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.39.0](https://github.com/KiritchoukC/power_progress/compare/v1.38.0...v1.39.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **workout-validate:** add missing arguments ([d9a2be8](https://github.com/KiritchoukC/power_progress/commit/d9a2be8)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+
+### Features
+
+* **workout-validate:** when generating a workout check weeks that are done ([eaf5fa9](https://github.com/KiritchoukC/power_progress/commit/eaf5fa9)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.38.0](https://github.com/KiritchoukC/power_progress/compare/v1.37.0...v1.38.0) (2020-05-19)
 
 
