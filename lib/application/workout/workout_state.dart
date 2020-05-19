@@ -13,11 +13,15 @@ class WorkoutGeneratingState extends WorkoutState {}
 
 class WorkoutGeneratedState extends WorkoutState {
   final Workout workout;
+  final int month;
 
-  const WorkoutGeneratedState({@required this.workout});
+  const WorkoutGeneratedState({
+    @required this.workout,
+    @required this.month,
+  });
 
   @override
-  List<Object> get props => [workout];
+  List<Object> get props => [workout, month];
 }
 
 // Mark Done

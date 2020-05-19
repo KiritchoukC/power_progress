@@ -8,7 +8,7 @@ part of 'workout_done_model.dart';
 
 class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
   @override
-  final typeId = 0;
+  final typeId = 1;
 
   @override
   WorkoutDoneModel read(BinaryReader reader) {
@@ -19,7 +19,8 @@ class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
     return WorkoutDoneModel(
       exerciseId: fields[0] as int,
       month: fields[1] as int,
-    )..weekIndex = fields[2] as int;
+      weekIndex: fields[2] as int,
+    );
   }
 
   @override

@@ -58,6 +58,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     Stream<WorkoutState> onSuccess(Workout workout) async* {
       yield WorkoutGeneratedState(
         workout: workout,
+        month: event.month,
       );
     }
 

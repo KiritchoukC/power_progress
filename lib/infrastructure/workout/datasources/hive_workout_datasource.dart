@@ -26,11 +26,13 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   @override
   Future<Unit> markDone(int exerciseciseId, int month, WeekEnum week) async {
     await tryOrCrash(
-      () => localStorage.add(WorkoutDoneModel(
-        exerciseId: exerciseciseId,
-        month: month,
-        week: week,
-      )),
+      () => localStorage.add(
+        WorkoutDoneModel(
+          exerciseId: exerciseciseId,
+          month: month,
+          weekIndex: week.index,
+        ),
+      ),
       (_) => throw Exception(),
     );
 

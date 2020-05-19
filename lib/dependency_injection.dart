@@ -39,10 +39,13 @@ Future<void> init() async {
 
   //! EXTERNAL
   Hive.registerAdapter(ExerciseModelAdapter());
+  Hive.registerAdapter(WorkoutDoneModelAdapter());
   final exercisesBox = await Hive.openBox<ExerciseModel>('exercises');
   sl.registerLazySingleton<Box<ExerciseModel>>(() => exercisesBox);
   final onboardingBox = await Hive.openBox<bool>('onboarding');
   sl.registerLazySingleton<Box<bool>>(() => onboardingBox);
+  final workoutDoneBox = await Hive.openBox<WorkoutDoneModel>('workoutDone');
+  sl.registerLazySingleton<Box<WorkoutDoneModel>>(() => workoutDoneBox);
 }
 
 /// Register the dependencies needed for the exercise feature

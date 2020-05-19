@@ -5,7 +5,7 @@ import '../../../domain/core/entities/weeks.dart';
 
 part 'workout_done_model.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class WorkoutDoneModel {
   @HiveField(0)
   int exerciseId;
@@ -17,8 +17,6 @@ class WorkoutDoneModel {
   WorkoutDoneModel({
     @required this.exerciseId,
     @required this.month,
-    @required WeekEnum week,
-  }) {
-    weekIndex = week.index;
-  }
+    @required this.weekIndex,
+  });
 }

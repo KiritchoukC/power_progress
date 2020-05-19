@@ -44,7 +44,17 @@ class WorkoutPage extends StatelessWidget {
           ],
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is WorkoutMarkedDoneState) {
+              context.bloc<WorkoutBloc>().add(
+                    WorkoutGenerateEvent(
+                      exerciseId: exercise.id,
+                      month: exercise.month.getOrCrash(),
+                      oneRm: exercise.oneRm.getOrCrash(),
+                    ),
+                  );
+            }
+          },
           builder: (context, state) {
             if (state is WorkoutInitialState) {
               context.bloc<WorkoutBloc>().add(
@@ -57,7 +67,11 @@ class WorkoutPage extends StatelessWidget {
             }
 
             if (state is WorkoutGeneratedState) {
-              return _Body(workout: state.workout);
+              return _Body(
+                workout: state.workout,
+                exerciseId: exercise.id,
+                month: state.month,
+              );
             }
 
             return CenteredLoading();
@@ -70,10 +84,14 @@ class WorkoutPage extends StatelessWidget {
 
 class _Body extends StatelessWidget {
   final Workout workout;
+  final int exerciseId;
+  final int month;
 
   const _Body({
     Key key,
     @required this.workout,
+    @required this.exerciseId,
+    @required this.month,
   }) : super(key: key);
 
   @override
@@ -84,21 +102,29 @@ class _Body extends StatelessWidget {
           exerciseSets: workout.accumulationWorkout.exerciseSets,
           isDone: workout.accumulationWorkout.isDone,
           week: WeekEnum.accumulation,
+          exerciseId: exerciseId,
+          month: month,
         ),
         _WeekSet(
           exerciseSets: workout.intensificationWorkout.exerciseSets,
           isDone: workout.intensificationWorkout.isDone,
           week: WeekEnum.intensification,
+          exerciseId: exerciseId,
+          month: month,
         ),
         _WeekSet(
           exerciseSets: workout.realizationWorkout.exerciseSets,
           isDone: workout.realizationWorkout.isDone,
           week: WeekEnum.realization,
+          exerciseId: exerciseId,
+          month: month,
         ),
         _WeekSet(
           exerciseSets: workout.deloadWorkout.exerciseSets,
           isDone: workout.deloadWorkout.isDone,
           week: WeekEnum.deload,
+          exerciseId: exerciseId,
+          month: month,
         ),
       ],
     );
@@ -109,12 +135,16 @@ class _WeekSet extends StatelessWidget {
   final List<ExerciseSet> exerciseSets;
   final bool isDone;
   final WeekEnum week;
+  final int exerciseId;
+  final int month;
 
   const _WeekSet({
     Key key,
     @required this.exerciseSets,
     @required this.isDone,
     @required this.week,
+    @required this.exerciseId,
+    @required this.month,
   }) : super(key: key);
 
   @override
@@ -141,7 +171,15 @@ class _WeekSet extends StatelessWidget {
                       ),
                     )
                   : IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.bloc<WorkoutBloc>().add(
+                              WorkoutMarkDoneEvent(
+                                exerciseId: exerciseId,
+                                month: month,
+                                week: week,
+                              ),
+                            );
+                      },
                       icon: Icon(
                         Icons.check_circle_outline,
                         color: Colors.black.withAlpha(50),
