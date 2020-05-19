@@ -21,3 +21,18 @@ class WorkoutGenerateEvent extends WorkoutEvent {
   @override
   List<Object> get props => [exerciseId, month, oneRm];
 }
+
+class WorkoutMarkDoneEvent extends WorkoutEvent {
+  final int exerciseId;
+  final int month;
+  final WeekEnum week;
+
+  const WorkoutMarkDoneEvent({
+    @required this.exerciseId,
+    @required this.month,
+    @required this.week,
+  });
+
+  @override
+  List<Object> get props => [exerciseId, month, week];
+}

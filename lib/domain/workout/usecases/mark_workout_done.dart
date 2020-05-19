@@ -22,7 +22,11 @@ class MarkWorkoutDoneParams extends Equatable {
   final int month;
   final WeekEnum week;
 
-  const MarkWorkoutDoneParams(this.exerciseId, this.month, this.week);
+  const MarkWorkoutDoneParams({
+    @required this.exerciseId,
+    @required this.month,
+    @required this.week,
+  });
 
   @override
   List<Object> get props => [exerciseId, month, week];

@@ -20,6 +20,11 @@ class WorkoutGeneratedState extends WorkoutState {
   List<Object> get props => [workout];
 }
 
+// Mark Done
+class WorkoutMarkingDoneState extends WorkoutState {}
+
+class WorkoutMarkedDoneState extends WorkoutState {}
+
 // Error
 class WorkoutErrorState extends WorkoutState {
   final String message;

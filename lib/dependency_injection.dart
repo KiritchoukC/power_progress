@@ -102,6 +102,7 @@ void initWorkoutFeature() {
   sl.registerFactory(
     () => WorkoutBloc(
       generateWorkout: sl<GenerateWorkout>(),
+      markWorkoutDone: sl<MarkWorkoutDone>(),
     ),
   );
 
