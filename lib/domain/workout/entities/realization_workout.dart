@@ -14,6 +14,7 @@ class RealizationWorkout {
   factory RealizationWorkout({
     @required int month,
     @required double oneRm,
+    @required bool isDone,
   }) {
     assert(month != null);
     assert(oneRm != null);
@@ -21,7 +22,7 @@ class RealizationWorkout {
       month: month,
       oneRm: oneRm,
       exerciseSets: _getExerciseSets(month, oneRm),
-      isDone: false,
+      isDone: isDone,
       repsDone: 0,
     );
   }

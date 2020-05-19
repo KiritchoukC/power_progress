@@ -13,6 +13,7 @@ class AccumulationWorkout {
   factory AccumulationWorkout({
     @required int month,
     @required double oneRm,
+    @required bool isDone,
   }) {
     assert(month != null);
     assert(oneRm != null);
@@ -20,7 +21,7 @@ class AccumulationWorkout {
       month: month,
       oneRm: oneRm,
       exerciseSets: _getExerciseSets(month, oneRm),
-      isDone: true,
+      isDone: isDone,
     );
   }
 

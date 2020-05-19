@@ -13,6 +13,7 @@ class DeloadWorkout {
   factory DeloadWorkout({
     @required int month,
     @required double oneRm,
+    @required bool isDone,
   }) {
     assert(month != null);
     assert(oneRm != null);
@@ -20,7 +21,7 @@ class DeloadWorkout {
       month: month,
       oneRm: oneRm,
       exerciseSets: _getExerciseSets(month, oneRm),
-      isDone: false,
+      isDone: isDone,
     );
   }
 
