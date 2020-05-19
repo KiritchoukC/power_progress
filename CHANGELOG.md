@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.41.0](https://github.com/KiritchoukC/power_progress/compare/v1.40.0...v1.41.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add ui implementation and various fixes ([a4861f1](https://github.com/KiritchoukC/power_progress/commit/a4861f1)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+* **workout-validate:** remove workout done mappings when the associated exercise get removed ([aadba6c](https://github.com/KiritchoukC/power_progress/commit/aadba6c)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.40.0](https://github.com/KiritchoukC/power_progress/compare/v1.39.0...v1.40.0) (2020-05-19)
 
 
