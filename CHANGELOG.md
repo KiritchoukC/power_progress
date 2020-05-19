@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.37.0](https://github.com/KiritchoukC/power_progress/compare/v1.36.0...v1.37.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add repository immplementation ([3cd81ed](https://github.com/KiritchoukC/power_progress/commit/3cd81ed)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.36.0](https://github.com/KiritchoukC/power_progress/compare/v1.35.0...v1.36.0) (2020-05-19)
 
 
