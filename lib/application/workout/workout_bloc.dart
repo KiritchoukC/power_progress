@@ -34,6 +34,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     final output = await generateWorkout(
       GenerateWorkoutParams(
+        exerciseId: event.exerciseId,
         month: event.month,
         oneRm: event.oneRm,
       ),

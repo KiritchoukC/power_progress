@@ -49,6 +49,7 @@ class WorkoutPage extends StatelessWidget {
             if (state is WorkoutInitialState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
+                      exerciseId: exercise.id,
                       month: exercise.month.getOrCrash(),
                       oneRm: exercise.oneRm.getOrCrash(),
                     ),

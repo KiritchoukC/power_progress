@@ -8,14 +8,16 @@ abstract class WorkoutEvent extends Equatable {
 }
 
 class WorkoutGenerateEvent extends WorkoutEvent {
+  final int exerciseId;
   final int month;
   final double oneRm;
 
   const WorkoutGenerateEvent({
+    @required this.exerciseId,
     @required this.month,
     @required this.oneRm,
   });
 
   @override
-  List<Object> get props => [month, oneRm];
+  List<Object> get props => [exerciseId, month, oneRm];
 }

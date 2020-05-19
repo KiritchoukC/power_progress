@@ -106,7 +106,7 @@ void initWorkoutFeature() {
   );
 
   // Usecases
-  sl.registerLazySingleton(() => GenerateWorkout());
+  sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutDone(repository: sl<IWorkoutRepository>()));
 
   // Repositories
