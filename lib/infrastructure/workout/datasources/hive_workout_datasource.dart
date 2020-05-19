@@ -38,4 +38,14 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
 
     return unit;
   }
+
+  @override
+  Future<Unit> remove(int exerciseId) async {
+    await tryOrCrash(
+      () => localStorage.deleteAll([exerciseId]),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
 }
