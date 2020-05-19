@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.38.0](https://github.com/KiritchoukC/power_progress/compare/v1.37.0...v1.38.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add mark workout done usecase ([edfe434](https://github.com/KiritchoukC/power_progress/commit/edfe434)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.37.0](https://github.com/KiritchoukC/power_progress/compare/v1.36.0...v1.37.0) (2020-05-19)
 
 
