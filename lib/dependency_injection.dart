@@ -11,6 +11,7 @@ import 'domain/exercise/usecases/remove_exercises.dart';
 import 'domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'domain/onboarding/usecases/done_onboarding.dart';
 import 'domain/onboarding/usecases/is_done_onboarding.dart';
+import 'domain/workout/repositories/i_workout_repository.dart';
 import 'domain/workout/usecases/generate_workout.dart';
 import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
@@ -19,6 +20,10 @@ import 'infrastructure/exercise/repositories/exercise_repository.dart';
 import 'infrastructure/onboarding/datasources/hive_onboarding_datasource.dart';
 import 'infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 import 'infrastructure/onboarding/repositories/onboarding_repository.dart';
+import 'infrastructure/workout/datasources/hive_workout_datasource.dart';
+import 'infrastructure/workout/datasources/i_workout_datasource.dart';
+import 'infrastructure/workout/models/workout_done_model.dart';
+import 'infrastructure/workout/repositories/workout_repository.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -101,4 +106,13 @@ void initWorkoutFeature() {
 
   // Usecases
   sl.registerLazySingleton(() => GenerateWorkout());
+
+  // Repositories
+  sl.registerLazySingleton<IWorkoutRepository>(
+      () => WorkoutRepository(datasource: sl<IWorkoutDatasource>()));
+
+  // Datasource
+  sl.registerLazySingleton<IWorkoutDatasource>(
+    () => HiveWorkoutDatasource(localStorage: sl<Box<WorkoutDoneModel>>()),
+  );
 }
