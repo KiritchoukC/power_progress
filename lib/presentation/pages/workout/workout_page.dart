@@ -12,6 +12,7 @@ import '../../../theme/pp_light_theme.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
 import '../../widgets/remove_button.dart';
+import 'widgets/realization_dialog.dart';
 
 class WorkoutPageArguments {
   final Exercise exercise;
@@ -172,13 +173,21 @@ class _WeekSet extends StatelessWidget {
                     )
                   : IconButton(
                       onPressed: () {
-                        context.bloc<WorkoutBloc>().add(
-                              WorkoutMarkDoneEvent(
-                                exerciseId: exerciseId,
-                                month: month,
-                                week: week,
-                              ),
-                            );
+                        if (week == WeekEnum.realization) {
+                          showDialog(
+                            context: context,
+                            builder: (context) =>
+                                RealizationDialog(initialValue: exerciseSets.last.reps),
+                          );
+                        } else {
+                          context.bloc<WorkoutBloc>().add(
+                                WorkoutMarkDoneEvent(
+                                  exerciseId: exerciseId,
+                                  month: month,
+                                  week: week,
+                                ),
+                              );
+                        }
                       },
                       icon: Icon(
                         Icons.check_circle_outline,
