@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.42.0](https://github.com/KiritchoukC/power_progress/compare/v1.41.0...v1.42.0) (2020-05-20)
+
+
+### Features
+
+* **workout-validate:** add realization dialog ([e152b2e](https://github.com/KiritchoukC/power_progress/commit/e152b2e)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+* **workout-validate:** persit reps done and show reps done on ui ([6b3650e](https://github.com/KiritchoukC/power_progress/commit/6b3650e)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.41.0](https://github.com/KiritchoukC/power_progress/compare/v1.40.0...v1.41.0) (2020-05-19)
 
 
