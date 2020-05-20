@@ -13,24 +13,22 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   HiveWorkoutDatasource({@required this.localStorage}) : assert(localStorage != null);
 
   @override
-  Future<List<Map<int, WeekEnum>>> getWorkoutsDone(int exerciseId) async {
+  Future<List<WorkoutDoneModel>> getWorkoutsDone(int exerciseId) async {
     return await tryOrCrash(
-      () => localStorage.values
-          .where((element) => element.exerciseId == exerciseId)
-          .map((e) => {e.month: WeekEnum.values[e.weekIndex]})
-          .toList(),
+      () => localStorage.values.toList(),
       (_) => throw Exception(),
     );
   }
 
   @override
-  Future<Unit> markDone(int exerciseciseId, int month, WeekEnum week) async {
+  Future<Unit> markDone(int exerciseciseId, int month, WeekEnum week, int repsDone) async {
     await tryOrCrash(
       () => localStorage.add(
         WorkoutDoneModel(
           exerciseId: exerciseciseId,
           month: month,
           weekIndex: week.index,
+          repsDone: repsDone,
         ),
       ),
       (_) => throw Exception(),

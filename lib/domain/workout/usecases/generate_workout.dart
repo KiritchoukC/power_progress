@@ -25,8 +25,17 @@ class GenerateWorkout implements UseCase<Workout, WorkoutFailure, GenerateWorkou
       (l) => left(l),
       (workoutsDone) {
         bool isDone(int month, WeekEnum week) {
+          return workoutsDone.any((element) => element.month == month && element.week == week);
+        }
+
+        int getRealizationRepsDone(int month) {
+          if (workoutsDone.isEmpty) return null;
           return workoutsDone
-              .any((element) => element.containsKey(month) && element.containsValue(week));
+              .firstWhere(
+                (element) => element.month == month && element.week == WeekEnum.realization,
+                orElse: () => null,
+              )
+              ?.repsDone;
         }
 
         return right(
@@ -44,7 +53,8 @@ class GenerateWorkout implements UseCase<Workout, WorkoutFailure, GenerateWorkou
             realizationWorkout: RealizationWorkout(
                 month: params.month,
                 oneRm: params.oneRm,
-                isDone: isDone(params.month, WeekEnum.realization)),
+                isDone: isDone(params.month, WeekEnum.realization),
+                repsDone: getRealizationRepsDone(params.month)),
             deloadWorkout: DeloadWorkout(
                 month: params.month,
                 oneRm: params.oneRm,

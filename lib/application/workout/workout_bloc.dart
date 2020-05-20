@@ -73,6 +73,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         exerciseId: event.exerciseId,
         month: event.month,
         week: event.week,
+        repsDone: event.repsDone,
       ),
     );
 

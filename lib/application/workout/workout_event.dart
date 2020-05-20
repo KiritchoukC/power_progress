@@ -26,13 +26,15 @@ class WorkoutMarkDoneEvent extends WorkoutEvent {
   final int exerciseId;
   final int month;
   final WeekEnum week;
+  final int repsDone;
 
   const WorkoutMarkDoneEvent({
     @required this.exerciseId,
     @required this.month,
     @required this.week,
+    this.repsDone,
   });
 
   @override
-  List<Object> get props => [exerciseId, month, week];
+  List<Object> get props => [exerciseId, month, week, repsDone];
 }

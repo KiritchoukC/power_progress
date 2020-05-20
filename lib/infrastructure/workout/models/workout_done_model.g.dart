@@ -20,18 +20,21 @@ class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
       exerciseId: fields[0] as int,
       month: fields[1] as int,
       weekIndex: fields[2] as int,
+      repsDone: fields[3] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, WorkoutDoneModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.exerciseId)
       ..writeByte(1)
       ..write(obj.month)
       ..writeByte(2)
-      ..write(obj.weekIndex);
+      ..write(obj.weekIndex)
+      ..writeByte(3)
+      ..write(obj.repsDone);
   }
 }

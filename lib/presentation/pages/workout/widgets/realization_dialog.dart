@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class RealizationDialog extends StatefulWidget {
+  final Function(int) onValidate;
   final int initialValue;
 
-  const RealizationDialog({Key key, @required this.initialValue}) : super(key: key);
+  const RealizationDialog({Key key, @required this.initialValue, @required this.onValidate})
+      : super(key: key);
 
   @override
   _RealizationDialogState createState() => _RealizationDialogState();
@@ -50,7 +52,8 @@ class _RealizationDialogState extends State<RealizationDialog> {
         ),
         FlatButton(
           onPressed: () {
-            print(_currentValue);
+            widget.onValidate(_currentValue);
+            Navigator.of(context).pop();
           },
           child: const Text('Done'),
         )

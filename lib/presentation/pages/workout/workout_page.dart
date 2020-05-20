@@ -176,8 +176,17 @@ class _WeekSet extends StatelessWidget {
                         if (week == WeekEnum.realization) {
                           showDialog(
                             context: context,
-                            builder: (context) =>
-                                RealizationDialog(initialValue: exerciseSets.last.reps),
+                            builder: (context) => RealizationDialog(
+                              initialValue: exerciseSets.last.reps,
+                              onValidate: (value) => context.bloc<WorkoutBloc>().add(
+                                    WorkoutMarkDoneEvent(
+                                      exerciseId: exerciseId,
+                                      month: month,
+                                      week: week,
+                                      repsDone: value,
+                                    ),
+                                  ),
+                            ),
                           );
                         } else {
                           context.bloc<WorkoutBloc>().add(
