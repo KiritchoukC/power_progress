@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.45.0](https://github.com/KiritchoukC/power_progress/compare/v1.44.0...v1.45.0) (2020-05-21)
+
+
+### Features
+
+* **workout-validate:** add bloc logic for mark workout undone event ([c848c8c](https://github.com/KiritchoukC/power_progress/commit/c848c8c)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.44.0](https://github.com/KiritchoukC/power_progress/compare/v1.43.0...v1.44.0) (2020-05-21)
 
 
