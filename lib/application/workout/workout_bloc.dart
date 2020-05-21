@@ -4,9 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/entities/weeks.dart';
+import 'package:power_progress/domain/workout/usecases/mark_workout_undone.dart';
 
 import '../../core/messages/errors.dart';
+import '../../domain/core/entities/weeks.dart';
 import '../../domain/workout/entities/workout.dart';
 import '../../domain/workout/entities/workout_failure.dart';
 import '../../domain/workout/usecases/generate_workout.dart';
@@ -18,10 +19,12 @@ part 'workout_state.dart';
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final GenerateWorkout generateWorkout;
   final MarkWorkoutDone markWorkoutDone;
+  final MarkWorkoutUndone markWorkoutUndone;
 
   WorkoutBloc({
     @required this.generateWorkout,
     @required this.markWorkoutDone,
+    @required this.markWorkoutUndone,
   });
 
   @override
@@ -36,7 +39,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     }
 
     if (event is WorkoutMarkDoneEvent) {
-      yield* _handleWorkoutDoneEvent(event);
+      yield* _handleWorkoutMarkDoneEvent(event);
+    }
+
+    if (event is WorkoutMarkUndoneEvent) {
+      yield* _handleWorkoutMarkUndoneEvent(event);
     }
   }
 
@@ -65,7 +72,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<WorkoutState> _handleWorkoutDoneEvent(WorkoutMarkDoneEvent event) async* {
+  Stream<WorkoutState> _handleWorkoutMarkDoneEvent(WorkoutMarkDoneEvent event) async* {
     yield WorkoutMarkingDoneState();
 
     final output = await markWorkoutDone(
@@ -83,6 +90,24 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
       yield WorkoutMarkedDoneState();
+    }
+
+    yield* output.fold(onFailure, onSuccess);
+  }
+
+  Stream<WorkoutState> _handleWorkoutMarkUndoneEvent(WorkoutMarkUndoneEvent event) async* {
+    yield WorkoutMarkingUndoneState();
+
+    final output = await markWorkoutUndone(
+      MarkWorkoutUndoneParams(id: event.id),
+    );
+
+    Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
+      yield WorkoutErrorState(message: mapFailureToErrorMessage(failure));
+    }
+
+    Stream<WorkoutState> onSuccess(Unit unit) async* {
+      yield WorkoutMarkedUndoneState();
     }
 
     yield* output.fold(onFailure, onSuccess);

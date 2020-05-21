@@ -29,6 +29,11 @@ class WorkoutMarkingDoneState extends WorkoutState {}
 
 class WorkoutMarkedDoneState extends WorkoutState {}
 
+// Mark Undone
+class WorkoutMarkingUndoneState extends WorkoutState {}
+
+class WorkoutMarkedUndoneState extends WorkoutState {}
+
 // Error
 class WorkoutErrorState extends WorkoutState {
   final String message;

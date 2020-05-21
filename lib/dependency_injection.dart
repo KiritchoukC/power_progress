@@ -109,6 +109,7 @@ void initWorkoutFeature() {
     () => WorkoutBloc(
       generateWorkout: sl<GenerateWorkout>(),
       markWorkoutDone: sl<MarkWorkoutDone>(),
+      markWorkoutUndone: sl<MarkWorkoutUndone>(),
     ),
   );
 
