@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.43.0](https://github.com/KiritchoukC/power_progress/compare/v1.42.0...v1.43.0) (2020-05-21)
+
+
+### Features
+
+* **workout-validate:** add workout remove infrastructure implementation ([9128f20](https://github.com/KiritchoukC/power_progress/commit/9128f20)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.42.0](https://github.com/KiritchoukC/power_progress/compare/v1.41.0...v1.42.0) (2020-05-20)
 
 
