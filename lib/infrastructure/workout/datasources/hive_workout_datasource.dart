@@ -21,16 +21,23 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   }
 
   @override
-  Future<Unit> markDone(int exerciseciseId, int month, WeekEnum week, int repsDone) async {
+  Future<Unit> markDone(int exerciseId, int month, WeekEnum week, int repsDone) async {
+    final model = WorkoutDoneModel(
+      exerciseId: exerciseId,
+      month: month,
+      weekIndex: week.index,
+      repsDone: repsDone,
+    );
+
+    final int addedId = await tryOrCrash(
+      () => localStorage.add(model),
+      (_) => throw Exception(),
+    );
+
+    model.id = addedId;
+
     await tryOrCrash(
-      () => localStorage.add(
-        WorkoutDoneModel(
-          exerciseId: exerciseciseId,
-          month: month,
-          weekIndex: week.index,
-          repsDone: repsDone,
-        ),
-      ),
+      () => localStorage.put(addedId, model),
       (_) => throw Exception(),
     );
 
@@ -38,9 +45,9 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   }
 
   @override
-  Future<Unit> remove(int exerciseId) async {
+  Future<Unit> remove(int id) async {
     await tryOrCrash(
-      () => localStorage.deleteAll([exerciseId]),
+      () => localStorage.delete(id),
       (_) => throw Exception(),
     );
 

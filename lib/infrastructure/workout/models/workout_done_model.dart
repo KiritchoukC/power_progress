@@ -9,12 +9,14 @@ part 'workout_done_model.g.dart';
 @HiveType(typeId: 1)
 class WorkoutDoneModel {
   @HiveField(0)
-  int exerciseId;
+  int id;
   @HiveField(1)
-  int month;
+  int exerciseId;
   @HiveField(2)
-  int weekIndex;
+  int month;
   @HiveField(3)
+  int weekIndex;
+  @HiveField(4)
   int repsDone;
 
   WorkoutDoneModel({
@@ -26,6 +28,7 @@ class WorkoutDoneModel {
 
   static WorkoutDone toEntity(WorkoutDoneModel model) {
     return WorkoutDone(
+      id: model.id,
       month: model.month,
       week: WeekEnum.values[model.weekIndex],
       repsDone: model.repsDone,
