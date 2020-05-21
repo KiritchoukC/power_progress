@@ -15,6 +15,7 @@ import 'domain/onboarding/usecases/is_done_onboarding.dart';
 import 'domain/workout/repositories/i_workout_repository.dart';
 import 'domain/workout/usecases/generate_workout.dart';
 import 'domain/workout/usecases/mark_workout_done.dart';
+import 'domain/workout/usecases/mark_workout_undone.dart';
 import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'infrastructure/exercise/models/exercise_model.dart';
@@ -115,6 +116,7 @@ void initWorkoutFeature() {
   sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutDone(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
+  sl.registerLazySingleton(() => MarkWorkoutUndone(repository: sl<IWorkoutRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IWorkoutRepository>(
