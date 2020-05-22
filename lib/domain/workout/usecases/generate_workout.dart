@@ -68,7 +68,7 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
                 workoutDoneId: workoutDone?.id,
               );
             default:
-              throw Error();
+              throw const UnexpectedError();
           }
         }
 
