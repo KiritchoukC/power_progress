@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.46.0](https://github.com/KiritchoukC/power_progress/compare/v1.45.0...v1.46.0) (2020-05-22)
+
+
+### Features
+
+* **workout-validate:** add mark undone feature ([2c7c79b](https://github.com/KiritchoukC/power_progress/commit/2c7c79b)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.45.0](https://github.com/KiritchoukC/power_progress/compare/v1.44.0...v1.45.0) (2020-05-21)
 
 
