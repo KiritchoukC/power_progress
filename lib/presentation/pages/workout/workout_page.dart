@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
+import 'package:power_progress/domain/workout/entities/deload_workout.dart';
+import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
+import 'package:power_progress/domain/workout/entities/realization_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/workout/workout_bloc.dart';
@@ -7,6 +12,7 @@ import '../../../core/util/spacing.dart';
 import '../../../domain/core/entities/weeks.dart';
 import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/workout/entities/exercise_set.dart';
+import '../../../domain/workout/entities/month_workout.dart';
 import '../../../domain/workout/entities/workout.dart';
 import '../../../theme/pp_light_theme.dart';
 import '../../widgets/centered_loading.dart';
@@ -46,7 +52,7 @@ class WorkoutPage extends StatelessWidget {
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
-            if (state is WorkoutMarkedDoneState) {
+            if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
                       exerciseId: exercise.id,
@@ -69,7 +75,7 @@ class WorkoutPage extends StatelessWidget {
 
             if (state is WorkoutGeneratedState) {
               return _Body(
-                workout: state.workout,
+                monthWorkout: state.workout,
                 exerciseId: exercise.id,
                 month: state.month,
               );
@@ -84,13 +90,13 @@ class WorkoutPage extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  final Workout workout;
+  final MonthWorkout monthWorkout;
   final int exerciseId;
   final int month;
 
   const _Body({
     Key key,
-    @required this.workout,
+    @required this.monthWorkout,
     @required this.exerciseId,
     @required this.month,
   }) : super(key: key);
@@ -100,32 +106,24 @@ class _Body extends StatelessWidget {
     return ListView(
       children: [
         _WeekSet(
-          exerciseSets: workout.accumulationWorkout.exerciseSets,
-          isDone: workout.accumulationWorkout.isDone,
-          week: WeekEnum.accumulation,
+          workout: monthWorkout.accumulationWorkout,
+          exerciseSets: monthWorkout.accumulationWorkout.exerciseSets,
           exerciseId: exerciseId,
-          month: month,
         ),
         _WeekSet(
-          exerciseSets: workout.intensificationWorkout.exerciseSets,
-          isDone: workout.intensificationWorkout.isDone,
-          week: WeekEnum.intensification,
+          workout: monthWorkout.intensificationWorkout,
+          exerciseSets: monthWorkout.intensificationWorkout.exerciseSets,
           exerciseId: exerciseId,
-          month: month,
         ),
         _WeekSet(
-          exerciseSets: workout.realizationWorkout.exerciseSets,
-          isDone: workout.realizationWorkout.isDone,
-          week: WeekEnum.realization,
+          workout: monthWorkout.realizationWorkout,
+          exerciseSets: monthWorkout.realizationWorkout.exerciseSets,
           exerciseId: exerciseId,
-          month: month,
         ),
         _WeekSet(
-          exerciseSets: workout.deloadWorkout.exerciseSets,
-          isDone: workout.deloadWorkout.isDone,
-          week: WeekEnum.deload,
+          workout: monthWorkout.deloadWorkout,
+          exerciseSets: monthWorkout.deloadWorkout.exerciseSets,
           exerciseId: exerciseId,
-          month: month,
         ),
       ],
     );
@@ -133,20 +131,25 @@ class _Body extends StatelessWidget {
 }
 
 class _WeekSet extends StatelessWidget {
+  final Workout workout;
   final List<ExerciseSet> exerciseSets;
-  final bool isDone;
-  final WeekEnum week;
   final int exerciseId;
-  final int month;
 
   const _WeekSet({
     Key key,
+    @required this.workout,
     @required this.exerciseSets,
-    @required this.isDone,
-    @required this.week,
     @required this.exerciseId,
-    @required this.month,
   }) : super(key: key);
+
+  WeekEnum get week {
+    if (workout is AccumulationWorkout) return WeekEnum.accumulation;
+    if (workout is IntensificationWorkout) return WeekEnum.intensification;
+    if (workout is RealizationWorkout) return WeekEnum.realization;
+    if (workout is DeloadWorkout) return WeekEnum.deload;
+
+    throw const UnexpectedError();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -163,9 +166,13 @@ class _WeekSet extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline6,
               ),
-              isDone
+              workout.isDone
                   ? IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context
+                            .bloc<WorkoutBloc>()
+                            .add(WorkoutMarkUndoneEvent(id: workout.workoutDoneId));
+                      },
                       icon: const Icon(
                         Icons.check_circle,
                         color: PPTheme.success,
@@ -181,7 +188,7 @@ class _WeekSet extends StatelessWidget {
                               onValidate: (value) => context.bloc<WorkoutBloc>().add(
                                     WorkoutMarkDoneEvent(
                                       exerciseId: exerciseId,
-                                      month: month,
+                                      month: workout.month,
                                       week: week,
                                       repsDone: value,
                                     ),
@@ -192,7 +199,7 @@ class _WeekSet extends StatelessWidget {
                           context.bloc<WorkoutBloc>().add(
                                 WorkoutMarkDoneEvent(
                                   exerciseId: exerciseId,
-                                  month: month,
+                                  month: workout.month,
                                   week: week,
                                 ),
                               );

@@ -3,39 +3,25 @@ import 'package:flutter/foundation.dart';
 import 'amrap_exercise_set.dart';
 import 'exercise_set.dart';
 import 'value_objects/weight.dart';
+import 'workout.dart';
 import 'workout_failure.dart';
 
-class RealizationWorkout {
-  final int month;
-  final double oneRm;
-  final List<ExerciseSet> exerciseSets;
-  final bool isDone;
+class RealizationWorkout extends Workout {
   final int repsDone;
 
-  factory RealizationWorkout({
+  RealizationWorkout({
     @required int month,
     @required double oneRm,
     @required bool isDone,
-    @required int repsDone,
-  }) {
-    assert(month != null);
-    assert(oneRm != null);
-    return RealizationWorkout._(
-      month: month,
-      oneRm: oneRm,
-      exerciseSets: _getExerciseSets(month, oneRm, isDone, repsDone),
-      isDone: isDone,
-      repsDone: repsDone,
-    );
-  }
-
-  const RealizationWorkout._({
-    @required this.month,
-    @required this.oneRm,
-    @required this.exerciseSets,
-    @required this.isDone,
     @required this.repsDone,
-  });
+    @required int workoutDoneId,
+  }) : super(
+          month: month,
+          oneRm: oneRm,
+          isDone: isDone,
+          exerciseSets: _getExerciseSets(month, oneRm, isDone, repsDone),
+          workoutDoneId: workoutDoneId,
+        );
 }
 
 List<ExerciseSet> _getExerciseSets(int month, double oneRm, bool isDone, int repsDone) {

@@ -12,7 +12,7 @@ class WorkoutInitialState extends WorkoutState {}
 class WorkoutGeneratingState extends WorkoutState {}
 
 class WorkoutGeneratedState extends WorkoutState {
-  final Workout workout;
+  final MonthWorkout workout;
   final int month;
 
   const WorkoutGeneratedState({
@@ -21,7 +21,10 @@ class WorkoutGeneratedState extends WorkoutState {
   });
 
   @override
-  List<Object> get props => [workout, month];
+  List<Object> get props => [
+        workout,
+        month,
+      ];
 }
 
 // Mark Done

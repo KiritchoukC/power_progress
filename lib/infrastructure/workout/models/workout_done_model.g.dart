@@ -17,24 +17,26 @@ class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WorkoutDoneModel(
-      exerciseId: fields[0] as int,
-      month: fields[1] as int,
-      weekIndex: fields[2] as int,
-      repsDone: fields[3] as int,
-    );
+      exerciseId: fields[1] as int,
+      month: fields[2] as int,
+      weekIndex: fields[3] as int,
+      repsDone: fields[4] as int,
+    )..id = fields[0] as int;
   }
 
   @override
   void write(BinaryWriter writer, WorkoutDoneModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.exerciseId)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.month)
+      ..write(obj.exerciseId)
       ..writeByte(2)
-      ..write(obj.weekIndex)
+      ..write(obj.month)
       ..writeByte(3)
+      ..write(obj.weekIndex)
+      ..writeByte(4)
       ..write(obj.repsDone);
   }
 }
