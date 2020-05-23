@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.46.4](https://github.com/KiritchoukC/power_progress/compare/v1.46.3...v1.46.4) (2020-05-23)
+
+
+### Bug Fixes
+
+* **workout:** fix workout being the same for every exercise ([e5d8f36](https://github.com/KiritchoukC/power_progress/commit/e5d8f36)), closes [#63](https://github.com/KiritchoukC/power_progress/issues/63)
+
 ### [1.46.3](https://github.com/KiritchoukC/power_progress/compare/v1.46.2...v1.46.3) (2020-05-23)
 
 ### [1.46.2](https://github.com/KiritchoukC/power_progress/compare/v1.46.1...v1.46.2) (2020-05-22)
