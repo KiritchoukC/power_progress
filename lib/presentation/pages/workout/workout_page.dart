@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/presentation/router/router.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/workout/workout_bloc.dart';
@@ -16,10 +17,27 @@ class WorkoutPageArguments {
   WorkoutPageArguments({@required this.exercise});
 }
 
-class WorkoutPage extends StatelessWidget {
+class WorkoutPage extends StatefulWidget {
   final Exercise exercise;
 
   const WorkoutPage({Key key, @required this.exercise}) : super(key: key);
+
+  @override
+  _WorkoutPageState createState() => _WorkoutPageState();
+}
+
+class _WorkoutPageState extends State<WorkoutPage> {
+  @override
+  void initState() {
+    context.bloc<WorkoutBloc>().add(
+          WorkoutGenerateEvent(
+            exerciseId: widget.exercise.id,
+            month: widget.exercise.month.getOrCrash(),
+            oneRm: widget.exercise.oneRm.getOrCrash(),
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +49,11 @@ class WorkoutPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: PPAppBar(
-          titleLabel: exercise.name.getOrCrash(),
+          titleLabel: widget.exercise.name.getOrCrash(),
           actions: [
             RemoveButton(
               onPressed: () {
-                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [exercise.id]));
+                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [widget.exercise.id]));
               },
             )
           ],
@@ -45,28 +63,28 @@ class WorkoutPage extends StatelessWidget {
             if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
-                      exerciseId: exercise.id,
-                      month: exercise.month.getOrCrash(),
-                      oneRm: exercise.oneRm.getOrCrash(),
+                      exerciseId: widget.exercise.id,
+                      month: widget.exercise.month.getOrCrash(),
+                      oneRm: widget.exercise.oneRm.getOrCrash(),
                     ),
                   );
             }
           },
           builder: (context, state) {
-            if (state is WorkoutInitialState) {
-              context.bloc<WorkoutBloc>().add(
-                    WorkoutGenerateEvent(
-                      exerciseId: exercise.id,
-                      month: exercise.month.getOrCrash(),
-                      oneRm: exercise.oneRm.getOrCrash(),
-                    ),
-                  );
-            }
+            // if (state is WorkoutInitialState) {
+            //   context.bloc<WorkoutBloc>().add(
+            //         WorkoutGenerateEvent(
+            //           exerciseId: widget.exercise.id,
+            //           month: widget.exercise.month.getOrCrash(),
+            //           oneRm: widget.exercise.oneRm.getOrCrash(),
+            //         ),
+            //       );
+            // }
 
             if (state is WorkoutGeneratedState) {
               return _Body(
                 monthWorkout: state.workout,
-                exerciseId: exercise.id,
+                exerciseId: widget.exercise.id,
                 month: state.month,
               );
             }

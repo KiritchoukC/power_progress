@@ -29,6 +29,7 @@ class WorkoutDoneModel {
   static WorkoutDone toEntity(WorkoutDoneModel model) {
     return WorkoutDone(
       id: model.id,
+      exerciseId: model.exerciseId,
       month: model.month,
       week: WeekEnum.values[model.weekIndex],
       repsDone: model.repsDone,

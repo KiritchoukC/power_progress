@@ -26,16 +26,16 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
     return workoutsDoneEither.fold(
       (l) => left(l),
       (workoutsDone) {
-        WorkoutDone getWorkoutDone(int month, WeekEnum week) {
+        WorkoutDone getWorkoutDone(int exerciseId, int month, WeekEnum week) {
           if (workoutsDone.isEmpty) return null;
           return workoutsDone.firstWhere(
-            (x) => x.month == month && x.week == week,
+            (x) => x.month == month && x.week == week && x.exerciseId == exerciseId,
             orElse: () => null,
           );
         }
 
         Workout _getWorkout(WeekEnum week) {
-          final workoutDone = getWorkoutDone(params.month, week);
+          final workoutDone = getWorkoutDone(params.exerciseId, params.month, week);
 
           switch (week) {
             case WeekEnum.accumulation:
