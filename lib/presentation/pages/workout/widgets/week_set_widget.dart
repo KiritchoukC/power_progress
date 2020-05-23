@@ -121,6 +121,38 @@ class CheckButton extends StatelessWidget {
   final int exerciseId;
   final int realizationReps;
 
+  void _handleWeekValidation(BuildContext context) {
+    if (week == WeekEnum.realization) {
+      _handleRealizationWeekValidation(context);
+      return;
+    }
+
+    context.bloc<WorkoutBloc>().add(
+          WorkoutMarkDoneEvent(
+            exerciseId: exerciseId,
+            month: month,
+            week: week,
+          ),
+        );
+  }
+
+  void _handleRealizationWeekValidation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => RealizationDialog(
+        initialValue: realizationReps,
+        onValidate: (value) => context.bloc<WorkoutBloc>().add(
+              WorkoutMarkDoneEvent(
+                exerciseId: exerciseId,
+                month: month,
+                week: week,
+                repsDone: value,
+              ),
+            ),
+      ),
+    );
+  }
+
   const CheckButton({
     Key key,
     @required this.week,
@@ -131,32 +163,7 @@ class CheckButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        if (week == WeekEnum.realization) {
-          showDialog(
-            context: context,
-            builder: (context) => RealizationDialog(
-              initialValue: realizationReps,
-              onValidate: (value) => context.bloc<WorkoutBloc>().add(
-                    WorkoutMarkDoneEvent(
-                      exerciseId: exerciseId,
-                      month: month,
-                      week: week,
-                      repsDone: value,
-                    ),
-                  ),
-            ),
-          );
-        } else {
-          context.bloc<WorkoutBloc>().add(
-                WorkoutMarkDoneEvent(
-                  exerciseId: exerciseId,
-                  month: month,
-                  week: week,
-                ),
-              );
-        }
-      },
+      onPressed: () => _handleWeekValidation(context),
       icon: Icon(
         Icons.check_circle_outline,
         color: Colors.black.withAlpha(50),
