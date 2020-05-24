@@ -4,13 +4,13 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
 
 import '../../core/messages/errors.dart';
 import '../../core/usecases/usecase.dart';
+import '../../domain/exercise/entities/exercise.dart';
 import '../../domain/exercise/entities/exercise_failure.dart';
 import '../../domain/exercise/usecases/add_exercise.dart';
-import '../../domain/exercise/usecases/get_exercises.dart';
+import '../../domain/exercise/usecases/fetch_exercises.dart';
 import '../../domain/exercise/usecases/remove_exercises.dart';
 
 part 'exercise_event.dart';

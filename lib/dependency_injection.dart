@@ -6,7 +6,7 @@ import 'application/onboarding/onboarding_bloc.dart';
 import 'application/workout/workout_bloc.dart';
 import 'domain/exercise/repositories/i_exercise_repository.dart';
 import 'domain/exercise/usecases/add_exercise.dart';
-import 'domain/exercise/usecases/get_exercises.dart';
+import 'domain/exercise/usecases/fetch_exercises.dart';
 import 'domain/exercise/usecases/remove_exercises.dart';
 import 'domain/exercise/usecases/update_exercise_next_week.dart';
 import 'domain/onboarding/repositories/i_onboarding_repository.dart';
