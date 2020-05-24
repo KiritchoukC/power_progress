@@ -19,4 +19,14 @@ extension WeeksX on WeekEnum {
 
     return WeekEnum.values[nextIndex];
   }
+
+  WeekEnum previous() {
+    final previousIndex = index - 1;
+
+    if (previousIndex == -1) {
+      return WeekEnum.accumulation;
+    }
+
+    return WeekEnum.values[previousIndex];
+  }
 }

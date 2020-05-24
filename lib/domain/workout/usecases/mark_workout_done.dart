@@ -4,17 +4,17 @@ import 'package:flutter/foundation.dart';
 
 import '../../../core/usecases/usecase.dart';
 import '../../core/entities/week_enum.dart';
-import '../../exercise/usecases/update_exercise_week.dart';
+import '../../exercise/usecases/update_exercise_next_week.dart';
 import '../entities/workout_failure.dart';
 import '../repositories/i_workout_repository.dart';
 
 class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDoneParams> {
   final IWorkoutRepository repository;
-  final UpdateExerciseWeek updateExerciseWeek;
+  final UpdateExerciseWeek updateExerciseNextWeek;
 
   MarkWorkoutDone({
     @required this.repository,
-    @required this.updateExerciseWeek,
+    @required this.updateExerciseNextWeek,
   });
 
   @override
@@ -22,10 +22,10 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
     final result =
         repository.markDone(params.exerciseId, params.month, params.week, params.repsDone);
 
-    await updateExerciseWeek(
-      UpdateExerciseWeekParams(
+    await updateExerciseNextWeek(
+      UpdateExerciseNextWeekParams(
         exerciseId: params.exerciseId,
-        week: params.week,
+        week: params.week.next(),
       ),
     );
 

@@ -87,7 +87,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.parse(_incrementationController.value.text),
         month: Month(1),
-        week: Week(WeekEnum.accumulation),
+        nextWeek: Week(WeekEnum.accumulation),
       );
 
   @override

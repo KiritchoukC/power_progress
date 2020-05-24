@@ -13,7 +13,7 @@ class Exercise {
   final ExerciseName name;
   final Incrementation incrementation;
   final Month month;
-  final Week week;
+  final Week nextWeek;
   final Note note;
 
   Exercise({
@@ -22,7 +22,7 @@ class Exercise {
     @required this.name,
     @required this.incrementation,
     @required this.month,
-    @required this.week,
+    @required this.nextWeek,
     this.note,
   });
 }

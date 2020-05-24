@@ -26,7 +26,7 @@ class ExerciseModel {
   @HiveField(5)
   int month;
   @HiveField(6)
-  int weekIndex;
+  int nextWeekIndex;
 
   ExerciseModel({
     @required this.id,
@@ -34,7 +34,7 @@ class ExerciseModel {
     @required this.name,
     @required this.incrementation,
     @required this.month,
-    @required this.weekIndex,
+    @required this.nextWeekIndex,
     @required this.note,
   });
 
@@ -45,7 +45,7 @@ class ExerciseModel {
       name: exercise.name.getOrCrash(),
       incrementation: exercise.incrementation.getOrCrash(),
       month: exercise.month.getOrCrash(),
-      weekIndex: exercise.week.getOrCrash().index,
+      nextWeekIndex: exercise.nextWeek.getOrCrash().index,
       note: exercise.note?.getOrCrash(),
     );
   }
@@ -57,7 +57,7 @@ class ExerciseModel {
       name: ExerciseName(model.name),
       incrementation: Incrementation(model.incrementation),
       month: Month(model.month ?? 1),
-      week: Week.parse(model.weekIndex ?? 0),
+      nextWeek: Week.parse(model.nextWeekIndex ?? 0),
       note: Note(model.note),
     );
   }

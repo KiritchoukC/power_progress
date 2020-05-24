@@ -1,7 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/domain/exercise/usecases/update_exercise_week.dart';
-import 'package:power_progress/domain/workout/usecases/remove_workout_done.dart';
 
 import 'application/exercise/exercise_bloc.dart';
 import 'application/onboarding/onboarding_bloc.dart';
@@ -10,6 +8,7 @@ import 'domain/exercise/repositories/i_exercise_repository.dart';
 import 'domain/exercise/usecases/add_exercise.dart';
 import 'domain/exercise/usecases/get_exercises.dart';
 import 'domain/exercise/usecases/remove_exercises.dart';
+import 'domain/exercise/usecases/update_exercise_next_week.dart';
 import 'domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'domain/onboarding/usecases/done_onboarding.dart';
 import 'domain/onboarding/usecases/is_done_onboarding.dart';
@@ -17,6 +16,7 @@ import 'domain/workout/repositories/i_workout_repository.dart';
 import 'domain/workout/usecases/generate_workout.dart';
 import 'domain/workout/usecases/mark_workout_done.dart';
 import 'domain/workout/usecases/mark_workout_undone.dart';
+import 'domain/workout/usecases/remove_workout_done.dart';
 import 'infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'infrastructure/exercise/models/exercise_model.dart';
@@ -118,9 +118,14 @@ void initWorkoutFeature() {
   // Usecases
   sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutDone(
-      repository: sl<IWorkoutRepository>(), updateExerciseWeek: sl<UpdateExerciseWeek>()));
+        repository: sl<IWorkoutRepository>(),
+        updateExerciseNextWeek: sl<UpdateExerciseWeek>(),
+      ));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
-  sl.registerLazySingleton(() => MarkWorkoutUndone(repository: sl<IWorkoutRepository>()));
+  sl.registerLazySingleton(() => MarkWorkoutUndone(
+        repository: sl<IWorkoutRepository>(),
+        updateExerciseNextWeek: sl<UpdateExerciseWeek>(),
+      ));
 
   // Repositories
   sl.registerLazySingleton<IWorkoutRepository>(

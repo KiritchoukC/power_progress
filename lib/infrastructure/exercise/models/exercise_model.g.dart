@@ -22,7 +22,7 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
       name: fields[2] as String,
       incrementation: fields[3] as double,
       month: fields[5] as int,
-      weekIndex: fields[6] as int,
+      nextWeekIndex: fields[6] as int,
       note: fields[4] as String,
     );
   }
@@ -44,6 +44,6 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
       ..writeByte(5)
       ..write(obj.month)
       ..writeByte(6)
-      ..write(obj.weekIndex);
+      ..write(obj.nextWeekIndex);
   }
 }

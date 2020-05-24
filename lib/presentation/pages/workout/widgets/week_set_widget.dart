@@ -48,7 +48,11 @@ class WeekSetWidget extends StatelessWidget {
               const DummyIcon(),
               WeekTitle(week: week),
               if (workout.isDone)
-                UncheckButton(workoutDoneId: workout.workoutDoneId)
+                UncheckButton(
+                  workoutDoneId: workout.workoutDoneId,
+                  exerciseId: exerciseId,
+                  week: week,
+                )
               else
                 CheckButton(
                   exerciseId: exerciseId,
@@ -98,14 +102,27 @@ class WeekTitle extends StatelessWidget {
 
 class UncheckButton extends StatelessWidget {
   final int workoutDoneId;
+  final int exerciseId;
+  final WeekEnum week;
 
-  const UncheckButton({Key key, @required this.workoutDoneId}) : super(key: key);
+  const UncheckButton({
+    Key key,
+    @required this.workoutDoneId,
+    @required this.exerciseId,
+    @required this.week,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        context.bloc<WorkoutBloc>().add(WorkoutMarkUndoneEvent(id: workoutDoneId));
+        context.bloc<WorkoutBloc>().add(
+              WorkoutMarkUndoneEvent(
+                id: workoutDoneId,
+                exerciseId: exerciseId,
+                week: week,
+              ),
+            );
       },
       icon: const Icon(
         Icons.check_circle,
