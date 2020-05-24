@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 class _$WorkoutFailureTearOff {
   const _$WorkoutFailureTearOff();
 
+  StorageError storageError() {
+    return const StorageError();
+  }
+
   UnexpectedError unexpectedError() {
     return const UnexpectedError();
   }
@@ -20,7 +24,30 @@ class _$WorkoutFailureTearOff {
 // ignore: unused_element
 const $WorkoutFailure = _$WorkoutFailureTearOff();
 
-mixin _$WorkoutFailure {}
+mixin _$WorkoutFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result storageError(),
+    @required Result unexpectedError(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result storageError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  });
+}
 
 abstract class $WorkoutFailureCopyWith<$Res> {
   factory $WorkoutFailureCopyWith(
@@ -35,6 +62,100 @@ class _$WorkoutFailureCopyWithImpl<$Res>
   final WorkoutFailure _value;
   // ignore: unused_field
   final $Res Function(WorkoutFailure) _then;
+}
+
+abstract class $StorageErrorCopyWith<$Res> {
+  factory $StorageErrorCopyWith(
+          StorageError value, $Res Function(StorageError) then) =
+      _$StorageErrorCopyWithImpl<$Res>;
+}
+
+class _$StorageErrorCopyWithImpl<$Res>
+    extends _$WorkoutFailureCopyWithImpl<$Res>
+    implements $StorageErrorCopyWith<$Res> {
+  _$StorageErrorCopyWithImpl(
+      StorageError _value, $Res Function(StorageError) _then)
+      : super(_value, (v) => _then(v as StorageError));
+
+  @override
+  StorageError get _value => super._value as StorageError;
+}
+
+class _$StorageError with DiagnosticableTreeMixin implements StorageError {
+  const _$StorageError();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutFailure.storageError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutFailure.storageError'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is StorageError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result storageError(),
+    @required Result unexpectedError(),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    return storageError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result storageError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (storageError != null) {
+      return storageError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    return storageError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (storageError != null) {
+      return storageError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StorageError implements WorkoutFailure {
+  const factory StorageError() = _$StorageError;
 }
 
 abstract class $UnexpectedErrorCopyWith<$Res> {
@@ -78,6 +199,56 @@ class _$UnexpectedError
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result storageError(),
+    @required Result unexpectedError(),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    return unexpectedError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result storageError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    return unexpectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class UnexpectedError implements WorkoutFailure {

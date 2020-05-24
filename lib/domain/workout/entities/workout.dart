@@ -1,23 +1,20 @@
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
-import 'package:power_progress/domain/workout/entities/deload_workout.dart';
-import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
-import 'package:power_progress/domain/workout/entities/realization_workout.dart';
 
-class Workout {
+import 'exercise_set.dart';
+
+abstract class Workout {
   final int month;
   final double oneRm;
-  final AccumulationWorkout accumulationWorkout;
-  final IntensificationWorkout intensificationWorkout;
-  final RealizationWorkout realizationWorkout;
-  final DeloadWorkout deloadWorkout;
+  final List<ExerciseSet> exerciseSets;
+  final bool isDone;
+  final int workoutDoneId;
 
   Workout({
     @required this.month,
     @required this.oneRm,
-    @required this.accumulationWorkout,
-    @required this.intensificationWorkout,
-    @required this.realizationWorkout,
-    @required this.deloadWorkout,
-  });
+    @required this.isDone,
+    @required this.exerciseSets,
+    @required this.workoutDoneId,
+  })  : assert(month != null),
+        assert(oneRm != null);
 }

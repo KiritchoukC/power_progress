@@ -2,34 +2,22 @@ import 'package:flutter/foundation.dart';
 
 import 'exercise_set.dart';
 import 'value_objects/weight.dart';
+import 'workout.dart';
 import 'workout_failure.dart';
 
-class IntensificationWorkout {
-  final int month;
-  final double oneRm;
-  final List<ExerciseSet> exerciseSets;
-  final bool isDone;
-
-  factory IntensificationWorkout({
+class IntensificationWorkout extends Workout {
+  IntensificationWorkout({
     @required int month,
     @required double oneRm,
-  }) {
-    assert(month != null);
-    assert(oneRm != null);
-    return IntensificationWorkout._(
-      month: month,
-      oneRm: oneRm,
-      exerciseSets: _getExerciseSets(month, oneRm),
-      isDone: false,
-    );
-  }
-
-  const IntensificationWorkout._({
-    @required this.month,
-    @required this.oneRm,
-    @required this.exerciseSets,
-    @required this.isDone,
-  });
+    @required bool isDone,
+    @required int workoutDoneId,
+  }) : super(
+          month: month,
+          oneRm: oneRm,
+          isDone: isDone,
+          exerciseSets: _getExerciseSets(month, oneRm),
+          workoutDoneId: workoutDoneId,
+        );
 }
 
 List<ExerciseSet> _getExerciseSets(int month, double oneRm) {

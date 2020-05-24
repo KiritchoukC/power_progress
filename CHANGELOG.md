@@ -2,6 +2,140 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.51.0](https://github.com/KiritchoukC/power_progress/compare/v1.50.1...v1.51.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercises month when (in)validating a week ([5042c2b](https://github.com/KiritchoukC/power_progress/commit/5042c2b)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+### [1.50.1](https://github.com/KiritchoukC/power_progress/compare/v1.50.0...v1.50.1) (2020-05-24)
+
+## [1.50.0](https://github.com/KiritchoukC/power_progress/compare/v1.49.0...v1.50.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercise week when invalidating a workout week ([65d1b3f](https://github.com/KiritchoukC/power_progress/commit/65d1b3f)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+## [1.49.0](https://github.com/KiritchoukC/power_progress/compare/v1.48.0...v1.49.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** show the next week name on exercise card ([b65fcdf](https://github.com/KiritchoukC/power_progress/commit/b65fcdf)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+## [1.48.0](https://github.com/KiritchoukC/power_progress/compare/v1.47.0...v1.48.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercise cards when (in)validating a week ([3c9244e](https://github.com/KiritchoukC/power_progress/commit/3c9244e)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+## [1.47.0](https://github.com/KiritchoukC/power_progress/compare/v1.46.4...v1.47.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update week of the exercise when workout week has been validated ([504cadb](https://github.com/KiritchoukC/power_progress/commit/504cadb)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
+### [1.46.4](https://github.com/KiritchoukC/power_progress/compare/v1.46.3...v1.46.4) (2020-05-23)
+
+
+### Bug Fixes
+
+* **workout:** fix workout being the same for every exercise ([e5d8f36](https://github.com/KiritchoukC/power_progress/commit/e5d8f36)), closes [#63](https://github.com/KiritchoukC/power_progress/issues/63)
+
+### [1.46.3](https://github.com/KiritchoukC/power_progress/compare/v1.46.2...v1.46.3) (2020-05-23)
+
+### [1.46.2](https://github.com/KiritchoukC/power_progress/compare/v1.46.1...v1.46.2) (2020-05-22)
+
+### [1.46.1](https://github.com/KiritchoukC/power_progress/compare/v1.46.0...v1.46.1) (2020-05-22)
+
+## [1.46.0](https://github.com/KiritchoukC/power_progress/compare/v1.45.0...v1.46.0) (2020-05-22)
+
+
+### Features
+
+* **workout-validate:** add mark undone feature ([2c7c79b](https://github.com/KiritchoukC/power_progress/commit/2c7c79b)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.45.0](https://github.com/KiritchoukC/power_progress/compare/v1.44.0...v1.45.0) (2020-05-21)
+
+
+### Features
+
+* **workout-validate:** add bloc logic for mark workout undone event ([c848c8c](https://github.com/KiritchoukC/power_progress/commit/c848c8c)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.44.0](https://github.com/KiritchoukC/power_progress/compare/v1.43.0...v1.44.0) (2020-05-21)
+
+
+### Features
+
+* **workout-validate:** add mark workout undone use case ([636462d](https://github.com/KiritchoukC/power_progress/commit/636462d)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.43.0](https://github.com/KiritchoukC/power_progress/compare/v1.42.0...v1.43.0) (2020-05-21)
+
+
+### Features
+
+* **workout-validate:** add workout remove infrastructure implementation ([9128f20](https://github.com/KiritchoukC/power_progress/commit/9128f20)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.42.0](https://github.com/KiritchoukC/power_progress/compare/v1.41.0...v1.42.0) (2020-05-20)
+
+
+### Features
+
+* **workout-validate:** add realization dialog ([e152b2e](https://github.com/KiritchoukC/power_progress/commit/e152b2e)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+* **workout-validate:** persit reps done and show reps done on ui ([6b3650e](https://github.com/KiritchoukC/power_progress/commit/6b3650e)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.41.0](https://github.com/KiritchoukC/power_progress/compare/v1.40.0...v1.41.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add ui implementation and various fixes ([a4861f1](https://github.com/KiritchoukC/power_progress/commit/a4861f1)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+* **workout-validate:** remove workout done mappings when the associated exercise get removed ([aadba6c](https://github.com/KiritchoukC/power_progress/commit/aadba6c)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.40.0](https://github.com/KiritchoukC/power_progress/compare/v1.39.0...v1.40.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add bloc implementation to validate a workout ([1545559](https://github.com/KiritchoukC/power_progress/commit/1545559)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.39.0](https://github.com/KiritchoukC/power_progress/compare/v1.38.0...v1.39.0) (2020-05-19)
+
+
+### Bug Fixes
+
+* **workout-validate:** add missing arguments ([d9a2be8](https://github.com/KiritchoukC/power_progress/commit/d9a2be8)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+
+### Features
+
+* **workout-validate:** when generating a workout check weeks that are done ([eaf5fa9](https://github.com/KiritchoukC/power_progress/commit/eaf5fa9)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.38.0](https://github.com/KiritchoukC/power_progress/compare/v1.37.0...v1.38.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add mark workout done usecase ([edfe434](https://github.com/KiritchoukC/power_progress/commit/edfe434)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.37.0](https://github.com/KiritchoukC/power_progress/compare/v1.36.0...v1.37.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add repository immplementation ([3cd81ed](https://github.com/KiritchoukC/power_progress/commit/3cd81ed)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
+## [1.36.0](https://github.com/KiritchoukC/power_progress/compare/v1.35.0...v1.36.0) (2020-05-19)
+
+
+### Features
+
+* **workout-validate:** add datasource implementation ([b1466c8](https://github.com/KiritchoukC/power_progress/commit/b1466c8)), closes [#58](https://github.com/KiritchoukC/power_progress/issues/58)
+
 ## [1.35.0](https://github.com/KiritchoukC/power_progress/compare/v1.34.0...v1.35.0) (2020-05-17)
 
 

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/presentation/router/router.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/workout/workout_bloc.dart';
-import '../../../core/util/spacing.dart';
-import '../../../domain/core/entities/weeks.dart';
 import '../../../domain/exercise/entities/exercise.dart';
-import '../../../domain/workout/entities/exercise_set.dart';
-import '../../../domain/workout/entities/workout.dart';
-import '../../../theme/pp_light_theme.dart';
+import '../../../domain/workout/entities/month_workout.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
 import '../../widgets/remove_button.dart';
+import 'widgets/week_set_widget.dart';
 
 class WorkoutPageArguments {
   final Exercise exercise;
@@ -19,10 +17,27 @@ class WorkoutPageArguments {
   WorkoutPageArguments({@required this.exercise});
 }
 
-class WorkoutPage extends StatelessWidget {
+class WorkoutPage extends StatefulWidget {
   final Exercise exercise;
 
   const WorkoutPage({Key key, @required this.exercise}) : super(key: key);
+
+  @override
+  _WorkoutPageState createState() => _WorkoutPageState();
+}
+
+class _WorkoutPageState extends State<WorkoutPage> {
+  @override
+  void initState() {
+    context.bloc<WorkoutBloc>().add(
+          WorkoutGenerateEvent(
+            exerciseId: widget.exercise.id,
+            month: widget.exercise.month.getOrCrash(),
+            oneRm: widget.exercise.oneRm.getOrCrash(),
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +49,44 @@ class WorkoutPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: PPAppBar(
-          titleLabel: exercise.name.getOrCrash(),
+          titleLabel: widget.exercise.name.getOrCrash(),
           actions: [
             RemoveButton(
               onPressed: () {
-                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [exercise.id]));
+                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [widget.exercise.id]));
               },
             )
           ],
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state is WorkoutInitialState) {
+          listener: (context, state) {
+            if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
-                      month: exercise.month.getOrCrash(),
-                      oneRm: exercise.oneRm.getOrCrash(),
+                      exerciseId: widget.exercise.id,
+                      month: widget.exercise.month.getOrCrash(),
+                      oneRm: widget.exercise.oneRm.getOrCrash(),
                     ),
                   );
             }
+          },
+          builder: (context, state) {
+            // if (state is WorkoutInitialState) {
+            //   context.bloc<WorkoutBloc>().add(
+            //         WorkoutGenerateEvent(
+            //           exerciseId: widget.exercise.id,
+            //           month: widget.exercise.month.getOrCrash(),
+            //           oneRm: widget.exercise.oneRm.getOrCrash(),
+            //         ),
+            //       );
+            // }
 
             if (state is WorkoutGeneratedState) {
-              return _Body(workout: state.workout);
+              return _Body(
+                monthWorkout: state.workout,
+                exerciseId: widget.exercise.id,
+                month: state.month,
+              );
             }
 
             return CenteredLoading();
@@ -68,149 +98,40 @@ class WorkoutPage extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  final Workout workout;
+  final MonthWorkout monthWorkout;
+  final int exerciseId;
+  final int month;
 
   const _Body({
     Key key,
-    @required this.workout,
+    @required this.monthWorkout,
+    @required this.exerciseId,
+    @required this.month,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        _WeekSet(
-          exerciseSets: workout.accumulationWorkout.exerciseSets,
-          isDone: workout.accumulationWorkout.isDone,
-          week: WeekEnum.accumulation,
+        WeekSetWidget(
+          workout: monthWorkout.accumulationWorkout,
+          exerciseSets: monthWorkout.accumulationWorkout.exerciseSets,
+          exerciseId: exerciseId,
         ),
-        _WeekSet(
-          exerciseSets: workout.intensificationWorkout.exerciseSets,
-          isDone: workout.intensificationWorkout.isDone,
-          week: WeekEnum.intensification,
+        WeekSetWidget(
+          workout: monthWorkout.intensificationWorkout,
+          exerciseSets: monthWorkout.intensificationWorkout.exerciseSets,
+          exerciseId: exerciseId,
         ),
-        _WeekSet(
-          exerciseSets: workout.realizationWorkout.exerciseSets,
-          isDone: workout.realizationWorkout.isDone,
-          week: WeekEnum.realization,
+        WeekSetWidget(
+          workout: monthWorkout.realizationWorkout,
+          exerciseSets: monthWorkout.realizationWorkout.exerciseSets,
+          exerciseId: exerciseId,
         ),
-        _WeekSet(
-          exerciseSets: workout.deloadWorkout.exerciseSets,
-          isDone: workout.deloadWorkout.isDone,
-          week: WeekEnum.deload,
-        ),
-      ],
-    );
-  }
-}
-
-class _WeekSet extends StatelessWidget {
-  final List<ExerciseSet> exerciseSets;
-  final bool isDone;
-  final WeekEnum week;
-
-  const _WeekSet({
-    Key key,
-    @required this.exerciseSets,
-    @required this.isDone,
-    @required this.week,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(Icons.do_not_disturb_alt, color: Colors.transparent),
-              Text(
-                week.toDisplayName(),
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              isDone
-                  ? IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.check_circle,
-                        color: PPTheme.success,
-                      ),
-                    )
-                  : IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.check_circle_outline,
-                        color: Colors.black.withAlpha(50),
-                      ),
-                    ),
-            ],
-          ),
-          const VSpacing.small(),
-          ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: exerciseSets.length,
-            itemBuilder: (context, index) => _ExerciseSet(exerciseSet: exerciseSets[index]),
-            separatorBuilder: (context, index) {
-              return const VSpacing.extraSmall();
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ExerciseSet extends StatelessWidget {
-  final ExerciseSet exerciseSet;
-
-  TextStyle _getTextStyle(BuildContext context) {
-    return Theme.of(context).textTheme.subtitle1;
-  }
-
-  const _ExerciseSet({Key key, @required this.exerciseSet}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 30,
-          child: Text(
-            exerciseSet.sets.toString(),
-            style: _getTextStyle(context),
-          ),
-        ),
-        Container(
-          width: 30,
-          child: Text(
-            'X',
-            style: _getTextStyle(context),
-          ),
-        ),
-        Container(
-          width: 30,
-          child: Text(
-            exerciseSet.reps.toString(),
-            style: _getTextStyle(context),
-          ),
-        ),
-        Container(
-          width: 30,
-          child: Text(
-            '@',
-            style: _getTextStyle(context),
-          ),
-        ),
-        Container(
-          width: 40,
-          child: Text(
-            exerciseSet.weight.formattedValue.getOrElse(() => 'E'),
-            style: _getTextStyle(context),
-          ),
+        WeekSetWidget(
+          workout: monthWorkout.deloadWorkout,
+          exerciseSets: monthWorkout.deloadWorkout.exerciseSets,
+          exerciseId: exerciseId,
         ),
       ],
     );

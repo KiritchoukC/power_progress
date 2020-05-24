@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/onboarding/onboarding_bloc.dart';
 import '../../../core/util/spacing.dart';
-import '../../../domain/core/entities/weeks.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/exercise/entities/value_objects/exercise_name.dart';
 import '../../../domain/exercise/entities/value_objects/incrementation.dart';
@@ -87,7 +87,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.parse(_incrementationController.value.text),
         month: Month(1),
-        week: Week(WeekEnum.accumulation),
+        nextWeek: Week(WeekEnum.accumulation),
       );
 
   @override

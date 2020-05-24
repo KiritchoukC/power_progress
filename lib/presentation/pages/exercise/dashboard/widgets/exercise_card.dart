@@ -90,7 +90,7 @@ class _Card extends StatelessWidget {
                     color: Theme.of(context).accentColor,
                   ),
                   Text(
-                    exercise.week.displayName,
+                    exercise.nextWeek.displayName,
                     style: Theme.of(context).textTheme.bodyText1.apply(
                           color: Theme.of(context).accentColor,
                         ),
@@ -99,14 +99,16 @@ class _Card extends StatelessWidget {
               )
             ],
           ),
-          Column(children: [
-            Text(
-              'Month ${exercise.month.getOrCrash()}',
-              style: Theme.of(context).textTheme.subtitle2.apply(
-                    color: Colors.black54,
-                  ),
-            ),
-          ])
+          Column(
+            children: [
+              Text(
+                'Month ${exercise.month.getOrCrash()}',
+                style: Theme.of(context).textTheme.subtitle2.apply(
+                      color: Colors.black54,
+                    ),
+              ),
+            ],
+          ),
         ],
       ),
     );

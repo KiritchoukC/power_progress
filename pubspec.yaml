@@ -17,6 +17,7 @@ dependencies:
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
   freezed_annotation: ^0.7.1
+  numberpicker: ^1.2.0
   
 dev_dependencies:
   flutter_test: 

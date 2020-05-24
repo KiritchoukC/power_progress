@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/util/util_functions.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../models/exercise_model.dart';
 import 'i_exercise_datasource.dart';
 
@@ -41,6 +42,56 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   Future<Unit> remove(List<int> ids) async {
     await tryOrCrash(
       () => localStorage.deleteAll(ids),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateNextWeek(int exerciseId, WeekEnum nextWeek) async {
+    final currentModel = localStorage.values.firstWhere(
+      (element) => element.id == exerciseId,
+      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
+    );
+
+    final updatedModel = ExerciseModel(
+      id: currentModel.id,
+      oneRm: currentModel.oneRm,
+      name: currentModel.name,
+      incrementation: currentModel.incrementation,
+      month: currentModel.month,
+      note: currentModel.note,
+      nextWeekIndex: nextWeek.index,
+    );
+
+    await tryOrCrash(
+      () => localStorage.put(exerciseId, updatedModel),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateNextMonth(int exerciseId, int nextMonth) async {
+    final currentModel = localStorage.values.firstWhere(
+      (element) => element.id == exerciseId,
+      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
+    );
+
+    final updatedModel = ExerciseModel(
+      id: currentModel.id,
+      oneRm: currentModel.oneRm,
+      name: currentModel.name,
+      incrementation: currentModel.incrementation,
+      nextWeekIndex: currentModel.nextWeekIndex,
+      note: currentModel.note,
+      month: nextMonth,
+    );
+
+    await tryOrCrash(
+      () => localStorage.put(exerciseId, updatedModel),
       (_) => throw Exception(),
     );
 

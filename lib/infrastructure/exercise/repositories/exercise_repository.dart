@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../domain/core/entities/week_enum.dart';
 import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/exercise/entities/exercise_failure.dart';
 import '../../../domain/exercise/repositories/i_exercise_repository.dart';
@@ -37,6 +38,26 @@ class ExerciseRepository implements IExerciseRepository {
   Future<Either<ExerciseFailure, Unit>> remove(List<int> ids) async {
     try {
       await datasource.remove(ids);
+      return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<ExerciseFailure, Unit>> updateNextWeek(int exerciseId, WeekEnum nextWeek) async {
+    try {
+      await datasource.updateNextWeek(exerciseId, nextWeek);
+      return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<ExerciseFailure, Unit>> updateNextMonth(int exerciseId, int nextMonth) async {
+    try {
+      await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
     } on Exception {
       return left(const ExerciseFailure.storageError());
