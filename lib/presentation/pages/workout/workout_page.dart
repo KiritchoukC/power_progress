@@ -8,6 +8,7 @@ import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/workout/entities/month_workout.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
+import '../../widgets/delete_confirm_dialog.dart';
 import '../../widgets/remove_button.dart';
 import 'widgets/week_set_widget.dart';
 
@@ -53,14 +54,20 @@ class _WorkoutPageState extends State<WorkoutPage> {
           actions: [
             RemoveButton(
               onPressed: () {
-                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [widget.exercise.id]));
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return DeleteConfirmDialog([widget.exercise.id]);
+                  },
+                );
               },
             )
           ],
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
-            if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
+            if (state is WorkoutMarkedDoneState ||
+                state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
                       exerciseId: widget.exercise.id,
