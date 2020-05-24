@@ -9,4 +9,14 @@ extension WeeksX on WeekEnum {
 
     return "UNEXPECTED VALUE";
   }
+
+  WeekEnum next() {
+    final nextIndex = index + 1;
+
+    if (nextIndex == WeekEnum.values.length) {
+      return WeekEnum.accumulation;
+    }
+
+    return WeekEnum.values[nextIndex];
+  }
 }

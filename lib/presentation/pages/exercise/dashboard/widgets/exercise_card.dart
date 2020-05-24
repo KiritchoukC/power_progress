@@ -90,7 +90,7 @@ class _Card extends StatelessWidget {
                     color: Theme.of(context).accentColor,
                   ),
                   Text(
-                    exercise.week.displayName,
+                    exercise.week.nextWeekDisplayName,
                     style: Theme.of(context).textTheme.bodyText1.apply(
                           color: Theme.of(context).accentColor,
                         ),

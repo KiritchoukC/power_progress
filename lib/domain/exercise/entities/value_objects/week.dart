@@ -23,6 +23,7 @@ class Week extends ValueObject<WeekEnum> {
   const Week._(this.value);
 
   String get displayName => getOrCrash().toDisplayName();
+  String get nextWeekDisplayName => getOrCrash().next().toDisplayName();
 }
 
 Either<ValueFailure<WeekEnum>, WeekEnum> validateAndParseWeek(int input) {
