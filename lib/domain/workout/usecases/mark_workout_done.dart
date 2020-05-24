@@ -4,18 +4,23 @@ import 'package:flutter/foundation.dart';
 
 import '../../../core/usecases/usecase.dart';
 import '../../core/entities/week_enum.dart';
+import '../../exercise/usecases/update_exercise_next_month.dart';
 import '../../exercise/usecases/update_exercise_next_week.dart';
 import '../entities/workout_failure.dart';
 import '../repositories/i_workout_repository.dart';
 
 class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDoneParams> {
   final IWorkoutRepository repository;
-  final UpdateExerciseWeek updateExerciseNextWeek;
+  final UpdateExerciseNextWeek updateExerciseNextWeek;
+  final UpdateExerciseNextMonth updateExerciseNextMonth;
 
   MarkWorkoutDone({
     @required this.repository,
     @required this.updateExerciseNextWeek,
-  });
+    @required this.updateExerciseNextMonth,
+  })  : assert(repository != null),
+        assert(updateExerciseNextWeek != null),
+        assert(updateExerciseNextMonth != null);
 
   @override
   Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutDoneParams params) async {
@@ -25,9 +30,18 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
     await updateExerciseNextWeek(
       UpdateExerciseNextWeekParams(
         exerciseId: params.exerciseId,
-        week: params.week.next(),
+        nextWeek: params.week.next(),
       ),
     );
+
+    if (params.week == WeekEnum.deload) {
+      await updateExerciseNextMonth(
+        UpdateExerciseNextMonthParams(
+          exerciseId: params.exerciseId,
+          nextMonth: params.month + 1,
+        ),
+      );
+    }
 
     return result;
   }

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
 
 import '../../../core/util/util_functions.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../models/exercise_model.dart';
 import 'i_exercise_datasource.dart';
 
@@ -49,10 +49,10 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   }
 
   @override
-  Future<Unit> updateWeek(int exerciseId, WeekEnum week) async {
+  Future<Unit> updateNextWeek(int exerciseId, WeekEnum nextWeek) async {
     final currentModel = localStorage.values.firstWhere(
       (element) => element.id == exerciseId,
-      orElse: () => throw Exception('Exercise ${exerciseId} does not exist'),
+      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
     );
 
     final updatedModel = ExerciseModel(
@@ -62,7 +62,32 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       incrementation: currentModel.incrementation,
       month: currentModel.month,
       note: currentModel.note,
-      nextWeekIndex: week.index,
+      nextWeekIndex: nextWeek.index,
+    );
+
+    await tryOrCrash(
+      () => localStorage.put(exerciseId, updatedModel),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateNextMonth(int exerciseId, int nextMonth) async {
+    final currentModel = localStorage.values.firstWhere(
+      (element) => element.id == exerciseId,
+      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
+    );
+
+    final updatedModel = ExerciseModel(
+      id: currentModel.id,
+      oneRm: currentModel.oneRm,
+      name: currentModel.name,
+      incrementation: currentModel.incrementation,
+      nextWeekIndex: currentModel.nextWeekIndex,
+      note: currentModel.note,
+      month: nextMonth,
     );
 
     await tryOrCrash(

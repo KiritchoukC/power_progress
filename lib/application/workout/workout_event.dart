@@ -50,11 +50,13 @@ class WorkoutMarkUndoneEvent extends WorkoutEvent {
   final int id;
   final int exerciseId;
   final WeekEnum week;
+  final int month;
 
   const WorkoutMarkUndoneEvent({
     @required this.id,
     @required this.exerciseId,
     @required this.week,
+    @required this.month,
   });
 
   @override
@@ -62,5 +64,6 @@ class WorkoutMarkUndoneEvent extends WorkoutEvent {
         id,
         exerciseId,
         week,
+        month,
       ];
 }

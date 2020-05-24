@@ -96,7 +96,12 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     yield WorkoutMarkingUndoneState();
 
     final output = await markWorkoutUndone(
-      MarkWorkoutUndoneParams(id: event.id, exerciseId: event.exerciseId, week: event.week),
+      MarkWorkoutUndoneParams(
+        id: event.id,
+        exerciseId: event.exerciseId,
+        week: event.week,
+        month: event.month,
+      ),
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {

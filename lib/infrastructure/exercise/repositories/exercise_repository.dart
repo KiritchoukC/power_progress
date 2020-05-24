@@ -45,9 +45,19 @@ class ExerciseRepository implements IExerciseRepository {
   }
 
   @override
-  Future<Either<ExerciseFailure, Unit>> updateWeek(int exerciseId, WeekEnum week) async {
+  Future<Either<ExerciseFailure, Unit>> updateNextWeek(int exerciseId, WeekEnum nextWeek) async {
     try {
-      await datasource.updateWeek(exerciseId, week);
+      await datasource.updateNextWeek(exerciseId, nextWeek);
+      return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<ExerciseFailure, Unit>> updateNextMonth(int exerciseId, int nextMonth) async {
+    try {
+      await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
     } on Exception {
       return left(const ExerciseFailure.storageError());

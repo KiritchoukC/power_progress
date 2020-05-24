@@ -4,19 +4,23 @@ import 'package:flutter/foundation.dart';
 
 import '../../../core/usecases/usecase.dart';
 import '../../core/entities/week_enum.dart';
+import '../../exercise/usecases/update_exercise_next_month.dart';
 import '../../exercise/usecases/update_exercise_next_week.dart';
 import '../entities/workout_failure.dart';
 import '../repositories/i_workout_repository.dart';
 
 class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndoneParams> {
   final IWorkoutRepository repository;
-  final UpdateExerciseWeek updateExerciseNextWeek;
+  final UpdateExerciseNextWeek updateExerciseNextWeek;
+  final UpdateExerciseNextMonth updateExerciseNextMonth;
 
   MarkWorkoutUndone({
     @required this.repository,
     @required this.updateExerciseNextWeek,
+    @required this.updateExerciseNextMonth,
   })  : assert(repository != null),
-        assert(updateExerciseNextWeek != null);
+        assert(updateExerciseNextWeek != null),
+        assert(updateExerciseNextMonth != null);
 
   @override
   Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutUndoneParams params) async {
@@ -25,9 +29,18 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
     await updateExerciseNextWeek(
       UpdateExerciseNextWeekParams(
         exerciseId: params.exerciseId,
-        week: params.week.previous(),
+        nextWeek: params.week.previous(),
       ),
     );
+
+    if (params.week == WeekEnum.deload) {
+      await updateExerciseNextMonth(
+        UpdateExerciseNextMonthParams(
+          exerciseId: params.exerciseId,
+          nextMonth: params.month - 1,
+        ),
+      );
+    }
 
     return result;
   }
@@ -37,11 +50,13 @@ class MarkWorkoutUndoneParams extends Equatable {
   final int id;
   final int exerciseId;
   final WeekEnum week;
+  final int month;
 
   const MarkWorkoutUndoneParams({
     @required this.id,
     @required this.exerciseId,
     @required this.week,
+    @required this.month,
   });
 
   @override
@@ -49,5 +64,6 @@ class MarkWorkoutUndoneParams extends Equatable {
         id,
         exerciseId,
         week,
+        month,
       ];
 }

@@ -8,6 +8,7 @@ import 'domain/exercise/repositories/i_exercise_repository.dart';
 import 'domain/exercise/usecases/add_exercise.dart';
 import 'domain/exercise/usecases/fetch_exercises.dart';
 import 'domain/exercise/usecases/remove_exercises.dart';
+import 'domain/exercise/usecases/update_exercise_next_month.dart';
 import 'domain/exercise/usecases/update_exercise_next_week.dart';
 import 'domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'domain/onboarding/usecases/done_onboarding.dart';
@@ -67,7 +68,10 @@ void initExerciseFeature() {
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
       exerciseRepository: sl<IExerciseRepository>(), removeWorkoutDone: sl<RemoveWorkoutDone>()));
-  sl.registerLazySingleton(() => UpdateExerciseWeek(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(
+      () => UpdateExerciseNextWeek(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(
+      () => UpdateExerciseNextMonth(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
@@ -119,12 +123,14 @@ void initWorkoutFeature() {
   sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutDone(
         repository: sl<IWorkoutRepository>(),
-        updateExerciseNextWeek: sl<UpdateExerciseWeek>(),
+        updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
+        updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
       ));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutUndone(
         repository: sl<IWorkoutRepository>(),
-        updateExerciseNextWeek: sl<UpdateExerciseWeek>(),
+        updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
+        updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
       ));
 
   // Repositories

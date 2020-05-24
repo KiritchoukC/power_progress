@@ -7,27 +7,28 @@ import '../../core/entities/week_enum.dart';
 import '../entities/exercise_failure.dart';
 import '../repositories/i_exercise_repository.dart';
 
-class UpdateExerciseWeek implements UseCase<Unit, ExerciseFailure, UpdateExerciseNextWeekParams> {
+class UpdateExerciseNextWeek
+    implements UseCase<Unit, ExerciseFailure, UpdateExerciseNextWeekParams> {
   final IExerciseRepository exerciseRepository;
 
-  UpdateExerciseWeek({
+  UpdateExerciseNextWeek({
     @required this.exerciseRepository,
   }) : assert(exerciseRepository != null);
 
   @override
   Future<Either<ExerciseFailure, Unit>> call(UpdateExerciseNextWeekParams params) =>
-      exerciseRepository.updateWeek(params.exerciseId, params.week);
+      exerciseRepository.updateNextWeek(params.exerciseId, params.nextWeek);
 }
 
 class UpdateExerciseNextWeekParams extends Equatable {
   final int exerciseId;
-  final WeekEnum week;
+  final WeekEnum nextWeek;
 
   const UpdateExerciseNextWeekParams({
     @required this.exerciseId,
-    @required this.week,
+    @required this.nextWeek,
   });
 
   @override
-  List<Object> get props => [exerciseId, week];
+  List<Object> get props => [exerciseId, nextWeek];
 }

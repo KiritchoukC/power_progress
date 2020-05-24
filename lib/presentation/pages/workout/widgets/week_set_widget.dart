@@ -52,6 +52,7 @@ class WeekSetWidget extends StatelessWidget {
                   workoutDoneId: workout.workoutDoneId,
                   exerciseId: exerciseId,
                   week: week,
+                  month: workout.month,
                 )
               else
                 CheckButton(
@@ -104,12 +105,14 @@ class UncheckButton extends StatelessWidget {
   final int workoutDoneId;
   final int exerciseId;
   final WeekEnum week;
+  final int month;
 
   const UncheckButton({
     Key key,
     @required this.workoutDoneId,
     @required this.exerciseId,
     @required this.week,
+    @required this.month,
   }) : super(key: key);
 
   @override
@@ -121,6 +124,7 @@ class UncheckButton extends StatelessWidget {
                 id: workoutDoneId,
                 exerciseId: exerciseId,
                 week: week,
+                month: month,
               ),
             );
       },
