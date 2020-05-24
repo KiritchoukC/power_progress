@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.48.0](https://github.com/KiritchoukC/power_progress/compare/v1.47.0...v1.48.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercise cards when (in)validating a week ([3c9244e](https://github.com/KiritchoukC/power_progress/commit/3c9244e)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
 ## [1.47.0](https://github.com/KiritchoukC/power_progress/compare/v1.46.4...v1.47.0) (2020-05-24)
 
 
