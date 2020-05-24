@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/exercise/exercise_bloc.dart';
+import '../../../../application/workout/workout_bloc.dart';
 import '../../../../domain/exercise/entities/exercise.dart';
 import '../../../widgets/centered_loading.dart';
 import '../../../widgets/pp_appbar.dart';
@@ -16,30 +17,37 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<ExerciseBloc, ExerciseState>(
-        buildWhen: (previous, current) {
-          return current is! ExerciseSelectionModeState;
-        },
-        listener: (context, state) {
-          if (state is ExerciseErrorState) {
-            Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+      body: BlocListener<WorkoutBloc, WorkoutState>(
+        listener: (previous, current) {
+          if (current is WorkoutMarkedDoneState || current is WorkoutMarkedUndoneState) {
+            context.bloc<ExerciseBloc>().add(ExerciseFetchEvent());
           }
         },
-        builder: (context, state) {
-          // fetch exercises on initial state or when an exercise gets added
-          if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
-            });
-          }
+        child: BlocConsumer<ExerciseBloc, ExerciseState>(
+          buildWhen: (previous, current) {
+            return current is! ExerciseSelectionModeState;
+          },
+          listener: (context, state) {
+            if (state is ExerciseErrorState) {
+              Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+            }
+          },
+          builder: (context, state) {
+            // fetch exercises on initial state or when an exercise gets added
+            if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
+              });
+            }
 
-          // show exercises when they're loaded
-          if (state is ExerciseFetchedState) {
-            return _Body(exercises: state.exercises);
-          }
+            // show exercises when they're loaded
+            if (state is ExerciseFetchedState) {
+              return _Body(exercises: state.exercises);
+            }
 
-          return CenteredLoading();
-        },
+            return CenteredLoading();
+          },
+        ),
       ),
       appBar: PPAppBar(
         titleLabel: 'Dashboard',
