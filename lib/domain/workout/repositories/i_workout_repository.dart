@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/entities/weeks.dart';
+import '../../core/entities/week_enum.dart';
 import '../entities/workout_done.dart';
 import '../entities/workout_failure.dart';
 

@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/usecases/usecase.dart';
-import '../../core/entities/weeks.dart';
+import '../../core/entities/week_enum.dart';
 import '../entities/accumulation_workout.dart';
 import '../entities/deload_workout.dart';
 import '../entities/intensification_workout.dart';

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
 
 import '../../../core/util/util_functions.dart';
 import '../models/exercise_model.dart';
@@ -41,6 +42,31 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   Future<Unit> remove(List<int> ids) async {
     await tryOrCrash(
       () => localStorage.deleteAll(ids),
+      (_) => throw Exception(),
+    );
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateWeek(int exerciseId, WeekEnum week) async {
+    final currentModel = localStorage.values.firstWhere(
+      (element) => element.id == exerciseId,
+      orElse: () => throw Exception('Exercise ${exerciseId} does not exist'),
+    );
+
+    final updatedModel = ExerciseModel(
+      id: currentModel.id,
+      oneRm: currentModel.oneRm,
+      name: currentModel.name,
+      incrementation: currentModel.incrementation,
+      month: currentModel.month,
+      note: currentModel.note,
+      weekIndex: week.index,
+    );
+
+    await tryOrCrash(
+      () => localStorage.put(exerciseId, updatedModel),
       (_) => throw Exception(),
     );
 

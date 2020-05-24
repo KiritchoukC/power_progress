@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import '../../../domain/core/entities/weeks.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../../../domain/workout/entities/workout_done.dart';
 
 part 'workout_done_model.g.dart';

@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/util/util_functions.dart';
-import '../../../domain/core/entities/weeks.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../models/workout_done_model.dart';
 import 'i_workout_datasource.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/workout/workout_bloc.dart';
 import '../../../../core/util/spacing.dart';
-import '../../../../domain/core/entities/weeks.dart';
+import '../../../../domain/core/entities/week_enum.dart';
 import '../../../../domain/workout/entities/accumulation_workout.dart';
 import '../../../../domain/workout/entities/deload_workout.dart';
 import '../../../../domain/workout/entities/exercise_set.dart';

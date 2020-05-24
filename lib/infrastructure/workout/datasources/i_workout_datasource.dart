@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../domain/core/entities/weeks.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../models/workout_done_model.dart';
 
 abstract class IWorkoutDatasource {

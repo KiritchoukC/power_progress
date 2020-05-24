@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/core/entities/weeks.dart';
+import '../../../domain/core/entities/week_enum.dart';
 import '../../../domain/workout/entities/workout_done.dart';
 import '../../../domain/workout/entities/workout_failure.dart';
 import '../../../domain/workout/repositories/i_workout_repository.dart';

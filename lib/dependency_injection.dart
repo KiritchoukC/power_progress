@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:power_progress/domain/exercise/usecases/update_exercise_week.dart';
 import 'package:power_progress/domain/workout/usecases/remove_workout_done.dart';
 
 import 'application/exercise/exercise_bloc.dart';
@@ -66,6 +67,7 @@ void initExerciseFeature() {
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
       exerciseRepository: sl<IExerciseRepository>(), removeWorkoutDone: sl<RemoveWorkoutDone>()));
+  sl.registerLazySingleton(() => UpdateExerciseWeek(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
@@ -115,7 +117,8 @@ void initWorkoutFeature() {
 
   // Usecases
   sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
-  sl.registerLazySingleton(() => MarkWorkoutDone(repository: sl<IWorkoutRepository>()));
+  sl.registerLazySingleton(() => MarkWorkoutDone(
+      repository: sl<IWorkoutRepository>(), updateExerciseWeek: sl<UpdateExerciseWeek>()));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutUndone(repository: sl<IWorkoutRepository>()));
 

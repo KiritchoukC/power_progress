@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../core/messages/errors.dart';
-import '../../domain/core/entities/weeks.dart';
+import '../../domain/core/entities/week_enum.dart';
 import '../../domain/workout/entities/month_workout.dart';
 import '../../domain/workout/entities/workout_failure.dart';
 import '../../domain/workout/usecases/generate_workout.dart';
