@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.50.0](https://github.com/KiritchoukC/power_progress/compare/v1.49.0...v1.50.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercise week when invalidating a workout week ([65d1b3f](https://github.com/KiritchoukC/power_progress/commit/65d1b3f)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
 ## [1.49.0](https://github.com/KiritchoukC/power_progress/compare/v1.48.0...v1.49.0) (2020-05-24)
 
 
