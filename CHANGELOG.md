@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.51.0](https://github.com/KiritchoukC/power_progress/compare/v1.50.1...v1.51.0) (2020-05-24)
+
+
+### Features
+
+* **exercise:** update exercises month when (in)validating a week ([5042c2b](https://github.com/KiritchoukC/power_progress/commit/5042c2b)), closes [#2](https://github.com/KiritchoukC/power_progress/issues/2)
+
 ### [1.50.1](https://github.com/KiritchoukC/power_progress/compare/v1.50.0...v1.50.1) (2020-05-24)
 
 ## [1.50.0](https://github.com/KiritchoukC/power_progress/compare/v1.49.0...v1.50.0) (2020-05-24)
