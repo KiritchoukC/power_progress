@@ -6,7 +6,7 @@ import 'package:power_progress/application/exercise/exercise_bloc.dart';
 class DeleteConfirmDialog extends StatelessWidget {
   final List<int> exerciseIds;
 
-  const DeleteConfirmDialog(this.exerciseIds);
+  const DeleteConfirmDialog({@required this.exerciseIds});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,7 @@ class DeleteConfirmDialog extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {
-            context
-                .bloc<ExerciseBloc>()
-                .add(ExerciseRemoveEvent(ids: exerciseIds));
+            context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: exerciseIds));
             Navigator.of(context).pop();
           },
           child: const Text('Delete'),

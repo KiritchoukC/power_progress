@@ -20,8 +20,7 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: BlocListener<WorkoutBloc, WorkoutState>(
         listener: (previous, current) {
-          if (current is WorkoutMarkedDoneState ||
-              current is WorkoutMarkedUndoneState) {
+          if (current is WorkoutMarkedDoneState || current is WorkoutMarkedUndoneState) {
             context.bloc<ExerciseBloc>().add(ExerciseFetchEvent());
           }
         },
@@ -31,16 +30,14 @@ class DashboardPage extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is ExerciseErrorState) {
-              Scaffold.of(context)
-                  .showSnackBar(SnackBar(content: Text(state.message)));
+              Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
             // fetch exercises on initial state or when an exercise gets added
             if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                BlocProvider.of<ExerciseBloc>(context)
-                    .add(ExerciseFetchEvent());
+                BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
               });
             }
 
@@ -104,8 +101,7 @@ class _BodyState extends State<_Body> {
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
 
       context.bloc<ExerciseBloc>().add(ExerciseSelectionModeEvent(
-          isInSelectionMode: isInSelectionMode,
-          selectedIds: selectedExerciseIds));
+          isInSelectionMode: isInSelectionMode, selectedIds: selectedExerciseIds));
     });
   }
 
@@ -157,7 +153,7 @@ class _RemoveButton extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return DeleteConfirmDialog(state.selectedIds);
+                    return DeleteConfirmDialog(exerciseIds: state.selectedIds);
                   },
                 );
               },

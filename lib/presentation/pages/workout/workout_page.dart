@@ -57,7 +57,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return DeleteConfirmDialog([widget.exercise.id]);
+                    return DeleteConfirmDialog(exerciseIds: [widget.exercise.id]);
                   },
                 );
               },
@@ -66,8 +66,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
-            if (state is WorkoutMarkedDoneState ||
-                state is WorkoutMarkedUndoneState) {
+            if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
                       exerciseId: widget.exercise.id,
