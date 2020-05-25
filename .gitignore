@@ -99,3 +99,6 @@ android/app/key.jks
 web/firebase.config.debug.json
 secrets.json
 android/app/google-services.json
+
+# IDE settings
+.vscode/
