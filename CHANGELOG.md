@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.53.0](https://github.com/KiritchoukC/power_progress/compare/v1.52.0...v1.53.0) (2020-05-27)
+
+
+### Features
+
+* **onboarding:** update design of welcome and exercise onboarding pages ([44975d3](https://github.com/KiritchoukC/power_progress/commit/44975d3)), closes [#54](https://github.com/KiritchoukC/power_progress/issues/54)
+
 ## [1.52.0](https://github.com/KiritchoukC/power_progress/compare/v1.51.1...v1.52.0) (2020-05-27)
 
 
