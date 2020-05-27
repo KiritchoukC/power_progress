@@ -41,12 +41,28 @@ class OnboardingInformationsPage extends StatelessWidget {
         return Scaffold(
           body: state is ExerciseAddingState
               ? OnboardingLoadingPage()
-              : _InformationsForm(
+              : _Body(
                   exerciseName: exerciseName,
                 ),
         );
       },
     );
+  }
+}
+
+class _Body extends StatelessWidget {
+  final String exerciseName;
+
+  const _Body({Key key, @required this.exerciseName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.red,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: _InformationsForm(exerciseName: exerciseName),
+        ));
   }
 }
 
@@ -92,50 +108,45 @@ class _InformationsFormState extends State<_InformationsForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            autovalidate: true,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  widget.exerciseName,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 24.0),
-                ),
-                const VSpacing.medium(),
-                OneRmInput(
-                  controller: _oneRmController,
-                  nextFocusNode: _incrementationFocusNode,
-                ),
-                const VSpacing.extraSmall(),
-                IncrementationInput(
-                  controller: _incrementationController,
-                  focusNode: _incrementationFocusNode,
-                ),
-                const VSpacing.small(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          context.bloc<ExerciseBloc>().add(ExerciseAddEvent(exercise: _exercise));
-                          context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
-                        }
-                      },
-                      child: const Text('Continue'),
-                    )
-                  ],
-                )
-              ],
-            ),
+    return Form(
+      key: _formKey,
+      autovalidate: true,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            widget.exerciseName,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 24.0),
           ),
-        ));
+          const VSpacing.medium(),
+          OneRmInput(
+            controller: _oneRmController,
+            nextFocusNode: _incrementationFocusNode,
+          ),
+          const VSpacing.extraSmall(),
+          IncrementationInput(
+            controller: _incrementationController,
+            focusNode: _incrementationFocusNode,
+          ),
+          const VSpacing.small(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              RaisedButton(
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    context.bloc<ExerciseBloc>().add(ExerciseAddEvent(exercise: _exercise));
+                    context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
+                  }
+                },
+                child: const Text('Continue'),
+              )
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

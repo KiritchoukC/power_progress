@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 import '../../../core/util/spacing.dart';
 import '../../router/route_paths.dart';
@@ -10,7 +11,9 @@ class OnboardingExercisePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.deepPurple,
+        decoration: BoxDecoration(
+          gradient: PPTheme.redBlackGradient,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: _ExerciseForm(),
@@ -47,15 +50,21 @@ class _ExerciseFormState extends State<_ExerciseForm> {
           const Text(
             'On which exercise do you want to progress ?',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24.0),
+            style: TextStyle(
+              fontSize: 24.0,
+              color: Colors.white,
+            ),
           ),
           const VSpacing.medium(),
-          ExerciseNameInput(controller: _exerciseController),
-          const VSpacing.small(),
+          ExerciseNameInput(
+            controller: _exerciseController,
+            color: Colors.white,
+          ),
+          const VSpacing.medium(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              RaisedButton(
+              FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     Navigator.of(context).pushNamed(
@@ -66,8 +75,9 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                     );
                   }
                 },
-                child: const Text('Continue'),
-              )
+                child: const Icon(Icons.arrow_forward),
+              ),
+              const HSpacing.medium(),
             ],
           )
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 import '../../../core/util/spacing.dart';
 import '../../router/route_paths.dart';
@@ -10,7 +11,9 @@ class OnboardingWelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blueAccent,
+        decoration: BoxDecoration(
+          gradient: PPTheme.purplePinkGradient,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -22,24 +25,31 @@ class OnboardingWelcomePage extends StatelessWidget {
               const Text(
                 'Welcome to power progress, this app use mathematics to plan your workouts.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24.0),
+                style: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.white,
+                ),
               ),
               const VSpacing.medium(),
               const Text(
                 "Let's start already!",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18.0),
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
               ),
               const VSpacing.small(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  RaisedButton(
+                  FloatingActionButton(
                     onPressed: () {
                       Navigator.of(context).pushNamed(RoutePaths.onboardingExercise);
                     },
-                    child: const Text('Continue'),
-                  )
+                    child: const Icon(Icons.arrow_forward),
+                  ),
+                  HSpacing.medium(),
                 ],
               ),
               const VSpacing.large(),
