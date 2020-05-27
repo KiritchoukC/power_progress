@@ -7,8 +7,8 @@ import '../application/workout/workout_bloc.dart';
 import '../dependency_injection.dart' as di;
 import '../presentation/router/route_paths.dart';
 import '../presentation/router/router.dart';
-import '../presentation/widgets/centered_loading.dart';
 import '../theme/pp_light_theme.dart';
+import 'widgets/splash_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -44,7 +44,7 @@ class App extends StatelessWidget {
                 context.bloc<OnboardingBloc>().add(OnboardingIsDoneEvent());
               }
 
-              return Scaffold(body: CenteredLoading());
+              return Scaffold(body: SplashScreen());
             },
           ),
         ),

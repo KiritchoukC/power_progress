@@ -6,6 +6,7 @@ import '../pp_form_field.dart';
 class ExerciseNameInput extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode nextFocusNode;
+  final Color color;
 
   String validate(String newValue) {
     return ExerciseName(newValue).value.fold(
@@ -18,13 +19,18 @@ class ExerciseNameInput extends StatelessWidget {
         );
   }
 
-  const ExerciseNameInput({Key key, @required this.controller, this.nextFocusNode})
-      : super(key: key);
+  const ExerciseNameInput({
+    Key key,
+    @required this.controller,
+    @required this.color,
+    this.nextFocusNode,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return PPTextFormFieldWidget(
       controller: controller,
       labelText: 'Exercise Name',
+      color: color,
       textInputAction: TextInputAction.next,
       prefixIcon: Icons.fitness_center,
       onEditingComplete: () {

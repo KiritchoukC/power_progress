@@ -8,6 +8,7 @@ import '../../../domain/exercise/entities/exercise.dart';
 import '../../../domain/workout/entities/month_workout.dart';
 import '../../widgets/centered_loading.dart';
 import '../../widgets/pp_appbar.dart';
+import '../../widgets/delete_confirm_dialog.dart';
 import '../../widgets/remove_button.dart';
 import 'widgets/week_set_widget.dart';
 
@@ -53,7 +54,12 @@ class _WorkoutPageState extends State<WorkoutPage> {
           actions: [
             RemoveButton(
               onPressed: () {
-                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: [widget.exercise.id]));
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return DeleteConfirmDialog(exerciseIds: [widget.exercise.id]);
+                  },
+                );
               },
             )
           ],

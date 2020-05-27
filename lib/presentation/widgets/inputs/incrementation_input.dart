@@ -6,10 +6,12 @@ import '../pp_form_field.dart';
 class IncrementationInput extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
+  final Color color;
 
   const IncrementationInput({
     Key key,
     @required this.controller,
+    @required this.color,
     this.focusNode,
   }) : super(key: key);
 
@@ -35,6 +37,7 @@ class IncrementationInput extends StatelessWidget {
       prefixIcon: Icons.shutter_speed,
       focusNode: focusNode,
       validator: validate,
+      color: color,
     );
   }
 }

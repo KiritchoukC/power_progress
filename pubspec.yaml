@@ -18,7 +18,9 @@ dependencies:
   hive_flutter: ^0.3.0+2
   freezed_annotation: ^0.7.1
   numberpicker: ^1.2.0
-  
+  google_fonts: ^1.1.0
+  flutter_svg: ^0.17.4
+
 dev_dependencies:
   flutter_test: 
     sdk: flutter

@@ -16,12 +16,13 @@ class PPTextFormFieldWidget extends TextFormField {
     VoidCallback onEditingComplete,
     FocusNode focusNode,
     TextInputType keyboardType = TextInputType.text,
+    Color color,
   }) : super(
           key: key,
           controller: controller,
           autocorrect: autocorrect,
           validator: validator,
-          style: style,
+          style: style != null ? style.copyWith(color: color) : TextStyle(color: color),
           obscureText: obscureText,
           textInputAction: textInputAction,
           onEditingComplete: onEditingComplete,
@@ -29,9 +30,30 @@ class PPTextFormFieldWidget extends TextFormField {
           keyboardType: keyboardType,
           decoration: decoration ??
               InputDecoration(
+                enabledBorder: color != null
+                    ? OutlineInputBorder(
+                        // width: 0.0 produces a thin "hairline" border
+                        borderSide: BorderSide(color: color, width: 0.0),
+                      )
+                    : null,
+                focusedBorder: color != null
+                    ? OutlineInputBorder(
+                        // width: 0.0 produces a thin "hairline" border
+                        borderSide: BorderSide(color: color, width: 0.0),
+                      )
+                    : null,
                 border: const OutlineInputBorder(),
                 labelText: labelText,
-                prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+                labelStyle: color != null ? TextStyle(color: color) : null,
+                prefixStyle: color != null ? TextStyle(color: color) : null,
+                icon: Icon(
+                  prefixIcon,
+                  color: color,
+                ),
+                isDense: false,
+                focusColor: color,
+                hoverColor: color,
+                fillColor: color,
               ),
         );
 }

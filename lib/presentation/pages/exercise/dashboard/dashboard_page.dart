@@ -9,6 +9,7 @@ import '../../../../domain/exercise/entities/exercise.dart';
 import '../../../widgets/centered_loading.dart';
 import '../../../widgets/pp_appbar.dart';
 import '../../../widgets/remove_button.dart';
+import '../../../widgets/delete_confirm_dialog.dart';
 import 'widgets/add_button.dart';
 import 'widgets/dummy_card.dart';
 import 'widgets/exercise_card.dart';
@@ -149,7 +150,12 @@ class _RemoveButton extends StatelessWidget {
           if (state.isInSelectionMode) {
             return RemoveButton(
               onPressed: () {
-                context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: state.selectedIds));
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return DeleteConfirmDialog(exerciseIds: state.selectedIds);
+                  },
+                );
               },
             );
           }
