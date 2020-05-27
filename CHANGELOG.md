@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.52.0](https://github.com/KiritchoukC/power_progress/compare/v1.51.1...v1.52.0) (2020-05-27)
+
+
+### Features
+
+* **splashscreen:** add splashcreen ([4cbd614](https://github.com/KiritchoukC/power_progress/commit/4cbd614)), closes [#48](https://github.com/KiritchoukC/power_progress/issues/48)
+
 ### [1.51.1](https://github.com/KiritchoukC/power_progress/compare/v1.51.0...v1.51.1) (2020-05-25)
 
 ## [1.51.0](https://github.com/KiritchoukC/power_progress/compare/v1.50.1...v1.51.0) (2020-05-24)
