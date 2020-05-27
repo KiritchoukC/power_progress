@@ -7,10 +7,12 @@ class OneRmInput extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final FocusNode nextFocusNode;
+  final Color color;
 
   const OneRmInput({
     Key key,
     @required this.controller,
+    @required this.color,
     this.focusNode,
     this.nextFocusNode,
   }) : super(key: key);
@@ -41,6 +43,7 @@ class OneRmInput extends StatelessWidget {
         nextFocusNode.requestFocus();
       },
       validator: validate,
+      color: color,
     );
   }
 }

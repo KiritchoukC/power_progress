@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
 import '../../../application/onboarding/onboarding_bloc.dart';
@@ -58,7 +59,9 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.red,
+        decoration: BoxDecoration(
+          gradient: PPTheme.royalBlueGradient,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: _InformationsForm(exerciseName: exerciseName),
@@ -118,31 +121,37 @@ class _InformationsFormState extends State<_InformationsForm> {
           Text(
             widget.exerciseName,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 24.0),
+            style: const TextStyle(
+              fontSize: 24.0,
+              color: Colors.white,
+            ),
           ),
           const VSpacing.medium(),
           OneRmInput(
             controller: _oneRmController,
             nextFocusNode: _incrementationFocusNode,
+            color: Colors.white,
           ),
           const VSpacing.extraSmall(),
           IncrementationInput(
             controller: _incrementationController,
             focusNode: _incrementationFocusNode,
+            color: Colors.white,
           ),
           const VSpacing.small(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              RaisedButton(
+              FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     context.bloc<ExerciseBloc>().add(ExerciseAddEvent(exercise: _exercise));
                     context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
                   }
                 },
-                child: const Text('Continue'),
-              )
+                child: const Icon(Icons.check),
+              ),
+              HSpacing.medium(),
             ],
           )
         ],

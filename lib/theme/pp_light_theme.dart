@@ -45,4 +45,14 @@ class PPTheme {
     end: Alignment.bottomRight,
     stops: [0.3, 1],
   );
+
+  static LinearGradient royalBlueGradient = const LinearGradient(
+    colors: [
+      Color(0xFF292E49),
+      Color(0xFF536976),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: [0.3, 1],
+  );
 }
