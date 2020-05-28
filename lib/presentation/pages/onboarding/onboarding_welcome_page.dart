@@ -49,7 +49,7 @@ class OnboardingWelcomePage extends StatelessWidget {
                     },
                     child: const Icon(Icons.arrow_forward),
                   ),
-                  HSpacing.medium(),
+                  const HSpacing.medium(),
                 ],
               ),
               const VSpacing.large(),

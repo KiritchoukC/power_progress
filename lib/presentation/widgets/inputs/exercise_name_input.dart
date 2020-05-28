@@ -22,7 +22,7 @@ class ExerciseNameInput extends StatelessWidget {
   const ExerciseNameInput({
     Key key,
     @required this.controller,
-    @required this.color,
+    this.color,
     this.nextFocusNode,
   }) : super(key: key);
   @override
