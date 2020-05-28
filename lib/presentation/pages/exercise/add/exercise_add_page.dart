@@ -20,22 +20,22 @@ import '../../../widgets/pp_appbar.dart';
 class ExerciseAddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PPAppBar(titleLabel: 'New exercise'),
-      body: BlocConsumer<ExerciseBloc, ExerciseState>(
-        listener: (context, state) {
-          if (state is ExerciseAddedState) {
-            Navigator.of(context).pop();
-          }
-        },
-        builder: (context, state) {
-          if (state is ExerciseAddingState) {
-            return const CenteredLoading();
-          }
+    return BlocConsumer<ExerciseBloc, ExerciseState>(
+      listener: (context, state) {
+        if (state is ExerciseAddedState) {
+          Navigator.of(context).pop();
+        }
+      },
+      builder: (context, state) {
+        if (state is ExerciseAddingState) {
+          return Scaffold(
+            appBar: PPAppBar(titleLabel: 'New exercise'),
+            body: const CenteredLoading(),
+          );
+        }
 
-          return const _ExerciseForm();
-        },
-      ),
+        return const _ExerciseForm();
+      },
     );
   }
 }
@@ -86,15 +86,17 @@ class _ExerciseFormState extends State<_ExerciseForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
-      child: Form(
-        key: _formKey,
-        autovalidate: true,
-        child: Center(
-          child: Container(
-            height: 330,
+    return Scaffold(
+      appBar: PPAppBar(titleLabel: 'New exercise'),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
+        child: Form(
+          key: _formKey,
+          autovalidate: true,
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const VSpacing.small(),
                 ExerciseNameInput(
@@ -112,27 +114,20 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                   controller: _incrementationController,
                   focusNode: _incrementationFocusNode,
                 ),
-                const VSpacing.small(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MainButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          BlocProvider.of<ExerciseBloc>(context)
-                              .add(ExerciseAddEvent(exercise: _exercise));
-                        }
-                      },
-                      icon: Icons.check,
-                    ),
-                    const HSpacing.medium(),
-                  ],
-                ),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            BlocProvider.of<ExerciseBloc>(context).add(ExerciseAddEvent(exercise: _exercise));
+          }
+        },
+        label: const Text('Add'),
+        backgroundColor: Colors.black,
       ),
     );
   }
