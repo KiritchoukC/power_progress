@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/presentation/widgets/main_button.dart';
 
 import '../../../../application/exercise/exercise_bloc.dart';
 import '../../../../core/util/spacing.dart';
@@ -29,7 +30,7 @@ class ExerciseAddPage extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is ExerciseAddingState) {
-            return CenteredLoading();
+            return const CenteredLoading();
           }
 
           return const _ExerciseForm();
@@ -86,47 +87,50 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
       child: Form(
         key: _formKey,
         autovalidate: true,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ExerciseNameInput(
-                controller: _exerciseNameController,
-                nextFocusNode: _oneRmFocusNode,
-              ),
-              const VSpacing.medium(),
-              OneRmInput(
-                controller: _oneRmController,
-                focusNode: _oneRmFocusNode,
-                nextFocusNode: _incrementationFocusNode,
-              ),
-              const VSpacing.extraSmall(),
-              IncrementationInput(
-                controller: _incrementationController,
-                focusNode: _incrementationFocusNode,
-              ),
-              const VSpacing.small(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RaisedButton(
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        BlocProvider.of<ExerciseBloc>(context)
-                            .add(ExerciseAddEvent(exercise: _exercise));
-                      }
-                    },
-                    child: const Text('Add'),
-                  )
-                ],
-              )
-            ],
+        child: Center(
+          child: Container(
+            height: 330,
+            child: Column(
+              children: [
+                const VSpacing.small(),
+                ExerciseNameInput(
+                  controller: _exerciseNameController,
+                  nextFocusNode: _oneRmFocusNode,
+                ),
+                const VSpacing.medium(),
+                OneRmInput(
+                  controller: _oneRmController,
+                  focusNode: _oneRmFocusNode,
+                  nextFocusNode: _incrementationFocusNode,
+                ),
+                const VSpacing.extraSmall(),
+                IncrementationInput(
+                  controller: _incrementationController,
+                  focusNode: _incrementationFocusNode,
+                ),
+                const VSpacing.small(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MainButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          BlocProvider.of<ExerciseBloc>(context)
+                              .add(ExerciseAddEvent(exercise: _exercise));
+                        }
+                      },
+                      icon: Icons.check,
+                    ),
+                    const HSpacing.medium(),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

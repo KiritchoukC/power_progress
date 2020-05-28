@@ -28,6 +28,7 @@ class Router {
           settings: const RouteSettings(
             name: RoutePaths.exerciseAdd,
           ),
+          fullscreenDialog: true,
         );
 
       case RoutePaths.exerciseWorkout:

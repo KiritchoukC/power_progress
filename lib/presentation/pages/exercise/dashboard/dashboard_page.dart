@@ -46,7 +46,7 @@ class DashboardPage extends StatelessWidget {
               return _Body(exercises: state.exercises);
             }
 
-            return CenteredLoading();
+            return const CenteredLoading();
           },
         ),
       ),
