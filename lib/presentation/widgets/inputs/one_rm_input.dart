@@ -12,7 +12,7 @@ class OneRmInput extends StatelessWidget {
   const OneRmInput({
     Key key,
     @required this.controller,
-    @required this.color,
+    this.color,
     this.focusNode,
     this.nextFocusNode,
   }) : super(key: key);

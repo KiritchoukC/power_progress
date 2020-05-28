@@ -11,7 +11,7 @@ class IncrementationInput extends StatelessWidget {
   const IncrementationInput({
     Key key,
     @required this.controller,
-    @required this.color,
+    this.color,
     this.focusNode,
   }) : super(key: key);
 

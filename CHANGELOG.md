@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.55.0](https://github.com/KiritchoukC/power_progress/compare/v1.54.1...v1.55.0) (2020-05-28)
+
+
+### Features
+
+* **onboarding:** remove loading page ([d2195e2](https://github.com/KiritchoukC/power_progress/commit/d2195e2)), closes [#75](https://github.com/KiritchoukC/power_progress/issues/75)
+
+### [1.54.1](https://github.com/KiritchoukC/power_progress/compare/v1.54.0...v1.54.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* **exercise-add:** fix exercise add page layout and button ([811bd52](https://github.com/KiritchoukC/power_progress/commit/811bd52))
+
 ## [1.54.0](https://github.com/KiritchoukC/power_progress/compare/v1.53.0...v1.54.0) (2020-05-27)
 
 

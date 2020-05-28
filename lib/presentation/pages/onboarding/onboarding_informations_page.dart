@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/theme/pp_light_theme.dart';
 
 import '../../../application/exercise/exercise_bloc.dart';
@@ -15,7 +16,6 @@ import '../../../domain/exercise/entities/value_objects/week.dart';
 import '../../router/route_paths.dart';
 import '../../widgets/inputs/incrementation_input.dart';
 import '../../widgets/inputs/one_rm_input.dart';
-import 'onboarding_loading_page.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;
@@ -30,42 +30,75 @@ class OnboardingInformationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ExerciseBloc, ExerciseState>(
-      listener: (BuildContext context, ExerciseState state) {
-        if (state is ExerciseAddedState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
-          });
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          body: state is ExerciseAddingState
-              ? OnboardingLoadingPage()
-              : _Body(
-                  exerciseName: exerciseName,
-                ),
-        );
-      },
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: PPTheme.royalBlueGradient,
+        ),
+        child: BlocConsumer<ExerciseBloc, ExerciseState>(
+          listener: (BuildContext context, ExerciseState state) {
+            if (state is ExerciseAddedState) {
+              Future.delayed(const Duration(seconds: 1)).then(
+                (value) => WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                }),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is ExerciseInitialState) {
+              return _Body(exerciseName: exerciseName);
+            }
+
+            return const _Loading();
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _Loading extends StatelessWidget {
+  const _Loading({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        height: 72,
+        child: Column(
+          children: [
+            const CenteredLoading(
+              color: Colors.white,
+            ),
+            const VSpacing.small(),
+            const Text(
+              'Generating your workout...',
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
 class _Body extends StatelessWidget {
-  final String exerciseName;
+  const _Body({
+    Key key,
+    @required this.exerciseName,
+  }) : super(key: key);
 
-  const _Body({Key key, @required this.exerciseName}) : super(key: key);
+  final String exerciseName;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          gradient: PPTheme.royalBlueGradient,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: _InformationsForm(exerciseName: exerciseName),
-        ));
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: _InformationsForm(exerciseName: exerciseName),
+    );
   }
 }
 
