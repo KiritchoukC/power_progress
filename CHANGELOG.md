@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.55.1](https://github.com/KiritchoukC/power_progress/compare/v1.55.0...v1.55.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* **exercise-add:** fix exercise add page ([8dfccb2](https://github.com/KiritchoukC/power_progress/commit/8dfccb2))
+
 ## [1.55.0](https://github.com/KiritchoukC/power_progress/compare/v1.54.1...v1.55.0) (2020-05-28)
 
 
