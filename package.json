@@ -1,6 +1,6 @@
 {
   "name": "power_progress",
-  "version": "1.55.1",
+  "version": "1.56.0",
   "description": "Powerlifting progress tracking mobile app",
   "main": "index.js",
   "directories": {
