@@ -20,6 +20,7 @@ dependencies:
   numberpicker: ^1.2.0
   google_fonts: ^1.1.0
   flutter_svg: ^0.17.4
+  package_info: ^0.4.0+18
 
 dev_dependencies:
   flutter_test: 
@@ -42,3 +43,5 @@ flutter_icons:
   image_path: "assets/launcher_logo.png"
 flutter:
   uses-material-design: true
+  assets:
+    - assets/

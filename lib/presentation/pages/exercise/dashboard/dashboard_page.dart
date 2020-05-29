@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 
 import '../../../../application/exercise/exercise_bloc.dart';
 import '../../../../application/workout/workout_bloc.dart';
@@ -58,20 +59,7 @@ class DashboardPage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: AddButton(),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
-        elevation: 10,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              height: 40,
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
