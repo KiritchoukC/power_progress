@@ -33,6 +33,24 @@ jobs:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
         run: sudo echo $GOOGLE_SERVICES > android/app/google-services.json
 
+      - name: Fill android/app/build.gradle
+        env:
+          BUILD_GRADLE: ${{ secrets.BUILD_GRADLE }}
+        run: sudo echo $BUILD_GRADLE > android/app/build.gradle
+
+      - name: Fill android/key.properties
+        env:
+          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+        run: sudo echo $KEY_PROPERTIES > android/key.properties
+
+      - name: Decrypt and add release keystore
+        env:
+          KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
+          KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
+        run: |
+          sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
+          gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
+
       - name: Build apk
         uses: subosito/flutter-action@v1
         with:

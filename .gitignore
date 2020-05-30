@@ -91,14 +91,13 @@ codecov_token
 
 # Firebase related
 .firebase
-android/key.properties
-android/key.jks
-android/app/key.jks
 
 # Private config
-web/firebase.config.debug.json
-secrets.json
 android/app/google-services.json
+android/key.properties
+android/app/key.jks
+android/app/key.jks.asc
+android/key.properties
 
 # IDE settings
 .vscode/
