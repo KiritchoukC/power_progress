@@ -20,6 +20,22 @@ jobs:
           node-version: 8.x
       - run: npm install
       - run: npm run update-pubspec-version
+
+      - name: Add release config
+        env:
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+          KEYSTORE_RELEASE: ${{ secrets.ENCRYPTED_BUILD_GRADLE }}
+          ENCRYPTED_BUILD_GRADLE_PASSWORD: ${{ secrets.ENCRYPTED_BUILD_GRADLE_PASSWORD }}
+          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
+          KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
+          KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
+        run: |
+          sudo echo $GOOGLE_SERVICES > android/app/google-services.json
+          sudo echo $ENCRYPTED_BUILD_GRADLE > android/app/build.gradle.asc
+          gpg -d -passphrase $ENCRYPTED_BUILD_GRADLE_PASSWORD --batch android/app/build.gradle.asc > android/app/build.gradle
+          sudo echo $KEY_PROPERTIES > android/key.properties
+          sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
+          gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
         
       - name: Launch flutter tests
         uses: subosito/flutter-action@v1
@@ -27,32 +43,6 @@ jobs:
           flutter-version: '1.18.0-dev.5.0'
           channel: 'dev'
       - run: flutter test
-
-      - name: Fill google-services.json
-        env:
-          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
-        run: sudo echo $GOOGLE_SERVICES > android/app/google-services.json
-
-      - name: Decrypt and add release build gradle
-        env:
-          KEYSTORE_RELEASE: ${{ secrets.ENCRYPTED_BUILD_GRADLE }}
-          ENCRYPTED_BUILD_GRADLE_PASSWORD: ${{ secrets.ENCRYPTED_BUILD_GRADLE_PASSWORD }}
-        run: |
-          sudo echo $ENCRYPTED_BUILD_GRADLE > android/app/build.gradle.asc
-          gpg -d -passphrase $ENCRYPTED_BUILD_GRADLE_PASSWORD --batch android/app/build.gradle.asc > android/app/build.gradle
-
-      - name: Fill android/key.properties
-        env:
-          KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
-        run: sudo echo $KEY_PROPERTIES > android/key.properties
-
-      - name: Decrypt and add release keystore
-        env:
-          KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
-          KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
-        run: |
-          sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
-          gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
 
       - name: Build apk
         uses: subosito/flutter-action@v1
