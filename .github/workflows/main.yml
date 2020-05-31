@@ -24,7 +24,7 @@ jobs:
       - name: Add release config
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
-          KEYSTORE_RELEASE: ${{ secrets.ENCRYPTED_BUILD_GRADLE }}
+          ENCRYPTED_BUILD_GRADLE: ${{ secrets.ENCRYPTED_BUILD_GRADLE }}
           ENCRYPTED_BUILD_GRADLE_PASSWORD: ${{ secrets.ENCRYPTED_BUILD_GRADLE_PASSWORD }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
           KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
