@@ -33,10 +33,13 @@ jobs:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
         run: sudo echo $GOOGLE_SERVICES > android/app/google-services.json
 
-      - name: Fill android/app/build.gradle
+      - name: Decrypt and add release build gradle
         env:
-          BUILD_GRADLE: ${{ secrets.BUILD_GRADLE }}
-        run: sudo echo $BUILD_GRADLE > android/app/build.gradle
+          KEYSTORE_RELEASE: ${{ secrets.ENCRYPTED_BUILD_GRADLE }}
+          ENCRYPTED_BUILD_GRADLE_PASSWORD: ${{ secrets.ENCRYPTED_BUILD_GRADLE_PASSWORD }}
+        run: |
+          sudo echo $ENCRYPTED_BUILD_GRADLE > android/app/build.gradle.asc
+          gpg -d -passphrase $ENCRYPTED_BUILD_GRADLE_PASSWORD --batch android/app/build.gradle.asc > android/app/build.gradle
 
       - name: Fill android/key.properties
         env:

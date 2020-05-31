@@ -101,3 +101,5 @@ android/key.properties
 
 # IDE settings
 .vscode/
+/android/app/build.gradle.asc
+/android/app/build.release.gradle
