@@ -29,7 +29,7 @@ jobs:
           KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
         run: |
           sudo rm android/app/build.gradle
-          sudo mv android/app/buid.release.gradle android/app/build.gradle
+          sudo mv android/app/build.release.gradle android/app/build.gradle
           sudo echo $GOOGLE_SERVICES > android/app/google-services.json
           sudo echo $KEY_PROPERTIES > android/key.properties
           sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
