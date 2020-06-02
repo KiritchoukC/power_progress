@@ -26,14 +26,12 @@ jobs:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
           KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
-          KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
         run: |
           sudo rm android/app/build.gradle
           sudo mv android/app/build.release.gradle android/app/build.gradle
           sudo echo $GOOGLE_SERVICES > android/app/google-services.json
           sudo echo $KEY_PROPERTIES > android/key.properties
-          sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
-          gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
+          sudo echo $KEYSTORE_RELEASE | base64 -d > android/app/key.jks
         
       - name: Launch flutter tests
         uses: subosito/flutter-action@v1
