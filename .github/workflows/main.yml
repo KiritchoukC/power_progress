@@ -24,14 +24,13 @@ jobs:
       - name: Add release config
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
-          BUILD_GRADLE: ${{ secrets.BUILD_GRADLE }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
           KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
           KEYSTORE_RELEASE_PASSWORD: ${{ secrets.KEYSTORE_RELEASE_PASSWORD }}
         run: |
+          sudo rm android/app/build.gradle
+          sudo mv android/app/buid.release.gradle android/app/build.gradle
           sudo echo $GOOGLE_SERVICES > android/app/google-services.json
-          sudo echo $BUILD_GRADLE > android/app/build.gradle
-          iconv -f ISO-8859-1 -t UTF-8//TRANSLIT android/app/build.gradle -o android/app/build.gradle
           sudo echo $KEY_PROPERTIES > android/key.properties
           sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
           gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
