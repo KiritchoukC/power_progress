@@ -31,7 +31,6 @@ jobs:
         run: |
           sudo echo $GOOGLE_SERVICES > android/app/google-services.json
           sudo echo $BUILD_GRADLE > android/app/build.gradle
-          sudo cat android/app/build.gradle
           sudo echo $KEY_PROPERTIES > android/key.properties
           sudo echo $KEYSTORE_RELEASE > android/app/key.jks.asc
           gpg -d -passphrase $KEYSTORE_RELEASE_PASSWORD --batch android/app/key.jks.asc > android/app/key.jks
