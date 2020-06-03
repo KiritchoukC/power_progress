@@ -27,8 +27,6 @@ jobs:
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
           KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
         run: |
-          sudo rm android/app/build.gradle
-          sudo mv android/app/build.release.gradle android/app/build.gradle
           sudo echo $GOOGLE_SERVICES > android/app/google-services.json
           sudo echo $KEY_PROPERTIES > android/key.properties
           sudo echo $KEYSTORE_RELEASE | base64 -d > android/app/key.jks
