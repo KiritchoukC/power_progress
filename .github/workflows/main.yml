@@ -44,6 +44,11 @@ jobs:
         with:
           flutter-version: '1.18.0-dev.5.0'
           channel: 'dev'
+        env:
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PATH: ${{ secrets.KEY_PATH }}
       - run: flutter build apk
 
       - name: Firebase apk distribution
