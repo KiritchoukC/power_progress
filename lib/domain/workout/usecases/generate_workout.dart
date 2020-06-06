@@ -3,6 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
@@ -26,10 +28,13 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
     return workoutsDoneEither.fold(
       (l) => left(l),
       (workoutsDone) {
-        WorkoutDone getWorkoutDone(int exerciseId, int month, WeekEnum week) {
+        WorkoutDone getWorkoutDone(int exerciseId, Month month, WeekEnum week) {
           if (workoutsDone.isEmpty) return null;
           return workoutsDone.firstWhere(
-            (x) => x.month == month && x.week == week && x.exerciseId == exerciseId,
+            (x) =>
+                x.month.getOrCrash() == month.getOrCrash() &&
+                x.week == week &&
+                x.exerciseId == exerciseId,
             orElse: () => null,
           );
         }
@@ -89,8 +94,8 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
 
 class GenerateWorkoutParams extends Equatable {
   final int exerciseId;
-  final int month;
-  final double oneRm;
+  final Month month;
+  final OneRm oneRm;
 
   const GenerateWorkoutParams({
     @required this.exerciseId,

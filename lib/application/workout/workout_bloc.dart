@@ -6,6 +6,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/month_workout.dart';
 import 'package:power_progress/domain/workout/entities/workout_failure.dart';

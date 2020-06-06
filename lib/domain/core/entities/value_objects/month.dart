@@ -22,6 +22,10 @@ class Month extends ValueObject<int> {
   }
 
   const Month._(this.value);
+
+  int get moduloMonthNumber => getOrCrash();
+  Month get previous => Month(getOrCrash() - 1);
+  Month get next => Month(getOrCrash() + 1);
 }
 
 Either<ValueFailure<int>, int> parseAndvalidateMonth(String input) {

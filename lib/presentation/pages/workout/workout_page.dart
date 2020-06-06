@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/workout/entities/month_workout.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
@@ -32,8 +33,8 @@ class _WorkoutPageState extends State<WorkoutPage> {
     context.bloc<WorkoutBloc>().add(
           WorkoutGenerateEvent(
             exerciseId: widget.exercise.id,
-            month: widget.exercise.month.getOrCrash(),
-            oneRm: widget.exercise.oneRm.getOrCrash(),
+            month: widget.exercise.month,
+            oneRm: widget.exercise.oneRm,
           ),
         );
     super.initState();
@@ -69,8 +70,8 @@ class _WorkoutPageState extends State<WorkoutPage> {
               context.bloc<WorkoutBloc>().add(
                     WorkoutGenerateEvent(
                       exerciseId: widget.exercise.id,
-                      month: widget.exercise.month.getOrCrash(),
-                      oneRm: widget.exercise.oneRm.getOrCrash(),
+                      month: widget.exercise.month,
+                      oneRm: widget.exercise.oneRm,
                     ),
                   );
             }
@@ -80,8 +81,8 @@ class _WorkoutPageState extends State<WorkoutPage> {
             //   context.bloc<WorkoutBloc>().add(
             //         WorkoutGenerateEvent(
             //           exerciseId: widget.exercise.id,
-            //           month: widget.exercise.month.getOrCrash(),
-            //           oneRm: widget.exercise.oneRm.getOrCrash(),
+            //           month: widget.exercise.month,
+            //           oneRm: widget.exercise.oneRm,
             //         ),
             //       );
             // }
@@ -94,7 +95,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
               );
             }
 
-            return CenteredLoading();
+            return const CenteredLoading();
           },
         ),
       ),
@@ -105,7 +106,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
 class _Body extends StatelessWidget {
   final MonthWorkout monthWorkout;
   final int exerciseId;
-  final int month;
+  final Month month;
 
   const _Body({
     Key key,

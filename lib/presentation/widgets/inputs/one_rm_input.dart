@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/presentation/widgets/pp_form_field.dart';
 
 class OneRmInput extends StatelessWidget {

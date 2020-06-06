@@ -13,7 +13,7 @@ class WorkoutGeneratingState extends WorkoutState {}
 
 class WorkoutGeneratedState extends WorkoutState {
   final MonthWorkout workout;
-  final int month;
+  final Month month;
 
   const WorkoutGeneratedState({
     @required this.workout,

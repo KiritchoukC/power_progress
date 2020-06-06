@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
@@ -37,7 +38,7 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
       await updateExerciseNextMonth(
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
-          nextMonth: params.month - 1,
+          nextMonth: params.month.previous,
         ),
       );
     }
@@ -50,7 +51,7 @@ class MarkWorkoutUndoneParams extends Equatable {
   final int id;
   final int exerciseId;
   final WeekEnum week;
-  final int month;
+  final Month month;
 
   const MarkWorkoutUndoneParams({
     @required this.id,

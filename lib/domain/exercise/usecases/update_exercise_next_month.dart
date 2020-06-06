@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
 
@@ -21,7 +22,7 @@ class UpdateExerciseNextMonth
 
 class UpdateExerciseNextMonthParams extends Equatable {
   final int exerciseId;
-  final int nextMonth;
+  final Month nextMonth;
 
   const UpdateExerciseNextMonthParams({
     @required this.exerciseId,

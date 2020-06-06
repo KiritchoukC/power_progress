@@ -16,8 +16,8 @@ abstract class WorkoutEvent extends Equatable {
 
 class WorkoutGenerateEvent extends WorkoutEvent {
   final int exerciseId;
-  final int month;
-  final double oneRm;
+  final Month month;
+  final OneRm oneRm;
 
   const WorkoutGenerateEvent({
     @required this.exerciseId,
@@ -31,7 +31,7 @@ class WorkoutGenerateEvent extends WorkoutEvent {
 
 class WorkoutMarkDoneEvent extends WorkoutEvent {
   final int exerciseId;
-  final int month;
+  final Month month;
   final WeekEnum week;
   final int repsDone;
 
@@ -50,7 +50,7 @@ class WorkoutMarkUndoneEvent extends WorkoutEvent {
   final int id;
   final int exerciseId;
   final WeekEnum week;
-  final int month;
+  final Month month;
 
   const WorkoutMarkUndoneEvent({
     @required this.id,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
@@ -105,7 +106,7 @@ class UncheckButton extends StatelessWidget {
   final int workoutDoneId;
   final int exerciseId;
   final WeekEnum week;
-  final int month;
+  final Month month;
 
   const UncheckButton({
     Key key,
@@ -138,7 +139,7 @@ class UncheckButton extends StatelessWidget {
 
 class CheckButton extends StatelessWidget {
   final WeekEnum week;
-  final int month;
+  final Month month;
   final int exerciseId;
   final int realizationReps;
 

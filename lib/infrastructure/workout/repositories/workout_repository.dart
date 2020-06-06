@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/workout_done.dart';
@@ -26,7 +27,7 @@ class WorkoutRepository implements IWorkoutRepository {
 
   @override
   Future<Either<WorkoutFailure, Unit>> markDone(
-      int exerciseId, int month, WeekEnum week, int repsDone) async {
+      int exerciseId, Month month, WeekEnum week, int repsDone) async {
     try {
       return right(await datasource.markDone(exerciseId, month, week, repsDone));
     } on Exception {
