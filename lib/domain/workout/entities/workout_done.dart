@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../core/entities/week_enum.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
 
 class WorkoutDone {
   final int id;

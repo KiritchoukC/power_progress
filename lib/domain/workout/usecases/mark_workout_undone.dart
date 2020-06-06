@@ -2,12 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../core/usecases/usecase.dart';
-import '../../core/entities/week_enum.dart';
-import '../../exercise/usecases/update_exercise_next_month.dart';
-import '../../exercise/usecases/update_exercise_next_week.dart';
-import '../entities/workout_failure.dart';
-import '../repositories/i_workout_repository.dart';
+import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
+import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 
 class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndoneParams> {
   final IWorkoutRepository repository;

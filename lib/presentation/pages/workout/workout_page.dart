@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/presentation/router/router.dart';
 
-import '../../../application/exercise/exercise_bloc.dart';
-import '../../../application/workout/workout_bloc.dart';
-import '../../../domain/exercise/entities/exercise.dart';
-import '../../../domain/workout/entities/month_workout.dart';
-import '../../widgets/centered_loading.dart';
-import '../../widgets/pp_appbar.dart';
-import '../../widgets/delete_confirm_dialog.dart';
-import '../../widgets/remove_button.dart';
-import 'widgets/week_set_widget.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/workout/entities/month_workout.dart';
+import 'package:power_progress/presentation/widgets/centered_loading.dart';
+import 'package:power_progress/presentation/widgets/pp_appbar.dart';
+import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
+import 'package:power_progress/presentation/widgets/remove_button.dart';
+import 'package:power_progress/presentation/pages/workout/widgets/week_set_widget.dart';
 
 class WorkoutPageArguments {
   final Exercise exercise;

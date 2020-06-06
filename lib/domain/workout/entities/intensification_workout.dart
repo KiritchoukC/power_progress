@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 
-import 'exercise_set.dart';
-import 'value_objects/weight.dart';
-import 'workout.dart';
-import 'workout_failure.dart';
+import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/entities/value_objects/weight.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 class IntensificationWorkout extends Workout {
   IntensificationWorkout({

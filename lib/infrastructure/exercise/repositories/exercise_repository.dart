@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/core/entities/week_enum.dart';
-import '../../../domain/exercise/entities/exercise.dart';
-import '../../../domain/exercise/entities/exercise_failure.dart';
-import '../../../domain/exercise/repositories/i_exercise_repository.dart';
-import '../datasources/i_exercise_datasource.dart';
-import '../models/exercise_model.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
+import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
+import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
 
 class ExerciseRepository implements IExerciseRepository {
   final IExerciseDatasource datasource;

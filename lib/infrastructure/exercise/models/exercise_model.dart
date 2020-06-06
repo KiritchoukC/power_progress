@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import '../../../domain/exercise/entities/exercise.dart';
-import '../../../domain/exercise/entities/value_objects/exercise_name.dart';
-import '../../../domain/exercise/entities/value_objects/incrementation.dart';
-import '../../../domain/exercise/entities/value_objects/month.dart';
-import '../../../domain/exercise/entities/value_objects/note.dart';
-import '../../../domain/exercise/entities/value_objects/one_rm.dart';
-import '../../../domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/month.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/note.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
 
 part 'exercise_model.g.dart';
 

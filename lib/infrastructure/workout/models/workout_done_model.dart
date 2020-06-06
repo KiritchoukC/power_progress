@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import '../../../domain/core/entities/week_enum.dart';
-import '../../../domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/workout_done.dart';
 
 part 'workout_done_model.g.dart';
 

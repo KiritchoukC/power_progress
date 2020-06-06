@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/presentation/widgets/main_button.dart';
 
-import '../../../../application/exercise/exercise_bloc.dart';
-import '../../../../core/util/spacing.dart';
-import '../../../../domain/exercise/entities/exercise.dart';
-import '../../../../domain/exercise/entities/value_objects/exercise_name.dart';
-import '../../../../domain/exercise/entities/value_objects/incrementation.dart';
-import '../../../../domain/exercise/entities/value_objects/month.dart';
-import '../../../../domain/exercise/entities/value_objects/one_rm.dart';
-import '../../../../domain/exercise/entities/value_objects/week.dart';
-import '../../../../domain/core/entities/week_enum.dart';
-import '../../../widgets/centered_loading.dart';
-import '../../../widgets/inputs/exercise_name_input.dart';
-import '../../../widgets/inputs/incrementation_input.dart';
-import '../../../widgets/inputs/one_rm_input.dart';
-import '../../../widgets/pp_appbar.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/month.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/presentation/widgets/centered_loading.dart';
+import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
+import 'package:power_progress/presentation/widgets/inputs/incrementation_input.dart';
+import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
+import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 
 class ExerciseAddPage extends StatelessWidget {
   @override

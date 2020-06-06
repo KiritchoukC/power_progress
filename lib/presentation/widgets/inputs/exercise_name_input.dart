@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/exercise/entities/value_objects/exercise_name.dart';
-import '../pp_form_field.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
+import 'package:power_progress/presentation/widgets/pp_form_field.dart';
 
 class ExerciseNameInput extends StatelessWidget {
   final TextEditingController controller;

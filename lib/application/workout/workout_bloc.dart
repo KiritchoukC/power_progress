@@ -5,13 +5,13 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../core/messages/errors.dart';
-import '../../domain/core/entities/week_enum.dart';
-import '../../domain/workout/entities/month_workout.dart';
-import '../../domain/workout/entities/workout_failure.dart';
-import '../../domain/workout/usecases/generate_workout.dart';
-import '../../domain/workout/usecases/mark_workout_done.dart';
-import '../../domain/workout/usecases/mark_workout_undone.dart';
+import 'package:power_progress/core/messages/errors.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/month_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
+import 'package:power_progress/domain/workout/usecases/mark_workout_done.dart';
+import 'package:power_progress/domain/workout/usecases/mark_workout_undone.dart';
 
 part 'workout_event.dart';
 part 'workout_state.dart';

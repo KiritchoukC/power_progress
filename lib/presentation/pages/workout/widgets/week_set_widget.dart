@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../application/workout/workout_bloc.dart';
-import '../../../../core/util/spacing.dart';
-import '../../../../domain/core/entities/week_enum.dart';
-import '../../../../domain/workout/entities/accumulation_workout.dart';
-import '../../../../domain/workout/entities/deload_workout.dart';
-import '../../../../domain/workout/entities/exercise_set.dart';
-import '../../../../domain/workout/entities/intensification_workout.dart';
-import '../../../../domain/workout/entities/realization_workout.dart';
-import '../../../../domain/workout/entities/workout.dart';
-import '../../../../theme/pp_light_theme.dart';
-import 'exercise_set_widget.dart';
-import '../../../../domain/workout/entities/workout_failure.dart';
-import 'realization_dialog.dart';
+import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
+import 'package:power_progress/domain/workout/entities/deload_workout.dart';
+import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
+import 'package:power_progress/domain/workout/entities/realization_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/pages/workout/widgets/exercise_set_widget.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/presentation/pages/workout/widgets/realization_dialog.dart';
 
 class WeekSetWidget extends StatelessWidget {
   final Workout workout;

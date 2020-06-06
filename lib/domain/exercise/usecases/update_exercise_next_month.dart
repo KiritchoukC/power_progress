@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/usecases/usecase.dart';
-import '../entities/exercise_failure.dart';
-import '../repositories/i_exercise_repository.dart';
+import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
 
 class UpdateExerciseNextMonth
     implements UseCase<Unit, ExerciseFailure, UpdateExerciseNextMonthParams> {

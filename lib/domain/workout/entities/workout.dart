@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'exercise_set.dart';
+import 'package:power_progress/domain/workout/entities/exercise_set.dart';
 
 abstract class Workout {
   final int month;

@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/util/util_functions.dart';
-import 'i_onboarding_datasource.dart';
+import 'package:power_progress/core/util/util_functions.dart';
+import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 
 class HiveOnboardingDatasource implements IOnboardingDatasource {
   final Box<bool> localStorage;

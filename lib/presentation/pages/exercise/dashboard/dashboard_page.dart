@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 
-import '../../../../application/exercise/exercise_bloc.dart';
-import '../../../../application/workout/workout_bloc.dart';
-import '../../../../domain/exercise/entities/exercise.dart';
-import '../../../widgets/centered_loading.dart';
-import '../../../widgets/pp_appbar.dart';
-import '../../../widgets/remove_button.dart';
-import '../../../widgets/delete_confirm_dialog.dart';
-import 'widgets/add_button.dart';
-import 'widgets/dummy_card.dart';
-import 'widgets/exercise_card.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/presentation/widgets/centered_loading.dart';
+import 'package:power_progress/presentation/widgets/pp_appbar.dart';
+import 'package:power_progress/presentation/widgets/remove_button.dart';
+import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/add_button.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/dummy_card.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card.dart';
 
 class DashboardPage extends StatelessWidget {
   @override

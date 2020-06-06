@@ -6,8 +6,8 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 
-import 'dependency_injection.dart' as di;
-import 'presentation/app.dart';
+import 'package:power_progress/dependency_injection.dart' as di;
+import 'package:power_progress/presentation/app.dart';
 
 Future main() async {
   // configure Logging

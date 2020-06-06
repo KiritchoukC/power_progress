@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../application/exercise/exercise_bloc.dart';
-import '../application/onboarding/onboarding_bloc.dart';
-import '../application/workout/workout_bloc.dart';
-import '../dependency_injection.dart' as di;
-import '../presentation/router/route_paths.dart';
-import '../presentation/router/router.dart';
-import '../theme/pp_light_theme.dart';
-import 'widgets/splash_screen.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/dependency_injection.dart' as di;
+import 'package:power_progress/presentation/router/route_paths.dart';
+import 'package:power_progress/presentation/router/router.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/widgets/splash_screen.dart';
 
 class App extends StatelessWidget {
   @override

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../pages/exercise/add/exercise_add_page.dart';
-import '../pages/exercise/dashboard/dashboard_page.dart';
-import '../pages/onboarding/onboarding_exercise_page.dart';
-import '../pages/onboarding/onboarding_informations_page.dart';
-import '../pages/onboarding/onboarding_welcome_page.dart';
-import '../pages/workout/workout_page.dart';
-import 'route_paths.dart';
+import 'package:power_progress/presentation/pages/exercise/add/exercise_add_page.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_page.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_page.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_welcome_page.dart';
+import 'package:power_progress/presentation/pages/workout/workout_page.dart';
+import 'package:power_progress/presentation/router/route_paths.dart';
 
 const String onboarding = "onboarding";
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../domain/core/entities/week_enum.dart';
-import '../models/exercise_model.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
 
 abstract class IExerciseDatasource {
   Future<Unit> add(ExerciseModel exercise);

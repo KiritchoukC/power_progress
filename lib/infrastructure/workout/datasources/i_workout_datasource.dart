@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../domain/core/entities/week_enum.dart';
-import '../models/workout_done_model.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 
 abstract class IWorkoutDatasource {
   Future<Unit> markDone(int exerciseId, int month, WeekEnum week, int repsDone);

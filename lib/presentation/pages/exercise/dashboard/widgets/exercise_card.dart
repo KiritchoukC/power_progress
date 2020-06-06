@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../domain/exercise/entities/exercise.dart';
-import '../../../../router/route_paths.dart';
-import '../../../workout/workout_page.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/presentation/router/route_paths.dart';
+import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
 class ExerciseCard extends StatefulWidget {
   final Exercise exercise;

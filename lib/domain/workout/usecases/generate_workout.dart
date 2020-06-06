@@ -2,17 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/usecases/usecase.dart';
-import '../../core/entities/week_enum.dart';
-import '../entities/accumulation_workout.dart';
-import '../entities/deload_workout.dart';
-import '../entities/intensification_workout.dart';
-import '../entities/month_workout.dart';
-import '../entities/realization_workout.dart';
-import '../entities/workout.dart';
-import '../entities/workout_done.dart';
-import '../entities/workout_failure.dart';
-import '../repositories/i_workout_repository.dart';
+import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
+import 'package:power_progress/domain/workout/entities/deload_workout.dart';
+import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
+import 'package:power_progress/domain/workout/entities/month_workout.dart';
+import 'package:power_progress/domain/workout/entities/realization_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 
 class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateWorkoutParams> {
   final IWorkoutRepository repository;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:power_progress/theme/pp_light_theme.dart';
 
-import '../../../core/util/spacing.dart';
-import '../../router/route_paths.dart';
-import '../../widgets/inputs/exercise_name_input.dart';
-import 'onboarding_informations_page.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/presentation/router/route_paths.dart';
+import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 
 class OnboardingExercisePage extends StatelessWidget {
   @override

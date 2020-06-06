@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/entities/week_enum.dart';
-import '../entities/exercise.dart';
-import '../entities/exercise_failure.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
 
 abstract class IExerciseRepository {
   Future<Either<ExerciseFailure, Unit>> add(Exercise exercise);

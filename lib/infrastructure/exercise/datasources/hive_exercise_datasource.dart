@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/util/util_functions.dart';
-import '../../../domain/core/entities/week_enum.dart';
-import '../models/exercise_model.dart';
-import 'i_exercise_datasource.dart';
+import 'package:power_progress/core/util/util_functions.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
+import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 
 class HiveExerciseDatasource implements IExerciseDatasource {
   final Box<ExerciseModel> localStorage;

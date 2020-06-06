@@ -6,10 +6,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
 
-import '../../core/messages/errors.dart';
-import '../../core/usecases/usecase.dart';
-import '../../domain/onboarding/usecases/done_onboarding.dart';
-import '../../domain/onboarding/usecases/is_done_onboarding.dart';
+import 'package:power_progress/core/messages/errors.dart';
+import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
+import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 
 part 'onboarding_event.dart';
 part 'onboarding_state.dart';

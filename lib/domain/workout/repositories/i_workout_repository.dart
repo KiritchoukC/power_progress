@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/entities/week_enum.dart';
-import '../entities/workout_done.dart';
-import '../entities/workout_failure.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 abstract class IWorkoutRepository {
   Future<Either<WorkoutFailure, Unit>> markDone(

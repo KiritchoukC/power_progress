@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/exercise/entities/value_objects/incrementation.dart';
-import '../pp_form_field.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/presentation/widgets/pp_form_field.dart';
 
 class IncrementationInput extends StatelessWidget {
   final TextEditingController controller;
