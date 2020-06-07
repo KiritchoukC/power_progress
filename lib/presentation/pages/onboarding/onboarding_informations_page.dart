@@ -37,20 +37,22 @@ class OnboardingInformationsPage extends StatelessWidget {
         ),
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           listener: (BuildContext context, ExerciseState state) {
-            if (state is ExerciseAddedState) {
-              Future.delayed(const Duration(seconds: 1)).then(
-                (value) => WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
-                }),
-              );
-            }
+            state.maybeMap(
+              added: (value) {
+                Future.delayed(const Duration(seconds: 1)).then(
+                  (value) => WidgetsBinding.instance.addPostFrameCallback((_) {
+                    Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                  }),
+                );
+              },
+              orElse: () {},
+            );
           },
           builder: (context, state) {
-            if (state is ExerciseInitialState) {
-              return _Body(exerciseName: exerciseName);
-            }
-
-            return const _Loading();
+            return state.maybeMap(
+              initial: (value) => _Body(exerciseName: exerciseName),
+              orElse: () => const _Loading(),
+            );
           },
         ),
       ),

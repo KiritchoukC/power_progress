@@ -21,19 +21,19 @@ class ExerciseAddPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ExerciseBloc, ExerciseState>(
       listener: (context, state) {
-        if (state is ExerciseAddedState) {
-          Navigator.of(context).pop();
-        }
+        state.maybeMap(
+          added: (value) => Navigator.of(context).pop(),
+          orElse: () {},
+        );
       },
       builder: (context, state) {
-        if (state is ExerciseAddingState) {
-          return Scaffold(
+        return state.maybeMap(
+          addInProgress: (value) => Scaffold(
             appBar: PPAppBar(titleLabel: 'New exercise'),
             body: const CenteredLoading(),
-          );
-        }
-
-        return const _ExerciseForm();
+          ),
+          orElse: () => const _ExerciseForm(),
+        );
       },
     );
   }

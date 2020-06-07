@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,7 +29,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   });
 
   @override
-  ExerciseState get initialState => ExerciseInitialState();
+  ExerciseState get initialState => const ExerciseState.initial();
 
   @override
   Stream<ExerciseState> mapEventToState(ExerciseEvent event) async* {
@@ -43,55 +42,56 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   }
 
   Stream<ExerciseState> _handleExerciseAddEvent(Add event) async* {
-    yield ExerciseAddingState();
+    yield const ExerciseState.addInProgress();
 
     final output = await addExercise(AddExerciseParams(exercise: event.exercise));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield ExerciseAddedState();
+      yield const ExerciseState.added();
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<ExerciseState> _handleExerciseFetchEvent(Fetch event) async* {
-    yield ExerciseFetchingState();
+    yield const ExerciseState.fetchInProgress();
 
     final output = await fetchExercises(NoParams());
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(List<Exercise> exercises) async* {
-      yield ExerciseFetchedState(exercises: exercises);
+      yield ExerciseState.fetched(exercises: exercises);
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<ExerciseState> _handleExerciseSelectionModeEvent(SelectionMode event) async* {
-    yield ExerciseSelectionModeState(
-      isInSelectionMode: event.isInSelectionMode,
-      selectedIds: event.selectedIds,
-    );
+    if (event.isInSelectionMode) {
+      yield ExerciseState.selected(selectedIds: event.selectedIds);
+    } else {
+      yield ExerciseState.unselected(unselectedIds: event.selectedIds);
+    }
   }
 
   Stream<ExerciseState> _handleExerciseRemoveEvent(Remove event) async* {
-    yield ExerciseRemovingState();
+    yield const ExerciseState.removeInProgress();
 
     final output = await removeExercises(RemoveExercisesParams(ids: event.ids));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseErrorState(message: mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield ExerciseRemovedState();
+      yield const ExerciseState.removed();
       yield* _handleExerciseFetchEvent(const Fetch());
     }
 

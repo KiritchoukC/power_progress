@@ -44,9 +44,10 @@ class _WorkoutPageState extends State<WorkoutPage> {
   Widget build(BuildContext context) {
     return BlocListener<ExerciseBloc, ExerciseState>(
       listener: (context, state) {
-        if (state is ExerciseRemovedState) {
-          Navigator.of(context).pop();
-        }
+        state.maybeMap(
+          removed: (_) => Navigator.of(context).pop(),
+          orElse: () {},
+        );
       },
       child: Scaffold(
         appBar: PPAppBar(

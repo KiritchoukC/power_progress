@@ -27,27 +27,35 @@ class DashboardPage extends StatelessWidget {
         },
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           buildWhen: (previous, current) {
-            return current is! ExerciseSelectionModeState;
+            return current.maybeMap(
+              selected: (_) => false,
+              unselected: (_) => false,
+              orElse: () => true,
+            );
           },
           listener: (context, state) {
-            if (state is ExerciseErrorState) {
-              Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.message)));
-            }
+            state.maybeMap(
+              error: (value) =>
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(value.message))),
+              orElse: () {},
+            );
           },
           builder: (context, state) {
-            // fetch exercises on initial state or when an exercise gets added
-            if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
+            Widget fetch(_) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 BlocProvider.of<ExerciseBloc>(context).add(const ExerciseEvent.fetch());
               });
+
+              return const CenteredLoading();
             }
 
-            // show exercises when they're loaded
-            if (state is ExerciseFetchedState) {
-              return _Body(exercises: state.exercises);
-            }
-
-            return const CenteredLoading();
+            return state.maybeMap(
+              removed: fetch,
+              initial: fetch,
+              added: fetch,
+              fetched: (value) => _Body(exercises: value.exercises),
+              orElse: () => const CenteredLoading(),
+            );
           },
         ),
       ),
@@ -132,26 +140,25 @@ class _RemoveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ExerciseBloc, ExerciseState>(
       condition: (previous, current) {
-        if (current is ExerciseFetchedState) return false;
-        return true;
+        return current.maybeMap(
+          fetched: (_) => false,
+          orElse: () => true,
+        );
       },
       builder: (context, state) {
-        if (state is ExerciseSelectionModeState) {
-          if (state.isInSelectionMode) {
-            return RemoveButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return DeleteConfirmDialog(exerciseIds: state.selectedIds);
-                  },
-                );
-              },
-            );
-          }
-        }
-
-        return Container();
+        return state.maybeMap(
+          selected: (value) => RemoveButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return DeleteConfirmDialog(exerciseIds: value.selectedIds);
+                },
+              );
+            },
+          ),
+          orElse: () => Container(),
+        );
       },
     );
   }

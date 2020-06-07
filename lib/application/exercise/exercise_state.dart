@@ -1,54 +1,15 @@
 part of 'exercise_bloc.dart';
 
-abstract class ExerciseState extends Equatable {
-  const ExerciseState();
-
-  @override
-  List<Object> get props => [];
-}
-
-class ExerciseInitialState extends ExerciseState {}
-
-// Adding
-class ExerciseAddingState extends ExerciseState {}
-
-class ExerciseAddedState extends ExerciseState {}
-
-// Fetching
-class ExerciseFetchingState extends ExerciseState {}
-
-class ExerciseFetchedState extends ExerciseState {
-  final List<Exercise> exercises;
-
-  const ExerciseFetchedState({@required this.exercises});
-
-  @override
-  List<Object> get props => [exercises];
-}
-
-// Removing
-
-class ExerciseRemovingState extends ExerciseState {}
-
-class ExerciseRemovedState extends ExerciseState {}
-
-// Selection
-class ExerciseSelectionModeState extends ExerciseState {
-  final bool isInSelectionMode;
-  final List<int> selectedIds;
-
-  const ExerciseSelectionModeState({@required this.isInSelectionMode, @required this.selectedIds});
-
-  @override
-  List<Object> get props => [isInSelectionMode, selectedIds];
-}
-
-// Error
-class ExerciseErrorState extends ExerciseState {
-  final String message;
-
-  const ExerciseErrorState({@required this.message});
-
-  @override
-  List<Object> get props => [message];
+@freezed
+abstract class ExerciseState with _$ExerciseState {
+  const factory ExerciseState.initial() = Initial;
+  const factory ExerciseState.addInProgress() = AddInProgress;
+  const factory ExerciseState.added() = Added;
+  const factory ExerciseState.fetchInProgress() = FetchInProgress;
+  const factory ExerciseState.fetched({@required List<Exercise> exercises}) = Fetched;
+  const factory ExerciseState.removeInProgress() = RemoveInProgress;
+  const factory ExerciseState.removed() = Removed;
+  const factory ExerciseState.selected({@required List<int> selectedIds}) = Selected;
+  const factory ExerciseState.unselected({@required List<int> unselectedIds}) = Unselected;
+  const factory ExerciseState.error({@required String message}) = Error;
 }
