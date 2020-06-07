@@ -27,7 +27,7 @@ class DashboardPage extends StatelessWidget {
         },
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           buildWhen: (previous, current) {
-            return current.maybeMap(
+            return current.maybeWhen(
               selected: (_) => false,
               unselected: (_) => false,
               orElse: () => true,
@@ -140,7 +140,7 @@ class _RemoveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ExerciseBloc, ExerciseState>(
       condition: (previous, current) {
-        return current.maybeMap(
+        return current.maybeWhen(
           fetched: (_) => false,
           orElse: () => true,
         );

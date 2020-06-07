@@ -44,8 +44,8 @@ class _WorkoutPageState extends State<WorkoutPage> {
   Widget build(BuildContext context) {
     return BlocListener<ExerciseBloc, ExerciseState>(
       listener: (context, state) {
-        state.maybeMap(
-          removed: (_) => Navigator.of(context).pop(),
+        state.maybeWhen(
+          removed: () => Navigator.of(context).pop(),
           orElse: () {},
         );
       },

@@ -37,10 +37,10 @@ class OnboardingInformationsPage extends StatelessWidget {
         ),
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           listener: (BuildContext context, ExerciseState state) {
-            state.maybeMap(
-              added: (value) {
+            state.maybeWhen(
+              added: () {
                 Future.delayed(const Duration(seconds: 1)).then(
-                  (value) => WidgetsBinding.instance.addPostFrameCallback((_) {
+                  (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
                     Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
                   }),
                 );
@@ -49,8 +49,8 @@ class OnboardingInformationsPage extends StatelessWidget {
             );
           },
           builder: (context, state) {
-            return state.maybeMap(
-              initial: (value) => _Body(exerciseName: exerciseName),
+            return state.maybeWhen(
+              initial: () => _Body(exerciseName: exerciseName),
               orElse: () => const _Loading(),
             );
           },
