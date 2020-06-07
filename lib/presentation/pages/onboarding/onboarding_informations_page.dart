@@ -69,12 +69,12 @@ class _Loading extends StatelessWidget {
       child: Container(
         height: 72,
         child: Column(
-          children: [
-            const CenteredLoading(
+          children: const [
+            CenteredLoading(
               color: Colors.white,
             ),
-            const VSpacing.small(),
-            const Text(
+            VSpacing.small(),
+            Text(
               'Generating your workout...',
               style: TextStyle(color: Colors.white),
             ),
@@ -149,7 +149,6 @@ class _InformationsFormState extends State<_InformationsForm> {
       autovalidate: true,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             widget.exerciseName,
@@ -178,13 +177,13 @@ class _InformationsFormState extends State<_InformationsForm> {
               FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context.bloc<ExerciseBloc>().add(ExerciseAddEvent(exercise: _exercise));
+                    context.bloc<ExerciseBloc>().add(ExerciseEvent.add(exercise: _exercise));
                     context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
                   }
                 },
                 child: const Icon(Icons.check),
               ),
-              HSpacing.medium(),
+              const HSpacing.medium(),
             ],
           )
         ],

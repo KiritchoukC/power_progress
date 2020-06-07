@@ -24,7 +24,7 @@ class DeleteConfirmDialog extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {
-            context.bloc<ExerciseBloc>().add(ExerciseRemoveEvent(ids: exerciseIds));
+            context.bloc<ExerciseBloc>().add(ExerciseEvent.remove(ids: exerciseIds));
             Navigator.of(context).pop();
           },
           child: const Text('Delete'),

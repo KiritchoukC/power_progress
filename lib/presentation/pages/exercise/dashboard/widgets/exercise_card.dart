@@ -82,8 +82,6 @@ class _Card extends StatelessWidget {
                     ),
               ),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Icon(
                     Icons.keyboard_arrow_right,

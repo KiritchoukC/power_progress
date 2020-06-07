@@ -45,7 +45,6 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       autovalidate: true,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             'On which exercise do you want to progress ?',

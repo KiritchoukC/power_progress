@@ -22,7 +22,7 @@ class DashboardPage extends StatelessWidget {
       body: BlocListener<WorkoutBloc, WorkoutState>(
         listener: (previous, current) {
           if (current is WorkoutMarkedDoneState || current is WorkoutMarkedUndoneState) {
-            context.bloc<ExerciseBloc>().add(ExerciseFetchEvent());
+            context.bloc<ExerciseBloc>().add(const ExerciseEvent.fetch());
           }
         },
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
@@ -38,7 +38,7 @@ class DashboardPage extends StatelessWidget {
             // fetch exercises on initial state or when an exercise gets added
             if (state is! ExerciseFetchedState || state is ExerciseAddedState) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                BlocProvider.of<ExerciseBloc>(context).add(ExerciseFetchEvent());
+                BlocProvider.of<ExerciseBloc>(context).add(const ExerciseEvent.fetch());
               });
             }
 
@@ -88,8 +88,12 @@ class _BodyState extends State<_Body> {
 
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
 
-      context.bloc<ExerciseBloc>().add(ExerciseSelectionModeEvent(
-          isInSelectionMode: isInSelectionMode, selectedIds: selectedExerciseIds));
+      context.bloc<ExerciseBloc>().add(
+            ExerciseEvent.selectionMode(
+              isInSelectionMode: isInSelectionMode,
+              selectedIds: selectedExerciseIds,
+            ),
+          );
     });
   }
 
@@ -101,14 +105,12 @@ class _BodyState extends State<_Body> {
       padding: const EdgeInsets.all(16.0),
       child: widget.exercises.isEmpty
           ? ListView(
-              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               children: [
                 DummyCard(),
               ],
             )
           : ListView.builder(
-              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: widget.exercises.length,
               itemBuilder: (context, index) => ExerciseCard(

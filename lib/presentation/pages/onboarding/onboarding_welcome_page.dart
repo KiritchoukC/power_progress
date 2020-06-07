@@ -18,7 +18,6 @@ class OnboardingWelcomePage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const VSpacing.large(),
               const VSpacing.large(),

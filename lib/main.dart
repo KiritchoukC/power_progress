@@ -12,6 +12,7 @@ import 'package:power_progress/presentation/app.dart';
 Future main() async {
   // configure Logging
   Logger.root.level = Level.ALL;
+  // ignore: avoid_print
   Logger.root.onRecord.listen((record) => print(record.toString()));
 
   // init logging of BLoC transitions

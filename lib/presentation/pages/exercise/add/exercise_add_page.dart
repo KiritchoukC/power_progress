@@ -122,7 +122,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseAddEvent(exercise: _exercise));
+            BlocProvider.of<ExerciseBloc>(context).add(ExerciseEvent.add(exercise: _exercise));
           }
         },
         label: const Text('Add'),
