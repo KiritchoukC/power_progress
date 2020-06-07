@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
@@ -17,6 +18,7 @@ import 'package:power_progress/domain/workout/usecases/mark_workout_undone.dart'
 
 part 'workout_event.dart';
 part 'workout_state.dart';
+part 'workout_bloc.freezed.dart';
 
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final GenerateWorkout generateWorkout;
@@ -36,20 +38,14 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   Stream<WorkoutState> mapEventToState(
     WorkoutEvent event,
   ) async* {
-    if (event is WorkoutGenerateEvent) {
-      yield* _handleWorkoutGenerateEvent(event);
-    }
-
-    if (event is WorkoutMarkDoneEvent) {
-      yield* _handleWorkoutMarkDoneEvent(event);
-    }
-
-    if (event is WorkoutMarkUndoneEvent) {
-      yield* _handleWorkoutMarkUndoneEvent(event);
-    }
+    yield* event.map(
+      generate: _handleGenerateEvent,
+      markDone: _handleMarkDoneEvent,
+      markUndone: _handleMarkUndoneEvent,
+    );
   }
 
-  Stream<WorkoutState> _handleWorkoutGenerateEvent(WorkoutGenerateEvent event) async* {
+  Stream<WorkoutState> _handleGenerateEvent(Generate event) async* {
     yield WorkoutGeneratingState();
 
     final output = await generateWorkout(
@@ -71,7 +67,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<WorkoutState> _handleWorkoutMarkDoneEvent(WorkoutMarkDoneEvent event) async* {
+  Stream<WorkoutState> _handleMarkDoneEvent(MarkDone event) async* {
     yield WorkoutMarkingDoneState();
 
     final output = await markWorkoutDone(
@@ -94,7 +90,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<WorkoutState> _handleWorkoutMarkUndoneEvent(WorkoutMarkUndoneEvent event) async* {
+  Stream<WorkoutState> _handleMarkUndoneEvent(MarkUndone event) async* {
     yield WorkoutMarkingUndoneState();
 
     final output = await markWorkoutUndone(

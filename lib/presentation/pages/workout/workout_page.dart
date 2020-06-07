@@ -31,7 +31,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
   @override
   void initState() {
     context.bloc<WorkoutBloc>().add(
-          WorkoutGenerateEvent(
+          WorkoutEvent.generate(
             exerciseId: widget.exercise.id,
             month: widget.exercise.month,
             oneRm: widget.exercise.oneRm,
@@ -69,7 +69,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
           listener: (context, state) {
             if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
               context.bloc<WorkoutBloc>().add(
-                    WorkoutGenerateEvent(
+                    WorkoutEvent.generate(
                       exerciseId: widget.exercise.id,
                       month: widget.exercise.month,
                       oneRm: widget.exercise.oneRm,

@@ -121,7 +121,7 @@ class UncheckButton extends StatelessWidget {
     return IconButton(
       onPressed: () {
         context.bloc<WorkoutBloc>().add(
-              WorkoutMarkUndoneEvent(
+              WorkoutEvent.markUndone(
                 id: workoutDoneId,
                 exerciseId: exerciseId,
                 week: week,
@@ -150,7 +150,7 @@ class CheckButton extends StatelessWidget {
     }
 
     context.bloc<WorkoutBloc>().add(
-          WorkoutMarkDoneEvent(
+          WorkoutEvent.markDone(
             exerciseId: exerciseId,
             month: month,
             week: week,
@@ -164,7 +164,7 @@ class CheckButton extends StatelessWidget {
       builder: (context) => RealizationDialog(
         initialValue: realizationReps,
         onValidate: (value) => context.bloc<WorkoutBloc>().add(
-              WorkoutMarkDoneEvent(
+              WorkoutEvent.markDone(
                 exerciseId: exerciseId,
                 month: month,
                 week: week,
