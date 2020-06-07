@@ -54,7 +54,7 @@ class OnboardingWelcomePage extends StatelessWidget {
               const VSpacing.large(),
               FlatButton(
                 onPressed: () {
-                  context.bloc<OnboardingBloc>().add(const OnboardingEvent.done());
+                  context.bloc<OnboardingBloc>().add(const OnboardingEvent.markDone());
                   Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
                 },
                 child: const Text(

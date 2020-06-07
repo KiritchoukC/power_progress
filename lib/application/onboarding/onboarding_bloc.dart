@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
@@ -26,49 +25,49 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   });
 
   @override
-  OnboardingState get initialState => OnboardingInitialState();
+  OnboardingState get initialState => const OnboardingState.initial();
 
   @override
   Stream<OnboardingState> mapEventToState(
     OnboardingEvent event,
   ) async* {
     yield* event.map(
-      done: _handleDoneEvent,
+      markDone: _handleMarkDoneEvent,
       isDone: _handleIsDoneEvent,
     );
   }
 
-  Stream<OnboardingState> _handleDoneEvent(Done event) async* {
-    yield OnboardingMarkingDoneState();
+  Stream<OnboardingState> _handleMarkDoneEvent(MarkDone event) async* {
+    yield const OnboardingState.markDoneInProgress();
 
     final output = await doneOnboarding(NoParams());
 
     Stream<OnboardingState> onFailure(OnboardingFailure failure) async* {
-      yield OnboardingErrorState(message: mapFailureToErrorMessage(failure));
+      yield OnboardingState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<OnboardingState> onSuccess(Unit unit) async* {
-      yield OnboardingMarkedDoneState();
+      yield const OnboardingState.markedDone();
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<OnboardingState> _handleIsDoneEvent(IsDone event) async* {
-    yield OnboardingIsDoneLoadingState();
+    yield const OnboardingState.isDoneInProgress();
 
     final output = await isDoneOnboarding(NoParams());
 
     Stream<OnboardingState> onFailure(OnboardingFailure failure) async* {
-      yield OnboardingErrorState(message: mapFailureToErrorMessage(failure));
+      yield OnboardingState.error(message: mapFailureToErrorMessage(failure));
     }
 
     // ignore: avoid_positional_boolean_parameters
     Stream<OnboardingState> onSuccess(bool isDone) async* {
       if (isDone) {
-        yield OnboardingIsDoneState();
+        yield const OnboardingState.done();
       } else {
-        yield OnboardingIsNotDoneState();
+        yield const OnboardingState.notDone();
       }
     }
 

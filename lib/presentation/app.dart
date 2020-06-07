@@ -26,25 +26,33 @@ class App extends StatelessWidget {
         // initialRoute: RoutePaths.onboardingWelcome,
         home: BlocListener<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
-            if (state is OnboardingIsDoneState) {
+            void navigateToDashboard() {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
               });
             }
 
-            if (state is OnboardingIsNotDoneState) {
+            void navigateToOnboarding() {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
               });
             }
+
+            state.maybeWhen(
+              done: navigateToDashboard,
+              notDone: navigateToOnboarding,
+              orElse: () {},
+            );
           },
           child: BlocBuilder<OnboardingBloc, OnboardingState>(
             builder: (context, state) {
-              if (state is OnboardingInitialState) {
-                context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
-              }
-
-              return Scaffold(body: SplashScreen());
+              return state.maybeWhen(
+                initial: () {
+                  context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
+                  return Scaffold(body: SplashScreen());
+                },
+                orElse: () => Scaffold(body: SplashScreen()),
+              );
             },
           ),
         ),
