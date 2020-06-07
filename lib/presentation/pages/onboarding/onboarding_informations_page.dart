@@ -180,7 +180,7 @@ class _InformationsFormState extends State<_InformationsForm> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     context.bloc<ExerciseBloc>().add(ExerciseEvent.add(exercise: _exercise));
-                    context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
+                    context.bloc<OnboardingBloc>().add(const OnboardingEvent.done());
                   }
                 },
                 child: const Icon(Icons.check),

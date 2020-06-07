@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
@@ -13,6 +14,7 @@ import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dar
 
 part 'onboarding_event.dart';
 part 'onboarding_state.dart';
+part 'onboarding_bloc.freezed.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final DoneOnboarding doneOnboarding;
@@ -30,16 +32,13 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   Stream<OnboardingState> mapEventToState(
     OnboardingEvent event,
   ) async* {
-    if (event is OnboardingDoneEvent) {
-      yield* _handleOnboardingDoneEvent(event);
-    }
-
-    if (event is OnboardingIsDoneEvent) {
-      yield* _handleOnboardingIsDoneEvent(event);
-    }
+    yield* event.map(
+      done: _handleDoneEvent,
+      isDone: _handleIsDoneEvent,
+    );
   }
 
-  Stream<OnboardingState> _handleOnboardingDoneEvent(OnboardingDoneEvent event) async* {
+  Stream<OnboardingState> _handleDoneEvent(Done event) async* {
     yield OnboardingMarkingDoneState();
 
     final output = await doneOnboarding(NoParams());
@@ -55,7 +54,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     yield* output.fold(onFailure, onSuccess);
   }
 
-  Stream<OnboardingState> _handleOnboardingIsDoneEvent(OnboardingIsDoneEvent event) async* {
+  Stream<OnboardingState> _handleIsDoneEvent(IsDone event) async* {
     yield OnboardingIsDoneLoadingState();
 
     final output = await isDoneOnboarding(NoParams());

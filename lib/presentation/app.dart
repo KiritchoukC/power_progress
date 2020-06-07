@@ -41,7 +41,7 @@ class App extends StatelessWidget {
           child: BlocBuilder<OnboardingBloc, OnboardingState>(
             builder: (context, state) {
               if (state is OnboardingInitialState) {
-                context.bloc<OnboardingBloc>().add(OnboardingIsDoneEvent());
+                context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
               }
 
               return Scaffold(body: SplashScreen());
