@@ -23,7 +23,20 @@ class Month extends ValueObject<int> {
 
   const Month._(this.value);
 
-  int get moduloMonthNumber => getOrCrash();
+  Either<ValueFailure<int>, int> get moduloMonthNumber {
+    final monthNumber = getOrCrash();
+
+    if (monthNumber <= 0) return left(ValueFailure.numberUnderZero(failedValue: monthNumber));
+
+    if (monthNumber <= 4) return right(monthNumber);
+
+    final result = monthNumber % 4;
+
+    if (result == 0) return right(4);
+
+    return right(result);
+  }
+
   Month get previous => Month(getOrCrash() - 1);
   Month get next => Month(getOrCrash() + 1);
 }
