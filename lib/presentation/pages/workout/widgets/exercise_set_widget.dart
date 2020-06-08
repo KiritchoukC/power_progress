@@ -44,7 +44,7 @@ class ExerciseSetWidget extends StatelessWidget {
           ),
         ),
         Container(
-          width: 40,
+          width: 60,
           child: Text(
             exerciseSet.weight.formattedValue.getOrElse(() => 'E'),
             style: _getTextStyle(context),

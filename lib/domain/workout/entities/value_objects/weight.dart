@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:power_progress/core/domain/value_failure.dart';
 import 'package:power_progress/core/domain/value_object.dart';
+import 'package:power_progress/core/util/util_functions.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 
 class Weight extends ValueObject<double> {
@@ -11,7 +12,7 @@ class Weight extends ValueObject<double> {
   Either<ValueFailure<double>, String> get formattedValue {
     return value.fold(
       (l) => left(l),
-      (r) => right(((r * 4).round() / 4).toStringAsPrecision(2)),
+      (r) => right(round(r, 0.25).toString()),
     );
   }
 
