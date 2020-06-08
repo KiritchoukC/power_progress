@@ -116,22 +116,16 @@ class _InformationsForm extends StatefulWidget {
 class _InformationsFormState extends State<_InformationsForm> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _oneRmController;
-  TextEditingController _incrementationController;
-  FocusNode _incrementationFocusNode;
 
   @override
   void initState() {
     _oneRmController = TextEditingController();
-    _incrementationController = TextEditingController();
-    _incrementationFocusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     _oneRmController?.dispose();
-    _incrementationController?.dispose();
-    _incrementationFocusNode?.dispose();
     super.dispose();
   }
 
@@ -139,7 +133,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         id: 0,
         oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(widget.exerciseName),
-        incrementation: Incrementation.parse(_incrementationController.value.text),
+        incrementation: Incrementation.two(),
         month: Month(1),
         nextWeek: Week(WeekEnum.accumulation),
       );
@@ -163,13 +157,6 @@ class _InformationsFormState extends State<_InformationsForm> {
           const VSpacing.medium(),
           OneRmInput(
             controller: _oneRmController,
-            nextFocusNode: _incrementationFocusNode,
-            color: Colors.white,
-          ),
-          const VSpacing.extraSmall(),
-          IncrementationInput(
-            controller: _incrementationController,
-            focusNode: _incrementationFocusNode,
             color: Colors.white,
           ),
           const VSpacing.small(),

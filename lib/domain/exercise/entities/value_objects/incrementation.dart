@@ -21,6 +21,10 @@ class Incrementation extends ValueObject<double> {
     );
   }
 
+  factory Incrementation.two() {
+    return Incrementation(2);
+  }
+
   const Incrementation._(this.value);
 }
 
