@@ -2,10 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
-import '../../../core/util/util_functions.dart';
-import '../../../domain/core/entities/week_enum.dart';
-import '../models/exercise_model.dart';
-import 'i_exercise_datasource.dart';
+import 'package:power_progress/core/util/util_functions.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
+import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 
 class HiveExerciseDatasource implements IExerciseDatasource {
   final Box<ExerciseModel> localStorage;
@@ -74,7 +75,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   }
 
   @override
-  Future<Unit> updateNextMonth(int exerciseId, int nextMonth) async {
+  Future<Unit> updateNextMonth(int exerciseId, Month nextMonth) async {
     final currentModel = localStorage.values.firstWhere(
       (element) => element.id == exerciseId,
       orElse: () => throw Exception('Exercise $exerciseId does not exist'),
@@ -87,7 +88,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       incrementation: currentModel.incrementation,
       nextWeekIndex: currentModel.nextWeekIndex,
       note: currentModel.note,
-      month: nextMonth,
+      month: nextMonth.getOrCrash(),
     );
 
     await tryOrCrash(

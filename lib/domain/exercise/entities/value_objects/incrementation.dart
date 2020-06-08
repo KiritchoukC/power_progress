@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/domain/value_failure.dart';
-import '../../../../core/domain/value_object.dart';
+import 'package:power_progress/core/domain/value_failure.dart';
+import 'package:power_progress/core/domain/value_object.dart';
 
 class Incrementation extends ValueObject<double> {
   @override
@@ -19,6 +19,10 @@ class Incrementation extends ValueObject<double> {
     return Incrementation._(
       parseAndvalidateIncrementation(input),
     );
+  }
+
+  factory Incrementation.two() {
+    return Incrementation(2);
   }
 
   const Incrementation._(this.value);

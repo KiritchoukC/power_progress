@@ -1,14 +1,16 @@
 import 'package:flutter/foundation.dart';
 
-import 'exercise_set.dart';
-import 'value_objects/weight.dart';
-import 'workout.dart';
-import 'workout_failure.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/entities/value_objects/weight.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 class AccumulationWorkout extends Workout {
   AccumulationWorkout({
-    @required int month,
-    @required double oneRm,
+    @required Month month,
+    @required OneRm oneRm,
     @required bool isDone,
     @required int workoutDoneId,
   }) : super(
@@ -20,17 +22,22 @@ class AccumulationWorkout extends Workout {
         );
 }
 
-List<ExerciseSet> _getExerciseSets(int month, double oneRm) {
-  switch (month) {
-    case 1:
-      return [ExerciseSet(reps: 10, sets: 5, weight: Weight(oneRm * 0.6))];
-    case 2:
-      return [ExerciseSet(reps: 8, sets: 5, weight: Weight(oneRm * 0.65))];
-    case 3:
-      return [ExerciseSet(reps: 5, sets: 6, weight: Weight(oneRm * 0.7))];
-    case 4:
-      return [ExerciseSet(reps: 3, sets: 7, weight: Weight(oneRm * 0.75))];
-    default:
-      throw const UnexpectedError();
-  }
+List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm) {
+  return month.moduloMonthNumber.fold(
+    (l) => throw const UnexpectedError(),
+    (r) {
+      switch (r) {
+        case 1:
+          return [ExerciseSet(reps: 10, sets: 5, weight: Weight.fromOneRm(oneRm, 0.6))];
+        case 2:
+          return [ExerciseSet(reps: 8, sets: 5, weight: Weight.fromOneRm(oneRm, 0.65))];
+        case 3:
+          return [ExerciseSet(reps: 5, sets: 6, weight: Weight.fromOneRm(oneRm, 0.7))];
+        case 4:
+          return [ExerciseSet(reps: 3, sets: 7, weight: Weight.fromOneRm(oneRm, 0.75))];
+        default:
+          throw const UnexpectedError();
+      }
+    },
+  );
 }

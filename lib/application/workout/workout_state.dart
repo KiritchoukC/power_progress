@@ -1,48 +1,16 @@
 part of 'workout_bloc.dart';
 
-abstract class WorkoutState extends Equatable {
-  const WorkoutState();
-
-  @override
-  List<Object> get props => [];
-}
-
-class WorkoutInitialState extends WorkoutState {}
-
-class WorkoutGeneratingState extends WorkoutState {}
-
-class WorkoutGeneratedState extends WorkoutState {
-  final MonthWorkout workout;
-  final int month;
-
-  const WorkoutGeneratedState({
-    @required this.workout,
-    @required this.month,
-  });
-
-  @override
-  List<Object> get props => [
-        workout,
-        month,
-      ];
-}
-
-// Mark Done
-class WorkoutMarkingDoneState extends WorkoutState {}
-
-class WorkoutMarkedDoneState extends WorkoutState {}
-
-// Mark Undone
-class WorkoutMarkingUndoneState extends WorkoutState {}
-
-class WorkoutMarkedUndoneState extends WorkoutState {}
-
-// Error
-class WorkoutErrorState extends WorkoutState {
-  final String message;
-
-  const WorkoutErrorState({@required this.message});
-
-  @override
-  List<Object> get props => [message];
+@freezed
+abstract class WorkoutState with _$WorkoutState {
+  const factory WorkoutState.initial() = Initial;
+  const factory WorkoutState.generateInProgress() = GenerateInProgress;
+  const factory WorkoutState.generated({
+    @required MonthWorkout workout,
+    @required Month month,
+  }) = Generated;
+  const factory WorkoutState.markDoneInProgress() = MarkDoneInProgress;
+  const factory WorkoutState.markedDone() = MarkedDone;
+  const factory WorkoutState.markUndoneInProgress() = MarkUndoneInProgress;
+  const factory WorkoutState.markedUndone() = MarkedUndone;
+  const factory WorkoutState.error({@required String message}) = Error;
 }

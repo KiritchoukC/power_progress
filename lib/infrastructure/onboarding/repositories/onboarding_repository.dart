@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/onboarding/entities/onboarding_failure.dart';
-import '../../../domain/onboarding/repositories/i_onboarding_repository.dart';
-import '../datasources/i_onboarding_datasource.dart';
+import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
+import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repository.dart';
+import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 
 class OnboardingRepository implements IOnboardingRepository {
   final IOnboardingDatasource datasource;

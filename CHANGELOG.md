@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/KiritchoukC/power_progress/compare/v2.2.1...v2.3.0) (2020-06-08)
+
+
+### Features
+
+* **week-validation:** prevent user from validating or invalidating an archived week ([aaae75f](https://github.com/KiritchoukC/power_progress/commit/aaae75f)), closes [#64](https://github.com/KiritchoukC/power_progress/issues/64)
+
+### [2.2.1](https://github.com/KiritchoukC/power_progress/compare/v2.2.0...v2.2.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* **weight-display:** fix the weight display and rounding ([d0bd619](https://github.com/KiritchoukC/power_progress/commit/d0bd619)), closes [#98](https://github.com/KiritchoukC/power_progress/issues/98)
+
+## [2.2.0](https://github.com/KiritchoukC/power_progress/compare/v2.1.6...v2.2.0) (2020-06-08)
+
+
+### Features
+
+* **remove-incrementation:** remove incrementation fields ([f11f110](https://github.com/KiritchoukC/power_progress/commit/f11f110)), closes [#99](https://github.com/KiritchoukC/power_progress/issues/99)
+
+### [2.1.6](https://github.com/KiritchoukC/power_progress/compare/v2.1.5...v2.1.6) (2020-06-08)
+
+### [2.1.5](https://github.com/KiritchoukC/power_progress/compare/v2.1.4...v2.1.5) (2020-06-07)
+
+### [2.1.4](https://github.com/KiritchoukC/power_progress/compare/v2.1.3...v2.1.4) (2020-06-07)
+
+### [2.1.3](https://github.com/KiritchoukC/power_progress/compare/v2.1.2...v2.1.3) (2020-06-07)
+
+### [2.1.2](https://github.com/KiritchoukC/power_progress/compare/v2.1.1...v2.1.2) (2020-06-07)
+
+### [2.1.1](https://github.com/KiritchoukC/power_progress/compare/v2.1.0...v2.1.1) (2020-06-07)
+
+## [2.1.0](https://github.com/KiritchoukC/power_progress/compare/v2.0.0...v2.1.0) (2020-06-07)
+
+
+### Features
+
+* **modulo-month:** get the right month workout ([6fdd4b9](https://github.com/KiritchoukC/power_progress/commit/6fdd4b9))
+
+## [2.0.0](https://github.com/KiritchoukC/power_progress/compare/v1.56.22...v2.0.0) (2020-06-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **v2:** MVP DONE
+
+* **v2:** mVP done ([2ffb78f](https://github.com/KiritchoukC/power_progress/commit/2ffb78f))
+
+### [1.56.22](https://github.com/KiritchoukC/power_progress/compare/v1.56.21...v1.56.22) (2020-06-07)
+
+### [1.56.21](https://github.com/KiritchoukC/power_progress/compare/v1.56.20...v1.56.21) (2020-06-06)
+
+### [1.56.20](https://github.com/KiritchoukC/power_progress/compare/v1.56.19...v1.56.20) (2020-06-06)
+
 ### [1.56.19](https://github.com/KiritchoukC/power_progress/compare/v1.56.18...v1.56.19) (2020-06-04)
 
 ### [1.56.18](https://github.com/KiritchoukC/power_progress/compare/v1.56.17...v1.56.18) (2020-06-04)

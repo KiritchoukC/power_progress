@@ -1,40 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/presentation/widgets/main_button.dart';
 
-import '../../../../application/exercise/exercise_bloc.dart';
-import '../../../../core/util/spacing.dart';
-import '../../../../domain/exercise/entities/exercise.dart';
-import '../../../../domain/exercise/entities/value_objects/exercise_name.dart';
-import '../../../../domain/exercise/entities/value_objects/incrementation.dart';
-import '../../../../domain/exercise/entities/value_objects/month.dart';
-import '../../../../domain/exercise/entities/value_objects/one_rm.dart';
-import '../../../../domain/exercise/entities/value_objects/week.dart';
-import '../../../../domain/core/entities/week_enum.dart';
-import '../../../widgets/centered_loading.dart';
-import '../../../widgets/inputs/exercise_name_input.dart';
-import '../../../widgets/inputs/incrementation_input.dart';
-import '../../../widgets/inputs/one_rm_input.dart';
-import '../../../widgets/pp_appbar.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/presentation/widgets/centered_loading.dart';
+import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
+import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
+import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 
 class ExerciseAddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ExerciseBloc, ExerciseState>(
       listener: (context, state) {
-        if (state is ExerciseAddedState) {
-          Navigator.of(context).pop();
-        }
+        state.maybeWhen(
+          added: () => Navigator.of(context).pop(),
+          orElse: () {},
+        );
       },
       builder: (context, state) {
-        if (state is ExerciseAddingState) {
-          return Scaffold(
+        return state.maybeWhen(
+          addInProgress: () => Scaffold(
             appBar: PPAppBar(titleLabel: 'New exercise'),
             body: const CenteredLoading(),
-          );
-        }
-
-        return const _ExerciseForm();
+          ),
+          orElse: () => const _ExerciseForm(),
+        );
       },
     );
   }
@@ -51,17 +49,13 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _exerciseNameController;
   TextEditingController _oneRmController;
-  TextEditingController _incrementationController;
   FocusNode _oneRmFocusNode;
-  FocusNode _incrementationFocusNode;
 
   @override
   void initState() {
     _exerciseNameController = TextEditingController();
     _oneRmController = TextEditingController();
-    _incrementationController = TextEditingController();
     _oneRmFocusNode = FocusNode();
-    _incrementationFocusNode = FocusNode();
     super.initState();
   }
 
@@ -69,9 +63,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   void dispose() {
     _exerciseNameController?.dispose();
     _oneRmController?.dispose();
-    _incrementationController?.dispose();
     _oneRmFocusNode?.dispose();
-    _incrementationFocusNode?.dispose();
     super.dispose();
   }
 
@@ -79,7 +71,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
         id: 0,
         oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(_exerciseNameController.value.text),
-        incrementation: Incrementation.parse(_incrementationController.value.text),
+        incrementation: Incrementation.two(),
         month: Month(1),
         nextWeek: Week(WeekEnum.accumulation),
       );
@@ -107,12 +99,6 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                 OneRmInput(
                   controller: _oneRmController,
                   focusNode: _oneRmFocusNode,
-                  nextFocusNode: _incrementationFocusNode,
-                ),
-                const VSpacing.extraSmall(),
-                IncrementationInput(
-                  controller: _incrementationController,
-                  focusNode: _incrementationFocusNode,
                 ),
               ],
             ),
@@ -123,11 +109,18 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseAddEvent(exercise: _exercise));
+            BlocProvider.of<ExerciseBloc>(context).add(ExerciseEvent.add(exercise: _exercise));
           }
         },
         label: const Text('Add'),
         backgroundColor: Colors.black,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: Container(
+          height: 40,
+        ),
       ),
     );
   }

@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/theme/pp_light_theme.dart';
 
-import '../../../application/exercise/exercise_bloc.dart';
-import '../../../application/onboarding/onboarding_bloc.dart';
-import '../../../core/util/spacing.dart';
-import '../../../domain/core/entities/week_enum.dart';
-import '../../../domain/exercise/entities/exercise.dart';
-import '../../../domain/exercise/entities/value_objects/exercise_name.dart';
-import '../../../domain/exercise/entities/value_objects/incrementation.dart';
-import '../../../domain/exercise/entities/value_objects/month.dart';
-import '../../../domain/exercise/entities/value_objects/one_rm.dart';
-import '../../../domain/exercise/entities/value_objects/week.dart';
-import '../../router/route_paths.dart';
-import '../../widgets/inputs/incrementation_input.dart';
-import '../../widgets/inputs/one_rm_input.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/presentation/router/route_paths.dart';
+import 'package:power_progress/presentation/widgets/inputs/incrementation_input.dart';
+import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
 
 class OnboardingInformationsPageArguments {
   final String exerciseName;
@@ -37,20 +37,22 @@ class OnboardingInformationsPage extends StatelessWidget {
         ),
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           listener: (BuildContext context, ExerciseState state) {
-            if (state is ExerciseAddedState) {
-              Future.delayed(const Duration(seconds: 1)).then(
-                (value) => WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
-                }),
-              );
-            }
+            state.maybeWhen(
+              added: () {
+                Future.delayed(const Duration(seconds: 1)).then(
+                  (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
+                    Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                  }),
+                );
+              },
+              orElse: () {},
+            );
           },
           builder: (context, state) {
-            if (state is ExerciseInitialState) {
-              return _Body(exerciseName: exerciseName);
-            }
-
-            return const _Loading();
+            return state.maybeWhen(
+              initial: () => _Body(exerciseName: exerciseName),
+              orElse: () => const _Loading(),
+            );
           },
         ),
       ),
@@ -69,12 +71,12 @@ class _Loading extends StatelessWidget {
       child: Container(
         height: 72,
         child: Column(
-          children: [
-            const CenteredLoading(
+          children: const [
+            CenteredLoading(
               color: Colors.white,
             ),
-            const VSpacing.small(),
-            const Text(
+            VSpacing.small(),
+            Text(
               'Generating your workout...',
               style: TextStyle(color: Colors.white),
             ),
@@ -114,22 +116,16 @@ class _InformationsForm extends StatefulWidget {
 class _InformationsFormState extends State<_InformationsForm> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _oneRmController;
-  TextEditingController _incrementationController;
-  FocusNode _incrementationFocusNode;
 
   @override
   void initState() {
     _oneRmController = TextEditingController();
-    _incrementationController = TextEditingController();
-    _incrementationFocusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     _oneRmController?.dispose();
-    _incrementationController?.dispose();
-    _incrementationFocusNode?.dispose();
     super.dispose();
   }
 
@@ -137,7 +133,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         id: 0,
         oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(widget.exerciseName),
-        incrementation: Incrementation.parse(_incrementationController.value.text),
+        incrementation: Incrementation.two(),
         month: Month(1),
         nextWeek: Week(WeekEnum.accumulation),
       );
@@ -149,7 +145,6 @@ class _InformationsFormState extends State<_InformationsForm> {
       autovalidate: true,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             widget.exerciseName,
@@ -162,13 +157,6 @@ class _InformationsFormState extends State<_InformationsForm> {
           const VSpacing.medium(),
           OneRmInput(
             controller: _oneRmController,
-            nextFocusNode: _incrementationFocusNode,
-            color: Colors.white,
-          ),
-          const VSpacing.extraSmall(),
-          IncrementationInput(
-            controller: _incrementationController,
-            focusNode: _incrementationFocusNode,
             color: Colors.white,
           ),
           const VSpacing.small(),
@@ -178,13 +166,13 @@ class _InformationsFormState extends State<_InformationsForm> {
               FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context.bloc<ExerciseBloc>().add(ExerciseAddEvent(exercise: _exercise));
-                    context.bloc<OnboardingBloc>().add(OnboardingDoneEvent());
+                    context.bloc<ExerciseBloc>().add(ExerciseEvent.add(exercise: _exercise));
+                    context.bloc<OnboardingBloc>().add(const OnboardingEvent.markDone());
                   }
                 },
                 child: const Icon(Icons.check),
               ),
-              HSpacing.medium(),
+              const HSpacing.medium(),
             ],
           )
         ],

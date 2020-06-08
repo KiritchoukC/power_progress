@@ -1,4 +1,4 @@
-import 'value_failure.dart';
+import 'package:power_progress/core/domain/value_failure.dart';
 
 class NotAuthenticatedError extends Error {}
 

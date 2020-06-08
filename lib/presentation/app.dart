@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../application/exercise/exercise_bloc.dart';
-import '../application/onboarding/onboarding_bloc.dart';
-import '../application/workout/workout_bloc.dart';
-import '../dependency_injection.dart' as di;
-import '../presentation/router/route_paths.dart';
-import '../presentation/router/router.dart';
-import '../theme/pp_light_theme.dart';
-import 'widgets/splash_screen.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/dependency_injection.dart' as di;
+import 'package:power_progress/presentation/router/route_paths.dart';
+import 'package:power_progress/presentation/router/router.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/widgets/splash_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -26,25 +26,33 @@ class App extends StatelessWidget {
         // initialRoute: RoutePaths.onboardingWelcome,
         home: BlocListener<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
-            if (state is OnboardingIsDoneState) {
+            void navigateToDashboard() {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
               });
             }
 
-            if (state is OnboardingIsNotDoneState) {
+            void navigateToOnboarding() {
               WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                 Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
               });
             }
+
+            state.maybeWhen(
+              done: navigateToDashboard,
+              notDone: navigateToOnboarding,
+              orElse: () {},
+            );
           },
           child: BlocBuilder<OnboardingBloc, OnboardingState>(
             builder: (context, state) {
-              if (state is OnboardingInitialState) {
-                context.bloc<OnboardingBloc>().add(OnboardingIsDoneEvent());
-              }
-
-              return Scaffold(body: SplashScreen());
+              return state.maybeWhen(
+                initial: () {
+                  context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
+                  return Scaffold(body: SplashScreen());
+                },
+                orElse: () => Scaffold(body: SplashScreen()),
+              );
             },
           ),
         ),

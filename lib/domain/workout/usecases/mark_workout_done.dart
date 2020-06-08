@@ -2,12 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../core/usecases/usecase.dart';
-import '../../core/entities/week_enum.dart';
-import '../../exercise/usecases/update_exercise_next_month.dart';
-import '../../exercise/usecases/update_exercise_next_week.dart';
-import '../entities/workout_failure.dart';
-import '../repositories/i_workout_repository.dart';
+import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
+import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 
 class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDoneParams> {
   final IWorkoutRepository repository;
@@ -38,7 +39,7 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
       await updateExerciseNextMonth(
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
-          nextMonth: params.month + 1,
+          nextMonth: params.month.next,
         ),
       );
     }
@@ -49,7 +50,7 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
 
 class MarkWorkoutDoneParams extends Equatable {
   final int exerciseId;
-  final int month;
+  final Month month;
   final WeekEnum week;
   final int repsDone;
 

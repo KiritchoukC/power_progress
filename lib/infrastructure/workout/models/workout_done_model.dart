@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 
-import '../../../domain/core/entities/week_enum.dart';
-import '../../../domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/workout/entities/workout_done.dart';
 
 part 'workout_done_model.g.dart';
 
@@ -30,7 +31,7 @@ class WorkoutDoneModel {
     return WorkoutDone(
       id: model.id,
       exerciseId: model.exerciseId,
-      month: model.month,
+      month: Month(model.month),
       week: WeekEnum.values[model.weekIndex],
       repsDone: model.repsDone,
     );

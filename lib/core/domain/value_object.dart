@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
-import 'errors.dart';
-import 'interfaces/i_validatable.dart';
-import 'value_failure.dart';
+import 'package:power_progress/core/domain/errors.dart';
+import 'package:power_progress/core/domain/interfaces/i_validatable.dart';
+import 'package:power_progress/core/domain/value_failure.dart';
 
 @immutable
 abstract class ValueObject<T> implements IValidatable {

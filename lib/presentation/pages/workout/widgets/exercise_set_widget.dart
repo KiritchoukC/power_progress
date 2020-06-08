@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/entities/exercise_set.dart';
 
 class ExerciseSetWidget extends StatelessWidget {
   final ExerciseSet exerciseSet;
@@ -44,7 +44,7 @@ class ExerciseSetWidget extends StatelessWidget {
           ),
         ),
         Container(
-          width: 40,
+          width: 60,
           child: Text(
             exerciseSet.weight.formattedValue.getOrElse(() => 'E'),
             style: _getTextStyle(context),

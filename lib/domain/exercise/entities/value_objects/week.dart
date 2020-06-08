@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/domain/value_failure.dart';
-import '../../../../core/domain/value_object.dart';
-import '../../../core/entities/week_enum.dart';
+import 'package:power_progress/core/domain/value_failure.dart';
+import 'package:power_progress/core/domain/value_object.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
 
 class Week extends ValueObject<WeekEnum> {
   @override
