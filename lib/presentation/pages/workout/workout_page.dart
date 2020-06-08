@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/workout/entities/month_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
@@ -119,21 +121,29 @@ class _Body extends StatelessWidget {
           workout: monthWorkout.accumulationWorkout,
           exerciseSets: monthWorkout.accumulationWorkout.exerciseSets,
           exerciseId: exerciseId,
+          isValidatable: monthWorkout.validatable(WeekEnum.accumulation),
+          isInvalidatable: monthWorkout.invalidatable(WeekEnum.accumulation),
         ),
         WeekSetWidget(
           workout: monthWorkout.intensificationWorkout,
           exerciseSets: monthWorkout.intensificationWorkout.exerciseSets,
           exerciseId: exerciseId,
+          isValidatable: monthWorkout.validatable(WeekEnum.intensification),
+          isInvalidatable: monthWorkout.invalidatable(WeekEnum.intensification),
         ),
         WeekSetWidget(
           workout: monthWorkout.realizationWorkout,
           exerciseSets: monthWorkout.realizationWorkout.exerciseSets,
           exerciseId: exerciseId,
+          isValidatable: monthWorkout.validatable(WeekEnum.realization),
+          isInvalidatable: monthWorkout.invalidatable(WeekEnum.realization),
         ),
         WeekSetWidget(
           workout: monthWorkout.deloadWorkout,
           exerciseSets: monthWorkout.deloadWorkout.exerciseSets,
           exerciseId: exerciseId,
+          isValidatable: monthWorkout.validatable(WeekEnum.deload),
+          isInvalidatable: monthWorkout.invalidatable(WeekEnum.deload),
         ),
       ],
     );

@@ -20,12 +20,16 @@ class WeekSetWidget extends StatelessWidget {
   final Workout workout;
   final List<ExerciseSet> exerciseSets;
   final int exerciseId;
+  final bool isValidatable;
+  final bool isInvalidatable;
 
   const WeekSetWidget({
     Key key,
     @required this.workout,
     @required this.exerciseSets,
     @required this.exerciseId,
+    @required this.isValidatable,
+    @required this.isInvalidatable,
   }) : super(key: key);
 
   WeekEnum get week {
@@ -54,6 +58,7 @@ class WeekSetWidget extends StatelessWidget {
                   exerciseId: exerciseId,
                   week: week,
                   month: workout.month,
+                  enabled: isInvalidatable,
                 )
               else
                 CheckButton(
@@ -61,6 +66,7 @@ class WeekSetWidget extends StatelessWidget {
                   month: workout.month,
                   realizationReps: exerciseSets.last.reps,
                   week: week,
+                  enabled: isValidatable,
                 ),
             ],
           ),
@@ -107,6 +113,7 @@ class UncheckButton extends StatelessWidget {
   final int exerciseId;
   final WeekEnum week;
   final Month month;
+  final bool enabled;
 
   const UncheckButton({
     Key key,
@@ -114,24 +121,27 @@ class UncheckButton extends StatelessWidget {
     @required this.exerciseId,
     @required this.week,
     @required this.month,
+    @required this.enabled,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        context.bloc<WorkoutBloc>().add(
-              WorkoutEvent.markUndone(
-                id: workoutDoneId,
-                exerciseId: exerciseId,
-                week: week,
-                month: month,
-              ),
-            );
-      },
-      icon: const Icon(
+      onPressed: enabled
+          ? () {
+              context.bloc<WorkoutBloc>().add(
+                    WorkoutEvent.markUndone(
+                      id: workoutDoneId,
+                      exerciseId: exerciseId,
+                      week: week,
+                      month: month,
+                    ),
+                  );
+            }
+          : null,
+      icon: Icon(
         Icons.check_circle,
-        color: PPTheme.success,
+        color: enabled ? PPTheme.success : PPTheme.success.withAlpha(50),
       ),
     );
   }
@@ -142,6 +152,7 @@ class CheckButton extends StatelessWidget {
   final Month month;
   final int exerciseId;
   final int realizationReps;
+  final bool enabled;
 
   void _handleWeekValidation(BuildContext context) {
     if (week == WeekEnum.realization) {
@@ -181,14 +192,15 @@ class CheckButton extends StatelessWidget {
     @required this.month,
     @required this.exerciseId,
     @required this.realizationReps,
+    @required this.enabled,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => _handleWeekValidation(context),
+      onPressed: enabled ? () => _handleWeekValidation(context) : null,
       icon: Icon(
         Icons.check_circle_outline,
-        color: Colors.black.withAlpha(50),
+        color: enabled ? Colors.black : Colors.black.withAlpha(50),
       ),
     );
   }
