@@ -67,7 +67,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
-            if (state is WorkoutMarkedDoneState || state is WorkoutMarkedUndoneState) {
+            void generate() {
               context.bloc<WorkoutBloc>().add(
                     WorkoutEvent.generate(
                       exerciseId: widget.exercise.id,
@@ -76,27 +76,22 @@ class _WorkoutPageState extends State<WorkoutPage> {
                     ),
                   );
             }
+
+            state.maybeWhen(
+              markedDone: generate,
+              markedUndone: generate,
+              orElse: () {},
+            );
           },
           builder: (context, state) {
-            // if (state is WorkoutInitialState) {
-            //   context.bloc<WorkoutBloc>().add(
-            //         WorkoutGenerateEvent(
-            //           exerciseId: widget.exercise.id,
-            //           month: widget.exercise.month,
-            //           oneRm: widget.exercise.oneRm,
-            //         ),
-            //       );
-            // }
-
-            if (state is WorkoutGeneratedState) {
-              return _Body(
-                monthWorkout: state.workout,
+            return state.maybeMap(
+              generated: (value) => _Body(
+                monthWorkout: value.workout,
                 exerciseId: widget.exercise.id,
-                month: state.month,
-              );
-            }
-
-            return const CenteredLoading();
+                month: value.month,
+              ),
+              orElse: () => const CenteredLoading(),
+            );
           },
         ),
       ),

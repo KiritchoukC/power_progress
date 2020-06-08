@@ -21,9 +21,15 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: BlocListener<WorkoutBloc, WorkoutState>(
         listener: (previous, current) {
-          if (current is WorkoutMarkedDoneState || current is WorkoutMarkedUndoneState) {
+          void fetch() {
             context.bloc<ExerciseBloc>().add(const ExerciseEvent.fetch());
           }
+
+          current.maybeWhen(
+            markedDone: fetch,
+            markedUndone: fetch,
+            orElse: () {},
+          );
         },
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           buildWhen: (previous, current) {

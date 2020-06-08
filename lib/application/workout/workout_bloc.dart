@@ -32,7 +32,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   });
 
   @override
-  WorkoutState get initialState => WorkoutInitialState();
+  WorkoutState get initialState => const WorkoutState.initial();
 
   @override
   Stream<WorkoutState> mapEventToState(
@@ -46,7 +46,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   }
 
   Stream<WorkoutState> _handleGenerateEvent(Generate event) async* {
-    yield WorkoutGeneratingState();
+    yield const WorkoutState.generateInProgress();
 
     final output = await generateWorkout(
       GenerateWorkoutParams(
@@ -57,18 +57,18 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutErrorState(message: mapFailureToErrorMessage(failure));
+      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<WorkoutState> onSuccess(MonthWorkout workout) async* {
-      yield WorkoutGeneratedState(workout: workout, month: event.month);
+      yield WorkoutState.generated(workout: workout, month: event.month);
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<WorkoutState> _handleMarkDoneEvent(MarkDone event) async* {
-    yield WorkoutMarkingDoneState();
+    yield const WorkoutState.markDoneInProgress();
 
     final output = await markWorkoutDone(
       MarkWorkoutDoneParams(
@@ -80,18 +80,18 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutErrorState(message: mapFailureToErrorMessage(failure));
+      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
-      yield WorkoutMarkedDoneState();
+      yield const WorkoutState.markedDone();
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<WorkoutState> _handleMarkUndoneEvent(MarkUndone event) async* {
-    yield WorkoutMarkingUndoneState();
+    yield const WorkoutState.markUndoneInProgress();
 
     final output = await markWorkoutUndone(
       MarkWorkoutUndoneParams(
@@ -103,11 +103,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutErrorState(message: mapFailureToErrorMessage(failure));
+      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
     }
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
-      yield WorkoutMarkedUndoneState();
+      yield const WorkoutState.markedUndone();
     }
 
     yield* output.fold(onFailure, onSuccess);

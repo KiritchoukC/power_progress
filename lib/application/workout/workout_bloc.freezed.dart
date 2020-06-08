@@ -616,3 +616,1213 @@ abstract class MarkUndone implements WorkoutEvent {
   @override
   $MarkUndoneCopyWith<MarkUndone> get copyWith;
 }
+
+class _$WorkoutStateTearOff {
+  const _$WorkoutStateTearOff();
+
+  Initial initial() {
+    return const Initial();
+  }
+
+  GenerateInProgress generateInProgress() {
+    return const GenerateInProgress();
+  }
+
+  Generated generated({@required MonthWorkout workout, @required Month month}) {
+    return Generated(
+      workout: workout,
+      month: month,
+    );
+  }
+
+  MarkDoneInProgress markDoneInProgress() {
+    return const MarkDoneInProgress();
+  }
+
+  MarkedDone markedDone() {
+    return const MarkedDone();
+  }
+
+  MarkUndoneInProgress markUndoneInProgress() {
+    return const MarkUndoneInProgress();
+  }
+
+  MarkedUndone markedUndone() {
+    return const MarkedUndone();
+  }
+
+  Error error({@required String message}) {
+    return Error(
+      message: message,
+    );
+  }
+}
+
+// ignore: unused_element
+const $WorkoutState = _$WorkoutStateTearOff();
+
+mixin _$WorkoutState {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $WorkoutStateCopyWith<$Res> {
+  factory $WorkoutStateCopyWith(
+          WorkoutState value, $Res Function(WorkoutState) then) =
+      _$WorkoutStateCopyWithImpl<$Res>;
+}
+
+class _$WorkoutStateCopyWithImpl<$Res> implements $WorkoutStateCopyWith<$Res> {
+  _$WorkoutStateCopyWithImpl(this._value, this._then);
+
+  final WorkoutState _value;
+  // ignore: unused_field
+  final $Res Function(WorkoutState) _then;
+}
+
+abstract class $InitialCopyWith<$Res> {
+  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
+      _$InitialCopyWithImpl<$Res>;
+}
+
+class _$InitialCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $InitialCopyWith<$Res> {
+  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
+      : super(_value, (v) => _then(v as Initial));
+
+  @override
+  Initial get _value => super._value as Initial;
+}
+
+class _$Initial with DiagnosticableTreeMixin implements Initial {
+  const _$Initial();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutState.initial'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Initial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initial implements WorkoutState {
+  const factory Initial() = _$Initial;
+}
+
+abstract class $GenerateInProgressCopyWith<$Res> {
+  factory $GenerateInProgressCopyWith(
+          GenerateInProgress value, $Res Function(GenerateInProgress) then) =
+      _$GenerateInProgressCopyWithImpl<$Res>;
+}
+
+class _$GenerateInProgressCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $GenerateInProgressCopyWith<$Res> {
+  _$GenerateInProgressCopyWithImpl(
+      GenerateInProgress _value, $Res Function(GenerateInProgress) _then)
+      : super(_value, (v) => _then(v as GenerateInProgress));
+
+  @override
+  GenerateInProgress get _value => super._value as GenerateInProgress;
+}
+
+class _$GenerateInProgress
+    with DiagnosticableTreeMixin
+    implements GenerateInProgress {
+  const _$GenerateInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.generateInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.generateInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GenerateInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return generateInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateInProgress != null) {
+      return generateInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return generateInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateInProgress != null) {
+      return generateInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GenerateInProgress implements WorkoutState {
+  const factory GenerateInProgress() = _$GenerateInProgress;
+}
+
+abstract class $GeneratedCopyWith<$Res> {
+  factory $GeneratedCopyWith(Generated value, $Res Function(Generated) then) =
+      _$GeneratedCopyWithImpl<$Res>;
+  $Res call({MonthWorkout workout, Month month});
+}
+
+class _$GeneratedCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $GeneratedCopyWith<$Res> {
+  _$GeneratedCopyWithImpl(Generated _value, $Res Function(Generated) _then)
+      : super(_value, (v) => _then(v as Generated));
+
+  @override
+  Generated get _value => super._value as Generated;
+
+  @override
+  $Res call({
+    Object workout = freezed,
+    Object month = freezed,
+  }) {
+    return _then(Generated(
+      workout: workout == freezed ? _value.workout : workout as MonthWorkout,
+      month: month == freezed ? _value.month : month as Month,
+    ));
+  }
+}
+
+class _$Generated with DiagnosticableTreeMixin implements Generated {
+  const _$Generated({@required this.workout, @required this.month})
+      : assert(workout != null),
+        assert(month != null);
+
+  @override
+  final MonthWorkout workout;
+  @override
+  final Month month;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.generated(workout: $workout, month: $month)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.generated'))
+      ..add(DiagnosticsProperty('workout', workout))
+      ..add(DiagnosticsProperty('month', month));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Generated &&
+            (identical(other.workout, workout) ||
+                const DeepCollectionEquality()
+                    .equals(other.workout, workout)) &&
+            (identical(other.month, month) ||
+                const DeepCollectionEquality().equals(other.month, month)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(workout) ^
+      const DeepCollectionEquality().hash(month);
+
+  @override
+  $GeneratedCopyWith<Generated> get copyWith =>
+      _$GeneratedCopyWithImpl<Generated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return generated(workout, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generated != null) {
+      return generated(workout, month);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return generated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generated != null) {
+      return generated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Generated implements WorkoutState {
+  const factory Generated(
+      {@required MonthWorkout workout, @required Month month}) = _$Generated;
+
+  MonthWorkout get workout;
+  Month get month;
+  $GeneratedCopyWith<Generated> get copyWith;
+}
+
+abstract class $MarkDoneInProgressCopyWith<$Res> {
+  factory $MarkDoneInProgressCopyWith(
+          MarkDoneInProgress value, $Res Function(MarkDoneInProgress) then) =
+      _$MarkDoneInProgressCopyWithImpl<$Res>;
+}
+
+class _$MarkDoneInProgressCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $MarkDoneInProgressCopyWith<$Res> {
+  _$MarkDoneInProgressCopyWithImpl(
+      MarkDoneInProgress _value, $Res Function(MarkDoneInProgress) _then)
+      : super(_value, (v) => _then(v as MarkDoneInProgress));
+
+  @override
+  MarkDoneInProgress get _value => super._value as MarkDoneInProgress;
+}
+
+class _$MarkDoneInProgress
+    with DiagnosticableTreeMixin
+    implements MarkDoneInProgress {
+  const _$MarkDoneInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.markDoneInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.markDoneInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is MarkDoneInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markDoneInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markDoneInProgress != null) {
+      return markDoneInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markDoneInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markDoneInProgress != null) {
+      return markDoneInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MarkDoneInProgress implements WorkoutState {
+  const factory MarkDoneInProgress() = _$MarkDoneInProgress;
+}
+
+abstract class $MarkedDoneCopyWith<$Res> {
+  factory $MarkedDoneCopyWith(
+          MarkedDone value, $Res Function(MarkedDone) then) =
+      _$MarkedDoneCopyWithImpl<$Res>;
+}
+
+class _$MarkedDoneCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $MarkedDoneCopyWith<$Res> {
+  _$MarkedDoneCopyWithImpl(MarkedDone _value, $Res Function(MarkedDone) _then)
+      : super(_value, (v) => _then(v as MarkedDone));
+
+  @override
+  MarkedDone get _value => super._value as MarkedDone;
+}
+
+class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
+  const _$MarkedDone();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.markedDone()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutState.markedDone'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is MarkedDone);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markedDone();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markedDone != null) {
+      return markedDone();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markedDone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markedDone != null) {
+      return markedDone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MarkedDone implements WorkoutState {
+  const factory MarkedDone() = _$MarkedDone;
+}
+
+abstract class $MarkUndoneInProgressCopyWith<$Res> {
+  factory $MarkUndoneInProgressCopyWith(MarkUndoneInProgress value,
+          $Res Function(MarkUndoneInProgress) then) =
+      _$MarkUndoneInProgressCopyWithImpl<$Res>;
+}
+
+class _$MarkUndoneInProgressCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $MarkUndoneInProgressCopyWith<$Res> {
+  _$MarkUndoneInProgressCopyWithImpl(
+      MarkUndoneInProgress _value, $Res Function(MarkUndoneInProgress) _then)
+      : super(_value, (v) => _then(v as MarkUndoneInProgress));
+
+  @override
+  MarkUndoneInProgress get _value => super._value as MarkUndoneInProgress;
+}
+
+class _$MarkUndoneInProgress
+    with DiagnosticableTreeMixin
+    implements MarkUndoneInProgress {
+  const _$MarkUndoneInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.markUndoneInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.markUndoneInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is MarkUndoneInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markUndoneInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markUndoneInProgress != null) {
+      return markUndoneInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markUndoneInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markUndoneInProgress != null) {
+      return markUndoneInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MarkUndoneInProgress implements WorkoutState {
+  const factory MarkUndoneInProgress() = _$MarkUndoneInProgress;
+}
+
+abstract class $MarkedUndoneCopyWith<$Res> {
+  factory $MarkedUndoneCopyWith(
+          MarkedUndone value, $Res Function(MarkedUndone) then) =
+      _$MarkedUndoneCopyWithImpl<$Res>;
+}
+
+class _$MarkedUndoneCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $MarkedUndoneCopyWith<$Res> {
+  _$MarkedUndoneCopyWithImpl(
+      MarkedUndone _value, $Res Function(MarkedUndone) _then)
+      : super(_value, (v) => _then(v as MarkedUndone));
+
+  @override
+  MarkedUndone get _value => super._value as MarkedUndone;
+}
+
+class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
+  const _$MarkedUndone();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.markedUndone()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutState.markedUndone'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is MarkedUndone);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markedUndone();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markedUndone != null) {
+      return markedUndone();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return markedUndone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (markedUndone != null) {
+      return markedUndone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MarkedUndone implements WorkoutState {
+  const factory MarkedUndone() = _$MarkedUndone;
+}
+
+abstract class $ErrorCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
+      _$ErrorCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+class _$ErrorCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
+      : super(_value, (v) => _then(v as Error));
+
+  @override
+  Error get _value => super._value as Error;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(Error(
+      message: message == freezed ? _value.message : message as String,
+    ));
+  }
+}
+
+class _$Error with DiagnosticableTreeMixin implements Error {
+  const _$Error({@required this.message}) : assert(message != null);
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.error'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Error &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @override
+  $ErrorCopyWith<Error> get copyWith =>
+      _$ErrorCopyWithImpl<Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(),
+    Result markUndoneInProgress(),
+    Result markedUndone(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements WorkoutState {
+  const factory Error({@required String message}) = _$Error;
+
+  String get message;
+  $ErrorCopyWith<Error> get copyWith;
+}
