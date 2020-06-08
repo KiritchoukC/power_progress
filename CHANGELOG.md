@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/KiritchoukC/power_progress/compare/v2.1.6...v2.2.0) (2020-06-08)
+
+
+### Features
+
+* **remove-incrementation:** remove incrementation fields ([f11f110](https://github.com/KiritchoukC/power_progress/commit/f11f110)), closes [#99](https://github.com/KiritchoukC/power_progress/issues/99)
+
 ### [2.1.6](https://github.com/KiritchoukC/power_progress/compare/v2.1.5...v2.1.6) (2020-06-08)
 
 ### [2.1.5](https://github.com/KiritchoukC/power_progress/compare/v2.1.4...v2.1.5) (2020-06-07)
