@@ -30,18 +30,19 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
     await updateExerciseNextWeek(
       UpdateExerciseNextWeekParams(
         exerciseId: params.exerciseId,
-        nextWeek: params.week.previous(),
+        nextWeek: params.week,
       ),
     );
 
-    if (params.week == WeekEnum.deload) {
-      await updateExerciseNextMonth(
+    await params.week.maybeWhen(
+      deload: () async => updateExerciseNextMonth(
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
           nextMonth: params.month.previous,
         ),
-      );
-    }
+      ),
+      orElse: () {},
+    );
 
     return result;
   }

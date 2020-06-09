@@ -42,49 +42,44 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
         Workout _getWorkout(WeekEnum week) {
           final workoutDone = getWorkoutDone(params.exerciseId, params.month, week);
 
-          switch (week) {
-            case WeekEnum.accumulation:
-              return AccumulationWorkout(
-                month: params.month,
-                oneRm: params.oneRm,
-                isDone: workoutDone != null,
-                workoutDoneId: workoutDone?.id,
-              );
-            case WeekEnum.intensification:
-              return IntensificationWorkout(
-                month: params.month,
-                oneRm: params.oneRm,
-                isDone: workoutDone != null,
-                workoutDoneId: workoutDone?.id,
-              );
-            case WeekEnum.realization:
-              return RealizationWorkout(
-                month: params.month,
-                oneRm: params.oneRm,
-                isDone: workoutDone != null,
-                workoutDoneId: workoutDone?.id,
-                repsDone: workoutDone?.repsDone,
-              );
-            case WeekEnum.deload:
-              return DeloadWorkout(
-                month: params.month,
-                oneRm: params.oneRm,
-                isDone: workoutDone != null,
-                workoutDoneId: workoutDone?.id,
-              );
-            default:
-              throw const UnexpectedError();
-          }
+          return week.when(
+            accumulation: () => AccumulationWorkout(
+              month: params.month,
+              oneRm: params.oneRm,
+              isDone: workoutDone != null,
+              workoutDoneId: workoutDone?.id,
+            ),
+            intensification: () => IntensificationWorkout(
+              month: params.month,
+              oneRm: params.oneRm,
+              isDone: workoutDone != null,
+              workoutDoneId: workoutDone?.id,
+            ),
+            realization: () => RealizationWorkout(
+              month: params.month,
+              oneRm: params.oneRm,
+              isDone: workoutDone != null,
+              workoutDoneId: workoutDone?.id,
+              repsDone: workoutDone?.repsDone,
+            ),
+            deload: () => DeloadWorkout(
+              month: params.month,
+              oneRm: params.oneRm,
+              isDone: workoutDone != null,
+              workoutDoneId: workoutDone?.id,
+            ),
+          );
         }
 
         return right(
           MonthWorkout(
             month: params.month,
             oneRm: params.oneRm,
-            accumulationWorkout: _getWorkout(WeekEnum.accumulation) as AccumulationWorkout,
-            intensificationWorkout: _getWorkout(WeekEnum.intensification) as IntensificationWorkout,
-            realizationWorkout: _getWorkout(WeekEnum.realization) as RealizationWorkout,
-            deloadWorkout: _getWorkout(WeekEnum.deload) as DeloadWorkout,
+            accumulationWorkout: _getWorkout(const WeekEnum.accumulation()) as AccumulationWorkout,
+            intensificationWorkout:
+                _getWorkout(const WeekEnum.intensification()) as IntensificationWorkout,
+            realizationWorkout: _getWorkout(const WeekEnum.realization()) as RealizationWorkout,
+            deloadWorkout: _getWorkout(const WeekEnum.deload()) as DeloadWorkout,
           ),
         );
       },

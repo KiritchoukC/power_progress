@@ -63,7 +63,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       incrementation: currentModel.incrementation,
       month: currentModel.month,
       note: currentModel.note,
-      nextWeekIndex: nextWeek.index,
+      nextWeekIndex: nextWeek.index(),
     );
 
     await tryOrCrash(

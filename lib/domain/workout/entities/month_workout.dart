@@ -6,7 +6,6 @@ import 'package:power_progress/domain/workout/entities/accumulation_workout.dart
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
 import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
 import 'package:power_progress/domain/workout/entities/realization_workout.dart';
-import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 class MonthWorkout {
   final Month month;
@@ -26,32 +25,20 @@ class MonthWorkout {
   });
 
   bool validatable(WeekEnum week) {
-    switch (week) {
-      case WeekEnum.accumulation:
-        return true;
-      case WeekEnum.intensification:
-        return accumulationWorkout.isDone;
-      case WeekEnum.realization:
-        return intensificationWorkout.isDone;
-      case WeekEnum.deload:
-        return realizationWorkout.isDone;
-      default:
-        throw const UnexpectedError();
-    }
+    return week.when(
+      accumulation: () => true,
+      intensification: () => accumulationWorkout.isDone,
+      realization: () => intensificationWorkout.isDone,
+      deload: () => realizationWorkout.isDone,
+    );
   }
 
   bool invalidatable(WeekEnum week) {
-    switch (week) {
-      case WeekEnum.accumulation:
-        return !intensificationWorkout.isDone;
-      case WeekEnum.intensification:
-        return !realizationWorkout.isDone;
-      case WeekEnum.realization:
-        return !deloadWorkout.isDone;
-      case WeekEnum.deload:
-        return true;
-      default:
-        throw const UnexpectedError();
-    }
+    return week.when(
+      accumulation: () => !intensificationWorkout.isDone,
+      intensification: () => !realizationWorkout.isDone,
+      realization: () => !deloadWorkout.isDone,
+      deload: () => true,
+    );
   }
 }

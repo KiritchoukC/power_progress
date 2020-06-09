@@ -278,6 +278,8 @@ abstract class $MarkDoneCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
       _$MarkDoneCopyWithImpl<$Res>;
   @override
   $Res call({int exerciseId, Month month, WeekEnum week, int repsDone});
+
+  $WeekEnumCopyWith<$Res> get week;
 }
 
 class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
@@ -301,6 +303,16 @@ class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
       week: week == freezed ? _value.week : week as WeekEnum,
       repsDone: repsDone == freezed ? _value.repsDone : repsDone as int,
     ));
+  }
+
+  @override
+  $WeekEnumCopyWith<$Res> get week {
+    if (_value.week == null) {
+      return null;
+    }
+    return $WeekEnumCopyWith<$Res>(_value.week, (value) {
+      return _then(_value.copyWith(week: value));
+    });
   }
 }
 
@@ -451,6 +463,8 @@ abstract class $MarkUndoneCopyWith<$Res>
       _$MarkUndoneCopyWithImpl<$Res>;
   @override
   $Res call({int id, int exerciseId, WeekEnum week, Month month});
+
+  $WeekEnumCopyWith<$Res> get week;
 }
 
 class _$MarkUndoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
@@ -474,6 +488,16 @@ class _$MarkUndoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
       week: week == freezed ? _value.week : week as WeekEnum,
       month: month == freezed ? _value.month : month as Month,
     ));
+  }
+
+  @override
+  $WeekEnumCopyWith<$Res> get week {
+    if (_value.week == null) {
+      return null;
+    }
+    return $WeekEnumCopyWith<$Res>(_value.week, (value) {
+      return _then(_value.copyWith(week: value));
+    });
   }
 }
 

@@ -35,14 +35,15 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
       ),
     );
 
-    if (params.week == WeekEnum.deload) {
-      await updateExerciseNextMonth(
+    await params.week.maybeWhen(
+      deload: () async => updateExerciseNextMonth(
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
           nextMonth: params.month.next,
         ),
-      );
-    }
+      ),
+      orElse: () {},
+    );
 
     return result;
   }

@@ -33,10 +33,10 @@ class WeekSetWidget extends StatelessWidget {
   }) : super(key: key);
 
   WeekEnum get week {
-    if (workout is AccumulationWorkout) return WeekEnum.accumulation;
-    if (workout is IntensificationWorkout) return WeekEnum.intensification;
-    if (workout is RealizationWorkout) return WeekEnum.realization;
-    if (workout is DeloadWorkout) return WeekEnum.deload;
+    if (workout is AccumulationWorkout) return const WeekEnum.accumulation();
+    if (workout is IntensificationWorkout) return const WeekEnum.intensification();
+    if (workout is RealizationWorkout) return const WeekEnum.realization();
+    if (workout is DeloadWorkout) return const WeekEnum.deload();
 
     throw const UnexpectedError();
   }
@@ -155,18 +155,16 @@ class CheckButton extends StatelessWidget {
   final bool enabled;
 
   void _handleWeekValidation(BuildContext context) {
-    if (week == WeekEnum.realization) {
-      _handleRealizationWeekValidation(context);
-      return;
-    }
-
-    context.bloc<WorkoutBloc>().add(
-          WorkoutEvent.markDone(
-            exerciseId: exerciseId,
-            month: month,
-            week: week,
+    week.maybeWhen(
+      realization: () => _handleRealizationWeekValidation(context),
+      orElse: () => context.bloc<WorkoutBloc>().add(
+            WorkoutEvent.markDone(
+              exerciseId: exerciseId,
+              month: month,
+              week: week,
+            ),
           ),
-        );
+    );
   }
 
   void _handleRealizationWeekValidation(BuildContext context) {
