@@ -11,5 +11,10 @@ class AmrapExerciseSet extends ExerciseSet {
     @required int reps,
     @required Weight weight,
     this.isDone = false,
-  }) : super(sets: sets, reps: reps, weight: weight);
+  }) : super(
+          sets: sets,
+          reps: reps,
+          weight: weight,
+          isAmrap: true,
+        );
 }

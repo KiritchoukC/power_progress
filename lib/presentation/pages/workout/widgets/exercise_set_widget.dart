@@ -33,7 +33,14 @@ class ExerciseSetWidget extends StatelessWidget {
           width: 30,
           child: Text(
             exerciseSet.reps.toString(),
-            style: _getTextStyle(context),
+            style: exerciseSet.isAmrap
+                ? _getTextStyle(context).copyWith(
+                    decoration: TextDecoration.underline,
+                    decorationStyle: TextDecorationStyle.dotted,
+                    decorationThickness: 2,
+                    color: Colors.grey,
+                  )
+                : _getTextStyle(context),
           ),
         ),
         Container(
