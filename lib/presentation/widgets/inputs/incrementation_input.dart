@@ -17,11 +17,12 @@ class IncrementationInput extends StatelessWidget {
 
   String validate(String newValue) {
     return Incrementation.parse(newValue).value.fold(
-          (l) => l.maybeMap(
-            empty: (f) => 'Cannot be empty.',
-            notANumber: (f) => 'The value ${f.failedValue} entered is not a number.',
-            numberTooLarge: (f) => 'The value ${f.failedValue} is too big. Maximum is ${f.max}.',
-            numberUnderZero: (f) => 'The value needs to be above 0.',
+          (l) => l.maybeWhen(
+            empty: () => 'Cannot be empty.',
+            notANumber: (failedValue) => 'The value $failedValue entered is not a number.',
+            numberTooLarge: (failedValue, max) =>
+                'The value $failedValue is too big. Maximum is $max.',
+            numberUnderZero: (failedValue) => 'The value needs to be above 0.',
             orElse: () => null,
           ),
           (_) => null,

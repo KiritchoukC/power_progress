@@ -40,9 +40,9 @@ class DashboardPage extends StatelessWidget {
             );
           },
           listener: (context, state) {
-            state.maybeMap(
-              error: (value) =>
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(value.message))),
+            state.maybeWhen(
+              error: (message) =>
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(message))),
               orElse: () {},
             );
           },
@@ -152,13 +152,13 @@ class _RemoveButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return state.maybeMap(
-          selected: (value) => RemoveButton(
+        return state.maybeWhen(
+          selected: (selectedIds) => RemoveButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return DeleteConfirmDialog(exerciseIds: value.selectedIds);
+                  return DeleteConfirmDialog(exerciseIds: selectedIds);
                 },
               );
             },
