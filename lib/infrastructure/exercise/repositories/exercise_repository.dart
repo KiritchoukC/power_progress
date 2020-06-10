@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
@@ -60,6 +61,15 @@ class ExerciseRepository implements IExerciseRepository {
     try {
       await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<ExerciseFailure, Unit>> updateOneRm(int exerciseId, OneRm oneRm) async {
+    try {
+      return right(await datasource.updateOneRm(exerciseId, oneRm));
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }

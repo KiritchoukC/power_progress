@@ -32,7 +32,7 @@ import 'package:power_progress/infrastructure/workout/repositories/workout_repos
 
 final GetIt sl = GetIt.instance;
 
-/// Initialize de depdendency injection
+/// Initialize the depdendency injection
 Future<void> init() async {
   //! FEATURES
   initWorkoutFeature();
