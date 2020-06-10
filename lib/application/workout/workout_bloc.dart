@@ -84,7 +84,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     }
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
-      yield const WorkoutState.markedDone();
+      yield WorkoutState.markedDone(
+        exerciseId: event.exerciseId,
+        month: event.month,
+        oneRm: event.oneRm,
+      );
     }
 
     yield* output.fold(onFailure, onSuccess);
@@ -107,7 +111,11 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     }
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
-      yield const WorkoutState.markedUndone();
+      yield WorkoutState.markedUndone(
+        exerciseId: event.exerciseId,
+        month: event.month,
+        oneRm: event.oneRm,
+      );
     }
 
     yield* output.fold(onFailure, onSuccess);

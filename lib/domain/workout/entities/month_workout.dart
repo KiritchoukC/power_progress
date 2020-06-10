@@ -14,6 +14,8 @@ class MonthWorkout {
   final IntensificationWorkout intensificationWorkout;
   final RealizationWorkout realizationWorkout;
   final DeloadWorkout deloadWorkout;
+  final bool isPreviousDeloadDone;
+  final bool isNextAccumulationDone;
 
   MonthWorkout({
     @required this.month,
@@ -22,11 +24,14 @@ class MonthWorkout {
     @required this.intensificationWorkout,
     @required this.realizationWorkout,
     @required this.deloadWorkout,
+    @required this.isPreviousDeloadDone,
+    @required this.isNextAccumulationDone,
   });
 
   bool validatable(WeekEnum week) {
     return week.when(
-      accumulation: () => true,
+      // only if it's the first week or last week's deload is done
+      accumulation: () => isPreviousDeloadDone,
       intensification: () => accumulationWorkout.isDone,
       realization: () => intensificationWorkout.isDone,
       deload: () => realizationWorkout.isDone,
@@ -38,7 +43,8 @@ class MonthWorkout {
       accumulation: () => !intensificationWorkout.isDone,
       intensification: () => !realizationWorkout.isDone,
       realization: () => !deloadWorkout.isDone,
-      deload: () => true,
+      // only if next week's accumulation is not done
+      deload: () => !isNextAccumulationDone,
     );
   }
 }

@@ -34,11 +34,12 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
       ),
     );
 
+    // if it's the deload week that is being marked undone then the current month become the current on again and not the next one.
     await params.week.maybeWhen(
       deload: () async => updateExerciseNextMonth(
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
-          nextMonth: params.month.previous,
+          nextMonth: params.month,
         ),
       ),
       orElse: () {},

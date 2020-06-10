@@ -21,27 +21,10 @@ class WorkoutPageArguments {
   WorkoutPageArguments({@required this.exercise});
 }
 
-class WorkoutPage extends StatefulWidget {
+class WorkoutPage extends StatelessWidget {
   final Exercise exercise;
 
   const WorkoutPage({Key key, @required this.exercise}) : super(key: key);
-
-  @override
-  _WorkoutPageState createState() => _WorkoutPageState();
-}
-
-class _WorkoutPageState extends State<WorkoutPage> {
-  @override
-  void initState() {
-    context.bloc<WorkoutBloc>().add(
-          WorkoutEvent.generate(
-            exerciseId: widget.exercise.id,
-            month: widget.exercise.month,
-            oneRm: widget.exercise.oneRm,
-          ),
-        );
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +37,14 @@ class _WorkoutPageState extends State<WorkoutPage> {
       },
       child: Scaffold(
         appBar: PPAppBar(
-          titleLabel: widget.exercise.name.getOrCrash(),
+          titleLabel: exercise.name.getOrCrash(),
           actions: [
             RemoveButton(
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return DeleteConfirmDialog(exerciseIds: [widget.exercise.id]);
+                    return DeleteConfirmDialog(exerciseIds: [exercise.id]);
                   },
                 );
               },
@@ -70,12 +53,12 @@ class _WorkoutPageState extends State<WorkoutPage> {
         ),
         body: BlocConsumer<WorkoutBloc, WorkoutState>(
           listener: (context, state) {
-            void generate() {
+            void generate(int id, Month month, OneRm oneRm) {
               context.bloc<WorkoutBloc>().add(
                     WorkoutEvent.generate(
-                      exerciseId: widget.exercise.id,
-                      month: widget.exercise.month,
-                      oneRm: widget.exercise.oneRm,
+                      exerciseId: id,
+                      month: month,
+                      oneRm: oneRm,
                     ),
                   );
             }
@@ -87,11 +70,20 @@ class _WorkoutPageState extends State<WorkoutPage> {
             );
           },
           builder: (context, state) {
-            return state.maybeMap(
-              generated: (value) => _Body(
-                monthWorkout: value.workout,
-                exerciseId: widget.exercise.id,
-                month: value.month,
+            return state.maybeWhen(
+              initial: () {
+                context.bloc<WorkoutBloc>().add(WorkoutEvent.generate(
+                      exerciseId: exercise.id,
+                      month: exercise.month,
+                      oneRm: exercise.oneRm,
+                    ));
+
+                return const CenteredLoading();
+              },
+              generated: (workout, month) => _Body(
+                monthWorkout: workout,
+                exerciseId: exercise.id,
+                month: month,
               ),
               orElse: () => const CenteredLoading(),
             );

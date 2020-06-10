@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
@@ -58,6 +59,7 @@ class WeekSetWidget extends StatelessWidget {
                   exerciseId: exerciseId,
                   week: week,
                   month: workout.month,
+                  oneRm: workout.oneRm,
                   enabled: isInvalidatable,
                 )
               else
@@ -66,6 +68,7 @@ class WeekSetWidget extends StatelessWidget {
                   month: workout.month,
                   realizationReps: exerciseSets.last.reps,
                   week: week,
+                  oneRm: workout.oneRm,
                   enabled: isValidatable,
                 ),
             ],
@@ -113,6 +116,7 @@ class UncheckButton extends StatelessWidget {
   final int exerciseId;
   final WeekEnum week;
   final Month month;
+  final OneRm oneRm;
   final bool enabled;
 
   const UncheckButton({
@@ -121,6 +125,7 @@ class UncheckButton extends StatelessWidget {
     @required this.exerciseId,
     @required this.week,
     @required this.month,
+    @required this.oneRm,
     @required this.enabled,
   }) : super(key: key);
 
@@ -135,6 +140,7 @@ class UncheckButton extends StatelessWidget {
                       exerciseId: exerciseId,
                       week: week,
                       month: month,
+                      oneRm: oneRm,
                     ),
                   );
             }
@@ -152,6 +158,7 @@ class CheckButton extends StatelessWidget {
   final Month month;
   final int exerciseId;
   final int realizationReps;
+  final OneRm oneRm;
   final bool enabled;
 
   void _handleWeekValidation(BuildContext context) {
@@ -162,6 +169,7 @@ class CheckButton extends StatelessWidget {
               exerciseId: exerciseId,
               month: month,
               week: week,
+              oneRm: oneRm,
             ),
           ),
     );
@@ -178,6 +186,7 @@ class CheckButton extends StatelessWidget {
                 month: month,
                 week: week,
                 repsDone: value,
+                oneRm: oneRm,
               ),
             ),
       ),
@@ -190,6 +199,7 @@ class CheckButton extends StatelessWidget {
     @required this.month,
     @required this.exerciseId,
     @required this.realizationReps,
+    @required this.oneRm,
     @required this.enabled,
   }) : super(key: key);
   @override

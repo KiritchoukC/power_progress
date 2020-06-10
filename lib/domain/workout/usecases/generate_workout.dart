@@ -71,6 +71,24 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
           );
         }
 
+        bool _isPreviousDeloadDone() {
+          final deloadWorkoutDone = getWorkoutDone(
+            params.exerciseId,
+            Month(params.month.getOrCrash() - 1),
+            const WeekEnum.deload(),
+          );
+          return deloadWorkoutDone != null;
+        }
+
+        bool _isNextAccumulationDone() {
+          final accumulationWorkoutDone = getWorkoutDone(
+            params.exerciseId,
+            Month(params.month.getOrCrash() + 1),
+            const WeekEnum.accumulation(),
+          );
+          return accumulationWorkoutDone != null;
+        }
+
         return right(
           MonthWorkout(
             month: params.month,
@@ -80,6 +98,8 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
                 _getWorkout(const WeekEnum.intensification()) as IntensificationWorkout,
             realizationWorkout: _getWorkout(const WeekEnum.realization()) as RealizationWorkout,
             deloadWorkout: _getWorkout(const WeekEnum.deload()) as DeloadWorkout,
+            isNextAccumulationDone: _isNextAccumulationDone(),
+            isPreviousDeloadDone: params.month.getOrCrash() == 1 || _isPreviousDeloadDone(),
           ),
         );
       },

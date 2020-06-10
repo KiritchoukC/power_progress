@@ -9,8 +9,16 @@ abstract class WorkoutState with _$WorkoutState {
     @required Month month,
   }) = Generated;
   const factory WorkoutState.markDoneInProgress() = MarkDoneInProgress;
-  const factory WorkoutState.markedDone() = MarkedDone;
+  const factory WorkoutState.markedDone({
+    @required int exerciseId,
+    @required Month month,
+    @required OneRm oneRm,
+  }) = MarkedDone;
   const factory WorkoutState.markUndoneInProgress() = MarkUndoneInProgress;
-  const factory WorkoutState.markedUndone() = MarkedUndone;
+  const factory WorkoutState.markedUndone({
+    @required int exerciseId,
+    @required Month month,
+    @required OneRm oneRm,
+  }) = MarkedUndone;
   const factory WorkoutState.error({@required String message}) = Error;
 }
