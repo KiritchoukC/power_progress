@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/KiritchoukC/power_progress/compare/v2.4.0...v2.5.0) (2020-06-10)
+
+
+### Features
+
+* **workout-navigation:** handle deload week invalidate and accumulation week validate ([95144d2](https://github.com/KiritchoukC/power_progress/commit/95144d2)), closes [#69](https://github.com/KiritchoukC/power_progress/issues/69)
+
 ## [2.4.0](https://github.com/KiritchoukC/power_progress/compare/v2.3.1...v2.4.0) (2020-06-09)
 
 
