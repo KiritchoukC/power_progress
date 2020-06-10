@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/KiritchoukC/power_progress/compare/v2.8.0...v2.9.0) (2020-06-10)
+
+
+### Features
+
+* **onerm:** add repository implementation ([7e430db](https://github.com/KiritchoukC/power_progress/commit/7e430db)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ## [2.8.0](https://github.com/KiritchoukC/power_progress/compare/v2.7.0...v2.8.0) (2020-06-10)
 
 
