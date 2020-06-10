@@ -135,7 +135,7 @@ class _InformationsFormState extends State<_InformationsForm> {
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.two(),
         month: Month(1),
-        nextWeek: Week(WeekEnum.accumulation),
+        nextWeek: Week(const WeekEnum.accumulation()),
       );
 
   @override

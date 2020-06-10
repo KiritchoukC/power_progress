@@ -10,30 +10,16 @@ class Week extends ValueObject<WeekEnum> {
 
   factory Week(WeekEnum input) {
     assert(input != null);
-    return Week._(
-      validateWeek(input),
-    );
+    return Week._(right(input));
   }
 
   factory Week.parse(int input) {
     assert(input != null);
-    return Week._(validateAndParseWeek(input));
+    return Week._(WeekEnumHelper.fromInt(input));
   }
 
   const Week._(this.value);
 
   String get displayName => getOrCrash().toDisplayName();
   String get nextWeekDisplayName => getOrCrash().next().toDisplayName();
-}
-
-Either<ValueFailure<WeekEnum>, WeekEnum> validateAndParseWeek(int input) {
-  if (input > WeekEnum.values.length) {
-    return left(ValueFailure.wrongWeek(failedValue: input));
-  }
-
-  return right(WeekEnum.values[input]);
-}
-
-Either<ValueFailure<WeekEnum>, WeekEnum> validateWeek(WeekEnum input) {
-  return right(input);
 }

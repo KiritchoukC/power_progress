@@ -26,7 +26,7 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
     final model = WorkoutDoneModel(
       exerciseId: exerciseId,
       month: month.getOrCrash(),
-      weekIndex: week.index,
+      weekIndex: week.index(),
       repsDone: repsDone,
     );
 

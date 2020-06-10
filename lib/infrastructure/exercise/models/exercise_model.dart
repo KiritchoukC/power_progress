@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
+import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
@@ -45,7 +46,7 @@ class ExerciseModel {
       name: exercise.name.getOrCrash(),
       incrementation: exercise.incrementation.getOrCrash(),
       month: exercise.month.getOrCrash(),
-      nextWeekIndex: exercise.nextWeek.getOrCrash().index,
+      nextWeekIndex: exercise.nextWeek.getOrCrash().index(),
       note: exercise.note?.getOrCrash(),
     );
   }

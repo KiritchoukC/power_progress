@@ -73,7 +73,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
         name: ExerciseName(_exerciseNameController.value.text),
         incrementation: Incrementation.two(),
         month: Month(1),
-        nextWeek: Week(WeekEnum.accumulation),
+        nextWeek: Week(const WeekEnum.accumulation()),
       );
 
   @override

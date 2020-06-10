@@ -21,11 +21,11 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: BlocListener<WorkoutBloc, WorkoutState>(
         listener: (previous, current) {
-          void fetch() {
+          void fetch(_) {
             context.bloc<ExerciseBloc>().add(const ExerciseEvent.fetch());
           }
 
-          current.maybeWhen(
+          current.maybeMap(
             markedDone: fetch,
             markedUndone: fetch,
             orElse: () {},

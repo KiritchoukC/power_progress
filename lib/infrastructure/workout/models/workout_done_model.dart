@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-
 import 'package:power_progress/domain/core/entities/week_enum.dart';
+
 import 'package:power_progress/domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 part 'workout_done_model.g.dart';
 
@@ -32,7 +33,7 @@ class WorkoutDoneModel {
       id: model.id,
       exerciseId: model.exerciseId,
       month: Month(model.month),
-      week: WeekEnum.values[model.weekIndex],
+      week: WeekEnumHelper.fromInt(model.weekIndex).getOrElse(() => throw const UnexpectedError()),
       repsDone: model.repsDone,
     );
   }
