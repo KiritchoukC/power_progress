@@ -78,7 +78,10 @@ class WeekSetWidget extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: exerciseSets.length,
-            itemBuilder: (context, index) => ExerciseSetWidget(exerciseSet: exerciseSets[index]),
+            itemBuilder: (context, index) => ExerciseSetWidget(
+              exerciseSet: exerciseSets[index],
+              isWeekDone: workout.isDone,
+            ),
             separatorBuilder: (context, index) {
               return const VSpacing.extraSmall();
             },
