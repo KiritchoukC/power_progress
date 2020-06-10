@@ -12,4 +12,5 @@ abstract class IExerciseDatasource {
   Future<Unit> updateNextWeek(int exerciseId, WeekEnum nextWeek);
   Future<Unit> updateNextMonth(int exerciseId, Month nextMonth);
   Future<Unit> updateOneRm(int exerciseId, OneRm oneRm);
+  Future<ExerciseModel> getById(int exerciseId);
 }

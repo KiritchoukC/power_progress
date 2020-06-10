@@ -20,3 +20,21 @@ abstract class Workout {
   })  : assert(month != null),
         assert(oneRm != null);
 }
+
+class WorkoutHelper {
+  static int getTargetReps(Month month) {
+    final moduloMonth = month.moduloMonthNumber.getOrElse(() => throw Error());
+    switch (moduloMonth) {
+      case 1:
+        return 10;
+      case 2:
+        return 8;
+      case 3:
+        return 5;
+      case 4:
+        return 3;
+      default:
+        throw Error();
+    }
+  }
+}

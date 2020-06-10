@@ -77,7 +77,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
   @override
   Future<Unit> updateNextMonth(int exerciseId, Month nextMonth) async {
-    final currentModel = _getById(exerciseId);
+    final currentModel = await getById(exerciseId);
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
@@ -99,7 +99,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
   @override
   Future<Unit> updateOneRm(int exerciseId, OneRm oneRm) async {
-    final currentModel = _getById(exerciseId);
+    final currentModel = await getById(exerciseId);
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
@@ -119,7 +119,8 @@ class HiveExerciseDatasource implements IExerciseDatasource {
     return unit;
   }
 
-  ExerciseModel _getById(int exerciseId) {
+  @override
+  Future<ExerciseModel> getById(int exerciseId) async {
     return localStorage.values.firstWhere(
       (element) => element.id == exerciseId,
       orElse: () => throw Exception('Exercise $exerciseId does not exist'),

@@ -74,4 +74,14 @@ class ExerciseRepository implements IExerciseRepository {
       return left(const ExerciseFailure.storageError());
     }
   }
+
+  @override
+  Future<Either<ExerciseFailure, Exercise>> getById(int exerciseId) async {
+    try {
+      final model = await datasource.getById(exerciseId);
+      return right(ExerciseModel.toEntity(model));
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
 }
