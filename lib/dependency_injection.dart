@@ -26,10 +26,14 @@ import 'package:power_progress/infrastructure/exercise/repositories/exercise_rep
 import 'package:power_progress/infrastructure/onboarding/datasources/hive_onboarding_datasource.dart';
 import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 import 'package:power_progress/infrastructure/onboarding/repositories/onboarding_repository.dart';
+import 'package:power_progress/infrastructure/one_rm/datasources/i_one_rm_datasource.dart';
 import 'package:power_progress/infrastructure/workout/datasources/hive_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 import 'package:power_progress/infrastructure/workout/repositories/workout_repository.dart';
+
+import 'infrastructure/one_rm/datasources/hive_one_rm_datasource.dart';
+import 'infrastructure/one_rm/models/one_rm_model.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -39,18 +43,22 @@ Future<void> init() async {
   initWorkoutFeature();
   initExerciseFeature();
   initOnboardingFeature();
+  initSharedFeature();
 
   //! CORE
 
   //! EXTERNAL
   Hive.registerAdapter(ExerciseModelAdapter());
   Hive.registerAdapter(WorkoutDoneModelAdapter());
+  Hive.registerAdapter(OneRmModelAdapter());
   final exercisesBox = await Hive.openBox<ExerciseModel>('exercises');
   sl.registerLazySingleton<Box<ExerciseModel>>(() => exercisesBox);
   final onboardingBox = await Hive.openBox<bool>('onboarding');
   sl.registerLazySingleton<Box<bool>>(() => onboardingBox);
   final workoutDoneBox = await Hive.openBox<WorkoutDoneModel>('workoutDone');
   sl.registerLazySingleton<Box<WorkoutDoneModel>>(() => workoutDoneBox);
+  final oneRmBox = await Hive.openBox<OneRmModel>('oneRm');
+  sl.registerLazySingleton<Box<OneRmModel>>(() => oneRmBox);
 }
 
 /// Register the dependencies needed for the exercise feature
@@ -144,4 +152,10 @@ void initWorkoutFeature() {
   sl.registerLazySingleton<IWorkoutDatasource>(
     () => HiveWorkoutDatasource(localStorage: sl<Box<WorkoutDoneModel>>()),
   );
+}
+
+void initSharedFeature() {
+  // Datasource
+  sl.registerLazySingleton<IOneRmDatasource>(
+      () => HiveOneRmDatasource(localStorage: sl<Box<OneRmModel>>()));
 }
