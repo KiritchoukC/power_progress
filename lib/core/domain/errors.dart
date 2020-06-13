@@ -15,3 +15,5 @@ class UnexpectedValueError extends Error {
 }
 
 class ItemAlreadyExistsError extends Error {}
+
+class ItemDoesNotExistError extends Error {}

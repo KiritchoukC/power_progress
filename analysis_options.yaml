@@ -13,3 +13,4 @@ analyzer:
     missing_return: error
     directives_ordering: ignore
     prefer_const_constructors_in_immutables: warning
+    avoid_catching_errors: ignore

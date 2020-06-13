@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/core/domain/errors.dart';
 
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/core/domain/errors.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/infrastructure/one_rm/datasources/i_one_rm_datasource.dart';
 import 'package:power_progress/infrastructure/one_rm/models/one_rm_model.dart';
@@ -28,28 +27,36 @@ class HiveOneRmDatasource implements IOneRmDatasource {
   }
 
   /// Adds the given one rm [model] to the local storage.
-  /// Throws [ItemAlreadyExistsError] if [model] already exists in the local storage.
+  /// An [ItemAlreadyExistsError] exception is raised if [model] already exists in the local storage.
   @override
   Future<Unit> add(OneRmModel model) async {
     return (await getByExerciseIdAndMonthNumber(model.exerciseId, Month(model.month))).fold(
       // if it does not exist yet, add it.
-      () async {
-        final insertedId = await localStorage.add(model);
-
-        model.id = insertedId;
-
-        await localStorage.putAt(insertedId, model);
-
-        return unit;
+      () {
+        return localStorage
+            .add(model)
+            .then((insertedId) {
+              model.id = insertedId;
+              return model;
+            })
+            // update the model with the auto generated identifier.
+            .then((addedModel) => localStorage.putAt(addedModel.id, addedModel))
+            .then((value) => unit);
       },
       // if it already exists, throw an error.
-      (a) => throw ItemAlreadyExistsError(),
+      (_) => throw ItemAlreadyExistsError(),
     );
   }
 
   /// updates the given one rm [model] to the local storage
+  /// An [ItemDoesNotExistError] exception is raised if [model] does not exist in the local storage.
   @override
-  Future<Unit> update(OneRmModel model) {
-    return localStorage.putAt(model.id, model).then((_) => unit);
+  Future<Unit> update(OneRmModel model) async {
+    return (await getByExerciseIdAndMonthNumber(model.exerciseId, Month(model.month))).fold(
+      // if it does not exist, throw an error.
+      () => throw ItemDoesNotExistError(),
+      // if it does not exist yet, add it.
+      (existingModel) => localStorage.putAt(existingModel.id, model).then((_) => unit),
+    );
   }
 }
