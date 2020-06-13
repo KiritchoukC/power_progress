@@ -14,6 +14,7 @@ import 'package:power_progress/domain/exercise/usecases/update_one_rm.dart';
 import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
+import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 import 'package:power_progress/domain/workout/usecases/mark_workout_done.dart';
@@ -27,6 +28,7 @@ import 'package:power_progress/infrastructure/onboarding/datasources/hive_onboar
 import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 import 'package:power_progress/infrastructure/onboarding/repositories/onboarding_repository.dart';
 import 'package:power_progress/infrastructure/one_rm/datasources/i_one_rm_datasource.dart';
+import 'package:power_progress/infrastructure/one_rm/repositories/one_rm_repository.dart';
 import 'package:power_progress/infrastructure/workout/datasources/hive_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
@@ -43,7 +45,7 @@ Future<void> init() async {
   initWorkoutFeature();
   initExerciseFeature();
   initOnboardingFeature();
-  initSharedFeature();
+  initOneRmFeature();
 
   //! CORE
 
@@ -154,7 +156,11 @@ void initWorkoutFeature() {
   );
 }
 
-void initSharedFeature() {
+void initOneRmFeature() {
+  // Repositories
+  sl.registerLazySingleton<IOneRmRepository>(
+      () => OneRmRepository(datasource: sl<IOneRmDatasource>()));
+
   // Datasource
   sl.registerLazySingleton<IOneRmDatasource>(
       () => HiveOneRmDatasource(localStorage: sl<Box<OneRmModel>>()));
