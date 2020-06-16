@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -115,7 +116,7 @@ class WeekTitle extends StatelessWidget {
 }
 
 class UncheckButton extends StatelessWidget {
-  final int workoutDoneId;
+  final Option<int> workoutDoneId;
   final int exerciseId;
   final WeekEnum week;
   final Month month;

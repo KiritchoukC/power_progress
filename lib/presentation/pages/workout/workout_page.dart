@@ -58,7 +58,6 @@ class WorkoutPage extends StatelessWidget {
                     WorkoutEvent.generate(
                       exerciseId: id,
                       month: month,
-                      oneRm: oneRm,
                     ),
                   );
             }
@@ -75,7 +74,6 @@ class WorkoutPage extends StatelessWidget {
                 context.bloc<WorkoutBloc>().add(WorkoutEvent.generate(
                       exerciseId: exercise.id,
                       month: exercise.month,
-                      oneRm: exercise.oneRm,
                     ));
 
                 return const CenteredLoading();
@@ -190,7 +188,6 @@ class MonthNavigation extends StatelessWidget {
                             WorkoutEvent.generate(
                               exerciseId: exerciseId,
                               month: Month(currentMonth - 1),
-                              oneRm: oneRm,
                             ),
                           );
                     }
@@ -212,7 +209,6 @@ class MonthNavigation extends StatelessWidget {
                       WorkoutEvent.generate(
                         exerciseId: exerciseId,
                         month: Month(currentMonth + 1),
-                        oneRm: oneRm,
                       ),
                     );
               }),

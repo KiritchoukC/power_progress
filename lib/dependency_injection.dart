@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
 import 'package:power_progress/domain/exercise/usecases/add_exercise.dart';
@@ -15,6 +16,7 @@ import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repos
 import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_fetch.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
@@ -133,7 +135,10 @@ void initWorkoutFeature() {
   );
 
   // Usecases
-  sl.registerLazySingleton(() => GenerateWorkout(repository: sl<IWorkoutRepository>()));
+  sl.registerLazySingleton(() => GenerateWorkout(
+        workoutRepository: sl<IWorkoutRepository>(),
+        oneRmRepository: sl<IOneRmRepository>(),
+      ));
   sl.registerLazySingleton(() => MarkWorkoutDone(
         repository: sl<IWorkoutRepository>(),
         updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
@@ -158,8 +163,17 @@ void initWorkoutFeature() {
 }
 
 void initOneRmFeature() {
+  // Bloc
+  sl.registerFactory(
+    () => OneRmBloc(
+      upsert: sl<OneRmUpsert>(),
+      fetch: sl<OneRmFetch>(),
+    ),
+  );
+
   // Usecases
   sl.registerLazySingleton(() => OneRmUpsert(oneRmRepository: sl<IOneRmRepository>()));
+  sl.registerLazySingleton(() => OneRmFetch(oneRmRepository: sl<IOneRmRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOneRmRepository>(

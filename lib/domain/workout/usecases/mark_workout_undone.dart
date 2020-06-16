@@ -25,7 +25,10 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
 
   @override
   Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutUndoneParams params) async {
-    final result = await repository.remove(params.id);
+    final result = params.id.fold(
+      () {},
+      (workoutId) async => repository.remove(workoutId),
+    );
 
     await updateExerciseNextWeek(
       UpdateExerciseNextWeekParams(
@@ -50,7 +53,7 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
 }
 
 class MarkWorkoutUndoneParams extends Equatable {
-  final int id;
+  final Option<int> id;
   final int exerciseId;
   final WeekEnum week;
   final Month month;

@@ -59,7 +59,6 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
-      oneRm: currentModel.oneRm,
       name: currentModel.name,
       incrementation: currentModel.incrementation,
       month: currentModel.month,
@@ -81,7 +80,6 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
-      oneRm: currentModel.oneRm,
       name: currentModel.name,
       incrementation: currentModel.incrementation,
       nextWeekIndex: currentModel.nextWeekIndex,
@@ -103,7 +101,6 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
-      oneRm: oneRm.getOrCrash(),
       name: currentModel.name,
       incrementation: currentModel.incrementation,
       nextWeekIndex: currentModel.nextWeekIndex,

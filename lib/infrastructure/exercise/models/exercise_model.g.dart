@@ -18,7 +18,6 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
     };
     return ExerciseModel(
       id: fields[0] as int,
-      oneRm: fields[1] as double,
       name: fields[2] as String,
       incrementation: fields[3] as double,
       month: fields[5] as int,
@@ -30,11 +29,9 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
   @override
   void write(BinaryWriter writer, ExerciseModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.oneRm)
       ..writeByte(2)
       ..write(obj.name)
       ..writeByte(3)

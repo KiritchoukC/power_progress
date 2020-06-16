@@ -12,14 +12,10 @@ T _$identity<T>(T value) => value;
 class _$WorkoutEventTearOff {
   const _$WorkoutEventTearOff();
 
-  Generate generate(
-      {@required int exerciseId,
-      @required Month month,
-      @required OneRm oneRm}) {
+  Generate generate({@required int exerciseId, @required Month month}) {
     return Generate(
       exerciseId: exerciseId,
       month: month,
-      oneRm: oneRm,
     );
   }
 
@@ -39,7 +35,7 @@ class _$WorkoutEventTearOff {
   }
 
   MarkUndone markUndone(
-      {@required int id,
+      {@required Option<int> id,
       @required int exerciseId,
       @required WeekEnum week,
       @required Month month,
@@ -60,25 +56,24 @@ const $WorkoutEvent = _$WorkoutEventTearOff();
 mixin _$WorkoutEvent {
   int get exerciseId;
   Month get month;
-  OneRm get oneRm;
 
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
             int repsDone),
     @required
-        Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+        Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+            Month month, OneRm oneRm),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
+    Result generate(int exerciseId, Month month),
     Result markDone(
         int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+        Month month, OneRm oneRm),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -102,7 +97,7 @@ abstract class $WorkoutEventCopyWith<$Res> {
   factory $WorkoutEventCopyWith(
           WorkoutEvent value, $Res Function(WorkoutEvent) then) =
       _$WorkoutEventCopyWithImpl<$Res>;
-  $Res call({int exerciseId, Month month, OneRm oneRm});
+  $Res call({int exerciseId, Month month});
 }
 
 class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
@@ -116,12 +111,10 @@ class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
   $Res call({
     Object exerciseId = freezed,
     Object month = freezed,
-    Object oneRm = freezed,
   }) {
     return _then(_value.copyWith(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       month: month == freezed ? _value.month : month as Month,
-      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
@@ -130,7 +123,7 @@ abstract class $GenerateCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
   factory $GenerateCopyWith(Generate value, $Res Function(Generate) then) =
       _$GenerateCopyWithImpl<$Res>;
   @override
-  $Res call({int exerciseId, Month month, OneRm oneRm});
+  $Res call({int exerciseId, Month month});
 }
 
 class _$GenerateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
@@ -145,33 +138,27 @@ class _$GenerateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
   $Res call({
     Object exerciseId = freezed,
     Object month = freezed,
-    Object oneRm = freezed,
   }) {
     return _then(Generate(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       month: month == freezed ? _value.month : month as Month,
-      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
 
 class _$Generate with DiagnosticableTreeMixin implements Generate {
-  const _$Generate(
-      {@required this.exerciseId, @required this.month, @required this.oneRm})
+  const _$Generate({@required this.exerciseId, @required this.month})
       : assert(exerciseId != null),
-        assert(month != null),
-        assert(oneRm != null);
+        assert(month != null);
 
   @override
   final int exerciseId;
   @override
   final Month month;
-  @override
-  final OneRm oneRm;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutEvent.generate(exerciseId: $exerciseId, month: $month, oneRm: $oneRm)';
+    return 'WorkoutEvent.generate(exerciseId: $exerciseId, month: $month)';
   }
 
   @override
@@ -180,8 +167,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
     properties
       ..add(DiagnosticsProperty('type', 'WorkoutEvent.generate'))
       ..add(DiagnosticsProperty('exerciseId', exerciseId))
-      ..add(DiagnosticsProperty('month', month))
-      ..add(DiagnosticsProperty('oneRm', oneRm));
+      ..add(DiagnosticsProperty('month', month));
   }
 
   @override
@@ -192,17 +178,14 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
                 const DeepCollectionEquality()
                     .equals(other.exerciseId, exerciseId)) &&
             (identical(other.month, month) ||
-                const DeepCollectionEquality().equals(other.month, month)) &&
-            (identical(other.oneRm, oneRm) ||
-                const DeepCollectionEquality().equals(other.oneRm, oneRm)));
+                const DeepCollectionEquality().equals(other.month, month)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exerciseId) ^
-      const DeepCollectionEquality().hash(month) ^
-      const DeepCollectionEquality().hash(oneRm);
+      const DeepCollectionEquality().hash(month);
 
   @override
   $GenerateCopyWith<Generate> get copyWith =>
@@ -211,33 +194,33 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
             int repsDone),
     @required
-        Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+        Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+            Month month, OneRm oneRm),
   }) {
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
-    return generate(exerciseId, month, oneRm);
+    return generate(exerciseId, month);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
+    Result generate(int exerciseId, Month month),
     Result markDone(
         int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+        Month month, OneRm oneRm),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (generate != null) {
-      return generate(exerciseId, month, oneRm);
+      return generate(exerciseId, month);
     }
     return orElse();
   }
@@ -272,17 +255,13 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
 }
 
 abstract class Generate implements WorkoutEvent {
-  const factory Generate(
-      {@required int exerciseId,
-      @required Month month,
-      @required OneRm oneRm}) = _$Generate;
+  const factory Generate({@required int exerciseId, @required Month month}) =
+      _$Generate;
 
   @override
   int get exerciseId;
   @override
   Month get month;
-  @override
-  OneRm get oneRm;
   @override
   $GenerateCopyWith<Generate> get copyWith;
 }
@@ -407,13 +386,13 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
             int repsDone),
     @required
-        Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+        Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+            Month month, OneRm oneRm),
   }) {
     assert(generate != null);
     assert(markDone != null);
@@ -424,11 +403,11 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
+    Result generate(int exerciseId, Month month),
     Result markDone(
         int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+        Month month, OneRm oneRm),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -480,7 +459,6 @@ abstract class MarkDone implements WorkoutEvent {
   @override
   Month get month;
   WeekEnum get week;
-  @override
   OneRm get oneRm;
   int get repsDone;
   @override
@@ -493,7 +471,12 @@ abstract class $MarkUndoneCopyWith<$Res>
           MarkUndone value, $Res Function(MarkUndone) then) =
       _$MarkUndoneCopyWithImpl<$Res>;
   @override
-  $Res call({int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm});
+  $Res call(
+      {Option<int> id,
+      int exerciseId,
+      WeekEnum week,
+      Month month,
+      OneRm oneRm});
 
   $WeekEnumCopyWith<$Res> get week;
 }
@@ -515,7 +498,7 @@ class _$MarkUndoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
     Object oneRm = freezed,
   }) {
     return _then(MarkUndone(
-      id: id == freezed ? _value.id : id as int,
+      id: id == freezed ? _value.id : id as Option<int>,
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       week: week == freezed ? _value.week : week as WeekEnum,
       month: month == freezed ? _value.month : month as Month,
@@ -548,7 +531,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
         assert(oneRm != null);
 
   @override
-  final int id;
+  final Option<int> id;
   @override
   final int exerciseId;
   @override
@@ -608,13 +591,13 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
             int repsDone),
     @required
-        Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+        Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+            Month month, OneRm oneRm),
   }) {
     assert(generate != null);
     assert(markDone != null);
@@ -625,11 +608,11 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
+    Result generate(int exerciseId, Month month),
     Result markDone(
         int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
+        Month month, OneRm oneRm),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -670,19 +653,18 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
 
 abstract class MarkUndone implements WorkoutEvent {
   const factory MarkUndone(
-      {@required int id,
+      {@required Option<int> id,
       @required int exerciseId,
       @required WeekEnum week,
       @required Month month,
       @required OneRm oneRm}) = _$MarkUndone;
 
-  int get id;
+  Option<int> get id;
   @override
   int get exerciseId;
   WeekEnum get week;
   @override
   Month get month;
-  @override
   OneRm get oneRm;
   @override
   $MarkUndoneCopyWith<MarkUndone> get copyWith;

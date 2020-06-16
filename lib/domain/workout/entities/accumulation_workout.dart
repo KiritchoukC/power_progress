@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
@@ -12,7 +13,7 @@ class AccumulationWorkout extends Workout {
     @required Month month,
     @required OneRm oneRm,
     @required bool isDone,
-    @required int workoutDoneId,
+    @required Option<int> workoutDoneId,
   }) : super(
           month: month,
           oneRm: oneRm,

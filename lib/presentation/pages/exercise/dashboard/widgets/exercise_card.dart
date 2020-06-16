@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
@@ -56,7 +58,10 @@ class _ExerciseCardState extends State<ExerciseCard> {
 class _Card extends StatelessWidget {
   final Exercise exercise;
 
-  const _Card({Key key, @required this.exercise}) : super(key: key);
+  const _Card({
+    Key key,
+    @required this.exercise,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +80,31 @@ class _Card extends StatelessWidget {
                       color: Colors.grey.shade700,
                     ),
               ),
-              Text(
-                '${exercise.oneRm.getOrCrash()} Kg',
-                style: Theme.of(context).textTheme.subtitle1.apply(
-                      color: Colors.black54,
+              BlocBuilder<OneRmBloc, OneRmState>(
+                builder: (context, state) {
+                  Widget _progress() => Text(
+                        '0.0 Kg',
+                        style: Theme.of(context).textTheme.subtitle1.apply(
+                              color: Colors.black54.withAlpha(20),
+                            ),
+                      );
+                  return state.maybeWhen(
+                    initial: () {
+                      context
+                          .bloc<OneRmBloc>()
+                          .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
+
+                      return _progress();
+                    },
+                    fetched: (oneRm) => Text(
+                      '${oneRm.getOrCrash()} Kg',
+                      style: Theme.of(context).textTheme.subtitle1.apply(
+                            color: Colors.black54,
+                          ),
                     ),
+                    orElse: () => _progress(),
+                  );
+                },
               ),
               Row(
                 children: [

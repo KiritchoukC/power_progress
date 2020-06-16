@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
@@ -9,7 +10,7 @@ abstract class Workout {
   final OneRm oneRm;
   final List<ExerciseSet> exerciseSets;
   final bool isDone;
-  final int workoutDoneId;
+  final Option<int> workoutDoneId;
 
   Workout({
     @required this.month,

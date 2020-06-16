@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
@@ -8,14 +9,14 @@ import 'package:power_progress/domain/workout/entities/workout.dart';
 import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 class RealizationWorkout extends Workout {
-  final int repsDone;
+  final Option<int> repsDone;
 
   RealizationWorkout({
     @required Month month,
     @required OneRm oneRm,
     @required bool isDone,
     @required this.repsDone,
-    @required int workoutDoneId,
+    @required Option<int> workoutDoneId,
   }) : super(
           month: month,
           oneRm: oneRm,
@@ -25,7 +26,7 @@ class RealizationWorkout extends Workout {
         );
 }
 
-List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, int repsDone) {
+List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, Option<int> repsDone) {
   return month.moduloMonthNumber.fold(
     (l) => throw const UnexpectedError(),
     (r) {
@@ -36,8 +37,11 @@ List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, int re
             ExerciseSet(reps: 3, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.7)),
             if (isDone)
-              AmrapExerciseSet(
-                  reps: repsDone, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75), isDone: isDone)
+              repsDone.fold(
+                  () => AmrapExerciseSet(
+                      reps: 10, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75), isDone: isDone),
+                  (a) => AmrapExerciseSet(
+                      reps: a, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75), isDone: isDone))
             else
               AmrapExerciseSet(
                   reps: 10, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75), isDone: isDone),
@@ -49,8 +53,11 @@ List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, int re
             ExerciseSet(reps: 2, sets: 1, weight: Weight.fromOneRm(oneRm, 0.7)),
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75)),
             if (isDone)
-              AmrapExerciseSet(
-                  reps: repsDone, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8), isDone: isDone)
+              repsDone.fold(
+                  () => AmrapExerciseSet(
+                      reps: 8, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8), isDone: isDone),
+                  (a) => AmrapExerciseSet(
+                      reps: a, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8), isDone: isDone))
             else
               AmrapExerciseSet(
                   reps: 8, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8), isDone: isDone),
@@ -63,8 +70,11 @@ List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, int re
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.75)),
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8)),
             if (isDone)
-              AmrapExerciseSet(
-                  reps: repsDone, sets: 1, weight: Weight.fromOneRm(oneRm, 0.85), isDone: isDone)
+              repsDone.fold(
+                  () => AmrapExerciseSet(
+                      reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.85), isDone: isDone),
+                  (a) => AmrapExerciseSet(
+                      reps: a, sets: 1, weight: Weight.fromOneRm(oneRm, 0.85), isDone: isDone))
             else
               AmrapExerciseSet(
                   reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.85), isDone: isDone),
@@ -78,8 +88,11 @@ List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm, bool isDone, int re
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.8)),
             ExerciseSet(reps: 1, sets: 1, weight: Weight.fromOneRm(oneRm, 0.85)),
             if (isDone)
-              AmrapExerciseSet(
-                  reps: repsDone, sets: 1, weight: Weight.fromOneRm(oneRm, 0.9), isDone: isDone)
+              repsDone.fold(
+                  () => AmrapExerciseSet(
+                      reps: 3, sets: 1, weight: Weight.fromOneRm(oneRm, 0.9), isDone: isDone),
+                  (a) => AmrapExerciseSet(
+                      reps: a, sets: 1, weight: Weight.fromOneRm(oneRm, 0.9), isDone: isDone))
             else
               AmrapExerciseSet(
                   reps: 3, sets: 1, weight: Weight.fromOneRm(oneRm, 0.9), isDone: isDone),

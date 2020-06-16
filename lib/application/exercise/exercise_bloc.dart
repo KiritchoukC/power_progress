@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/usecases/add_exercise.dart';

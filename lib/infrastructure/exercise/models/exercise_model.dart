@@ -7,7 +7,6 @@ import 'package:power_progress/domain/exercise/entities/value_objects/exercise_n
 import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/note.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
 
 part 'exercise_model.g.dart';
@@ -16,8 +15,6 @@ part 'exercise_model.g.dart';
 class ExerciseModel {
   @HiveField(0)
   int id;
-  @HiveField(1)
-  double oneRm;
   @HiveField(2)
   String name;
   @HiveField(3)
@@ -31,7 +28,6 @@ class ExerciseModel {
 
   ExerciseModel({
     @required this.id,
-    @required this.oneRm,
     @required this.name,
     @required this.incrementation,
     @required this.month,
@@ -42,7 +38,6 @@ class ExerciseModel {
   factory ExerciseModel.fromEntity(Exercise exercise) {
     return ExerciseModel(
       id: exercise.id,
-      oneRm: exercise.oneRm.getOrCrash(),
       name: exercise.name.getOrCrash(),
       incrementation: exercise.incrementation.getOrCrash(),
       month: exercise.month.getOrCrash(),
@@ -54,7 +49,6 @@ class ExerciseModel {
   static Exercise toEntity(ExerciseModel model) {
     return Exercise(
       id: model.id,
-      oneRm: OneRm(model.oneRm),
       name: ExerciseName(model.name),
       incrementation: Incrementation(model.incrementation),
       month: Month(model.month ?? 1),

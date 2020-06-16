@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -52,7 +51,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       GenerateWorkoutParams(
         exerciseId: event.exerciseId,
         month: event.month,
-        oneRm: event.oneRm,
       ),
     );
 

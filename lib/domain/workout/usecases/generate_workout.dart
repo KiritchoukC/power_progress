@@ -6,6 +6,8 @@ import 'package:power_progress/core/usecases/usecase.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
 import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
@@ -17,60 +19,67 @@ import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 
 class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateWorkoutParams> {
-  final IWorkoutRepository repository;
+  final IWorkoutRepository workoutRepository;
+  final IOneRmRepository oneRmRepository;
 
-  GenerateWorkout({@required this.repository});
+  GenerateWorkout({
+    @required this.workoutRepository,
+    @required this.oneRmRepository,
+  });
 
   @override
   Future<Either<WorkoutFailure, MonthWorkout>> call(GenerateWorkoutParams params) async {
-    Either<WorkoutFailure, MonthWorkout> onFailure(WorkoutFailure failure) => left(failure);
-
-    Either<WorkoutFailure, MonthWorkout> onSuccess(List<WorkoutDone> workoutsDone) {
-      WorkoutDone getWorkoutDone(int exerciseId, Month month, WeekEnum week) {
+    Future<Either<WorkoutFailure, MonthWorkout>> _generate(
+      List<WorkoutDone> workoutsDone,
+      Option<OneRm> oneRmOption,
+    ) async {
+      Option<WorkoutDone> _getWorkoutDone(int exerciseId, Month month, WeekEnum week) {
         if (workoutsDone.isEmpty) return null;
-        return workoutsDone.firstWhere(
+        final workoutDone = workoutsDone.firstWhere(
           (x) =>
               x.month.getOrCrash() == month.getOrCrash() &&
               x.week == week &&
               x.exerciseId == exerciseId,
           orElse: () => null,
         );
+
+        return workoutDone == null ? none() : some(workoutDone);
       }
 
-      Workout _getWorkout(WeekEnum week) {
-        final workoutDone = getWorkoutDone(params.exerciseId, params.month, week);
+      Workout _getWorkout(WeekEnum week, OneRm oneRm) {
+        final workoutDone = _getWorkoutDone(params.exerciseId, params.month, week);
 
         return week.when(
           accumulation: () => AccumulationWorkout(
             month: params.month,
-            oneRm: params.oneRm,
-            isDone: workoutDone != null,
-            workoutDoneId: workoutDone?.id,
+            oneRm: oneRm,
+            isDone: workoutDone.isSome(),
+            workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
           ),
           intensification: () => IntensificationWorkout(
             month: params.month,
-            oneRm: params.oneRm,
-            isDone: workoutDone != null,
-            workoutDoneId: workoutDone?.id,
+            oneRm: oneRm,
+            isDone: workoutDone.isSome(),
+            workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
           ),
           realization: () => RealizationWorkout(
             month: params.month,
-            oneRm: params.oneRm,
-            isDone: workoutDone != null,
-            workoutDoneId: workoutDone?.id,
-            repsDone: workoutDone?.repsDone,
+            oneRm: oneRm,
+            isDone: workoutDone.isSome(),
+            workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
+            repsDone: workoutDone.fold(() => none(), (a) => some(a.repsDone)),
           ),
           deload: () => DeloadWorkout(
             month: params.month,
-            oneRm: params.oneRm,
-            isDone: workoutDone != null,
-            workoutDoneId: workoutDone?.id,
+            oneRm: oneRm,
+            isDone: workoutDone.isSome(),
+            workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
           ),
         );
       }
 
       bool _isPreviousDeloadDone() {
-        final deloadWorkoutDone = getWorkoutDone(
+        final deloadWorkoutDone = _getWorkoutDone(
           params.exerciseId,
           Month(params.month.getOrCrash() - 1),
           const WeekEnum.deload(),
@@ -79,7 +88,7 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
       }
 
       bool _isNextAccumulationDone() {
-        final accumulationWorkoutDone = getWorkoutDone(
+        final accumulationWorkoutDone = _getWorkoutDone(
           params.exerciseId,
           Month(params.month.getOrCrash() + 1),
           const WeekEnum.accumulation(),
@@ -87,36 +96,70 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
         return accumulationWorkoutDone != null;
       }
 
+      final oneRm = OneRm.someOrDefault(oneRmOption);
+
       return right(
         MonthWorkout(
           month: params.month,
-          oneRm: params.oneRm,
-          accumulationWorkout: _getWorkout(const WeekEnum.accumulation()) as AccumulationWorkout,
-          intensificationWorkout:
-              _getWorkout(const WeekEnum.intensification()) as IntensificationWorkout,
-          realizationWorkout: _getWorkout(const WeekEnum.realization()) as RealizationWorkout,
-          deloadWorkout: _getWorkout(const WeekEnum.deload()) as DeloadWorkout,
+          oneRm: oneRm,
+          accumulationWorkout: _getWorkout(
+            const WeekEnum.accumulation(),
+            oneRm,
+          ) as AccumulationWorkout,
+          intensificationWorkout: _getWorkout(
+            const WeekEnum.intensification(),
+            oneRm,
+          ) as IntensificationWorkout,
+          realizationWorkout: _getWorkout(
+            const WeekEnum.realization(),
+            oneRm,
+          ) as RealizationWorkout,
+          deloadWorkout: _getWorkout(
+            const WeekEnum.deload(),
+            oneRm,
+          ) as DeloadWorkout,
           isNextAccumulationDone: _isNextAccumulationDone(),
           isPreviousDeloadDone: params.month.getOrCrash() == 1 || _isPreviousDeloadDone(),
         ),
       );
     }
 
-    return (await repository.getWorkoutsDone(params.exerciseId)).fold(onFailure, onSuccess);
+    return workoutRepository.getWorkoutsDone(params.exerciseId).then(
+          (workoutsDoneEither) => oneRmRepository
+              .getByExerciseIdAndMonth(params.exerciseId, params.month)
+              .then(
+                (oneRmEither) => workoutsDoneEither.fold(
+                  (workoutFailure) => left(workoutFailure),
+                  (workoutsDone) =>
+                      oneRmRepository.getByExerciseIdAndMonth(params.exerciseId, params.month).then(
+                            (oneRmEither) => oneRmEither.fold(
+                              (oneRmFailure) => left(mapToWorkoutFailure(oneRmFailure)),
+                              (oneRm) => _generate(workoutsDone, oneRm),
+                            ),
+                          ),
+                ),
+              ),
+        );
+  }
+
+  WorkoutFailure mapToWorkoutFailure(OneRmFailure oneRmFailure) {
+    return oneRmFailure.when(
+      storageError: () => const WorkoutFailure.storageError(),
+      itemDoesNotExist: () => const WorkoutFailure.oneRmDoestNotExist(),
+      itemAlreadyExists: () => const WorkoutFailure.oneRmAlreadyExists(),
+    );
   }
 }
 
 class GenerateWorkoutParams extends Equatable {
   final int exerciseId;
   final Month month;
-  final OneRm oneRm;
 
   const GenerateWorkoutParams({
     @required this.exerciseId,
     @required this.month,
-    @required this.oneRm,
   });
 
   @override
-  List<Object> get props => [exerciseId, month, oneRm];
+  List<Object> get props => [exerciseId, month];
 }

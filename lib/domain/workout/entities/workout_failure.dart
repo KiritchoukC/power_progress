@@ -7,4 +7,6 @@ part 'workout_failure.freezed.dart';
 abstract class WorkoutFailure with _$WorkoutFailure {
   const factory WorkoutFailure.storageError() = StorageError;
   const factory WorkoutFailure.unexpectedError() = UnexpectedError;
+  const factory WorkoutFailure.oneRmDoestNotExist() = OneRmDoestNotExist;
+  const factory WorkoutFailure.oneRmAlreadyExists() = OneRmAlreadyExists;
 }

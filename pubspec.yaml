@@ -4,6 +4,8 @@ publish_to: none
 version: 2.0.0
 environment:
   sdk: '>=2.7.0 <3.0.0'
+scripts:
+  watch: flutter pub run build_runner watch --delete-conflicting-outputs
 dependencies:
   flutter:
     sdk: flutter
@@ -21,6 +23,7 @@ dependencies:
   google_fonts: ^1.1.0
   flutter_svg: ^0.17.4
   package_info: ^0.4.0+18
+  derry: ^0.0.7+1
 
 dev_dependencies:
   flutter_test: 

@@ -67,9 +67,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
     super.dispose();
   }
 
+  OneRm get _oneRm => OneRm.parse(_oneRmController.value.text);
+
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(_exerciseNameController.value.text),
         incrementation: Incrementation.two(),
         month: Month(1),
@@ -109,7 +110,8 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseEvent.add(exercise: _exercise));
+            BlocProvider.of<ExerciseBloc>(context)
+                .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
           }
         },
         label: const Text('Add'),

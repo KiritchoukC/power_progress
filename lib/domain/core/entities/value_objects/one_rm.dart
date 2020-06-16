@@ -7,6 +7,8 @@ class OneRm extends ValueObject<double> {
   @override
   final Either<ValueFailure<double>, double> value;
 
+  double get _defaultOneRm => 0.0;
+
   factory OneRm(double input) {
     assert(input != null);
     return OneRm._(
@@ -20,6 +22,11 @@ class OneRm extends ValueObject<double> {
       parseAndvalidateOneRm(input),
     );
   }
+
+  factory OneRm.someOrDefault(Option<OneRm> option) => option.fold(
+        () => OneRm(0),
+        (a) => a,
+      );
 
   const OneRm._(this.value);
 }

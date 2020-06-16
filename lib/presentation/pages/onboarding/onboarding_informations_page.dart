@@ -14,7 +14,6 @@ import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
-import 'package:power_progress/presentation/widgets/inputs/incrementation_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
 
 class OnboardingInformationsPageArguments {
@@ -129,9 +128,10 @@ class _InformationsFormState extends State<_InformationsForm> {
     super.dispose();
   }
 
+  OneRm get _oneRm => OneRm.parse(_oneRmController.value.text);
+
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.two(),
         month: Month(1),
@@ -166,7 +166,9 @@ class _InformationsFormState extends State<_InformationsForm> {
               FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context.bloc<ExerciseBloc>().add(ExerciseEvent.add(exercise: _exercise));
+                    context
+                        .bloc<ExerciseBloc>()
+                        .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
                     context.bloc<OnboardingBloc>().add(const OnboardingEvent.markDone());
                   }
                 },
