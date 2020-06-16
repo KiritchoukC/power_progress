@@ -15,6 +15,7 @@ import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repos
 import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 import 'package:power_progress/domain/workout/usecases/mark_workout_done.dart';
@@ -157,6 +158,9 @@ void initWorkoutFeature() {
 }
 
 void initOneRmFeature() {
+  // Usecases
+  sl.registerLazySingleton(() => OneRmUpsert(oneRmRepository: sl<IOneRmRepository>()));
+
   // Repositories
   sl.registerLazySingleton<IOneRmRepository>(
       () => OneRmRepository(datasource: sl<IOneRmDatasource>()));
