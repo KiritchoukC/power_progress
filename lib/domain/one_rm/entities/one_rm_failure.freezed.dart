@@ -16,6 +16,10 @@ class _$OneRmFailureTearOff {
     return const StorageError();
   }
 
+  UnexpectedError unexpectedError() {
+    return const UnexpectedError();
+  }
+
   ItemDoesNotExist itemDoesNotExist() {
     return const ItemDoesNotExist();
   }
@@ -32,12 +36,14 @@ mixin _$OneRmFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result storageError(),
+    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result storageError(),
+    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     @required Result orElse(),
@@ -45,12 +51,14 @@ mixin _$OneRmFailure {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
     @required Result orElse(),
@@ -113,10 +121,12 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result storageError(),
+    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return storageError();
@@ -126,6 +136,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result storageError(),
+    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     @required Result orElse(),
@@ -141,10 +152,12 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return storageError(this);
@@ -154,6 +167,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
     @required Result orElse(),
@@ -168,6 +182,115 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
 
 abstract class StorageError implements OneRmFailure {
   const factory StorageError() = _$StorageError;
+}
+
+abstract class $UnexpectedErrorCopyWith<$Res> {
+  factory $UnexpectedErrorCopyWith(
+          UnexpectedError value, $Res Function(UnexpectedError) then) =
+      _$UnexpectedErrorCopyWithImpl<$Res>;
+}
+
+class _$UnexpectedErrorCopyWithImpl<$Res>
+    extends _$OneRmFailureCopyWithImpl<$Res>
+    implements $UnexpectedErrorCopyWith<$Res> {
+  _$UnexpectedErrorCopyWithImpl(
+      UnexpectedError _value, $Res Function(UnexpectedError) _then)
+      : super(_value, (v) => _then(v as UnexpectedError));
+
+  @override
+  UnexpectedError get _value => super._value as UnexpectedError;
+}
+
+class _$UnexpectedError
+    with DiagnosticableTreeMixin
+    implements UnexpectedError {
+  const _$UnexpectedError();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OneRmFailure.unexpectedError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OneRmFailure.unexpectedError'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UnexpectedError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result storageError(),
+    @required Result unexpectedError(),
+    @required Result itemDoesNotExist(),
+    @required Result itemAlreadyExists(),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    return unexpectedError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result storageError(),
+    Result unexpectedError(),
+    Result itemDoesNotExist(),
+    Result itemAlreadyExists(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
+    @required Result itemDoesNotExist(ItemDoesNotExist value),
+    @required Result itemAlreadyExists(ItemAlreadyExists value),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    return unexpectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
+    Result itemDoesNotExist(ItemDoesNotExist value),
+    Result itemAlreadyExists(ItemAlreadyExists value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnexpectedError implements OneRmFailure {
+  const factory UnexpectedError() = _$UnexpectedError;
 }
 
 abstract class $ItemDoesNotExistCopyWith<$Res> {
@@ -216,10 +339,12 @@ class _$ItemDoesNotExist
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result storageError(),
+    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return itemDoesNotExist();
@@ -229,6 +354,7 @@ class _$ItemDoesNotExist
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result storageError(),
+    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     @required Result orElse(),
@@ -244,10 +370,12 @@ class _$ItemDoesNotExist
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return itemDoesNotExist(this);
@@ -257,6 +385,7 @@ class _$ItemDoesNotExist
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
     @required Result orElse(),
@@ -319,10 +448,12 @@ class _$ItemAlreadyExists
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result storageError(),
+    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return itemAlreadyExists();
@@ -332,6 +463,7 @@ class _$ItemAlreadyExists
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result storageError(),
+    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     @required Result orElse(),
@@ -347,10 +479,12 @@ class _$ItemAlreadyExists
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
   }) {
     assert(storageError != null);
+    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     return itemAlreadyExists(this);
@@ -360,6 +494,7 @@ class _$ItemAlreadyExists
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
     @required Result orElse(),

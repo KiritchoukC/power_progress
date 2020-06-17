@@ -45,7 +45,10 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   Stream<ExerciseState> _handleExerciseAddEvent(Add event) async* {
     yield const ExerciseState.addInProgress();
 
-    final output = await addExercise(AddExerciseParams(exercise: event.exercise));
+    final output = await addExercise(AddExerciseParams(
+      exercise: event.exercise,
+      oneRm: event.oneRm,
+    ));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
       yield ExerciseState.error(message: mapFailureToErrorMessage(failure));

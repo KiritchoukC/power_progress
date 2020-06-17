@@ -23,7 +23,11 @@ void main() {
   const exerciseId = 1;
   final month = Month(1);
   final oneRm = OneRm(100);
-  final params = OneRmUpsertParams(exerciseId, month, oneRm);
+  final params = OneRmUpsertParams(
+    exerciseId: exerciseId,
+    month: month,
+    oneRm: oneRm,
+  );
 
   test('should throw when initialized with null argument', () async {
     // ACT & ASSERT

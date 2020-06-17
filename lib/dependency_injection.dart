@@ -11,7 +11,6 @@ import 'package:power_progress/domain/exercise/usecases/fetch_exercises.dart';
 import 'package:power_progress/domain/exercise/usecases/remove_exercises.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
-import 'package:power_progress/domain/exercise/usecases/update_one_rm.dart';
 import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repository.dart';
 import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
@@ -78,7 +77,10 @@ void initExerciseFeature() {
   );
 
   // Usecases
-  sl.registerLazySingleton(() => AddExercise(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => AddExercise(
+        exerciseRepository: sl<IExerciseRepository>(),
+        oneRmUpsert: sl<OneRmUpsert>(),
+      ));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
       exerciseRepository: sl<IExerciseRepository>(), removeWorkoutDone: sl<RemoveWorkoutDone>()));
@@ -86,7 +88,6 @@ void initExerciseFeature() {
       () => UpdateExerciseNextWeek(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(
       () => UpdateExerciseNextMonth(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerLazySingleton(() => UpdateOneRm(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
@@ -138,12 +139,13 @@ void initWorkoutFeature() {
   sl.registerLazySingleton(() => GenerateWorkout(
         workoutRepository: sl<IWorkoutRepository>(),
         oneRmRepository: sl<IOneRmRepository>(),
+        oneRmUpsert: sl<OneRmUpsert>(),
       ));
   sl.registerLazySingleton(() => MarkWorkoutDone(
         repository: sl<IWorkoutRepository>(),
         updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
         updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
-        updateOneRm: sl<UpdateOneRm>(),
+        oneRmUpsert: sl<OneRmUpsert>(),
       ));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutUndone(

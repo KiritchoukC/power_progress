@@ -7,8 +7,6 @@ class OneRm extends ValueObject<double> {
   @override
   final Either<ValueFailure<double>, double> value;
 
-  double get _defaultOneRm => 0.0;
-
   factory OneRm(double input) {
     assert(input != null);
     return OneRm._(
@@ -46,7 +44,7 @@ Either<ValueFailure<double>, double> parseAndvalidateOneRm(String input) {
 }
 
 Either<ValueFailure<double>, double> validateOneRm(double input) {
-  if (input <= 0) {
+  if (input < 0) {
     return left(ValueFailure.numberUnderZero(failedValue: input));
   }
 

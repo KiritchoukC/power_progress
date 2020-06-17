@@ -382,6 +382,10 @@ class _$OneRmStateTearOff {
   AlreadyExistError alreadyExistError() {
     return const AlreadyExistError();
   }
+
+  UnexpectedError unexpectedError() {
+    return const UnexpectedError();
+  }
 }
 
 // ignore: unused_element
@@ -396,6 +400,7 @@ mixin _$OneRmState {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -405,6 +410,7 @@ mixin _$OneRmState {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -415,6 +421,7 @@ mixin _$OneRmState {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -424,6 +431,7 @@ mixin _$OneRmState {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   });
 }
@@ -481,6 +489,7 @@ class _$Initial implements Initial {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -488,6 +497,7 @@ class _$Initial implements Initial {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return initial();
   }
 
@@ -500,6 +510,7 @@ class _$Initial implements Initial {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -518,6 +529,7 @@ class _$Initial implements Initial {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -525,6 +537,7 @@ class _$Initial implements Initial {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return initial(this);
   }
 
@@ -537,6 +550,7 @@ class _$Initial implements Initial {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -592,6 +606,7 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -599,6 +614,7 @@ class _$FetchInProgres implements FetchInProgres {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return fetchInProgress();
   }
 
@@ -611,6 +627,7 @@ class _$FetchInProgres implements FetchInProgres {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -629,6 +646,7 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -636,6 +654,7 @@ class _$FetchInProgres implements FetchInProgres {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return fetchInProgress(this);
   }
 
@@ -648,6 +667,7 @@ class _$FetchInProgres implements FetchInProgres {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -722,6 +742,7 @@ class _$Fetched implements Fetched {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -729,6 +750,7 @@ class _$Fetched implements Fetched {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return fetched(oneRm);
   }
 
@@ -741,6 +763,7 @@ class _$Fetched implements Fetched {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -759,6 +782,7 @@ class _$Fetched implements Fetched {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -766,6 +790,7 @@ class _$Fetched implements Fetched {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return fetched(this);
   }
 
@@ -778,6 +803,7 @@ class _$Fetched implements Fetched {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -836,6 +862,7 @@ class _$StorageError implements StorageError {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -843,6 +870,7 @@ class _$StorageError implements StorageError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return storageError();
   }
 
@@ -855,6 +883,7 @@ class _$StorageError implements StorageError {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -873,6 +902,7 @@ class _$StorageError implements StorageError {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -880,6 +910,7 @@ class _$StorageError implements StorageError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return storageError(this);
   }
 
@@ -892,6 +923,7 @@ class _$StorageError implements StorageError {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -947,6 +979,7 @@ class _$NotFoundError implements NotFoundError {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -954,6 +987,7 @@ class _$NotFoundError implements NotFoundError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return notFoundError();
   }
 
@@ -966,6 +1000,7 @@ class _$NotFoundError implements NotFoundError {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -984,6 +1019,7 @@ class _$NotFoundError implements NotFoundError {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -991,6 +1027,7 @@ class _$NotFoundError implements NotFoundError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return notFoundError(this);
   }
 
@@ -1003,6 +1040,7 @@ class _$NotFoundError implements NotFoundError {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1059,6 +1097,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
+    @required Result unexpectedError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1066,6 +1105,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return alreadyExistError();
   }
 
@@ -1078,6 +1118,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
+    Result unexpectedError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1096,6 +1137,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1103,6 +1145,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
+    assert(unexpectedError != null);
     return alreadyExistError(this);
   }
 
@@ -1115,6 +1158,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1127,4 +1171,121 @@ class _$AlreadyExistError implements AlreadyExistError {
 
 abstract class AlreadyExistError implements OneRmState {
   const factory AlreadyExistError() = _$AlreadyExistError;
+}
+
+abstract class $UnexpectedErrorCopyWith<$Res> {
+  factory $UnexpectedErrorCopyWith(
+          UnexpectedError value, $Res Function(UnexpectedError) then) =
+      _$UnexpectedErrorCopyWithImpl<$Res>;
+}
+
+class _$UnexpectedErrorCopyWithImpl<$Res> extends _$OneRmStateCopyWithImpl<$Res>
+    implements $UnexpectedErrorCopyWith<$Res> {
+  _$UnexpectedErrorCopyWithImpl(
+      UnexpectedError _value, $Res Function(UnexpectedError) _then)
+      : super(_value, (v) => _then(v as UnexpectedError));
+
+  @override
+  UnexpectedError get _value => super._value as UnexpectedError;
+}
+
+class _$UnexpectedError implements UnexpectedError {
+  const _$UnexpectedError();
+
+  @override
+  String toString() {
+    return 'OneRmState.unexpectedError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UnexpectedError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result fetchInProgress(),
+    @required Result fetched(OneRm oneRm),
+    @required Result storageError(),
+    @required Result notFoundError(),
+    @required Result alreadyExistError(),
+    @required Result unexpectedError(),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return unexpectedError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result fetchInProgress(),
+    Result fetched(OneRm oneRm),
+    Result storageError(),
+    Result notFoundError(),
+    Result alreadyExistError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result fetchInProgress(FetchInProgres value),
+    @required Result fetched(Fetched value),
+    @required Result storageError(StorageError value),
+    @required Result notFoundError(NotFoundError value),
+    @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return unexpectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result fetchInProgress(FetchInProgres value),
+    Result fetched(Fetched value),
+    Result storageError(StorageError value),
+    Result notFoundError(NotFoundError value),
+    Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpectedError != null) {
+      return unexpectedError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnexpectedError implements OneRmState {
+  const factory UnexpectedError() = _$UnexpectedError;
 }

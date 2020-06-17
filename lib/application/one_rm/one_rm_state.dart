@@ -8,4 +8,5 @@ abstract class OneRmState with _$OneRmState {
   const factory OneRmState.storageError() = StorageError;
   const factory OneRmState.notFoundError() = NotFoundError;
   const factory OneRmState.alreadyExistError() = AlreadyExistError;
+  const factory OneRmState.unexpectedError() = UnexpectedError;
 }

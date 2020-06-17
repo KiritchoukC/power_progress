@@ -16,11 +16,10 @@ class ExerciseRepository implements IExerciseRepository {
   ExerciseRepository({@required this.datasource}) : assert(datasource != null);
 
   @override
-  Future<Either<ExerciseFailure, Unit>> add(Exercise exercise) async {
+  Future<Either<ExerciseFailure, int>> add(Exercise exercise) async {
     try {
       final model = ExerciseModel.fromEntity(exercise);
-      await datasource.add(model);
-      return right(unit);
+      return right(await datasource.add(model));
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }
@@ -61,15 +60,6 @@ class ExerciseRepository implements IExerciseRepository {
     try {
       await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
-    } on Exception {
-      return left(const ExerciseFailure.storageError());
-    }
-  }
-
-  @override
-  Future<Either<ExerciseFailure, Unit>> updateOneRm(int exerciseId, OneRm oneRm) async {
-    try {
-      return right(await datasource.updateOneRm(exerciseId, oneRm));
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }

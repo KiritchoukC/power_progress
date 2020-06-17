@@ -71,10 +71,12 @@ class WorkoutPage extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               initial: () {
-                context.bloc<WorkoutBloc>().add(WorkoutEvent.generate(
-                      exerciseId: exercise.id,
-                      month: exercise.month,
-                    ));
+                context.bloc<WorkoutBloc>().add(
+                      WorkoutEvent.generate(
+                        exerciseId: exercise.id,
+                        month: exercise.month,
+                      ),
+                    );
 
                 return const CenteredLoading();
               },

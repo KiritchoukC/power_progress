@@ -54,6 +54,9 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
           itemAlreadyExists: () async* {
             yield const OneRmState.alreadyExistError();
           },
+          unexpectedError: () async* {
+            yield const OneRmState.unexpectedError();
+          },
         );
       },
       (oneRmOption) async* {

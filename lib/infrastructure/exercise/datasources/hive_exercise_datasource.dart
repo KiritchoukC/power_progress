@@ -15,7 +15,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   HiveExerciseDatasource({@required this.localStorage}) : assert(localStorage != null);
 
   @override
-  Future<Unit> add(ExerciseModel exercise) async {
+  Future<int> add(ExerciseModel exercise) async {
     // insert and retrieve auto-increment id
     final int insertedId = await tryOrCrash(
       () => localStorage.add(exercise),
@@ -31,7 +31,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       (_) => throw Exception(),
     );
 
-    return unit;
+    return insertedId;
   }
 
   @override
@@ -85,27 +85,6 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       nextWeekIndex: currentModel.nextWeekIndex,
       note: currentModel.note,
       month: nextMonth.getOrCrash(),
-    );
-
-    await tryOrCrash(
-      () => localStorage.put(exerciseId, updatedModel),
-      (_) => throw Exception(),
-    );
-
-    return unit;
-  }
-
-  @override
-  Future<Unit> updateOneRm(int exerciseId, OneRm oneRm) async {
-    final currentModel = await getById(exerciseId);
-
-    final updatedModel = ExerciseModel(
-      id: currentModel.id,
-      name: currentModel.name,
-      incrementation: currentModel.incrementation,
-      nextWeekIndex: currentModel.nextWeekIndex,
-      note: currentModel.note,
-      month: currentModel.month,
     );
 
     await tryOrCrash(

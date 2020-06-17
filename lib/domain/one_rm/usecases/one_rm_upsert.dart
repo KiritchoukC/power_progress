@@ -40,7 +40,11 @@ class OneRmUpsertParams extends Equatable {
   final Month month;
   final OneRm oneRm;
 
-  const OneRmUpsertParams(this.exerciseId, this.month, this.oneRm);
+  const OneRmUpsertParams({
+    @required this.exerciseId,
+    @required this.month,
+    @required this.oneRm,
+  });
 
   @override
   List<Object> get props => [exerciseId, month, oneRm];

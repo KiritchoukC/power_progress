@@ -8,6 +8,7 @@ import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
 import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
@@ -22,19 +23,23 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
   final IWorkoutRepository workoutRepository;
   final IOneRmRepository oneRmRepository;
 
+  final OneRmUpsert oneRmUpsert;
+
   GenerateWorkout({
     @required this.workoutRepository,
     @required this.oneRmRepository,
+    @required this.oneRmUpsert,
   });
 
   @override
   Future<Either<WorkoutFailure, MonthWorkout>> call(GenerateWorkoutParams params) async {
     Future<Either<WorkoutFailure, MonthWorkout>> _generate(
       List<WorkoutDone> workoutsDone,
-      Option<OneRm> oneRmOption,
+      OneRm oneRm,
     ) async {
       Option<WorkoutDone> _getWorkoutDone(int exerciseId, Month month, WeekEnum week) {
-        if (workoutsDone.isEmpty) return null;
+        if (workoutsDone.isEmpty) return none();
+
         final workoutDone = workoutsDone.firstWhere(
           (x) =>
               x.month.getOrCrash() == month.getOrCrash() &&
@@ -96,8 +101,6 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
         return accumulationWorkoutDone != null;
       }
 
-      final oneRm = OneRm.someOrDefault(oneRmOption);
-
       return right(
         MonthWorkout(
           month: params.month,
@@ -133,8 +136,27 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
                   (workoutsDone) =>
                       oneRmRepository.getByExerciseIdAndMonth(params.exerciseId, params.month).then(
                             (oneRmEither) => oneRmEither.fold(
-                              (oneRmFailure) => left(mapToWorkoutFailure(oneRmFailure)),
-                              (oneRm) => _generate(workoutsDone, oneRm),
+                              (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
+                              (oneRmOption) => oneRmOption.fold(
+                                () => oneRmRepository
+                                    .getByExerciseIdAndMonth(params.exerciseId, Month(1))
+                                    .then(
+                                      (firstMonthOneRmEither) => firstMonthOneRmEither.fold(
+                                        (firstMonthOneRmFailure) =>
+                                            left(_mapToWorkoutFailure(firstMonthOneRmFailure)),
+                                        (firstMonthOneRmOption) => firstMonthOneRmOption.fold(
+                                          () => left(const WorkoutFailure.firstMonthWithoutOneRm()),
+                                          (firstMonthOneRm) => oneRmUpsert(
+                                            OneRmUpsertParams(
+                                                exerciseId: params.exerciseId,
+                                                month: params.month,
+                                                oneRm: firstMonthOneRm),
+                                          ).then((oneRmUpsertUnit) => call(params)),
+                                        ),
+                                      ),
+                                    ),
+                                (oneRm) => _generate(workoutsDone, oneRm),
+                              ),
                             ),
                           ),
                 ),
@@ -142,9 +164,10 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
         );
   }
 
-  WorkoutFailure mapToWorkoutFailure(OneRmFailure oneRmFailure) {
+  WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
     return oneRmFailure.when(
       storageError: () => const WorkoutFailure.storageError(),
+      unexpectedError: () => const WorkoutFailure.unexpectedError(),
       itemDoesNotExist: () => const WorkoutFailure.oneRmDoestNotExist(),
       itemAlreadyExists: () => const WorkoutFailure.oneRmAlreadyExists(),
     );
