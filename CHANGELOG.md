@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.0](https://github.com/KiritchoukC/power_progress/compare/v2.14.0...v2.15.0) (2020-06-17)
+
+
+### Features
+
+* **onerm:** adapt exercise add and workout generate ([cc248c3](https://github.com/KiritchoukC/power_progress/commit/cc248c3)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ## [2.14.0](https://github.com/KiritchoukC/power_progress/compare/v2.13.0...v2.14.0) (2020-06-16)
 
 
