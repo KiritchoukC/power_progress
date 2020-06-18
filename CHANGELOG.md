@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0](https://github.com/KiritchoukC/power_progress/compare/v2.15.0...v2.16.0) (2020-06-18)
+
+
+### Features
+
+* **exercise-remove:** remove associated onerm and workouts on exercise remove ([c0a6601](https://github.com/KiritchoukC/power_progress/commit/c0a6601))
+
 ## [2.15.0](https://github.com/KiritchoukC/power_progress/compare/v2.14.0...v2.15.0) (2020-06-17)
 
 
