@@ -7,6 +7,7 @@ import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
 import 'package:power_progress/domain/exercise/usecases/add_exercise.dart';
+import 'package:power_progress/domain/exercise/usecases/exercise_fetch_by_id.dart';
 import 'package:power_progress/domain/exercise/usecases/fetch_exercises.dart';
 import 'package:power_progress/domain/exercise/usecases/remove_exercises.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
@@ -16,6 +17,7 @@ import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_fetch.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_generate_and_save.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_remove.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
@@ -82,6 +84,7 @@ void initExerciseFeature() {
         oneRmUpsert: sl<OneRmUpsert>(),
       ));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerLazySingleton(() => ExerciseFetchById(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
         exerciseRepository: sl<IExerciseRepository>(),
         removeWorkoutDone: sl<RemoveWorkoutDone>(),
@@ -148,7 +151,7 @@ void initWorkoutFeature() {
         repository: sl<IWorkoutRepository>(),
         updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
         updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
-        oneRmUpsert: sl<OneRmUpsert>(),
+        oneRmGenerateAndSave: sl<OneRmGenerateAndSave>(),
       ));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
   sl.registerLazySingleton(() => MarkWorkoutUndone(
@@ -180,6 +183,11 @@ void initOneRmFeature() {
   sl.registerLazySingleton(() => OneRmUpsert(oneRmRepository: sl<IOneRmRepository>()));
   sl.registerLazySingleton(() => OneRmFetch(oneRmRepository: sl<IOneRmRepository>()));
   sl.registerLazySingleton(() => OneRmRemove(oneRmRepository: sl<IOneRmRepository>()));
+  sl.registerLazySingleton(() => OneRmGenerateAndSave(
+        oneRmRepository: sl<IOneRmRepository>(),
+        exerciseFetchById: sl<ExerciseFetchById>(),
+        oneRmUpsert: sl<OneRmUpsert>(),
+      ));
 
   // Repositories
   sl.registerLazySingleton<IOneRmRepository>(

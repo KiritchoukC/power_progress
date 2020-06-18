@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
@@ -28,13 +29,23 @@ class WorkoutDoneModel {
     @required this.repsDone,
   });
 
+  factory WorkoutDoneModel.toModel(
+      int exerciseId, Month month, WeekEnum week, Option<int> repsDone) {
+    return WorkoutDoneModel(
+      exerciseId: exerciseId,
+      month: month.getOrCrash(),
+      weekIndex: week.index(),
+      repsDone: repsDone.getOrElse(() => -1),
+    );
+  }
+
   static WorkoutDone toEntity(WorkoutDoneModel model) {
     return WorkoutDone(
       id: model.id,
       exerciseId: model.exerciseId,
       month: Month(model.month),
       week: WeekEnumHelper.fromInt(model.weekIndex).getOrElse(() => throw const UnexpectedError()),
-      repsDone: model.repsDone,
+      repsDone: some(model.repsDone),
     );
   }
 }

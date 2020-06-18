@@ -174,6 +174,7 @@ class CheckButton extends StatelessWidget {
               month: month,
               week: week,
               oneRm: oneRm,
+              repsDone: none(),
             ),
           ),
     );
@@ -189,8 +190,8 @@ class CheckButton extends StatelessWidget {
                 exerciseId: exerciseId,
                 month: month,
                 week: week,
-                repsDone: value,
                 oneRm: oneRm,
+                repsDone: some(value),
               ),
             ),
       ),

@@ -7,7 +7,7 @@ import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 
 abstract class IWorkoutRepository {
   Future<Either<WorkoutFailure, Unit>> markDone(
-      int exerciseId, Month month, WeekEnum week, int repsDone);
+      int exerciseId, Month month, WeekEnum week, Option<int> repsDone);
   Future<Either<WorkoutFailure, List<WorkoutDone>>> getWorkoutsDone(int exerciseId);
   Future<Either<WorkoutFailure, Unit>> remove(int id);
 }

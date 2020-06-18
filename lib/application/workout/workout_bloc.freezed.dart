@@ -24,7 +24,7 @@ class _$WorkoutEventTearOff {
       @required Month month,
       @required WeekEnum week,
       @required OneRm oneRm,
-      int repsDone}) {
+      @required Option<int> repsDone}) {
     return MarkDone(
       exerciseId: exerciseId,
       month: month,
@@ -62,7 +62,7 @@ mixin _$WorkoutEvent {
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+            Option<int> repsDone),
     @required
         Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
             Month month, OneRm oneRm),
@@ -70,8 +70,8 @@ mixin _$WorkoutEvent {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result generate(int exerciseId, Month month),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
+    Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
+        Option<int> repsDone),
     Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
         Month month, OneRm oneRm),
     @required Result orElse(),
@@ -197,7 +197,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+            Option<int> repsDone),
     @required
         Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
             Month month, OneRm oneRm),
@@ -212,8 +212,8 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result generate(int exerciseId, Month month),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
+    Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
+        Option<int> repsDone),
     Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
         Month month, OneRm oneRm),
     @required Result orElse(),
@@ -271,7 +271,11 @@ abstract class $MarkDoneCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
       _$MarkDoneCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone});
+      {int exerciseId,
+      Month month,
+      WeekEnum week,
+      OneRm oneRm,
+      Option<int> repsDone});
 
   $WeekEnumCopyWith<$Res> get week;
 }
@@ -297,7 +301,7 @@ class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
       month: month == freezed ? _value.month : month as Month,
       week: week == freezed ? _value.week : week as WeekEnum,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
-      repsDone: repsDone == freezed ? _value.repsDone : repsDone as int,
+      repsDone: repsDone == freezed ? _value.repsDone : repsDone as Option<int>,
     ));
   }
 
@@ -318,11 +322,12 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
       @required this.month,
       @required this.week,
       @required this.oneRm,
-      this.repsDone})
+      @required this.repsDone})
       : assert(exerciseId != null),
         assert(month != null),
         assert(week != null),
-        assert(oneRm != null);
+        assert(oneRm != null),
+        assert(repsDone != null);
 
   @override
   final int exerciseId;
@@ -333,7 +338,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   final OneRm oneRm;
   @override
-  final int repsDone;
+  final Option<int> repsDone;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -389,7 +394,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+            Option<int> repsDone),
     @required
         Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
             Month month, OneRm oneRm),
@@ -404,8 +409,8 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result generate(int exerciseId, Month month),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
+    Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
+        Option<int> repsDone),
     Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
         Month month, OneRm oneRm),
     @required Result orElse(),
@@ -452,7 +457,7 @@ abstract class MarkDone implements WorkoutEvent {
       @required Month month,
       @required WeekEnum week,
       @required OneRm oneRm,
-      int repsDone}) = _$MarkDone;
+      @required Option<int> repsDone}) = _$MarkDone;
 
   @override
   int get exerciseId;
@@ -460,7 +465,7 @@ abstract class MarkDone implements WorkoutEvent {
   Month get month;
   WeekEnum get week;
   OneRm get oneRm;
-  int get repsDone;
+  Option<int> get repsDone;
   @override
   $MarkDoneCopyWith<MarkDone> get copyWith;
 }
@@ -594,7 +599,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+            Option<int> repsDone),
     @required
         Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
             Month month, OneRm oneRm),
@@ -609,8 +614,8 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result generate(int exerciseId, Month month),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
+    Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
+        Option<int> repsDone),
     Result markUndone(Option<int> id, int exerciseId, WeekEnum week,
         Month month, OneRm oneRm),
     @required Result orElse(),

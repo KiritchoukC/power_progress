@@ -22,13 +22,8 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   }
 
   @override
-  Future<Unit> markDone(int exerciseId, Month month, WeekEnum week, int repsDone) async {
-    final model = WorkoutDoneModel(
-      exerciseId: exerciseId,
-      month: month.getOrCrash(),
-      weekIndex: week.index(),
-      repsDone: repsDone,
-    );
+  Future<Unit> markDone(int exerciseId, Month month, WeekEnum week, Option<int> repsDone) async {
+    final model = WorkoutDoneModel.toModel(exerciseId, month, week, repsDone);
 
     final int addedId = await tryOrCrash(
       () => localStorage.add(model),

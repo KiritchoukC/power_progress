@@ -11,7 +11,7 @@ abstract class WorkoutEvent with _$WorkoutEvent {
     @required Month month,
     @required WeekEnum week,
     @required OneRm oneRm,
-    int repsDone,
+    @required Option<int> repsDone,
   }) = MarkDone;
   const factory WorkoutEvent.markUndone({
     @required Option<int> id,

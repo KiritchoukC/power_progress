@@ -72,7 +72,7 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
             oneRm: oneRm,
             isDone: workoutDone.isSome(),
             workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
-            repsDone: workoutDone.fold(() => none(), (a) => some(a.repsDone)),
+            repsDone: workoutDone.fold(() => none(), (a) => a.repsDone),
           ),
           deload: () => DeloadWorkout(
             month: params.month,

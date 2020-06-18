@@ -27,7 +27,7 @@ class WorkoutRepository implements IWorkoutRepository {
 
   @override
   Future<Either<WorkoutFailure, Unit>> markDone(
-      int exerciseId, Month month, WeekEnum week, int repsDone) async {
+      int exerciseId, Month month, WeekEnum week, Option<int> repsDone) async {
     try {
       return right(await datasource.markDone(exerciseId, month, week, repsDone));
     } on Exception {
