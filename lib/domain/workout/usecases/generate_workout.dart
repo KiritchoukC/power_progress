@@ -127,41 +127,46 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
       );
     }
 
+    // gets all the workouts (weeks) that are done
     return workoutRepository.getWorkoutsDone(params.exerciseId).then(
-          (workoutsDoneEither) => oneRmRepository
-              .getByExerciseIdAndMonth(params.exerciseId, params.month)
-              .then(
-                (oneRmEither) => workoutsDoneEither.fold(
-                  (workoutFailure) => left(workoutFailure),
-                  (workoutsDone) => oneRmRepository
-                      .getByExerciseIdAndMonth(params.exerciseId, params.month)
-                      .then(
-                        (oneRmEither) => oneRmEither.fold(
-                          (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
-                          (oneRmOption) => oneRmOption.fold(
-                            () => oneRmRepository
-                                .getByExerciseIdAndMonth(params.exerciseId, params.month.previous)
-                                .then(
-                                  (previousOneRmEither) => previousOneRmEither.fold(
-                                    (previousOneRmFailure) =>
-                                        left(_mapToWorkoutFailure(previousOneRmFailure)),
-                                    (previousOneRmOption) => previousOneRmOption.fold(
-                                      () => left(const WorkoutFailure.previousMonthWithoutOneRm()),
-                                      (previousOneRm) => oneRmUpsert(
-                                        OneRmUpsertParams(
-                                            exerciseId: params.exerciseId,
-                                            month: params.month,
-                                            oneRm: previousOneRm),
-                                      ).then((oneRmUpsertUnit) => call(params)),
-                                    ),
+          (workoutsDoneEither) => workoutsDoneEither.fold(
+            // returns failure if something went wrong while gettings the workouts done
+            (workoutFailure) => left(workoutFailure),
+            (workoutsDone) =>
+                // gets the OneRm for this exercise and this month
+                oneRmRepository.getByExerciseIdAndMonth(params.exerciseId, params.month).then(
+                      (oneRmEither) => oneRmEither.fold(
+                        // returns the failure if something went wrong while getting the OneRm
+                        (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
+                        (oneRmOption) => oneRmOption.fold(
+                          // if there is no one rm for this month yet, get the one rm of the previous month
+                          () => oneRmRepository
+                              .getByExerciseIdAndMonth(params.exerciseId, params.month.previous)
+                              .then(
+                                (previousOneRmEither) => previousOneRmEither.fold(
+                                  // returns the failure if something went wrong while getting the previous OneRm
+                                  (previousOneRmFailure) =>
+                                      left(_mapToWorkoutFailure(previousOneRmFailure)),
+                                  (previousOneRmOption) => previousOneRmOption.fold(
+                                    // if there is still no one rm for the previous month, returns the failure
+                                    () => left(const WorkoutFailure.previousMonthWithoutOneRm()),
+                                    // the previous one rm is inserted for the current month, so next time, it will be found
+                                    (previousOneRm) => oneRmUpsert(
+                                      OneRmUpsertParams(
+                                          exerciseId: params.exerciseId,
+                                          month: params.month,
+                                          oneRm: previousOneRm),
+                                      // then call this usecase again
+                                    ).then((oneRmUpsertUnit) => call(params)),
                                   ),
                                 ),
-                            (oneRm) => _generate(workoutsDone, oneRm),
-                          ),
+                              ),
+                          // if OneRm has been found, generate the workout
+                          (oneRm) => _generate(workoutsDone, oneRm),
                         ),
                       ),
-                ),
-              ),
+                    ),
+          ),
         );
   }
 
