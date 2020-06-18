@@ -28,8 +28,8 @@ class _$WorkoutFailureTearOff {
     return const OneRmAlreadyExists();
   }
 
-  FirstMonthWithoutOneRm firstMonthWithoutOneRm() {
-    return const FirstMonthWithoutOneRm();
+  PreviousMonthWithoutOneRm previousMonthWithoutOneRm() {
+    return const PreviousMonthWithoutOneRm();
   }
 }
 
@@ -43,7 +43,7 @@ mixin _$WorkoutFailure {
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -51,7 +51,7 @@ mixin _$WorkoutFailure {
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -60,7 +60,7 @@ mixin _$WorkoutFailure {
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -68,7 +68,7 @@ mixin _$WorkoutFailure {
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   });
 }
@@ -134,13 +134,13 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return storageError();
   }
 
@@ -151,7 +151,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -168,13 +168,13 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return storageError(this);
   }
 
@@ -185,7 +185,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -249,13 +249,13 @@ class _$UnexpectedError
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return unexpectedError();
   }
 
@@ -266,7 +266,7 @@ class _$UnexpectedError
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -283,13 +283,13 @@ class _$UnexpectedError
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return unexpectedError(this);
   }
 
@@ -300,7 +300,7 @@ class _$UnexpectedError
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -364,13 +364,13 @@ class _$OneRmDoestNotExist
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return oneRmDoestNotExist();
   }
 
@@ -381,7 +381,7 @@ class _$OneRmDoestNotExist
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -398,13 +398,13 @@ class _$OneRmDoestNotExist
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return oneRmDoestNotExist(this);
   }
 
@@ -415,7 +415,7 @@ class _$OneRmDoestNotExist
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -479,13 +479,13 @@ class _$OneRmAlreadyExists
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return oneRmAlreadyExists();
   }
 
@@ -496,7 +496,7 @@ class _$OneRmAlreadyExists
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -513,13 +513,13 @@ class _$OneRmAlreadyExists
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
+    assert(previousMonthWithoutOneRm != null);
     return oneRmAlreadyExists(this);
   }
 
@@ -530,7 +530,7 @@ class _$OneRmAlreadyExists
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -545,44 +545,45 @@ abstract class OneRmAlreadyExists implements WorkoutFailure {
   const factory OneRmAlreadyExists() = _$OneRmAlreadyExists;
 }
 
-abstract class $FirstMonthWithoutOneRmCopyWith<$Res> {
-  factory $FirstMonthWithoutOneRmCopyWith(FirstMonthWithoutOneRm value,
-          $Res Function(FirstMonthWithoutOneRm) then) =
-      _$FirstMonthWithoutOneRmCopyWithImpl<$Res>;
+abstract class $PreviousMonthWithoutOneRmCopyWith<$Res> {
+  factory $PreviousMonthWithoutOneRmCopyWith(PreviousMonthWithoutOneRm value,
+          $Res Function(PreviousMonthWithoutOneRm) then) =
+      _$PreviousMonthWithoutOneRmCopyWithImpl<$Res>;
 }
 
-class _$FirstMonthWithoutOneRmCopyWithImpl<$Res>
+class _$PreviousMonthWithoutOneRmCopyWithImpl<$Res>
     extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $FirstMonthWithoutOneRmCopyWith<$Res> {
-  _$FirstMonthWithoutOneRmCopyWithImpl(FirstMonthWithoutOneRm _value,
-      $Res Function(FirstMonthWithoutOneRm) _then)
-      : super(_value, (v) => _then(v as FirstMonthWithoutOneRm));
+    implements $PreviousMonthWithoutOneRmCopyWith<$Res> {
+  _$PreviousMonthWithoutOneRmCopyWithImpl(PreviousMonthWithoutOneRm _value,
+      $Res Function(PreviousMonthWithoutOneRm) _then)
+      : super(_value, (v) => _then(v as PreviousMonthWithoutOneRm));
 
   @override
-  FirstMonthWithoutOneRm get _value => super._value as FirstMonthWithoutOneRm;
+  PreviousMonthWithoutOneRm get _value =>
+      super._value as PreviousMonthWithoutOneRm;
 }
 
-class _$FirstMonthWithoutOneRm
+class _$PreviousMonthWithoutOneRm
     with DiagnosticableTreeMixin
-    implements FirstMonthWithoutOneRm {
-  const _$FirstMonthWithoutOneRm();
+    implements PreviousMonthWithoutOneRm {
+  const _$PreviousMonthWithoutOneRm();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.firstMonthWithoutOneRm()';
+    return 'WorkoutFailure.previousMonthWithoutOneRm()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-          DiagnosticsProperty('type', 'WorkoutFailure.firstMonthWithoutOneRm'));
+      ..add(DiagnosticsProperty(
+          'type', 'WorkoutFailure.previousMonthWithoutOneRm'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is FirstMonthWithoutOneRm);
+    return identical(this, other) || (other is PreviousMonthWithoutOneRm);
   }
 
   @override
@@ -595,14 +596,14 @@ class _$FirstMonthWithoutOneRm
     @required Result unexpectedError(),
     @required Result oneRmDoestNotExist(),
     @required Result oneRmAlreadyExists(),
-    @required Result firstMonthWithoutOneRm(),
+    @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
-    return firstMonthWithoutOneRm();
+    assert(previousMonthWithoutOneRm != null);
+    return previousMonthWithoutOneRm();
   }
 
   @override
@@ -612,12 +613,12 @@ class _$FirstMonthWithoutOneRm
     Result unexpectedError(),
     Result oneRmDoestNotExist(),
     Result oneRmAlreadyExists(),
-    Result firstMonthWithoutOneRm(),
+    Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (firstMonthWithoutOneRm != null) {
-      return firstMonthWithoutOneRm();
+    if (previousMonthWithoutOneRm != null) {
+      return previousMonthWithoutOneRm();
     }
     return orElse();
   }
@@ -629,14 +630,14 @@ class _$FirstMonthWithoutOneRm
     @required Result unexpectedError(UnexpectedError value),
     @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(oneRmDoestNotExist != null);
     assert(oneRmAlreadyExists != null);
-    assert(firstMonthWithoutOneRm != null);
-    return firstMonthWithoutOneRm(this);
+    assert(previousMonthWithoutOneRm != null);
+    return previousMonthWithoutOneRm(this);
   }
 
   @override
@@ -646,17 +647,17 @@ class _$FirstMonthWithoutOneRm
     Result unexpectedError(UnexpectedError value),
     Result oneRmDoestNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result firstMonthWithoutOneRm(FirstMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (firstMonthWithoutOneRm != null) {
-      return firstMonthWithoutOneRm(this);
+    if (previousMonthWithoutOneRm != null) {
+      return previousMonthWithoutOneRm(this);
     }
     return orElse();
   }
 }
 
-abstract class FirstMonthWithoutOneRm implements WorkoutFailure {
-  const factory FirstMonthWithoutOneRm() = _$FirstMonthWithoutOneRm;
+abstract class PreviousMonthWithoutOneRm implements WorkoutFailure {
+  const factory PreviousMonthWithoutOneRm() = _$PreviousMonthWithoutOneRm;
 }

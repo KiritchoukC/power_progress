@@ -9,5 +9,5 @@ abstract class WorkoutFailure with _$WorkoutFailure {
   const factory WorkoutFailure.unexpectedError() = UnexpectedError;
   const factory WorkoutFailure.oneRmDoestNotExist() = OneRmDoestNotExist;
   const factory WorkoutFailure.oneRmAlreadyExists() = OneRmAlreadyExists;
-  const factory WorkoutFailure.firstMonthWithoutOneRm() = FirstMonthWithoutOneRm;
+  const factory WorkoutFailure.previousMonthWithoutOneRm() = PreviousMonthWithoutOneRm;
 }

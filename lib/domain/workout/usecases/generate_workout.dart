@@ -133,32 +133,33 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
               .then(
                 (oneRmEither) => workoutsDoneEither.fold(
                   (workoutFailure) => left(workoutFailure),
-                  (workoutsDone) =>
-                      oneRmRepository.getByExerciseIdAndMonth(params.exerciseId, params.month).then(
-                            (oneRmEither) => oneRmEither.fold(
-                              (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
-                              (oneRmOption) => oneRmOption.fold(
-                                () => oneRmRepository
-                                    .getByExerciseIdAndMonth(params.exerciseId, Month(1))
-                                    .then(
-                                      (firstMonthOneRmEither) => firstMonthOneRmEither.fold(
-                                        (firstMonthOneRmFailure) =>
-                                            left(_mapToWorkoutFailure(firstMonthOneRmFailure)),
-                                        (firstMonthOneRmOption) => firstMonthOneRmOption.fold(
-                                          () => left(const WorkoutFailure.firstMonthWithoutOneRm()),
-                                          (firstMonthOneRm) => oneRmUpsert(
-                                            OneRmUpsertParams(
-                                                exerciseId: params.exerciseId,
-                                                month: params.month,
-                                                oneRm: firstMonthOneRm),
-                                          ).then((oneRmUpsertUnit) => call(params)),
-                                        ),
-                                      ),
+                  (workoutsDone) => oneRmRepository
+                      .getByExerciseIdAndMonth(params.exerciseId, params.month)
+                      .then(
+                        (oneRmEither) => oneRmEither.fold(
+                          (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
+                          (oneRmOption) => oneRmOption.fold(
+                            () => oneRmRepository
+                                .getByExerciseIdAndMonth(params.exerciseId, params.month.previous)
+                                .then(
+                                  (previousOneRmEither) => previousOneRmEither.fold(
+                                    (previousOneRmFailure) =>
+                                        left(_mapToWorkoutFailure(previousOneRmFailure)),
+                                    (previousOneRmOption) => previousOneRmOption.fold(
+                                      () => left(const WorkoutFailure.previousMonthWithoutOneRm()),
+                                      (previousOneRm) => oneRmUpsert(
+                                        OneRmUpsertParams(
+                                            exerciseId: params.exerciseId,
+                                            month: params.month,
+                                            oneRm: previousOneRm),
+                                      ).then((oneRmUpsertUnit) => call(params)),
                                     ),
-                                (oneRm) => _generate(workoutsDone, oneRm),
-                              ),
-                            ),
+                                  ),
+                                ),
+                            (oneRm) => _generate(workoutsDone, oneRm),
                           ),
+                        ),
+                      ),
                 ),
               ),
         );
