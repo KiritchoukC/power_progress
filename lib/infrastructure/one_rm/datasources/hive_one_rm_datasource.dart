@@ -59,4 +59,14 @@ class HiveOneRmDatasource implements IOneRmDatasource {
       (existingModel) => localStorage.putAt(existingModel.id, model).then((_) => unit),
     );
   }
+
+  @override
+  Future<Unit> removeByExerciseId(int exerciseId) async {
+    final oneRmIdsToDelete =
+        localStorage.values.where((element) => element.exerciseId == exerciseId).map((e) => e.id);
+
+    await localStorage.deleteAll(oneRmIdsToDelete);
+
+    return unit;
+  }
 }

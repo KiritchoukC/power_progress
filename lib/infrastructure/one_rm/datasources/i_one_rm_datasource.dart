@@ -13,4 +13,7 @@ abstract class IOneRmDatasource {
   /// updates the given one rm [model] to the local storage
   /// An [ItemDoesNotExistError] exception is raised if [model] does not exist in the local storage.
   Future<Unit> update(OneRmModel model);
+
+  /// removes all the one rms associated with the given exercise
+  Future<Unit> removeByExerciseId(int exerciseId);
 }

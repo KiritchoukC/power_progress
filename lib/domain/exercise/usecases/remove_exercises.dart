@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import 'package:power_progress/core/usecases/usecase.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_remove.dart';
 import 'package:power_progress/domain/workout/usecases/remove_workout_done.dart';
 import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
@@ -10,20 +11,30 @@ import 'package:power_progress/domain/exercise/repositories/i_exercise_repositor
 class RemoveExercises implements UseCase<Unit, ExerciseFailure, RemoveExercisesParams> {
   final IExerciseRepository exerciseRepository;
   final RemoveWorkoutDone removeWorkoutDone;
+  final OneRmRemove oneRmRemove;
 
   RemoveExercises({
     @required this.exerciseRepository,
     @required this.removeWorkoutDone,
-  }) : assert(exerciseRepository != null && removeWorkoutDone != null);
+    @required this.oneRmRemove,
+  })  : assert(exerciseRepository != null),
+        assert(removeWorkoutDone != null);
 
   @override
   Future<Either<ExerciseFailure, Unit>> call(RemoveExercisesParams params) async {
     final exerciseRemovedEither = await exerciseRepository.remove(params.ids);
 
-    return exerciseRemovedEither.fold((l) => left(l), (r) {
-      // remove workout done persisted data related to this exercise
-      return right(r);
-    });
+    return exerciseRemovedEither.fold(
+      (l) => left(l),
+      (r) {
+        // remove workout done persisted data associated to this exercise
+        params.ids.map((id) async => removeWorkoutDone(RemoveWorkoutDoneParams(exerciseId: id)));
+        // remove one rm data associated to this exercise
+        params.ids.map((id) async => oneRmRemove(OneRmRemoveParams(exerciseId: id)));
+
+        return right(r);
+      },
+    );
   }
 }
 

@@ -16,6 +16,7 @@ import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_fetch.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_remove.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
@@ -35,9 +36,8 @@ import 'package:power_progress/infrastructure/workout/datasources/hive_workout_d
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 import 'package:power_progress/infrastructure/workout/repositories/workout_repository.dart';
-
-import 'infrastructure/one_rm/datasources/hive_one_rm_datasource.dart';
-import 'infrastructure/one_rm/models/one_rm_model.dart';
+import 'package:power_progress/infrastructure/one_rm/datasources/hive_one_rm_datasource.dart';
+import 'package:power_progress/infrastructure/one_rm/models/one_rm_model.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -83,7 +83,10 @@ void initExerciseFeature() {
       ));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
-      exerciseRepository: sl<IExerciseRepository>(), removeWorkoutDone: sl<RemoveWorkoutDone>()));
+        exerciseRepository: sl<IExerciseRepository>(),
+        removeWorkoutDone: sl<RemoveWorkoutDone>(),
+        oneRmRemove: sl<OneRmRemove>(),
+      ));
   sl.registerLazySingleton(
       () => UpdateExerciseNextWeek(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(
@@ -176,6 +179,7 @@ void initOneRmFeature() {
   // Usecases
   sl.registerLazySingleton(() => OneRmUpsert(oneRmRepository: sl<IOneRmRepository>()));
   sl.registerLazySingleton(() => OneRmFetch(oneRmRepository: sl<IOneRmRepository>()));
+  sl.registerLazySingleton(() => OneRmRemove(oneRmRepository: sl<IOneRmRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOneRmRepository>(

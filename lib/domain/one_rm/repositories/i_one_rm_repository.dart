@@ -8,4 +8,5 @@ abstract class IOneRmRepository {
   Future<Either<OneRmFailure, Unit>> add(int exerciseId, Month month, OneRm oneRm);
   Future<Either<OneRmFailure, Unit>> update(int exerciseId, Month month, OneRm oneRm);
   Future<Either<OneRmFailure, Option<OneRm>>> getByExerciseIdAndMonth(int exerciseId, Month month);
+  Future<Either<OneRmFailure, Unit>> removeByExerciseId(int exerciseId);
 }

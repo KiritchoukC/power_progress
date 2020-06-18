@@ -47,6 +47,7 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
           nextMonth: params.month.next,
         ),
       ),
+      //! TODO generate one rm for the next month
       realization: () async => oneRmUpsert(
         OneRmUpsertParams(
           exerciseId: params.exerciseId,
@@ -77,5 +78,11 @@ class MarkWorkoutDoneParams extends Equatable {
   });
 
   @override
-  List<Object> get props => [exerciseId, month, week, repsDone];
+  List<Object> get props => [
+        exerciseId,
+        month,
+        week,
+        repsDone,
+        oneRm,
+      ];
 }
