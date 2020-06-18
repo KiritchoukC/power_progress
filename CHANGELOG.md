@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/KiritchoukC/power_progress/compare/v2.16.0...v2.17.0) (2020-06-18)
+
+
+### Features
+
+* **onerm:** generate a new onerm when validating a realization workout ([139233f](https://github.com/KiritchoukC/power_progress/commit/139233f)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ## [2.16.0](https://github.com/KiritchoukC/power_progress/compare/v2.15.0...v2.16.0) (2020-06-18)
 
 
