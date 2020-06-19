@@ -30,7 +30,7 @@ class RemoveExercises implements UseCase<Unit, ExerciseFailure, RemoveExercisesP
         // remove workout done persisted data associated to this exercise
         params.ids.map((id) async => removeWorkoutDone(RemoveWorkoutDoneParams(exerciseId: id)));
         // remove one rm data associated to this exercise
-        params.ids.map((id) async => oneRmRemove(OneRmRemoveParams(exerciseId: id)));
+        params.ids.map((id) async => oneRmRemove(OneRmRemoveParams(exerciseId: id, month: none())));
 
         return right(r);
       },

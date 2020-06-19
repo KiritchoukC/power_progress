@@ -158,6 +158,7 @@ void initWorkoutFeature() {
         repository: sl<IWorkoutRepository>(),
         updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
         updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
+        oneRmRemove: sl<OneRmRemove>(),
       ));
 
   // Repositories

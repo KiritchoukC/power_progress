@@ -16,4 +16,7 @@ abstract class IOneRmDatasource {
 
   /// removes all the one rms associated with the given exercise
   Future<Unit> removeByExerciseId(int exerciseId);
+
+  /// removes the one rm for this exercise and month
+  Future<Unit> removeByExerciseIdAndMonth(int exerciseId, Month month);
 }

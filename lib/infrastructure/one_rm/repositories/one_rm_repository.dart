@@ -74,4 +74,13 @@ class OneRmRepository implements IOneRmRepository {
       return left(const OneRmFailure.storageError());
     }
   }
+
+  @override
+  Future<Either<OneRmFailure, Unit>> removeByExerciseIdAndMonth(int exerciseId, Month month) async {
+    try {
+      return datasource.removeByExerciseIdAndMonth(exerciseId, month).then((value) => right(unit));
+    } catch (e) {
+      return left(const OneRmFailure.storageError());
+    }
+  }
 }

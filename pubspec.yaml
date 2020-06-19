@@ -24,11 +24,13 @@ dependencies:
   flutter_svg: ^0.17.4
   package_info: ^0.4.0+18
   derry: ^0.0.7+1
+  copy_with_extension: ^1.2.0
 
 dev_dependencies:
   flutter_test: 
     sdk: flutter
   mockito: ^4.1.1
+  copy_with_extension_gen: ^1.2.0
 
   flutter_launcher_icons: ^0.7.5
   lint: ^1.2.0

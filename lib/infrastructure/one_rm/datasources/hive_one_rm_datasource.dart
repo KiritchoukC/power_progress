@@ -35,12 +35,9 @@ class HiveOneRmDatasource implements IOneRmDatasource {
       () {
         return localStorage
             .add(model)
-            .then((insertedId) {
-              model.id = insertedId;
-              return model;
-            })
+            .then((insertedId) => model.copyWith(id: insertedId))
             // update the model with the auto generated identifier.
-            .then((addedModel) => localStorage.putAt(addedModel.id, addedModel))
+            .then((addedModel) => localStorage.put(addedModel.id, addedModel))
             .then((value) => unit);
       },
       // if it already exists, throw an error.
@@ -56,7 +53,9 @@ class HiveOneRmDatasource implements IOneRmDatasource {
       // if it does not exist, throw an error.
       () => throw ItemDoesNotExistError(),
       // if it does not exist yet, add it.
-      (existingModel) => localStorage.putAt(existingModel.id, model).then((_) => unit),
+      (existingModel) => localStorage
+          .put(existingModel.id, existingModel.copyWith(oneRm: model.oneRm))
+          .then((_) => unit),
     );
   }
 
@@ -68,5 +67,15 @@ class HiveOneRmDatasource implements IOneRmDatasource {
     await localStorage.deleteAll(oneRmIdsToDelete);
 
     return unit;
+  }
+
+  @override
+  Future<Unit> removeByExerciseIdAndMonth(int exerciseId, Month month) async {
+    return (await getByExerciseIdAndMonthNumber(exerciseId, month)).fold(
+      // if it does not exist, do nothing.
+      () => unit,
+      // if it does not exist yet, delete it.
+      (existingModel) => localStorage.delete(existingModel.id).then((_) => unit),
+    );
   }
 }

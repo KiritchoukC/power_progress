@@ -7,6 +7,7 @@ import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
 import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
+import 'package:power_progress/domain/one_rm/usecases/one_rm_remove.dart';
 import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 
@@ -14,14 +15,17 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
   final IWorkoutRepository repository;
   final UpdateExerciseNextWeek updateExerciseNextWeek;
   final UpdateExerciseNextMonth updateExerciseNextMonth;
+  final OneRmRemove oneRmRemove;
 
   MarkWorkoutUndone({
     @required this.repository,
     @required this.updateExerciseNextWeek,
     @required this.updateExerciseNextMonth,
+    @required this.oneRmRemove,
   })  : assert(repository != null),
         assert(updateExerciseNextWeek != null),
-        assert(updateExerciseNextMonth != null);
+        assert(updateExerciseNextMonth != null),
+        assert(oneRmRemove != null);
 
   @override
   Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutUndoneParams params) async {
@@ -43,6 +47,12 @@ class MarkWorkoutUndone implements UseCase<Unit, WorkoutFailure, MarkWorkoutUndo
         UpdateExerciseNextMonthParams(
           exerciseId: params.exerciseId,
           nextMonth: params.month,
+        ),
+      ),
+      realization: () async => oneRmRemove(
+        OneRmRemoveParams(
+          exerciseId: params.exerciseId,
+          month: some(params.month.next),
         ),
       ),
       orElse: () {},

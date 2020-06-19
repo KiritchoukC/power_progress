@@ -15,23 +15,23 @@ class OneRmUpsert implements UseCase<Unit, OneRmFailure, OneRmUpsertParams> {
 
   @override
   Future<Either<OneRmFailure, Unit>> call(OneRmUpsertParams params) {
-    return oneRmRepository
-        .getByExerciseIdAndMonth(params.exerciseId, params.month)
-        .then((oneRmEither) => oneRmEither.fold(
-              (failure) async => left(failure),
-              (oneRmOption) => oneRmOption.fold(
-                () => oneRmRepository.add(
-                  params.exerciseId,
-                  params.month,
-                  params.oneRm,
-                ),
-                (_) => oneRmRepository.update(
-                  params.exerciseId,
-                  params.month,
-                  params.oneRm,
-                ),
+    return oneRmRepository.getByExerciseIdAndMonth(params.exerciseId, params.month).then(
+          (oneRmEither) => oneRmEither.fold(
+            (failure) async => left(failure),
+            (oneRmOption) => oneRmOption.fold(
+              () => oneRmRepository.add(
+                params.exerciseId,
+                params.month,
+                params.oneRm,
               ),
-            ));
+              (_) => oneRmRepository.update(
+                params.exerciseId,
+                params.month,
+                params.oneRm,
+              ),
+            ),
+          ),
+        );
   }
 }
 
