@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
@@ -82,27 +83,36 @@ class _Card extends StatelessWidget {
               ),
               BlocBuilder<OneRmBloc, OneRmState>(
                 builder: (context, state) {
+                  // happens when loading the one rm
                   Widget _progress() => Text(
                         '0.0 Kg',
                         style: Theme.of(context).textTheme.subtitle1.apply(
                               color: Colors.black54.withAlpha(20),
                             ),
                       );
-                  return state.maybeWhen(
-                    initial: () {
-                      context
-                          .bloc<OneRmBloc>()
-                          .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
 
-                      return _progress();
-                    },
-                    fetched: (oneRm) => Text(
-                      '${oneRm.getOrCrash()} Kg',
-                      style: Theme.of(context).textTheme.subtitle1.apply(
-                            color: Colors.black54,
-                          ),
-                    ),
-                    orElse: () => _progress(),
+                  // fetch the one rm
+                  Widget _fetch() {
+                    context
+                        .bloc<OneRmBloc>()
+                        .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
+
+                    return _progress();
+                  }
+
+                  // show the one rm.
+                  Widget _oneRm(OneRm oneRm) => Text(
+                        '${oneRm.getOrCrash()} Kg',
+                        style: Theme.of(context).textTheme.subtitle1.apply(
+                              color: Colors.black54,
+                            ),
+                      );
+
+                  // react to state
+                  return state.maybeWhen(
+                    initial: _fetch,
+                    fetched: _oneRm,
+                    orElse: _progress,
                   );
                 },
               ),

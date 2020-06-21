@@ -11,4 +11,10 @@ abstract class OneRmEvent with _$OneRmEvent {
     @required Month month,
     @required OneRm oneRm,
   }) = Upsert;
+  const factory OneRmEvent.generateAndSave({
+    @required int exerciseId,
+    @required OneRm oneRm,
+    @required Month month,
+    @required Option<int> repsDone,
+  }) = GenerateAndSave;
 }

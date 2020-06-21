@@ -7,4 +7,12 @@ abstract class ExerciseEvent with _$ExerciseEvent {
   const factory ExerciseEvent.selectionMode(
       {@required bool isInSelectionMode, @required List<int> selectedIds}) = SelectionMode;
   const factory ExerciseEvent.remove({@required List<int> ids}) = Remove;
+  const factory ExerciseEvent.updateNextMonth({
+    @required int exerciseId,
+    @required Month nextMonth,
+  }) = UpdateNextMonth;
+  const factory ExerciseEvent.updateNextWeek({
+    @required int exerciseId,
+    @required WeekEnum nextWeek,
+  }) = UpdateNextWeek;
 }

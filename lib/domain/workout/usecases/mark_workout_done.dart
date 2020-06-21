@@ -29,36 +29,8 @@ class MarkWorkoutDone implements UseCase<Unit, WorkoutFailure, MarkWorkoutDonePa
         assert(oneRmGenerateAndSave != null);
 
   @override
-  Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutDoneParams params) async {
-    final result =
-        repository.markDone(params.exerciseId, params.month, params.week, params.repsDone);
-
-    await updateExerciseNextWeek(
-      UpdateExerciseNextWeekParams(
-        exerciseId: params.exerciseId,
-        nextWeek: params.week.next(),
-      ),
-    );
-
-    await params.week.maybeWhen(
-      deload: () async => updateExerciseNextMonth(
-        UpdateExerciseNextMonthParams(
-          exerciseId: params.exerciseId,
-          nextMonth: params.month.next,
-        ),
-      ),
-      realization: () async => oneRmGenerateAndSave(
-        OneRmGenerateAndSaveParams(
-            exerciseId: params.exerciseId,
-            oneRm: params.oneRm,
-            month: params.month.next,
-            repsDone: params.repsDone),
-      ),
-      orElse: () {},
-    );
-
-    return result;
-  }
+  Future<Either<WorkoutFailure, Unit>> call(MarkWorkoutDoneParams params) async =>
+      repository.markDone(params.exerciseId, params.month, params.week, params.repsDone);
 }
 
 class MarkWorkoutDoneParams extends Equatable {

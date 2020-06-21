@@ -5,6 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as orBloc;
 import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
@@ -23,11 +25,15 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final GenerateWorkout generateWorkout;
   final MarkWorkoutDone markWorkoutDone;
   final MarkWorkoutUndone markWorkoutUndone;
+  final ExerciseBloc exerciseBloc;
+  final orBloc.OneRmBloc oneRmBloc;
 
   WorkoutBloc({
     @required this.generateWorkout,
     @required this.markWorkoutDone,
     @required this.markWorkoutUndone,
+    @required this.exerciseBloc,
+    @required this.oneRmBloc,
   });
 
   @override
@@ -78,19 +84,43 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       ),
     );
 
-    Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
-    }
+    yield* output.fold(
+      (markWorkoutDoneFailure) async* {
+        yield WorkoutState.error(message: mapFailureToErrorMessage(markWorkoutDoneFailure));
+      },
+      (_) async* {
+        yield WorkoutState.markedDone(
+          exerciseId: event.exerciseId,
+          month: event.month,
+          oneRm: event.oneRm,
+        );
 
-    Stream<WorkoutState> onSuccess(Unit unit) async* {
-      yield WorkoutState.markedDone(
-        exerciseId: event.exerciseId,
-        month: event.month,
-        oneRm: event.oneRm,
-      );
-    }
+        exerciseBloc.add(
+          ExerciseEvent.updateNextWeek(
+            exerciseId: event.exerciseId,
+            nextWeek: event.week.next(),
+          ),
+        );
 
-    yield* output.fold(onFailure, onSuccess);
+        event.week.maybeWhen(
+          realization: () async => oneRmBloc.add(
+            orBloc.OneRmEvent.generateAndSave(
+              exerciseId: event.exerciseId,
+              oneRm: event.oneRm,
+              month: event.month.next,
+              repsDone: event.repsDone,
+            ),
+          ),
+          deload: () async => exerciseBloc.add(
+            ExerciseEvent.updateNextMonth(
+              exerciseId: event.exerciseId,
+              nextMonth: event.month.next,
+            ),
+          ),
+          orElse: () {},
+        );
+      },
+    );
   }
 
   Stream<WorkoutState> _handleMarkUndoneEvent(MarkUndone event) async* {

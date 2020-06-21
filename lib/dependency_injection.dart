@@ -75,6 +75,8 @@ void initExerciseFeature() {
       addExercise: sl<AddExercise>(),
       fetchExercises: sl<FetchExercises>(),
       removeExercises: sl<RemoveExercises>(),
+      updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
+      updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
     ),
   );
 
@@ -138,6 +140,8 @@ void initWorkoutFeature() {
       generateWorkout: sl<GenerateWorkout>(),
       markWorkoutDone: sl<MarkWorkoutDone>(),
       markWorkoutUndone: sl<MarkWorkoutUndone>(),
+      exerciseBloc: sl<ExerciseBloc>(),
+      oneRmBloc: sl<OneRmBloc>(),
     ),
   );
 
@@ -177,6 +181,7 @@ void initOneRmFeature() {
     () => OneRmBloc(
       upsert: sl<OneRmUpsert>(),
       fetch: sl<OneRmFetch>(),
+      oneRmGenerateAndSave: sl<OneRmGenerateAndSave>(),
     ),
   );
 

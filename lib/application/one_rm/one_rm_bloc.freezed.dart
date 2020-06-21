@@ -29,6 +29,19 @@ class _$OneRmEventTearOff {
       oneRm: oneRm,
     );
   }
+
+  GenerateAndSave generateAndSave(
+      {@required int exerciseId,
+      @required OneRm oneRm,
+      @required Month month,
+      @required Option<int> repsDone}) {
+    return GenerateAndSave(
+      exerciseId: exerciseId,
+      oneRm: oneRm,
+      month: month,
+      repsDone: repsDone,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -42,22 +55,29 @@ mixin _$OneRmEvent {
   Result when<Result extends Object>({
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
+    @required
+        Result generateAndSave(
+            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
+    Result generateAndSave(
+        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
+    @required Result generateAndSave(GenerateAndSave value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result fetch(Fetch value),
     Result upsert(Upsert value),
+    Result generateAndSave(GenerateAndSave value),
     @required Result orElse(),
   });
 
@@ -158,9 +178,13 @@ class _$Fetch implements Fetch {
   Result when<Result extends Object>({
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
+    @required
+        Result generateAndSave(
+            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
   }) {
     assert(fetch != null);
     assert(upsert != null);
+    assert(generateAndSave != null);
     return fetch(exerciseId, month);
   }
 
@@ -169,6 +193,8 @@ class _$Fetch implements Fetch {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
+    Result generateAndSave(
+        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -183,9 +209,11 @@ class _$Fetch implements Fetch {
   Result map<Result extends Object>({
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
+    @required Result generateAndSave(GenerateAndSave value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
+    assert(generateAndSave != null);
     return fetch(this);
   }
 
@@ -194,6 +222,7 @@ class _$Fetch implements Fetch {
   Result maybeMap<Result extends Object>({
     Result fetch(Fetch value),
     Result upsert(Upsert value),
+    Result generateAndSave(GenerateAndSave value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -293,9 +322,13 @@ class _$Upsert implements Upsert {
   Result when<Result extends Object>({
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
+    @required
+        Result generateAndSave(
+            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
   }) {
     assert(fetch != null);
     assert(upsert != null);
+    assert(generateAndSave != null);
     return upsert(exerciseId, month, oneRm);
   }
 
@@ -304,6 +337,8 @@ class _$Upsert implements Upsert {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
+    Result generateAndSave(
+        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -318,9 +353,11 @@ class _$Upsert implements Upsert {
   Result map<Result extends Object>({
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
+    @required Result generateAndSave(GenerateAndSave value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
+    assert(generateAndSave != null);
     return upsert(this);
   }
 
@@ -329,6 +366,7 @@ class _$Upsert implements Upsert {
   Result maybeMap<Result extends Object>({
     Result fetch(Fetch value),
     Result upsert(Upsert value),
+    Result generateAndSave(GenerateAndSave value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -354,6 +392,170 @@ abstract class Upsert implements OneRmEvent {
   $UpsertCopyWith<Upsert> get copyWith;
 }
 
+abstract class $GenerateAndSaveCopyWith<$Res>
+    implements $OneRmEventCopyWith<$Res> {
+  factory $GenerateAndSaveCopyWith(
+          GenerateAndSave value, $Res Function(GenerateAndSave) then) =
+      _$GenerateAndSaveCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId, OneRm oneRm, Month month, Option<int> repsDone});
+}
+
+class _$GenerateAndSaveCopyWithImpl<$Res> extends _$OneRmEventCopyWithImpl<$Res>
+    implements $GenerateAndSaveCopyWith<$Res> {
+  _$GenerateAndSaveCopyWithImpl(
+      GenerateAndSave _value, $Res Function(GenerateAndSave) _then)
+      : super(_value, (v) => _then(v as GenerateAndSave));
+
+  @override
+  GenerateAndSave get _value => super._value as GenerateAndSave;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+    Object oneRm = freezed,
+    Object month = freezed,
+    Object repsDone = freezed,
+  }) {
+    return _then(GenerateAndSave(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
+      month: month == freezed ? _value.month : month as Month,
+      repsDone: repsDone == freezed ? _value.repsDone : repsDone as Option<int>,
+    ));
+  }
+}
+
+class _$GenerateAndSave implements GenerateAndSave {
+  const _$GenerateAndSave(
+      {@required this.exerciseId,
+      @required this.oneRm,
+      @required this.month,
+      @required this.repsDone})
+      : assert(exerciseId != null),
+        assert(oneRm != null),
+        assert(month != null),
+        assert(repsDone != null);
+
+  @override
+  final int exerciseId;
+  @override
+  final OneRm oneRm;
+  @override
+  final Month month;
+  @override
+  final Option<int> repsDone;
+
+  @override
+  String toString() {
+    return 'OneRmEvent.generateAndSave(exerciseId: $exerciseId, oneRm: $oneRm, month: $month, repsDone: $repsDone)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GenerateAndSave &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
+            (identical(other.oneRm, oneRm) ||
+                const DeepCollectionEquality().equals(other.oneRm, oneRm)) &&
+            (identical(other.month, month) ||
+                const DeepCollectionEquality().equals(other.month, month)) &&
+            (identical(other.repsDone, repsDone) ||
+                const DeepCollectionEquality()
+                    .equals(other.repsDone, repsDone)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(oneRm) ^
+      const DeepCollectionEquality().hash(month) ^
+      const DeepCollectionEquality().hash(repsDone);
+
+  @override
+  $GenerateAndSaveCopyWith<GenerateAndSave> get copyWith =>
+      _$GenerateAndSaveCopyWithImpl<GenerateAndSave>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result fetch(int exerciseId, Month month),
+    @required Result upsert(int exerciseId, Month month, OneRm oneRm),
+    @required
+        Result generateAndSave(
+            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+  }) {
+    assert(fetch != null);
+    assert(upsert != null);
+    assert(generateAndSave != null);
+    return generateAndSave(exerciseId, oneRm, month, repsDone);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result fetch(int exerciseId, Month month),
+    Result upsert(int exerciseId, Month month, OneRm oneRm),
+    Result generateAndSave(
+        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateAndSave != null) {
+      return generateAndSave(exerciseId, oneRm, month, repsDone);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result fetch(Fetch value),
+    @required Result upsert(Upsert value),
+    @required Result generateAndSave(GenerateAndSave value),
+  }) {
+    assert(fetch != null);
+    assert(upsert != null);
+    assert(generateAndSave != null);
+    return generateAndSave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result fetch(Fetch value),
+    Result upsert(Upsert value),
+    Result generateAndSave(GenerateAndSave value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateAndSave != null) {
+      return generateAndSave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GenerateAndSave implements OneRmEvent {
+  const factory GenerateAndSave(
+      {@required int exerciseId,
+      @required OneRm oneRm,
+      @required Month month,
+      @required Option<int> repsDone}) = _$GenerateAndSave;
+
+  @override
+  int get exerciseId;
+  OneRm get oneRm;
+  @override
+  Month get month;
+  Option<int> get repsDone;
+  @override
+  $GenerateAndSaveCopyWith<GenerateAndSave> get copyWith;
+}
+
 class _$OneRmStateTearOff {
   const _$OneRmStateTearOff();
 
@@ -369,6 +571,14 @@ class _$OneRmStateTearOff {
     return Fetched(
       oneRm: oneRm,
     );
+  }
+
+  GenerateAndSaveInProgress generateAndSaveInProgress() {
+    return const GenerateAndSaveInProgress();
+  }
+
+  GeneratedAndSaved generatedAndSaved() {
+    return const GeneratedAndSaved();
   }
 
   StorageError storageError() {
@@ -397,6 +607,8 @@ mixin _$OneRmState {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -407,6 +619,8 @@ mixin _$OneRmState {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -418,6 +632,8 @@ mixin _$OneRmState {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -428,6 +644,8 @@ mixin _$OneRmState {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -486,6 +704,8 @@ class _$Initial implements Initial {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -494,6 +714,8 @@ class _$Initial implements Initial {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -507,6 +729,8 @@ class _$Initial implements Initial {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -526,6 +750,8 @@ class _$Initial implements Initial {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -534,6 +760,8 @@ class _$Initial implements Initial {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -547,6 +775,8 @@ class _$Initial implements Initial {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -603,6 +833,8 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -611,6 +843,8 @@ class _$FetchInProgres implements FetchInProgres {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -624,6 +858,8 @@ class _$FetchInProgres implements FetchInProgres {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -643,6 +879,8 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -651,6 +889,8 @@ class _$FetchInProgres implements FetchInProgres {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -664,6 +904,8 @@ class _$FetchInProgres implements FetchInProgres {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -739,6 +981,8 @@ class _$Fetched implements Fetched {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -747,6 +991,8 @@ class _$Fetched implements Fetched {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -760,6 +1006,8 @@ class _$Fetched implements Fetched {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -779,6 +1027,8 @@ class _$Fetched implements Fetched {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -787,6 +1037,8 @@ class _$Fetched implements Fetched {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -800,6 +1052,8 @@ class _$Fetched implements Fetched {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -819,6 +1073,267 @@ abstract class Fetched implements OneRmState {
 
   OneRm get oneRm;
   $FetchedCopyWith<Fetched> get copyWith;
+}
+
+abstract class $GenerateAndSaveInProgressCopyWith<$Res> {
+  factory $GenerateAndSaveInProgressCopyWith(GenerateAndSaveInProgress value,
+          $Res Function(GenerateAndSaveInProgress) then) =
+      _$GenerateAndSaveInProgressCopyWithImpl<$Res>;
+}
+
+class _$GenerateAndSaveInProgressCopyWithImpl<$Res>
+    extends _$OneRmStateCopyWithImpl<$Res>
+    implements $GenerateAndSaveInProgressCopyWith<$Res> {
+  _$GenerateAndSaveInProgressCopyWithImpl(GenerateAndSaveInProgress _value,
+      $Res Function(GenerateAndSaveInProgress) _then)
+      : super(_value, (v) => _then(v as GenerateAndSaveInProgress));
+
+  @override
+  GenerateAndSaveInProgress get _value =>
+      super._value as GenerateAndSaveInProgress;
+}
+
+class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
+  const _$GenerateAndSaveInProgress();
+
+  @override
+  String toString() {
+    return 'OneRmState.generateAndSaveInProgress()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GenerateAndSaveInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result fetchInProgress(),
+    @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
+    @required Result storageError(),
+    @required Result notFoundError(),
+    @required Result alreadyExistError(),
+    @required Result unexpectedError(),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return generateAndSaveInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result fetchInProgress(),
+    Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
+    Result storageError(),
+    Result notFoundError(),
+    Result alreadyExistError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateAndSaveInProgress != null) {
+      return generateAndSaveInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result fetchInProgress(FetchInProgres value),
+    @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
+    @required Result storageError(StorageError value),
+    @required Result notFoundError(NotFoundError value),
+    @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return generateAndSaveInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result fetchInProgress(FetchInProgres value),
+    Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
+    Result storageError(StorageError value),
+    Result notFoundError(NotFoundError value),
+    Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generateAndSaveInProgress != null) {
+      return generateAndSaveInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GenerateAndSaveInProgress implements OneRmState {
+  const factory GenerateAndSaveInProgress() = _$GenerateAndSaveInProgress;
+}
+
+abstract class $GeneratedAndSavedCopyWith<$Res> {
+  factory $GeneratedAndSavedCopyWith(
+          GeneratedAndSaved value, $Res Function(GeneratedAndSaved) then) =
+      _$GeneratedAndSavedCopyWithImpl<$Res>;
+}
+
+class _$GeneratedAndSavedCopyWithImpl<$Res>
+    extends _$OneRmStateCopyWithImpl<$Res>
+    implements $GeneratedAndSavedCopyWith<$Res> {
+  _$GeneratedAndSavedCopyWithImpl(
+      GeneratedAndSaved _value, $Res Function(GeneratedAndSaved) _then)
+      : super(_value, (v) => _then(v as GeneratedAndSaved));
+
+  @override
+  GeneratedAndSaved get _value => super._value as GeneratedAndSaved;
+}
+
+class _$GeneratedAndSaved implements GeneratedAndSaved {
+  const _$GeneratedAndSaved();
+
+  @override
+  String toString() {
+    return 'OneRmState.generatedAndSaved()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GeneratedAndSaved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result fetchInProgress(),
+    @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
+    @required Result storageError(),
+    @required Result notFoundError(),
+    @required Result alreadyExistError(),
+    @required Result unexpectedError(),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return generatedAndSaved();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result fetchInProgress(),
+    Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
+    Result storageError(),
+    Result notFoundError(),
+    Result alreadyExistError(),
+    Result unexpectedError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generatedAndSaved != null) {
+      return generatedAndSaved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result fetchInProgress(FetchInProgres value),
+    @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
+    @required Result storageError(StorageError value),
+    @required Result notFoundError(NotFoundError value),
+    @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    return generatedAndSaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result fetchInProgress(FetchInProgres value),
+    Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
+    Result storageError(StorageError value),
+    Result notFoundError(NotFoundError value),
+    Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (generatedAndSaved != null) {
+      return generatedAndSaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GeneratedAndSaved implements OneRmState {
+  const factory GeneratedAndSaved() = _$GeneratedAndSaved;
 }
 
 abstract class $StorageErrorCopyWith<$Res> {
@@ -859,6 +1374,8 @@ class _$StorageError implements StorageError {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -867,6 +1384,8 @@ class _$StorageError implements StorageError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -880,6 +1399,8 @@ class _$StorageError implements StorageError {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -899,6 +1420,8 @@ class _$StorageError implements StorageError {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -907,6 +1430,8 @@ class _$StorageError implements StorageError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -920,6 +1445,8 @@ class _$StorageError implements StorageError {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -976,6 +1503,8 @@ class _$NotFoundError implements NotFoundError {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -984,6 +1513,8 @@ class _$NotFoundError implements NotFoundError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -997,6 +1528,8 @@ class _$NotFoundError implements NotFoundError {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1016,6 +1549,8 @@ class _$NotFoundError implements NotFoundError {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -1024,6 +1559,8 @@ class _$NotFoundError implements NotFoundError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -1037,6 +1574,8 @@ class _$NotFoundError implements NotFoundError {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -1094,6 +1633,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1102,6 +1643,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -1115,6 +1658,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1134,6 +1679,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -1142,6 +1689,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -1155,6 +1704,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
@@ -1211,6 +1762,8 @@ class _$UnexpectedError implements UnexpectedError {
     @required Result initial(),
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1219,6 +1772,8 @@ class _$UnexpectedError implements UnexpectedError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -1232,6 +1787,8 @@ class _$UnexpectedError implements UnexpectedError {
     Result initial(),
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1251,6 +1808,8 @@ class _$UnexpectedError implements UnexpectedError {
     @required Result initial(Initial value),
     @required Result fetchInProgress(FetchInProgres value),
     @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
     @required Result storageError(StorageError value),
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
@@ -1259,6 +1818,8 @@ class _$UnexpectedError implements UnexpectedError {
     assert(initial != null);
     assert(fetchInProgress != null);
     assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
     assert(storageError != null);
     assert(notFoundError != null);
     assert(alreadyExistError != null);
@@ -1272,6 +1833,8 @@ class _$UnexpectedError implements UnexpectedError {
     Result initial(Initial value),
     Result fetchInProgress(FetchInProgres value),
     Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
     Result storageError(StorageError value),
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
