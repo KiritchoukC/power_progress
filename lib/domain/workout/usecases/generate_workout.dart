@@ -89,7 +89,7 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
           Month(params.month.getOrCrash() - 1),
           const WeekEnum.deload(),
         );
-        return deloadWorkoutDone != null;
+        return deloadWorkoutDone.isSome();
       }
 
       bool _isNextAccumulationDone() {
@@ -98,7 +98,7 @@ class GenerateWorkout implements UseCase<MonthWorkout, WorkoutFailure, GenerateW
           Month(params.month.getOrCrash() + 1),
           const WeekEnum.accumulation(),
         );
-        return accumulationWorkoutDone != null;
+        return accumulationWorkoutDone.isSome();
       }
 
       return right(
