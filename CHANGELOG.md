@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.20.0](https://github.com/KiritchoukC/power_progress/compare/v2.19.2...v2.20.0) (2020-06-23)
+
+
+### Features
+
+* **onerm:** update week and month ([08dafef](https://github.com/KiritchoukC/power_progress/commit/08dafef)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ### [2.19.2](https://github.com/KiritchoukC/power_progress/compare/v2.19.1...v2.19.2) (2020-06-21)
 
 ### [2.19.1](https://github.com/KiritchoukC/power_progress/compare/v2.19.0...v2.19.1) (2020-06-21)
