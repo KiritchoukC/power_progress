@@ -1078,8 +1078,20 @@ class _$ExerciseStateTearOff {
     return const MonthUpdateInProgress();
   }
 
-  MonthUpdated monthUpdated() {
-    return const MonthUpdated();
+  MonthUpdated monthUpdated({@required Month month}) {
+    return MonthUpdated(
+      month: month,
+    );
+  }
+
+  WeekUpdateInProgress weekUpdateInProgress() {
+    return const WeekUpdateInProgress();
+  }
+
+  WeekUpdated weekUpdated({@required Week week}) {
+    return WeekUpdated(
+      week: week,
+    );
   }
 
   Error error({@required String message}) {
@@ -1105,7 +1117,9 @@ mixin _$ExerciseState {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   });
   @optionalTypeArgs
@@ -1120,7 +1134,9 @@ mixin _$ExerciseState {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   });
@@ -1137,6 +1153,8 @@ mixin _$ExerciseState {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   });
   @optionalTypeArgs
@@ -1152,6 +1170,8 @@ mixin _$ExerciseState {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   });
@@ -1221,7 +1241,9 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1235,6 +1257,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return initial();
   }
@@ -1252,7 +1276,9 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1277,6 +1303,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1290,6 +1318,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return initial(this);
   }
@@ -1308,6 +1338,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1375,7 +1407,9 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1389,6 +1423,8 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return addInProgress();
   }
@@ -1406,7 +1442,9 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1431,6 +1469,8 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1444,6 +1484,8 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return addInProgress(this);
   }
@@ -1462,6 +1504,8 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1526,7 +1570,9 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1540,6 +1586,8 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return added();
   }
@@ -1557,7 +1605,9 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1582,6 +1632,8 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1595,6 +1647,8 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return added(this);
   }
@@ -1613,6 +1667,8 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1683,7 +1739,9 @@ class _$FetchInProgress
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1697,6 +1755,8 @@ class _$FetchInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return fetchInProgress();
   }
@@ -1714,7 +1774,9 @@ class _$FetchInProgress
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1739,6 +1801,8 @@ class _$FetchInProgress
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1752,6 +1816,8 @@ class _$FetchInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return fetchInProgress(this);
   }
@@ -1770,6 +1836,8 @@ class _$FetchInProgress
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1859,7 +1927,9 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1873,6 +1943,8 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return fetched(exercises);
   }
@@ -1890,7 +1962,9 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1915,6 +1989,8 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1928,6 +2004,8 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return fetched(this);
   }
@@ -1946,6 +2024,8 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2019,7 +2099,9 @@ class _$RemoveInProgress
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2033,6 +2115,8 @@ class _$RemoveInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return removeInProgress();
   }
@@ -2050,7 +2134,9 @@ class _$RemoveInProgress
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2075,6 +2161,8 @@ class _$RemoveInProgress
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2088,6 +2176,8 @@ class _$RemoveInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return removeInProgress(this);
   }
@@ -2106,6 +2196,8 @@ class _$RemoveInProgress
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2170,7 +2262,9 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2184,6 +2278,8 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return removed();
   }
@@ -2201,7 +2297,9 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2226,6 +2324,8 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2239,6 +2339,8 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return removed(this);
   }
@@ -2257,6 +2359,8 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2347,7 +2451,9 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2361,6 +2467,8 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return selected(selectedIds);
   }
@@ -2378,7 +2486,9 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2403,6 +2513,8 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2416,6 +2528,8 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return selected(this);
   }
@@ -2434,6 +2548,8 @@ class _$Selected with DiagnosticableTreeMixin implements Selected {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2529,7 +2645,9 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2543,6 +2661,8 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return unselected(unselectedIds);
   }
@@ -2560,7 +2680,9 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2585,6 +2707,8 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2598,6 +2722,8 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return unselected(this);
   }
@@ -2616,6 +2742,8 @@ class _$Unselected with DiagnosticableTreeMixin implements Unselected {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2689,7 +2817,9 @@ class _$MonthUpdateInProgress
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2703,6 +2833,8 @@ class _$MonthUpdateInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return monthUpdateInProgress();
   }
@@ -2720,7 +2852,9 @@ class _$MonthUpdateInProgress
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2745,6 +2879,8 @@ class _$MonthUpdateInProgress
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2758,6 +2894,8 @@ class _$MonthUpdateInProgress
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return monthUpdateInProgress(this);
   }
@@ -2776,6 +2914,8 @@ class _$MonthUpdateInProgress
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2795,6 +2935,7 @@ abstract class $MonthUpdatedCopyWith<$Res> {
   factory $MonthUpdatedCopyWith(
           MonthUpdated value, $Res Function(MonthUpdated) then) =
       _$MonthUpdatedCopyWithImpl<$Res>;
+  $Res call({Month month});
 }
 
 class _$MonthUpdatedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
@@ -2805,29 +2946,51 @@ class _$MonthUpdatedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
 
   @override
   MonthUpdated get _value => super._value as MonthUpdated;
+
+  @override
+  $Res call({
+    Object month = freezed,
+  }) {
+    return _then(MonthUpdated(
+      month: month == freezed ? _value.month : month as Month,
+    ));
+  }
 }
 
 class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
-  const _$MonthUpdated();
+  const _$MonthUpdated({@required this.month}) : assert(month != null);
+
+  @override
+  final Month month;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ExerciseState.monthUpdated()';
+    return 'ExerciseState.monthUpdated(month: $month)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ExerciseState.monthUpdated'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ExerciseState.monthUpdated'))
+      ..add(DiagnosticsProperty('month', month));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is MonthUpdated);
+    return identical(this, other) ||
+        (other is MonthUpdated &&
+            (identical(other.month, month) ||
+                const DeepCollectionEquality().equals(other.month, month)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(month);
+
+  @override
+  $MonthUpdatedCopyWith<MonthUpdated> get copyWith =>
+      _$MonthUpdatedCopyWithImpl<MonthUpdated>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2842,7 +3005,9 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2856,8 +3021,10 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
-    return monthUpdated();
+    return monthUpdated(month);
   }
 
   @override
@@ -2873,13 +3040,15 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (monthUpdated != null) {
-      return monthUpdated();
+      return monthUpdated(month);
     }
     return orElse();
   }
@@ -2898,6 +3067,8 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2911,6 +3082,8 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return monthUpdated(this);
   }
@@ -2929,6 +3102,8 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -2941,7 +3116,370 @@ class _$MonthUpdated with DiagnosticableTreeMixin implements MonthUpdated {
 }
 
 abstract class MonthUpdated implements ExerciseState {
-  const factory MonthUpdated() = _$MonthUpdated;
+  const factory MonthUpdated({@required Month month}) = _$MonthUpdated;
+
+  Month get month;
+  $MonthUpdatedCopyWith<MonthUpdated> get copyWith;
+}
+
+abstract class $WeekUpdateInProgressCopyWith<$Res> {
+  factory $WeekUpdateInProgressCopyWith(WeekUpdateInProgress value,
+          $Res Function(WeekUpdateInProgress) then) =
+      _$WeekUpdateInProgressCopyWithImpl<$Res>;
+}
+
+class _$WeekUpdateInProgressCopyWithImpl<$Res>
+    extends _$ExerciseStateCopyWithImpl<$Res>
+    implements $WeekUpdateInProgressCopyWith<$Res> {
+  _$WeekUpdateInProgressCopyWithImpl(
+      WeekUpdateInProgress _value, $Res Function(WeekUpdateInProgress) _then)
+      : super(_value, (v) => _then(v as WeekUpdateInProgress));
+
+  @override
+  WeekUpdateInProgress get _value => super._value as WeekUpdateInProgress;
+}
+
+class _$WeekUpdateInProgress
+    with DiagnosticableTreeMixin
+    implements WeekUpdateInProgress {
+  const _$WeekUpdateInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ExerciseState.weekUpdateInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ExerciseState.weekUpdateInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WeekUpdateInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result addInProgress(),
+    @required Result added(),
+    @required Result fetchInProgress(),
+    @required Result fetched(List<Exercise> exercises),
+    @required Result removeInProgress(),
+    @required Result removed(),
+    @required Result selected(List<int> selectedIds),
+    @required Result unselected(List<int> unselectedIds),
+    @required Result monthUpdateInProgress(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(addInProgress != null);
+    assert(added != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(selected != null);
+    assert(unselected != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
+    assert(error != null);
+    return weekUpdateInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result addInProgress(),
+    Result added(),
+    Result fetchInProgress(),
+    Result fetched(List<Exercise> exercises),
+    Result removeInProgress(),
+    Result removed(),
+    Result selected(List<int> selectedIds),
+    Result unselected(List<int> unselectedIds),
+    Result monthUpdateInProgress(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weekUpdateInProgress != null) {
+      return weekUpdateInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result addInProgress(AddInProgress value),
+    @required Result added(Added value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
+    @required Result selected(Selected value),
+    @required Result unselected(Unselected value),
+    @required Result monthUpdateInProgress(MonthUpdateInProgress value),
+    @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(addInProgress != null);
+    assert(added != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(selected != null);
+    assert(unselected != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
+    assert(error != null);
+    return weekUpdateInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result addInProgress(AddInProgress value),
+    Result added(Added value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
+    Result selected(Selected value),
+    Result unselected(Unselected value),
+    Result monthUpdateInProgress(MonthUpdateInProgress value),
+    Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weekUpdateInProgress != null) {
+      return weekUpdateInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WeekUpdateInProgress implements ExerciseState {
+  const factory WeekUpdateInProgress() = _$WeekUpdateInProgress;
+}
+
+abstract class $WeekUpdatedCopyWith<$Res> {
+  factory $WeekUpdatedCopyWith(
+          WeekUpdated value, $Res Function(WeekUpdated) then) =
+      _$WeekUpdatedCopyWithImpl<$Res>;
+  $Res call({Week week});
+}
+
+class _$WeekUpdatedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
+    implements $WeekUpdatedCopyWith<$Res> {
+  _$WeekUpdatedCopyWithImpl(
+      WeekUpdated _value, $Res Function(WeekUpdated) _then)
+      : super(_value, (v) => _then(v as WeekUpdated));
+
+  @override
+  WeekUpdated get _value => super._value as WeekUpdated;
+
+  @override
+  $Res call({
+    Object week = freezed,
+  }) {
+    return _then(WeekUpdated(
+      week: week == freezed ? _value.week : week as Week,
+    ));
+  }
+}
+
+class _$WeekUpdated with DiagnosticableTreeMixin implements WeekUpdated {
+  const _$WeekUpdated({@required this.week}) : assert(week != null);
+
+  @override
+  final Week week;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ExerciseState.weekUpdated(week: $week)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ExerciseState.weekUpdated'))
+      ..add(DiagnosticsProperty('week', week));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WeekUpdated &&
+            (identical(other.week, week) ||
+                const DeepCollectionEquality().equals(other.week, week)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(week);
+
+  @override
+  $WeekUpdatedCopyWith<WeekUpdated> get copyWith =>
+      _$WeekUpdatedCopyWithImpl<WeekUpdated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result addInProgress(),
+    @required Result added(),
+    @required Result fetchInProgress(),
+    @required Result fetched(List<Exercise> exercises),
+    @required Result removeInProgress(),
+    @required Result removed(),
+    @required Result selected(List<int> selectedIds),
+    @required Result unselected(List<int> unselectedIds),
+    @required Result monthUpdateInProgress(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(addInProgress != null);
+    assert(added != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(selected != null);
+    assert(unselected != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
+    assert(error != null);
+    return weekUpdated(week);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result addInProgress(),
+    Result added(),
+    Result fetchInProgress(),
+    Result fetched(List<Exercise> exercises),
+    Result removeInProgress(),
+    Result removed(),
+    Result selected(List<int> selectedIds),
+    Result unselected(List<int> unselectedIds),
+    Result monthUpdateInProgress(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weekUpdated != null) {
+      return weekUpdated(week);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result addInProgress(AddInProgress value),
+    @required Result added(Added value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
+    @required Result selected(Selected value),
+    @required Result unselected(Unselected value),
+    @required Result monthUpdateInProgress(MonthUpdateInProgress value),
+    @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(addInProgress != null);
+    assert(added != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(selected != null);
+    assert(unselected != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
+    assert(error != null);
+    return weekUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result addInProgress(AddInProgress value),
+    Result added(Added value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
+    Result selected(Selected value),
+    Result unselected(Unselected value),
+    Result monthUpdateInProgress(MonthUpdateInProgress value),
+    Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (weekUpdated != null) {
+      return weekUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WeekUpdated implements ExerciseState {
+  const factory WeekUpdated({@required Week week}) = _$WeekUpdated;
+
+  Week get week;
+  $WeekUpdatedCopyWith<WeekUpdated> get copyWith;
 }
 
 abstract class $ErrorCopyWith<$Res> {
@@ -3016,7 +3554,9 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result selected(List<int> selectedIds),
     @required Result unselected(List<int> unselectedIds),
     @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(),
+    @required Result monthUpdated(Month month),
+    @required Result weekUpdateInProgress(),
+    @required Result weekUpdated(Week week),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -3030,6 +3570,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return error(message);
   }
@@ -3047,7 +3589,9 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result selected(List<int> selectedIds),
     Result unselected(List<int> unselectedIds),
     Result monthUpdateInProgress(),
-    Result monthUpdated(),
+    Result monthUpdated(Month month),
+    Result weekUpdateInProgress(),
+    Result weekUpdated(Week week),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -3072,6 +3616,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result unselected(Unselected value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result weekUpdateInProgress(WeekUpdateInProgress value),
+    @required Result weekUpdated(WeekUpdated value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -3085,6 +3631,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(unselected != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(weekUpdateInProgress != null);
+    assert(weekUpdated != null);
     assert(error != null);
     return error(this);
   }
@@ -3103,6 +3651,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result unselected(Unselected value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result weekUpdateInProgress(WeekUpdateInProgress value),
+    Result weekUpdated(WeekUpdated value),
     Result error(Error value),
     @required Result orElse(),
   }) {

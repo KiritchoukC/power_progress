@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
@@ -111,6 +113,7 @@ class _Card extends StatelessWidget {
                   // react to state
                   return state.maybeWhen(
                     initial: _fetch,
+                    generatedAndSaved: _fetch,
                     fetched: _oneRm,
                     orElse: _progress,
                   );
@@ -122,11 +125,42 @@ class _Card extends StatelessWidget {
                     Icons.keyboard_arrow_right,
                     color: Theme.of(context).accentColor,
                   ),
-                  Text(
-                    exercise.nextWeek.displayName,
-                    style: Theme.of(context).textTheme.bodyText1.apply(
-                          color: Theme.of(context).accentColor,
-                        ),
+                  BlocBuilder<ExerciseBloc, ExerciseState>(
+                    condition: (previous, current) => current.maybeWhen(
+                      weekUpdated: (_) => true,
+                      weekUpdateInProgress: () => true,
+                      initial: () => true,
+                      orElse: () => false,
+                    ),
+                    builder: (context, state) {
+                      Widget _progress() => Text(
+                            'next week workout',
+                            style: Theme.of(context).textTheme.bodyText1.apply(
+                                  color: Theme.of(context).accentColor.withAlpha(50),
+                                ),
+                          );
+
+                      Widget _nextWeek(Week week) => Text(
+                            week.displayName,
+                            style: Theme.of(context).textTheme.bodyText1.apply(
+                                  color: Theme.of(context).accentColor,
+                                ),
+                          );
+
+                      Widget _initialWeek() => Text(
+                            exercise.nextWeek.displayName,
+                            style: Theme.of(context).textTheme.bodyText1.apply(
+                                  color: Theme.of(context).accentColor,
+                                ),
+                          );
+
+                      return state.maybeWhen(
+                        initial: _initialWeek,
+                        weekUpdated: _nextWeek,
+                        weekUpdateInProgress: _progress,
+                        orElse: _progress,
+                      );
+                    },
                   ),
                 ],
               )

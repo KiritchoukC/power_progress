@@ -17,7 +17,10 @@ abstract class ExerciseState with _$ExerciseState {
   const factory ExerciseState.unselected({@required List<int> unselectedIds}) = Unselected;
 
   const factory ExerciseState.monthUpdateInProgress() = MonthUpdateInProgress;
-  const factory ExerciseState.monthUpdated() = MonthUpdated;
+  const factory ExerciseState.monthUpdated({@required Month month}) = MonthUpdated;
+
+  const factory ExerciseState.weekUpdateInProgress() = WeekUpdateInProgress;
+  const factory ExerciseState.weekUpdated({@required Week week}) = WeekUpdated;
 
   const factory ExerciseState.error({@required String message}) = Error;
 }

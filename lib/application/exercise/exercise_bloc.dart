@@ -12,6 +12,7 @@ import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
 import 'package:power_progress/domain/exercise/usecases/add_exercise.dart';
 import 'package:power_progress/domain/exercise/usecases/fetch_exercises.dart';
 import 'package:power_progress/domain/exercise/usecases/remove_exercises.dart';
@@ -106,7 +107,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
       yield const ExerciseState.removed();
-      add(const ExerciseEvent.fetch());
     }
 
     yield* output.fold(onFailure, onSuccess);
@@ -127,15 +127,14 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield const ExerciseState.monthUpdated();
-      add(const ExerciseEvent.fetch());
+      yield ExerciseState.monthUpdated(month: event.nextMonth);
     }
 
     yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<ExerciseState> _handleUpdateNextWeekEvent(UpdateNextWeek event) async* {
-    yield const ExerciseState.monthUpdateInProgress();
+    yield const ExerciseState.weekUpdateInProgress();
 
     final output = await updateExerciseNextWeek(
       UpdateExerciseNextWeekParams(
@@ -149,8 +148,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield const ExerciseState.monthUpdated();
-      add(const ExerciseEvent.fetch());
+      yield ExerciseState.weekUpdated(week: Week(event.nextWeek));
     }
 
     yield* output.fold(onFailure, onSuccess);
