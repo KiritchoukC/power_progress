@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -75,10 +77,10 @@ void initExerciseFeature() {
       addExercise: sl<AddExercise>(),
       fetchExercises: sl<FetchExercises>(),
       removeExercises: sl<RemoveExercises>(),
-      updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
-      updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
     ),
   );
+  sl.registerFactory(() => WeekBloc(updateExerciseNextWeek: sl<UpdateExerciseNextWeek>()));
+  sl.registerFactory(() => MonthBloc(updateExerciseNextMonth: sl<UpdateExerciseNextMonth>()));
 
   // Usecases
   sl.registerLazySingleton(() => AddExercise(
@@ -140,7 +142,8 @@ void initWorkoutFeature() {
       generateWorkout: sl<GenerateWorkout>(),
       markWorkoutDone: sl<MarkWorkoutDone>(),
       markWorkoutUndone: sl<MarkWorkoutUndone>(),
-      exerciseBloc: sl<ExerciseBloc>(),
+      weekBloc: sl<WeekBloc>(),
+      monthBloc: sl<MonthBloc>(),
       oneRmBloc: sl<OneRmBloc>(),
     ),
   );

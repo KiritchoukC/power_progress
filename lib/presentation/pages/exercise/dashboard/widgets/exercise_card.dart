@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
@@ -125,13 +128,7 @@ class _Card extends StatelessWidget {
                     Icons.keyboard_arrow_right,
                     color: Theme.of(context).accentColor,
                   ),
-                  BlocBuilder<ExerciseBloc, ExerciseState>(
-                    condition: (previous, current) => current.maybeWhen(
-                      weekUpdated: (_) => true,
-                      weekUpdateInProgress: () => true,
-                      initial: () => true,
-                      orElse: () => false,
-                    ),
+                  BlocBuilder<WeekBloc, WeekState>(
                     builder: (context, state) {
                       Widget _progress() => Text(
                             'next week workout',
@@ -168,11 +165,36 @@ class _Card extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(
-                'Month ${exercise.month.getOrCrash()}',
-                style: Theme.of(context).textTheme.subtitle2.apply(
-                      color: Colors.black54,
-                    ),
+              BlocBuilder<MonthBloc, MonthState>(
+                builder: (context, state) {
+                  Widget _progress() => Text(
+                        'Month ${exercise.month.getOrCrash()}',
+                        style: Theme.of(context).textTheme.subtitle2.apply(
+                              color: Colors.black54.withAlpha(50),
+                            ),
+                      );
+
+                  Widget _initialMonth() => Text(
+                        'Month ${exercise.month.getOrCrash()}',
+                        style: Theme.of(context).textTheme.subtitle2.apply(
+                              color: Colors.black54,
+                            ),
+                      );
+
+                  Widget _month(Month month) => Text(
+                        'Month ${month.getOrCrash()}',
+                        style: Theme.of(context).textTheme.subtitle2.apply(
+                              color: Colors.black54,
+                            ),
+                      );
+
+                  return state.maybeWhen(
+                    initial: _initialMonth,
+                    monthUpdateInProgress: _progress,
+                    monthUpdated: _month,
+                    orElse: _progress,
+                  );
+                },
               ),
             ],
           ),

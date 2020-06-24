@@ -27,15 +27,11 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   final AddExercise addExercise;
   final FetchExercises fetchExercises;
   final RemoveExercises removeExercises;
-  final UpdateExerciseNextMonth updateExerciseNextMonth;
-  final UpdateExerciseNextWeek updateExerciseNextWeek;
 
   ExerciseBloc({
     @required this.addExercise,
     @required this.fetchExercises,
     @required this.removeExercises,
-    @required this.updateExerciseNextMonth,
-    @required this.updateExerciseNextWeek,
   });
 
   @override
@@ -48,8 +44,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
       fetch: _handleExerciseFetchEvent,
       selectionMode: _handleExerciseSelectionModeEvent,
       remove: _handleExerciseRemoveEvent,
-      updateNextMonth: _handleUpdateNextMonthEvent,
-      updateNextWeek: _handleUpdateNextWeekEvent,
     );
   }
 
@@ -62,7 +56,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     ));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseState.error(message: _mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: failure.toErrorMessage());
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
@@ -78,7 +72,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     final output = await fetchExercises(NoParams());
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseState.error(message: _mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: failure.toErrorMessage());
     }
 
     Stream<ExerciseState> onSuccess(List<Exercise> exercises) async* {
@@ -102,7 +96,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     final output = await removeExercises(RemoveExercisesParams(ids: event.ids));
 
     Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseState.error(message: _mapFailureToErrorMessage(failure));
+      yield ExerciseState.error(message: failure.toErrorMessage());
     }
 
     Stream<ExerciseState> onSuccess(Unit unit) async* {
@@ -110,53 +104,5 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     }
 
     yield* output.fold(onFailure, onSuccess);
-  }
-
-  Stream<ExerciseState> _handleUpdateNextMonthEvent(UpdateNextMonth event) async* {
-    yield const ExerciseState.monthUpdateInProgress();
-
-    final output = await updateExerciseNextMonth(
-      UpdateExerciseNextMonthParams(
-        exerciseId: event.exerciseId,
-        nextMonth: event.nextMonth,
-      ),
-    );
-
-    Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseState.error(message: _mapFailureToErrorMessage(failure));
-    }
-
-    Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield ExerciseState.monthUpdated(month: event.nextMonth);
-    }
-
-    yield* output.fold(onFailure, onSuccess);
-  }
-
-  Stream<ExerciseState> _handleUpdateNextWeekEvent(UpdateNextWeek event) async* {
-    yield const ExerciseState.weekUpdateInProgress();
-
-    final output = await updateExerciseNextWeek(
-      UpdateExerciseNextWeekParams(
-        exerciseId: event.exerciseId,
-        nextWeek: event.nextWeek,
-      ),
-    );
-
-    Stream<ExerciseState> onFailure(ExerciseFailure failure) async* {
-      yield ExerciseState.error(message: _mapFailureToErrorMessage(failure));
-    }
-
-    Stream<ExerciseState> onSuccess(Unit unit) async* {
-      yield ExerciseState.weekUpdated(week: Week(event.nextWeek));
-    }
-
-    yield* output.fold(onFailure, onSuccess);
-  }
-
-  String _mapFailureToErrorMessage(ExerciseFailure failure) {
-    if (failure is StorageError) return storageErrorMessage;
-
-    return unknownErrorMessage;
   }
 }

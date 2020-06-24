@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -20,6 +22,8 @@ class App extends StatelessWidget {
         BlocProvider<OnboardingBloc>(create: (_) => di.sl<OnboardingBloc>()),
         BlocProvider<WorkoutBloc>(create: (_) => di.sl<WorkoutBloc>()),
         BlocProvider<OneRmBloc>(create: (_) => di.sl<OneRmBloc>()),
+        BlocProvider<WeekBloc>(create: (_) => di.sl<WeekBloc>()),
+        BlocProvider<MonthBloc>(create: (_) => di.sl<MonthBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

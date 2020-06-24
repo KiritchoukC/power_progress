@@ -34,8 +34,6 @@ class DashboardPage extends StatelessWidget {
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
           buildWhen: (previous, current) {
             return current.maybeWhen(
-              monthUpdated: (_) => false,
-              weekUpdated: (_) => false,
               selected: (_) => false,
               unselected: (_) => false,
               orElse: () => true,

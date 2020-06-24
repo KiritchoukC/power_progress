@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
 import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
@@ -26,14 +28,16 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final GenerateWorkout generateWorkout;
   final MarkWorkoutDone markWorkoutDone;
   final MarkWorkoutUndone markWorkoutUndone;
-  final ExerciseBloc exerciseBloc;
+  final WeekBloc weekBloc;
+  final MonthBloc monthBloc;
   final or_bloc.OneRmBloc oneRmBloc;
 
   WorkoutBloc({
     @required this.generateWorkout,
     @required this.markWorkoutDone,
     @required this.markWorkoutUndone,
-    @required this.exerciseBloc,
+    @required this.weekBloc,
+    @required this.monthBloc,
     @required this.oneRmBloc,
   });
 
@@ -96,8 +100,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
           oneRm: event.oneRm,
         );
 
-        exerciseBloc.add(
-          ExerciseEvent.updateNextWeek(
+        weekBloc.add(
+          WeekEvent.updateNextWeek(
             exerciseId: event.exerciseId,
             nextWeek: event.week.next(),
           ),
@@ -112,8 +116,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
               repsDone: event.repsDone,
             ),
           ),
-          deload: () async => exerciseBloc.add(
-            ExerciseEvent.updateNextMonth(
+          deload: () async => monthBloc.add(
+            MonthEvent.updateNextMonth(
               exerciseId: event.exerciseId,
               nextMonth: event.month.next,
             ),
@@ -147,16 +151,16 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         oneRm: event.oneRm,
       );
 
-      exerciseBloc.add(
-        ExerciseEvent.updateNextWeek(
+      weekBloc.add(
+        WeekEvent.updateNextWeek(
           exerciseId: event.exerciseId,
           nextWeek: event.week,
         ),
       );
 
       event.week.maybeWhen(
-        accumulation: () async => exerciseBloc.add(
-          ExerciseEvent.updateNextMonth(
+        accumulation: () async => monthBloc.add(
+          MonthEvent.updateNextMonth(
             exerciseId: event.exerciseId,
             nextMonth: event.month,
           ),
