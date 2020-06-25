@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
 
 abstract class IOneRmRepository {
   Future<Either<OneRmFailure, Unit>> add(int exerciseId, Month month, OneRm oneRm);

@@ -8,8 +8,8 @@ import 'package:meta/meta.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
-import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
+import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
 
 part 'one_rm_event.dart';
 part 'one_rm_state.dart';

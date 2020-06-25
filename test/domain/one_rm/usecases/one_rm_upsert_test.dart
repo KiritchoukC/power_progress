@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';

@@ -4,12 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
+import 'package:power_progress/domain/onboarding/onboarding_failure.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
-import 'package:power_progress/domain/onboarding/repositories/i_onboarding_repository.dart';
-import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
-import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
+import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 
 part 'onboarding_event.dart';
 part 'onboarding_state.dart';
