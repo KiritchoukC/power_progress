@@ -8,6 +8,7 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   }) = Generate;
   const factory WorkoutEvent.markDone({
     @required int exerciseId,
+    @required Incrementation incrementation,
     @required Month month,
     @required WeekEnum week,
     @required OneRm oneRm,
@@ -16,6 +17,7 @@ abstract class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.markUndone({
     @required Option<int> id,
     @required int exerciseId,
+    @required Incrementation incrementation,
     @required WeekEnum week,
     @required Month month,
     @required OneRm oneRm,

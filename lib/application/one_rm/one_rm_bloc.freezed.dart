@@ -778,6 +778,10 @@ class _$OneRmStateTearOff {
   UnexpectedError unexpectedError() {
     return const UnexpectedError();
   }
+
+  NoExistingDataForThisExerciseError noExistingDataForThisExerciseError() {
+    return const NoExistingDataForThisExerciseError();
+  }
 }
 
 // ignore: unused_element
@@ -797,6 +801,7 @@ mixin _$OneRmState {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -811,6 +816,7 @@ mixin _$OneRmState {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -826,6 +832,9 @@ mixin _$OneRmState {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -840,6 +849,8 @@ mixin _$OneRmState {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   });
 }
@@ -902,6 +913,7 @@ class _$Initial implements Initial {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -914,6 +926,7 @@ class _$Initial implements Initial {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return initial();
   }
 
@@ -931,6 +944,7 @@ class _$Initial implements Initial {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -954,6 +968,9 @@ class _$Initial implements Initial {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -966,6 +983,7 @@ class _$Initial implements Initial {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return initial(this);
   }
 
@@ -983,6 +1001,8 @@ class _$Initial implements Initial {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1043,6 +1063,7 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1055,6 +1076,7 @@ class _$FetchInProgres implements FetchInProgres {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return fetchInProgress();
   }
 
@@ -1072,6 +1094,7 @@ class _$FetchInProgres implements FetchInProgres {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1095,6 +1118,9 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1107,6 +1133,7 @@ class _$FetchInProgres implements FetchInProgres {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return fetchInProgress(this);
   }
 
@@ -1124,6 +1151,8 @@ class _$FetchInProgres implements FetchInProgres {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1203,6 +1232,7 @@ class _$Fetched implements Fetched {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1215,6 +1245,7 @@ class _$Fetched implements Fetched {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return fetched(oneRm);
   }
 
@@ -1232,6 +1263,7 @@ class _$Fetched implements Fetched {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1255,6 +1287,9 @@ class _$Fetched implements Fetched {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1267,6 +1302,7 @@ class _$Fetched implements Fetched {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return fetched(this);
   }
 
@@ -1284,6 +1320,8 @@ class _$Fetched implements Fetched {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1349,6 +1387,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1361,6 +1400,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return generateAndSaveInProgress();
   }
 
@@ -1378,6 +1418,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1401,6 +1442,9 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1413,6 +1457,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return generateAndSaveInProgress(this);
   }
 
@@ -1430,6 +1475,8 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1512,6 +1559,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1524,6 +1572,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return generatedAndSaved(oneRm);
   }
 
@@ -1541,6 +1590,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1564,6 +1614,9 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1576,6 +1629,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return generatedAndSaved(this);
   }
 
@@ -1593,6 +1647,8 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1658,6 +1714,7 @@ class _$RemoveInProgress implements RemoveInProgress {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1670,6 +1727,7 @@ class _$RemoveInProgress implements RemoveInProgress {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return removeInProgress();
   }
 
@@ -1687,6 +1745,7 @@ class _$RemoveInProgress implements RemoveInProgress {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1710,6 +1769,9 @@ class _$RemoveInProgress implements RemoveInProgress {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1722,6 +1784,7 @@ class _$RemoveInProgress implements RemoveInProgress {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return removeInProgress(this);
   }
 
@@ -1739,6 +1802,8 @@ class _$RemoveInProgress implements RemoveInProgress {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1797,6 +1862,7 @@ class _$Removed implements Removed {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1809,6 +1875,7 @@ class _$Removed implements Removed {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return removed();
   }
 
@@ -1826,6 +1893,7 @@ class _$Removed implements Removed {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1849,6 +1917,9 @@ class _$Removed implements Removed {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1861,6 +1932,7 @@ class _$Removed implements Removed {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return removed(this);
   }
 
@@ -1878,6 +1950,8 @@ class _$Removed implements Removed {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1938,6 +2012,7 @@ class _$StorageError implements StorageError {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -1950,6 +2025,7 @@ class _$StorageError implements StorageError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return storageError();
   }
 
@@ -1967,6 +2043,7 @@ class _$StorageError implements StorageError {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1990,6 +2067,9 @@ class _$StorageError implements StorageError {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2002,6 +2082,7 @@ class _$StorageError implements StorageError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return storageError(this);
   }
 
@@ -2019,6 +2100,8 @@ class _$StorageError implements StorageError {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2079,6 +2162,7 @@ class _$NotFoundError implements NotFoundError {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2091,6 +2175,7 @@ class _$NotFoundError implements NotFoundError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return notFoundError();
   }
 
@@ -2108,6 +2193,7 @@ class _$NotFoundError implements NotFoundError {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2131,6 +2217,9 @@ class _$NotFoundError implements NotFoundError {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2143,6 +2232,7 @@ class _$NotFoundError implements NotFoundError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return notFoundError(this);
   }
 
@@ -2160,6 +2250,8 @@ class _$NotFoundError implements NotFoundError {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2221,6 +2313,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2233,6 +2326,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return alreadyExistError();
   }
 
@@ -2250,6 +2344,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2273,6 +2368,9 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2285,6 +2383,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return alreadyExistError(this);
   }
 
@@ -2302,6 +2401,8 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2362,6 +2463,7 @@ class _$UnexpectedError implements UnexpectedError {
     @required Result notFoundError(),
     @required Result alreadyExistError(),
     @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2374,6 +2476,7 @@ class _$UnexpectedError implements UnexpectedError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return unexpectedError();
   }
 
@@ -2391,6 +2494,7 @@ class _$UnexpectedError implements UnexpectedError {
     Result notFoundError(),
     Result alreadyExistError(),
     Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2414,6 +2518,9 @@ class _$UnexpectedError implements UnexpectedError {
     @required Result notFoundError(NotFoundError value),
     @required Result alreadyExistError(AlreadyExistError value),
     @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
   }) {
     assert(initial != null);
     assert(fetchInProgress != null);
@@ -2426,6 +2533,7 @@ class _$UnexpectedError implements UnexpectedError {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
     return unexpectedError(this);
   }
 
@@ -2443,6 +2551,8 @@ class _$UnexpectedError implements UnexpectedError {
     Result notFoundError(NotFoundError value),
     Result alreadyExistError(AlreadyExistError value),
     Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2455,4 +2565,161 @@ class _$UnexpectedError implements UnexpectedError {
 
 abstract class UnexpectedError implements OneRmState {
   const factory UnexpectedError() = _$UnexpectedError;
+}
+
+abstract class $NoExistingDataForThisExerciseErrorCopyWith<$Res> {
+  factory $NoExistingDataForThisExerciseErrorCopyWith(
+          NoExistingDataForThisExerciseError value,
+          $Res Function(NoExistingDataForThisExerciseError) then) =
+      _$NoExistingDataForThisExerciseErrorCopyWithImpl<$Res>;
+}
+
+class _$NoExistingDataForThisExerciseErrorCopyWithImpl<$Res>
+    extends _$OneRmStateCopyWithImpl<$Res>
+    implements $NoExistingDataForThisExerciseErrorCopyWith<$Res> {
+  _$NoExistingDataForThisExerciseErrorCopyWithImpl(
+      NoExistingDataForThisExerciseError _value,
+      $Res Function(NoExistingDataForThisExerciseError) _then)
+      : super(_value, (v) => _then(v as NoExistingDataForThisExerciseError));
+
+  @override
+  NoExistingDataForThisExerciseError get _value =>
+      super._value as NoExistingDataForThisExerciseError;
+}
+
+class _$NoExistingDataForThisExerciseError
+    implements NoExistingDataForThisExerciseError {
+  const _$NoExistingDataForThisExerciseError();
+
+  @override
+  String toString() {
+    return 'OneRmState.noExistingDataForThisExerciseError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NoExistingDataForThisExerciseError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result fetchInProgress(),
+    @required Result fetched(OneRm oneRm),
+    @required Result generateAndSaveInProgress(),
+    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
+    @required Result storageError(),
+    @required Result notFoundError(),
+    @required Result alreadyExistError(),
+    @required Result unexpectedError(),
+    @required Result noExistingDataForThisExerciseError(),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
+    return noExistingDataForThisExerciseError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result fetchInProgress(),
+    Result fetched(OneRm oneRm),
+    Result generateAndSaveInProgress(),
+    Result generatedAndSaved(OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
+    Result storageError(),
+    Result notFoundError(),
+    Result alreadyExistError(),
+    Result unexpectedError(),
+    Result noExistingDataForThisExerciseError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noExistingDataForThisExerciseError != null) {
+      return noExistingDataForThisExerciseError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result fetchInProgress(FetchInProgres value),
+    @required Result fetched(Fetched value),
+    @required Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    @required Result generatedAndSaved(GeneratedAndSaved value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
+    @required Result storageError(StorageError value),
+    @required Result notFoundError(NotFoundError value),
+    @required Result alreadyExistError(AlreadyExistError value),
+    @required Result unexpectedError(UnexpectedError value),
+    @required
+        Result noExistingDataForThisExerciseError(
+            NoExistingDataForThisExerciseError value),
+  }) {
+    assert(initial != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(generateAndSaveInProgress != null);
+    assert(generatedAndSaved != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(storageError != null);
+    assert(notFoundError != null);
+    assert(alreadyExistError != null);
+    assert(unexpectedError != null);
+    assert(noExistingDataForThisExerciseError != null);
+    return noExistingDataForThisExerciseError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result fetchInProgress(FetchInProgres value),
+    Result fetched(Fetched value),
+    Result generateAndSaveInProgress(GenerateAndSaveInProgress value),
+    Result generatedAndSaved(GeneratedAndSaved value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
+    Result storageError(StorageError value),
+    Result notFoundError(NotFoundError value),
+    Result alreadyExistError(AlreadyExistError value),
+    Result unexpectedError(UnexpectedError value),
+    Result noExistingDataForThisExerciseError(
+        NoExistingDataForThisExerciseError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noExistingDataForThisExerciseError != null) {
+      return noExistingDataForThisExerciseError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoExistingDataForThisExerciseError implements OneRmState {
+  const factory NoExistingDataForThisExerciseError() =
+      _$NoExistingDataForThisExerciseError;
 }

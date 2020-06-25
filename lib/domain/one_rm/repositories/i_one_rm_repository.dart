@@ -19,4 +19,5 @@ abstract class IOneRmRepository {
     OneRm oneRm,
     Option<int> repsDone,
   );
+  Future<Either<OneRmFailure, OneRm>> getOrPrevious(int exerciseId, Month month);
 }

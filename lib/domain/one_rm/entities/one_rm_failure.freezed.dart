@@ -27,6 +27,10 @@ class _$OneRmFailureTearOff {
   ItemAlreadyExists itemAlreadyExists() {
     return const ItemAlreadyExists();
   }
+
+  NoExistingDataForThisExercise noExistingDataForThisExercise() {
+    return const NoExistingDataForThisExercise();
+  }
 }
 
 // ignore: unused_element
@@ -39,6 +43,7 @@ mixin _$OneRmFailure {
     @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -46,6 +51,7 @@ mixin _$OneRmFailure {
     Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -54,6 +60,9 @@ mixin _$OneRmFailure {
     @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -61,6 +70,7 @@ mixin _$OneRmFailure {
     Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
     @required Result orElse(),
   });
 }
@@ -124,11 +134,13 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return storageError();
   }
 
@@ -139,6 +151,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -155,11 +168,15 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return storageError(this);
   }
 
@@ -170,6 +187,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
     Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,11 +251,13 @@ class _$UnexpectedError
     @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return unexpectedError();
   }
 
@@ -248,6 +268,7 @@ class _$UnexpectedError
     Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -264,11 +285,15 @@ class _$UnexpectedError
     @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return unexpectedError(this);
   }
 
@@ -279,6 +304,7 @@ class _$UnexpectedError
     Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -342,11 +368,13 @@ class _$ItemDoesNotExist
     @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return itemDoesNotExist();
   }
 
@@ -357,6 +385,7 @@ class _$ItemDoesNotExist
     Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -373,11 +402,15 @@ class _$ItemDoesNotExist
     @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return itemDoesNotExist(this);
   }
 
@@ -388,6 +421,7 @@ class _$ItemDoesNotExist
     Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -451,11 +485,13 @@ class _$ItemAlreadyExists
     @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return itemAlreadyExists();
   }
 
@@ -466,6 +502,7 @@ class _$ItemAlreadyExists
     Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -482,11 +519,15 @@ class _$ItemAlreadyExists
     @required Result unexpectedError(UnexpectedError value),
     @required Result itemDoesNotExist(ItemDoesNotExist value),
     @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
     return itemAlreadyExists(this);
   }
 
@@ -497,6 +538,7 @@ class _$ItemAlreadyExists
     Result unexpectedError(UnexpectedError value),
     Result itemDoesNotExist(ItemDoesNotExist value),
     Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -509,4 +551,126 @@ class _$ItemAlreadyExists
 
 abstract class ItemAlreadyExists implements OneRmFailure {
   const factory ItemAlreadyExists() = _$ItemAlreadyExists;
+}
+
+abstract class $NoExistingDataForThisExerciseCopyWith<$Res> {
+  factory $NoExistingDataForThisExerciseCopyWith(
+          NoExistingDataForThisExercise value,
+          $Res Function(NoExistingDataForThisExercise) then) =
+      _$NoExistingDataForThisExerciseCopyWithImpl<$Res>;
+}
+
+class _$NoExistingDataForThisExerciseCopyWithImpl<$Res>
+    extends _$OneRmFailureCopyWithImpl<$Res>
+    implements $NoExistingDataForThisExerciseCopyWith<$Res> {
+  _$NoExistingDataForThisExerciseCopyWithImpl(
+      NoExistingDataForThisExercise _value,
+      $Res Function(NoExistingDataForThisExercise) _then)
+      : super(_value, (v) => _then(v as NoExistingDataForThisExercise));
+
+  @override
+  NoExistingDataForThisExercise get _value =>
+      super._value as NoExistingDataForThisExercise;
+}
+
+class _$NoExistingDataForThisExercise
+    with DiagnosticableTreeMixin
+    implements NoExistingDataForThisExercise {
+  const _$NoExistingDataForThisExercise();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OneRmFailure.noExistingDataForThisExercise()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'OneRmFailure.noExistingDataForThisExercise'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoExistingDataForThisExercise);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result storageError(),
+    @required Result unexpectedError(),
+    @required Result itemDoesNotExist(),
+    @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
+    return noExistingDataForThisExercise();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result storageError(),
+    Result unexpectedError(),
+    Result itemDoesNotExist(),
+    Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noExistingDataForThisExercise != null) {
+      return noExistingDataForThisExercise();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result storageError(StorageError value),
+    @required Result unexpectedError(UnexpectedError value),
+    @required Result itemDoesNotExist(ItemDoesNotExist value),
+    @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            NoExistingDataForThisExercise value),
+  }) {
+    assert(storageError != null);
+    assert(unexpectedError != null);
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
+    return noExistingDataForThisExercise(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result storageError(StorageError value),
+    Result unexpectedError(UnexpectedError value),
+    Result itemDoesNotExist(ItemDoesNotExist value),
+    Result itemAlreadyExists(ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noExistingDataForThisExercise != null) {
+      return noExistingDataForThisExercise(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoExistingDataForThisExercise implements OneRmFailure {
+  const factory NoExistingDataForThisExercise() =
+      _$NoExistingDataForThisExercise;
 }

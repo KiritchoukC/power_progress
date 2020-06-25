@@ -15,7 +15,6 @@ import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
 import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
-import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
@@ -107,7 +106,7 @@ void initWorkoutFeature() {
   sl.registerFactory(
     () => WorkoutBloc(
       workoutRepository: sl<IWorkoutRepository>(),
-      generateWorkout: sl<GenerateWorkout>(),
+      oneRmRepository: sl<IOneRmRepository>(),
       weekBloc: sl<WeekBloc>(),
       monthBloc: sl<MonthBloc>(),
       oneRmBloc: sl<OneRmBloc>(),

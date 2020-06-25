@@ -103,6 +103,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       unexpectedError: () => const OneRmState.unexpectedError(),
       itemDoesNotExist: () => const OneRmState.notFoundError(),
       itemAlreadyExists: () => const OneRmState.alreadyExistError(),
+      noExistingDataForThisExercise: () => const OneRmState.noExistingDataForThisExerciseError(),
     );
   }
 }

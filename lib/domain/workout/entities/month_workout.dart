@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
@@ -6,6 +7,8 @@ import 'package:power_progress/domain/workout/entities/accumulation_workout.dart
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
 import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
 import 'package:power_progress/domain/workout/entities/realization_workout.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/workout/entities/workout_done.dart';
 
 class MonthWorkout {
   final Month month;
@@ -27,6 +30,100 @@ class MonthWorkout {
     @required this.isPreviousDeloadDone,
     @required this.isNextAccumulationDone,
   });
+
+  factory MonthWorkout.generate(
+    int exerciseId,
+    Month month,
+    List<WorkoutDone> workoutsDone,
+    OneRm oneRm,
+  ) {
+    Option<WorkoutDone> _getWorkoutDone(int exerciseId, Month month, WeekEnum week) {
+      if (workoutsDone.isEmpty) return none();
+
+      final workoutDone = workoutsDone.firstWhere(
+        (x) =>
+            x.month.getOrCrash() == month.getOrCrash() &&
+            x.week == week &&
+            x.exerciseId == exerciseId,
+        orElse: () => null,
+      );
+
+      return workoutDone == null ? none() : some(workoutDone);
+    }
+
+    Workout _getWorkout(WeekEnum week, OneRm oneRm) {
+      final workoutDone = _getWorkoutDone(exerciseId, month, week);
+
+      return week.when(
+        accumulation: () => AccumulationWorkout(
+          month: month,
+          oneRm: oneRm,
+          isDone: workoutDone.isSome(),
+          workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
+        ),
+        intensification: () => IntensificationWorkout(
+          month: month,
+          oneRm: oneRm,
+          isDone: workoutDone.isSome(),
+          workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
+        ),
+        realization: () => RealizationWorkout(
+          month: month,
+          oneRm: oneRm,
+          isDone: workoutDone.isSome(),
+          workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
+          repsDone: workoutDone.fold(() => none(), (a) => a.repsDone),
+        ),
+        deload: () => DeloadWorkout(
+          month: month,
+          oneRm: oneRm,
+          isDone: workoutDone.isSome(),
+          workoutDoneId: workoutDone.fold(() => none(), (a) => some(a.id)),
+        ),
+      );
+    }
+
+    bool _isPreviousDeloadDone() {
+      final deloadWorkoutDone = _getWorkoutDone(
+        exerciseId,
+        Month(month.getOrCrash() - 1),
+        const WeekEnum.deload(),
+      );
+      return deloadWorkoutDone.isSome();
+    }
+
+    bool _isNextAccumulationDone() {
+      final accumulationWorkoutDone = _getWorkoutDone(
+        exerciseId,
+        Month(month.getOrCrash() + 1),
+        const WeekEnum.accumulation(),
+      );
+      return accumulationWorkoutDone.isSome();
+    }
+
+    return MonthWorkout(
+      month: month,
+      oneRm: oneRm,
+      accumulationWorkout: _getWorkout(
+        const WeekEnum.accumulation(),
+        oneRm,
+      ) as AccumulationWorkout,
+      intensificationWorkout: _getWorkout(
+        const WeekEnum.intensification(),
+        oneRm,
+      ) as IntensificationWorkout,
+      realizationWorkout: _getWorkout(
+        const WeekEnum.realization(),
+        oneRm,
+      ) as RealizationWorkout,
+      deloadWorkout: _getWorkout(
+        const WeekEnum.deload(),
+        oneRm,
+      ) as DeloadWorkout,
+      isNextAccumulationDone: _isNextAccumulationDone(),
+      isPreviousDeloadDone: month.getOrCrash() == 1 || _isPreviousDeloadDone(),
+    );
+  }
 
   bool validatable(WeekEnum week) {
     return week.when(

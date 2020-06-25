@@ -10,6 +10,7 @@ abstract class OneRmFailure with _$OneRmFailure {
   const factory OneRmFailure.unexpectedError() = UnexpectedError;
   const factory OneRmFailure.itemDoesNotExist() = ItemDoesNotExist;
   const factory OneRmFailure.itemAlreadyExists() = ItemAlreadyExists;
+  const factory OneRmFailure.noExistingDataForThisExercise() = NoExistingDataForThisExercise;
 }
 
 /// Extension methods of the one rm failure class
@@ -20,6 +21,7 @@ extension OneRmFailureX on OneRmFailure {
       unexpectedError: () => unexpectedErrorMessage,
       itemDoesNotExist: () => itemDoesNotExistErrorMessage,
       itemAlreadyExists: () => itemAlreadyExistsErrorMessage,
+      noExistingDataForThisExercise: () => noExistingDataForThisExerciseErrorMessage,
     );
   }
 }

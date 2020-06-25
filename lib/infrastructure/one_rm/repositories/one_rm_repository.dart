@@ -120,4 +120,31 @@ class OneRmRepository implements IOneRmRepository {
 
     return right(generatedOneRm);
   }
+
+  @override
+  Future<Either<OneRmFailure, OneRm>> getOrPrevious(int exerciseId, Month month) async {
+    final oneRm = await getByExerciseIdAndMonth(exerciseId, month);
+
+    Future<Either<OneRmFailure, OneRm>> getPreviousIfNone() async {
+      if (month.getOrCrash() == 1) {
+        return left(const OneRmFailure.noExistingDataForThisExercise());
+      }
+      final previousOneRmEither = await getOrPrevious(exerciseId, month.previous);
+      return previousOneRmEither.fold(
+        (failure) => left(failure),
+        (previousOneRm) async {
+          await addOrUpdate(exerciseId, month, previousOneRm);
+          return right(previousOneRm);
+        },
+      );
+    }
+
+    return oneRm.fold(
+      (failure) => left(failure),
+      (oneRmOption) => oneRmOption.fold(
+        getPreviousIfNone,
+        (someOneRm) => right(someOneRm),
+      ),
+    );
+  }
 }

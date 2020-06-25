@@ -11,31 +11,32 @@ import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/entities/month_workout.dart';
 import 'package:power_progress/domain/workout/entities/workout.dart';
 import 'package:power_progress/domain/workout/entities/workout_failure.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
-import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
-import 'package:power_progress/domain/workout/usecases/mark_workout_undone.dart';
 
 part 'workout_event.dart';
 part 'workout_state.dart';
 part 'workout_bloc.freezed.dart';
 
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
-  final GenerateWorkout generateWorkout;
   final WeekBloc weekBloc;
   final MonthBloc monthBloc;
   final or_bloc.OneRmBloc oneRmBloc;
 
   final IWorkoutRepository workoutRepository;
+  final IOneRmRepository oneRmRepository;
 
   WorkoutBloc({
-    @required this.generateWorkout,
     @required this.weekBloc,
     @required this.monthBloc,
     @required this.oneRmBloc,
     @required this.workoutRepository,
+    @required this.oneRmRepository,
   });
 
   @override
@@ -53,15 +54,40 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
   }
 
+  Future<Either<WorkoutFailure, MonthWorkout>> generate(int exerciseId, Month month) async {
+    final workoutsDoneEither = await workoutRepository.getWorkoutsDone(exerciseId);
+    final oneRmEither = await oneRmRepository.getOrPrevious(exerciseId, month);
+
+    WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
+      return oneRmFailure.when(
+        storageError: () => const WorkoutFailure.storageError(),
+        unexpectedError: () => const WorkoutFailure.unexpectedError(),
+        itemDoesNotExist: () => const WorkoutFailure.oneRmDoesNotExist(),
+        itemAlreadyExists: () => const WorkoutFailure.oneRmAlreadyExists(),
+        noExistingDataForThisExercise: () => const WorkoutFailure.unexpectedError(),
+      );
+    }
+
+    return workoutsDoneEither.fold(
+      (workoutsDoneFailure) => left(workoutsDoneFailure),
+      (workoutsDone) => oneRmEither.fold(
+        (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
+        (oneRm) => right(
+          MonthWorkout.generate(
+            exerciseId,
+            month,
+            workoutsDone,
+            oneRm,
+          ),
+        ),
+      ),
+    );
+  }
+
   Stream<WorkoutState> _handleGenerateEvent(Generate event) async* {
     yield const WorkoutState.generateInProgress();
 
-    final output = await generateWorkout(
-      GenerateWorkoutParams(
-        exerciseId: event.exerciseId,
-        month: event.month,
-      ),
-    );
+    final output = await generate(event.exerciseId, event.month);
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
       yield WorkoutState.error(message: failure.toErrorMessage());
@@ -103,6 +129,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             or_bloc.OneRmEvent.generateAndSave(
               exerciseId: event.exerciseId,
               oneRm: event.oneRm,
+              incrementation: event.incrementation,
               month: event.month,
               repsDone: event.repsDone,
             ),
@@ -152,10 +179,12 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             nextMonth: event.month,
           ),
         ),
+        //? remove onerm for this month ?
         realization: () async => oneRmBloc.add(
           or_bloc.OneRmEvent.generateAndSave(
             exerciseId: event.exerciseId,
             oneRm: event.oneRm,
+            incrementation: event.incrementation,
             month: event.month,
             repsDone: some(WorkoutHelper.getTargetReps(event.month)),
           ),
