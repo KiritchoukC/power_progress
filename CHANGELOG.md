@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.1](https://github.com/KiritchoukC/power_progress/compare/v2.21.0...v2.21.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* **onrm:** remove redondant code in mark workout undone usecase ([8d65d46](https://github.com/KiritchoukC/power_progress/commit/8d65d46)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ## [2.21.0](https://github.com/KiritchoukC/power_progress/compare/v2.20.0...v2.21.0) (2020-06-24)
 
 
