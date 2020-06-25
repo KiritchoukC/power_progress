@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/workout/exercise_set.dart';
 
 abstract class Workout {
   final Month month;

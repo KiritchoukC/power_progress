@@ -10,7 +10,7 @@ import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
-import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
+import 'package:power_progress/domain/workout/i_workout_repository.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/hive_exercise_datasource.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';

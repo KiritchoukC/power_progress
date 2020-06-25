@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
 
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/workout/entities/workout_done.dart';
-import 'package:power_progress/domain/workout/entities/workout_failure.dart';
-import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/workout/workout_done.dart';
+import 'package:power_progress/domain/workout/workout_failure.dart';
+import 'package:power_progress/domain/workout/i_workout_repository.dart';
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 

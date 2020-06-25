@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';

@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
-import 'package:power_progress/domain/workout/entities/deload_workout.dart';
-import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
-import 'package:power_progress/domain/workout/entities/realization_workout.dart';
-import 'package:power_progress/domain/workout/entities/workout.dart';
-import 'package:power_progress/domain/workout/entities/workout_done.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/workout/accumulation_workout.dart';
+import 'package:power_progress/domain/workout/deload_workout.dart';
+import 'package:power_progress/domain/workout/intensification_workout.dart';
+import 'package:power_progress/domain/workout/realization_workout.dart';
+import 'package:power_progress/domain/workout/workout.dart';
+import 'package:power_progress/domain/workout/workout_done.dart';
 
 class MonthWorkout {
   final Month month;

@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/entities/deload_workout.dart';
 import 'package:power_progress/domain/workout/entities/exercise_set.dart';

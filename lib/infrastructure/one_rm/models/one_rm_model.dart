@@ -2,7 +2,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
 
 part 'one_rm_model.g.dart';
 

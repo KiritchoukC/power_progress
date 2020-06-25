@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:power_progress/domain/workout/entities/value_objects/weight.dart';
+import 'package:power_progress/domain/workout/value_objects/weight.dart';
 
 class ExerciseSet {
   final int sets;

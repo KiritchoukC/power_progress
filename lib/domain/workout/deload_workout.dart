@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/workout/entities/exercise_set.dart';
-import 'package:power_progress/domain/workout/entities/value_objects/weight.dart';
-import 'package:power_progress/domain/workout/entities/workout.dart';
-import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/workout/exercise_set.dart';
+import 'package:power_progress/domain/workout/value_objects/weight.dart';
+import 'package:power_progress/domain/workout/workout.dart';
+import 'package:power_progress/domain/workout/workout_failure.dart';
 
 class DeloadWorkout extends Workout {
   DeloadWorkout({

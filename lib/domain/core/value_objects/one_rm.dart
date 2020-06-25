@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 
 import 'package:power_progress/core/domain/value_failure.dart';
 import 'package:power_progress/core/domain/value_object.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/workout/workout.dart';
 
 class OneRm extends ValueObject<double> {
   @override

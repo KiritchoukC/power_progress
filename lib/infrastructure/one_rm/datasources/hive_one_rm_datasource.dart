@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import 'package:power_progress/core/domain/errors.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
 import 'package:power_progress/infrastructure/one_rm/datasources/i_one_rm_datasource.dart';
 import 'package:power_progress/infrastructure/one_rm/models/one_rm_model.dart';
 

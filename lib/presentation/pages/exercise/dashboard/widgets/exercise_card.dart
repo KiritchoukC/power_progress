@@ -4,8 +4,8 @@ import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
 
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
