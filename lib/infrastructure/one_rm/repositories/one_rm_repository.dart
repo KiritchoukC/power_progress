@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/core/domain/errors.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
@@ -103,5 +104,20 @@ class OneRmRepository implements IOneRmRepository {
         ),
       ),
     );
+  }
+
+  @override
+  Future<Either<OneRmFailure, OneRm>> generateAndSave(
+    int exerciseId,
+    Month month,
+    Incrementation incrementation,
+    OneRm oneRm,
+    Option<int> repsDone,
+  ) async {
+    final generatedOneRm = OneRm.generate(month, incrementation, oneRm, repsDone);
+
+    await addOrUpdate(exerciseId, month, oneRm);
+
+    return right(generatedOneRm);
   }
 }

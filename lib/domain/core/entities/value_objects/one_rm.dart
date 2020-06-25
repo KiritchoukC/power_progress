@@ -2,6 +2,9 @@ import 'package:dartz/dartz.dart';
 
 import 'package:power_progress/core/domain/value_failure.dart';
 import 'package:power_progress/core/domain/value_object.dart';
+import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/workout/entities/workout.dart';
 
 class OneRm extends ValueObject<double> {
   @override
@@ -25,6 +28,21 @@ class OneRm extends ValueObject<double> {
         () => OneRm(0),
         (a) => a,
       );
+
+  factory OneRm.generate(
+    Month month,
+    Incrementation incrementation,
+    OneRm oneRm,
+    Option<int> repsDone,
+  ) {
+    return repsDone.fold(() => oneRm, (repsDone) {
+      final targetReps = WorkoutHelper.getTargetReps(month);
+
+      final newOneRm = ((repsDone - targetReps) * incrementation.getOrCrash()) + oneRm.getOrCrash();
+
+      return OneRm(newOneRm);
+    });
+  }
 
   const OneRm._(this.value);
 }

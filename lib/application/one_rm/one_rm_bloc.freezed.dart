@@ -33,11 +33,13 @@ class _$OneRmEventTearOff {
   GenerateAndSave generateAndSave(
       {@required int exerciseId,
       @required OneRm oneRm,
+      @required Incrementation incrementation,
       @required Month month,
       @required Option<int> repsDone}) {
     return GenerateAndSave(
       exerciseId: exerciseId,
       oneRm: oneRm,
+      incrementation: incrementation,
       month: month,
       repsDone: repsDone,
     );
@@ -61,16 +63,16 @@ mixin _$OneRmEvent {
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
     @required
-        Result generateAndSave(
-            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
     @required Result remove(int exerciseId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
-    Result generateAndSave(
-        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
     Result remove(int exerciseId),
     @required Result orElse(),
   });
@@ -186,8 +188,8 @@ class _$Fetch implements Fetch {
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
     @required
-        Result generateAndSave(
-            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
@@ -202,8 +204,8 @@ class _$Fetch implements Fetch {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
-    Result generateAndSave(
-        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -335,8 +337,8 @@ class _$Upsert implements Upsert {
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
     @required
-        Result generateAndSave(
-            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
@@ -351,8 +353,8 @@ class _$Upsert implements Upsert {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
-    Result generateAndSave(
-        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -415,7 +417,12 @@ abstract class $GenerateAndSaveCopyWith<$Res>
           GenerateAndSave value, $Res Function(GenerateAndSave) then) =
       _$GenerateAndSaveCopyWithImpl<$Res>;
   @override
-  $Res call({int exerciseId, OneRm oneRm, Month month, Option<int> repsDone});
+  $Res call(
+      {int exerciseId,
+      OneRm oneRm,
+      Incrementation incrementation,
+      Month month,
+      Option<int> repsDone});
 }
 
 class _$GenerateAndSaveCopyWithImpl<$Res> extends _$OneRmEventCopyWithImpl<$Res>
@@ -431,12 +438,16 @@ class _$GenerateAndSaveCopyWithImpl<$Res> extends _$OneRmEventCopyWithImpl<$Res>
   $Res call({
     Object exerciseId = freezed,
     Object oneRm = freezed,
+    Object incrementation = freezed,
     Object month = freezed,
     Object repsDone = freezed,
   }) {
     return _then(GenerateAndSave(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
+      incrementation: incrementation == freezed
+          ? _value.incrementation
+          : incrementation as Incrementation,
       month: month == freezed ? _value.month : month as Month,
       repsDone: repsDone == freezed ? _value.repsDone : repsDone as Option<int>,
     ));
@@ -447,10 +458,12 @@ class _$GenerateAndSave implements GenerateAndSave {
   const _$GenerateAndSave(
       {@required this.exerciseId,
       @required this.oneRm,
+      @required this.incrementation,
       @required this.month,
       @required this.repsDone})
       : assert(exerciseId != null),
         assert(oneRm != null),
+        assert(incrementation != null),
         assert(month != null),
         assert(repsDone != null);
 
@@ -459,13 +472,15 @@ class _$GenerateAndSave implements GenerateAndSave {
   @override
   final OneRm oneRm;
   @override
+  final Incrementation incrementation;
+  @override
   final Month month;
   @override
   final Option<int> repsDone;
 
   @override
   String toString() {
-    return 'OneRmEvent.generateAndSave(exerciseId: $exerciseId, oneRm: $oneRm, month: $month, repsDone: $repsDone)';
+    return 'OneRmEvent.generateAndSave(exerciseId: $exerciseId, oneRm: $oneRm, incrementation: $incrementation, month: $month, repsDone: $repsDone)';
   }
 
   @override
@@ -477,6 +492,9 @@ class _$GenerateAndSave implements GenerateAndSave {
                     .equals(other.exerciseId, exerciseId)) &&
             (identical(other.oneRm, oneRm) ||
                 const DeepCollectionEquality().equals(other.oneRm, oneRm)) &&
+            (identical(other.incrementation, incrementation) ||
+                const DeepCollectionEquality()
+                    .equals(other.incrementation, incrementation)) &&
             (identical(other.month, month) ||
                 const DeepCollectionEquality().equals(other.month, month)) &&
             (identical(other.repsDone, repsDone) ||
@@ -489,6 +507,7 @@ class _$GenerateAndSave implements GenerateAndSave {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exerciseId) ^
       const DeepCollectionEquality().hash(oneRm) ^
+      const DeepCollectionEquality().hash(incrementation) ^
       const DeepCollectionEquality().hash(month) ^
       const DeepCollectionEquality().hash(repsDone);
 
@@ -502,15 +521,15 @@ class _$GenerateAndSave implements GenerateAndSave {
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
     @required
-        Result generateAndSave(
-            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
     assert(remove != null);
-    return generateAndSave(exerciseId, oneRm, month, repsDone);
+    return generateAndSave(exerciseId, oneRm, incrementation, month, repsDone);
   }
 
   @override
@@ -518,14 +537,15 @@ class _$GenerateAndSave implements GenerateAndSave {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
-    Result generateAndSave(
-        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (generateAndSave != null) {
-      return generateAndSave(exerciseId, oneRm, month, repsDone);
+      return generateAndSave(
+          exerciseId, oneRm, incrementation, month, repsDone);
     }
     return orElse();
   }
@@ -566,12 +586,14 @@ abstract class GenerateAndSave implements OneRmEvent {
   const factory GenerateAndSave(
       {@required int exerciseId,
       @required OneRm oneRm,
+      @required Incrementation incrementation,
       @required Month month,
       @required Option<int> repsDone}) = _$GenerateAndSave;
 
   @override
   int get exerciseId;
   OneRm get oneRm;
+  Incrementation get incrementation;
   Month get month;
   Option<int> get repsDone;
   @override
@@ -637,8 +659,8 @@ class _$Remove implements Remove {
     @required Result fetch(int exerciseId, Month month),
     @required Result upsert(int exerciseId, Month month, OneRm oneRm),
     @required
-        Result generateAndSave(
-            int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
@@ -653,8 +675,8 @@ class _$Remove implements Remove {
   Result maybeWhen<Result extends Object>({
     Result fetch(int exerciseId, Month month),
     Result upsert(int exerciseId, Month month, OneRm oneRm),
-    Result generateAndSave(
-        int exerciseId, OneRm oneRm, Month month, Option<int> repsDone),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {

@@ -14,6 +14,7 @@ abstract class OneRmEvent with _$OneRmEvent {
   const factory OneRmEvent.generateAndSave({
     @required int exerciseId,
     @required OneRm oneRm,
+    @required Incrementation incrementation,
     @required Month month,
     @required Option<int> repsDone,
   }) = GenerateAndSave;
