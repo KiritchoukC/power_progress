@@ -83,12 +83,7 @@ void initExerciseFeature() {
 /// Register the dependencies needed for the onboarding feature
 void initOnboardingFeature() {
   // Bloc
-  sl.registerFactory(
-    () => OnboardingBloc(
-      doneOnboarding: sl<DoneOnboarding>(),
-      isDoneOnboarding: sl<IsDoneOnboarding>(),
-    ),
-  );
+  sl.registerFactory(() => OnboardingBloc(onboardingRepository: sl<IOnboardingRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOnboardingRepository>(
