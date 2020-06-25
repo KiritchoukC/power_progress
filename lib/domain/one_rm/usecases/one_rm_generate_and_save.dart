@@ -14,7 +14,7 @@ import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.da
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
 import 'package:power_progress/domain/workout/entities/workout.dart';
 
-class OneRmGenerateAndSave implements UseCase<Unit, OneRmFailure, OneRmGenerateAndSaveParams> {
+class OneRmGenerateAndSave implements UseCase<OneRm, OneRmFailure, OneRmGenerateAndSaveParams> {
   final IOneRmRepository oneRmRepository;
 
   final ExerciseFetchById exerciseFetchById;
@@ -27,7 +27,7 @@ class OneRmGenerateAndSave implements UseCase<Unit, OneRmFailure, OneRmGenerateA
   }) : assert(oneRmRepository != null);
 
   @override
-  Future<Either<OneRmFailure, Unit>> call(OneRmGenerateAndSaveParams params) async {
+  Future<Either<OneRmFailure, OneRm>> call(OneRmGenerateAndSaveParams params) async {
     OneRm _generateOneRm(Exercise exercise) {
       return params.repsDone.fold(
         () => params.oneRm,
@@ -45,13 +45,19 @@ class OneRmGenerateAndSave implements UseCase<Unit, OneRmFailure, OneRmGenerateA
     return exerciseFetchById(ExerciseFetchByIdParams(id: params.exerciseId)).then(
       (exerciseEither) => exerciseEither.fold(
         (exerciseFailure) => left(_mapToOneRmFailure(exerciseFailure)),
-        (exercise) => oneRmUpsert(
-          OneRmUpsertParams(
-            exerciseId: params.exerciseId,
-            month: params.month,
-            oneRm: _generateOneRm(exercise),
-          ),
-        ),
+        (exercise) async {
+          final newOneRm = _generateOneRm(exercise);
+
+          await oneRmUpsert(
+            OneRmUpsertParams(
+              exerciseId: params.exerciseId,
+              month: params.month.next,
+              oneRm: newOneRm,
+            ),
+          );
+
+          return right(newOneRm);
+        },
       ),
     );
   }

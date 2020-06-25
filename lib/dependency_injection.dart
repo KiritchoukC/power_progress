@@ -161,12 +161,7 @@ void initWorkoutFeature() {
         oneRmGenerateAndSave: sl<OneRmGenerateAndSave>(),
       ));
   sl.registerLazySingleton(() => RemoveWorkoutDone(repository: sl<IWorkoutRepository>()));
-  sl.registerLazySingleton(() => MarkWorkoutUndone(
-        repository: sl<IWorkoutRepository>(),
-        updateExerciseNextWeek: sl<UpdateExerciseNextWeek>(),
-        updateExerciseNextMonth: sl<UpdateExerciseNextMonth>(),
-        oneRmRemove: sl<OneRmRemove>(),
-      ));
+  sl.registerLazySingleton(() => MarkWorkoutUndone(repository: sl<IWorkoutRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IWorkoutRepository>(

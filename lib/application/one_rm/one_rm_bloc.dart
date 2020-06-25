@@ -72,7 +72,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       OneRmGenerateAndSaveParams(
         exerciseId: event.exerciseId,
         oneRm: event.oneRm,
-        month: event.month.next,
+        month: event.month,
         repsDone: event.repsDone,
       ),
     );
@@ -81,8 +81,8 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       (failure) async* {
         yield _mapFailureToState(failure);
       },
-      (_) async* {
-        yield const OneRmState.generatedAndSaved();
+      (newOneRm) async* {
+        yield OneRmState.generatedAndSaved(oneRm: newOneRm);
       },
     );
   }

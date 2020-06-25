@@ -116,7 +116,7 @@ class _Card extends StatelessWidget {
                   // react to state
                   return state.maybeWhen(
                     initial: _fetch,
-                    generatedAndSaved: _fetch,
+                    generatedAndSaved: _oneRm,
                     fetched: _oneRm,
                     orElse: _progress,
                   );

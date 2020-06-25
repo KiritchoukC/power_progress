@@ -112,7 +112,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             or_bloc.OneRmEvent.generateAndSave(
               exerciseId: event.exerciseId,
               oneRm: event.oneRm,
-              month: event.month.next,
+              month: event.month,
               repsDone: event.repsDone,
             ),
           ),

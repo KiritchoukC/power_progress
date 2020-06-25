@@ -577,8 +577,10 @@ class _$OneRmStateTearOff {
     return const GenerateAndSaveInProgress();
   }
 
-  GeneratedAndSaved generatedAndSaved() {
-    return const GeneratedAndSaved();
+  GeneratedAndSaved generatedAndSaved({@required OneRm oneRm}) {
+    return GeneratedAndSaved(
+      oneRm: oneRm,
+    );
   }
 
   StorageError storageError() {
@@ -608,7 +610,7 @@ mixin _$OneRmState {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -620,7 +622,7 @@ mixin _$OneRmState {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -705,7 +707,7 @@ class _$Initial implements Initial {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -730,7 +732,7 @@ class _$Initial implements Initial {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -834,7 +836,7 @@ class _$FetchInProgres implements FetchInProgres {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -859,7 +861,7 @@ class _$FetchInProgres implements FetchInProgres {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -982,7 +984,7 @@ class _$Fetched implements Fetched {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1007,7 +1009,7 @@ class _$Fetched implements Fetched {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1116,7 +1118,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1141,7 +1143,7 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1210,6 +1212,7 @@ abstract class $GeneratedAndSavedCopyWith<$Res> {
   factory $GeneratedAndSavedCopyWith(
           GeneratedAndSaved value, $Res Function(GeneratedAndSaved) then) =
       _$GeneratedAndSavedCopyWithImpl<$Res>;
+  $Res call({OneRm oneRm});
 }
 
 class _$GeneratedAndSavedCopyWithImpl<$Res>
@@ -1221,23 +1224,43 @@ class _$GeneratedAndSavedCopyWithImpl<$Res>
 
   @override
   GeneratedAndSaved get _value => super._value as GeneratedAndSaved;
+
+  @override
+  $Res call({
+    Object oneRm = freezed,
+  }) {
+    return _then(GeneratedAndSaved(
+      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
+    ));
+  }
 }
 
 class _$GeneratedAndSaved implements GeneratedAndSaved {
-  const _$GeneratedAndSaved();
+  const _$GeneratedAndSaved({@required this.oneRm}) : assert(oneRm != null);
+
+  @override
+  final OneRm oneRm;
 
   @override
   String toString() {
-    return 'OneRmState.generatedAndSaved()';
+    return 'OneRmState.generatedAndSaved(oneRm: $oneRm)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GeneratedAndSaved);
+    return identical(this, other) ||
+        (other is GeneratedAndSaved &&
+            (identical(other.oneRm, oneRm) ||
+                const DeepCollectionEquality().equals(other.oneRm, oneRm)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(oneRm);
+
+  @override
+  $GeneratedAndSavedCopyWith<GeneratedAndSaved> get copyWith =>
+      _$GeneratedAndSavedCopyWithImpl<GeneratedAndSaved>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1246,7 +1269,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1261,7 +1284,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     assert(notFoundError != null);
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
-    return generatedAndSaved();
+    return generatedAndSaved(oneRm);
   }
 
   @override
@@ -1271,7 +1294,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1280,7 +1303,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
   }) {
     assert(orElse != null);
     if (generatedAndSaved != null) {
-      return generatedAndSaved();
+      return generatedAndSaved(oneRm);
     }
     return orElse();
   }
@@ -1333,7 +1356,11 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
 }
 
 abstract class GeneratedAndSaved implements OneRmState {
-  const factory GeneratedAndSaved() = _$GeneratedAndSaved;
+  const factory GeneratedAndSaved({@required OneRm oneRm}) =
+      _$GeneratedAndSaved;
+
+  OneRm get oneRm;
+  $GeneratedAndSavedCopyWith<GeneratedAndSaved> get copyWith;
 }
 
 abstract class $StorageErrorCopyWith<$Res> {
@@ -1375,7 +1402,7 @@ class _$StorageError implements StorageError {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1400,7 +1427,7 @@ class _$StorageError implements StorageError {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1504,7 +1531,7 @@ class _$NotFoundError implements NotFoundError {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1529,7 +1556,7 @@ class _$NotFoundError implements NotFoundError {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1634,7 +1661,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1659,7 +1686,7 @@ class _$AlreadyExistError implements AlreadyExistError {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
@@ -1763,7 +1790,7 @@ class _$UnexpectedError implements UnexpectedError {
     @required Result fetchInProgress(),
     @required Result fetched(OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(),
+    @required Result generatedAndSaved(OneRm oneRm),
     @required Result storageError(),
     @required Result notFoundError(),
     @required Result alreadyExistError(),
@@ -1788,7 +1815,7 @@ class _$UnexpectedError implements UnexpectedError {
     Result fetchInProgress(),
     Result fetched(OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(),
+    Result generatedAndSaved(OneRm oneRm),
     Result storageError(),
     Result notFoundError(),
     Result alreadyExistError(),
