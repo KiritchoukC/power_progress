@@ -5,19 +5,19 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
-import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
+import 'package:power_progress/domain/exercise/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
+import 'package:power_progress/domain/exercise/value_objects/week.dart';
 
 part 'week_event.dart';
 part 'week_state.dart';
 part 'week_bloc.freezed.dart';
 
 class WeekBloc extends Bloc<WeekEvent, WeekState> {
-  final UpdateExerciseNextWeek updateExerciseNextWeek;
+  final IExerciseRepository exerciseRepository;
 
   WeekBloc({
-    @required this.updateExerciseNextWeek,
+    @required this.exerciseRepository,
   });
 
   @override
@@ -33,12 +33,7 @@ class WeekBloc extends Bloc<WeekEvent, WeekState> {
   Stream<WeekState> _handleUpdateNextWeekEvent(WeekEvent event) async* {
     yield const WeekState.weekUpdateInProgress();
 
-    final output = await updateExerciseNextWeek(
-      UpdateExerciseNextWeekParams(
-        exerciseId: event.exerciseId,
-        nextWeek: event.nextWeek,
-      ),
-    );
+    final output = await exerciseRepository.updateNextWeek(event.exerciseId, event.nextWeek);
 
     Stream<WeekState> onFailure(ExerciseFailure failure) async* {
       yield WeekState.error(message: failure.toErrorMessage());

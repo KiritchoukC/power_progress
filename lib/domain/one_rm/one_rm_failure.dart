@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/core/messages/errors.dart';
 
-part 'entities/one_rm_failure.freezed.dart';
+part 'one_rm_failure.freezed.dart';
 
 @freezed
 abstract class OneRmFailure with _$OneRmFailure {

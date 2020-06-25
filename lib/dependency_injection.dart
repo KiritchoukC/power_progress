@@ -8,8 +8,6 @@ import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
-import 'package:power_progress/domain/exercise/usecases/update_exercise_next_month.dart';
-import 'package:power_progress/domain/exercise/usecases/update_exercise_next_week.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
@@ -65,8 +63,8 @@ void initExerciseFeature() {
       workoutBloc: sl<WorkoutBloc>(),
     ),
   );
-  sl.registerFactory(() => WeekBloc(updateExerciseNextWeek: sl<UpdateExerciseNextWeek>()));
-  sl.registerFactory(() => MonthBloc(updateExerciseNextMonth: sl<UpdateExerciseNextMonth>()));
+  sl.registerFactory(() => WeekBloc(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerFactory(() => MonthBloc(exerciseRepository: sl<IExerciseRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(

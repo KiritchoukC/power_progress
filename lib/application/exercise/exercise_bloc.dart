@@ -57,6 +57,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
         OneRmEvent.generateAndSave(
           exerciseId: addedExerciseId,
           oneRm: event.oneRm,
+          incrementation: event.exercise.incrementation,
           month: Month(1),
           repsDone: none(),
         ),
