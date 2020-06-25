@@ -88,7 +88,6 @@ void initExerciseFeature() {
         oneRmUpsert: sl<OneRmUpsert>(),
       ));
   sl.registerLazySingleton(() => FetchExercises(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerLazySingleton(() => ExerciseFetchById(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerLazySingleton(() => RemoveExercises(
         exerciseRepository: sl<IExerciseRepository>(),
         removeWorkoutDone: sl<RemoveWorkoutDone>(),
@@ -189,7 +188,6 @@ void initOneRmFeature() {
   sl.registerLazySingleton(() => OneRmRemove(oneRmRepository: sl<IOneRmRepository>()));
   sl.registerLazySingleton(() => OneRmGenerateAndSave(
         oneRmRepository: sl<IOneRmRepository>(),
-        exerciseFetchById: sl<ExerciseFetchById>(),
         oneRmUpsert: sl<OneRmUpsert>(),
       ));
 

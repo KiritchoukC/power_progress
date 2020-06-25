@@ -20,4 +20,5 @@ abstract class WorkoutEvent with _$WorkoutEvent {
     @required Month month,
     @required OneRm oneRm,
   }) = MarkUndone;
+  const factory WorkoutEvent.remove({@required int exerciseId}) = Remove;
 }

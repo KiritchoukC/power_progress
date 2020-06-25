@@ -13,13 +13,13 @@ abstract class ExerciseFailure with _$ExerciseFailure {
 }
 
 /// Extension methods of the exercise failure class
-extension WeeksX on ExerciseFailure {
+extension ExerciseFailureX on ExerciseFailure {
   String toErrorMessage() {
     return when(
       storageError: () => storageErrorMessage,
-      unexpectedError: null,
-      oneRmDoestNotExist: null,
-      oneRmAlreadyExists: null,
+      unexpectedError: () => unexpectedErrorMessage,
+      oneRmDoestNotExist: () => itemDoesNotExistErrorMessage,
+      oneRmAlreadyExists: () => itemAlreadyExistsErrorMessage,
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/entities/exercise.dart';
 import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/exercise/usecases/exercise_fetch_by_id.dart';
 import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
 import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
@@ -16,13 +17,13 @@ import 'package:power_progress/domain/workout/entities/workout.dart';
 
 class OneRmGenerateAndSave implements UseCase<OneRm, OneRmFailure, OneRmGenerateAndSaveParams> {
   final IOneRmRepository oneRmRepository;
+  final IExerciseRepository exerciseRepository;
 
-  final ExerciseFetchById exerciseFetchById;
   final OneRmUpsert oneRmUpsert;
 
   OneRmGenerateAndSave({
     @required this.oneRmRepository,
-    @required this.exerciseFetchById,
+    @required this.exerciseRepository,
     @required this.oneRmUpsert,
   }) : assert(oneRmRepository != null);
 

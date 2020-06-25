@@ -83,4 +83,25 @@ class OneRmRepository implements IOneRmRepository {
       return left(const OneRmFailure.storageError());
     }
   }
+
+  @override
+  Future<Either<OneRmFailure, Unit>> addOrUpdate(int exerciseId, Month month, OneRm oneRm) {
+    return getByExerciseIdAndMonth(exerciseId, month).then(
+      (oneRmEither) => oneRmEither.fold(
+        (failure) async => left(failure),
+        (oneRmOption) => oneRmOption.fold(
+          () => add(
+            exerciseId,
+            month,
+            oneRm,
+          ),
+          (_) => update(
+            exerciseId,
+            month,
+            oneRm,
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -10,4 +10,5 @@ abstract class IWorkoutRepository {
       int exerciseId, Month month, WeekEnum week, Option<int> repsDone);
   Future<Either<WorkoutFailure, List<WorkoutDone>>> getWorkoutsDone(int exerciseId);
   Future<Either<WorkoutFailure, Unit>> remove(int id);
+  Future<Either<WorkoutFailure, Unit>> removeByExerciseId(int exerciseId);
 }

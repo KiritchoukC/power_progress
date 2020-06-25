@@ -43,4 +43,13 @@ class WorkoutRepository implements IWorkoutRepository {
       return left(const WorkoutFailure.storageError());
     }
   }
+
+  @override
+  Future<Either<WorkoutFailure, Unit>> removeByExerciseId(int exerciseId) async {
+    try {
+      return right(await datasource.removeByExerciseId(exerciseId));
+    } on Exception {
+      return left(const WorkoutFailure.storageError());
+    }
+  }
 }

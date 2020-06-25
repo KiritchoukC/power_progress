@@ -5,17 +5,16 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
-import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/entities/week_enum.dart';
 import 'package:power_progress/domain/workout/entities/month_workout.dart';
 import 'package:power_progress/domain/workout/entities/workout.dart';
 import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/usecases/generate_workout.dart';
 import 'package:power_progress/domain/workout/usecases/mark_workout_done.dart';
 import 'package:power_progress/domain/workout/usecases/mark_workout_undone.dart';
@@ -32,6 +31,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final MonthBloc monthBloc;
   final or_bloc.OneRmBloc oneRmBloc;
 
+  final IWorkoutRepository workoutRepository;
+
   WorkoutBloc({
     @required this.generateWorkout,
     @required this.markWorkoutDone,
@@ -39,6 +40,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     @required this.weekBloc,
     @required this.monthBloc,
     @required this.oneRmBloc,
+    @required this.workoutRepository,
   });
 
   @override
@@ -52,6 +54,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       generate: _handleGenerateEvent,
       markDone: _handleMarkDoneEvent,
       markUndone: _handleMarkUndoneEvent,
+      remove: _handleRemoveEvent,
     );
   }
 
@@ -66,7 +69,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
+      yield WorkoutState.error(message: failure.toErrorMessage());
     }
 
     Stream<WorkoutState> onSuccess(MonthWorkout workout) async* {
@@ -90,8 +93,8 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     yield* output.fold(
-      (markWorkoutDoneFailure) async* {
-        yield WorkoutState.error(message: mapFailureToErrorMessage(markWorkoutDoneFailure));
+      (failure) async* {
+        yield WorkoutState.error(message: failure.toErrorMessage());
       },
       (_) async* {
         yield WorkoutState.markedDone(
@@ -141,7 +144,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     );
 
     Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutState.error(message: mapFailureToErrorMessage(failure));
+      yield WorkoutState.error(message: failure.toErrorMessage());
     }
 
     Stream<WorkoutState> onSuccess(Unit unit) async* {
@@ -179,10 +182,17 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     yield* output.fold(onFailure, onSuccess);
   }
-}
 
-String mapFailureToErrorMessage(WorkoutFailure failure) {
-  if (failure is UnexpectedError) return generateWorkoutUnexpectedErrorMessage;
+  Stream<WorkoutState> _handleRemoveEvent(Remove event) async* {
+    yield const WorkoutState.removeInProgress();
 
-  return unknownErrorMessage;
+    final output = await workoutRepository.removeByExerciseId(event.exerciseId);
+
+    yield* output.fold(
+      (failure) async* {
+        yield WorkoutState.error(message: failure.toErrorMessage());
+      },
+      (r) => null,
+    );
+  }
 }

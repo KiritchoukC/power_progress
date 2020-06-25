@@ -20,7 +20,7 @@ class _$WorkoutFailureTearOff {
     return const UnexpectedError();
   }
 
-  OneRmDoestNotExist oneRmDoestNotExist() {
+  OneRmDoestNotExist oneRmDoesNotExist() {
     return const OneRmDoestNotExist();
   }
 
@@ -41,7 +41,7 @@ mixin _$WorkoutFailure {
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   });
@@ -49,7 +49,7 @@ mixin _$WorkoutFailure {
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
@@ -58,7 +58,7 @@ mixin _$WorkoutFailure {
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   });
@@ -66,7 +66,7 @@ mixin _$WorkoutFailure {
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
@@ -132,13 +132,13 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return storageError();
@@ -149,7 +149,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
@@ -166,13 +166,13 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return storageError(this);
@@ -183,7 +183,7 @@ class _$StorageError with DiagnosticableTreeMixin implements StorageError {
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
@@ -247,13 +247,13 @@ class _$UnexpectedError
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return unexpectedError();
@@ -264,7 +264,7 @@ class _$UnexpectedError
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
@@ -281,13 +281,13 @@ class _$UnexpectedError
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return unexpectedError(this);
@@ -298,7 +298,7 @@ class _$UnexpectedError
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
@@ -339,14 +339,14 @@ class _$OneRmDoestNotExist
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.oneRmDoestNotExist()';
+    return 'WorkoutFailure.oneRmDoesNotExist()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WorkoutFailure.oneRmDoestNotExist'));
+      ..add(DiagnosticsProperty('type', 'WorkoutFailure.oneRmDoesNotExist'));
   }
 
   @override
@@ -362,16 +362,16 @@ class _$OneRmDoestNotExist
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
-    return oneRmDoestNotExist();
+    return oneRmDoesNotExist();
   }
 
   @override
@@ -379,14 +379,14 @@ class _$OneRmDoestNotExist
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (oneRmDoestNotExist != null) {
-      return oneRmDoestNotExist();
+    if (oneRmDoesNotExist != null) {
+      return oneRmDoesNotExist();
     }
     return orElse();
   }
@@ -396,16 +396,16 @@ class _$OneRmDoestNotExist
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
-    return oneRmDoestNotExist(this);
+    return oneRmDoesNotExist(this);
   }
 
   @override
@@ -413,14 +413,14 @@ class _$OneRmDoestNotExist
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (oneRmDoestNotExist != null) {
-      return oneRmDoestNotExist(this);
+    if (oneRmDoesNotExist != null) {
+      return oneRmDoesNotExist(this);
     }
     return orElse();
   }
@@ -477,13 +477,13 @@ class _$OneRmAlreadyExists
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return oneRmAlreadyExists();
@@ -494,7 +494,7 @@ class _$OneRmAlreadyExists
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
@@ -511,13 +511,13 @@ class _$OneRmAlreadyExists
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return oneRmAlreadyExists(this);
@@ -528,7 +528,7 @@ class _$OneRmAlreadyExists
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),
@@ -594,13 +594,13 @@ class _$PreviousMonthWithoutOneRm
   Result when<Result extends Object>({
     @required Result storageError(),
     @required Result unexpectedError(),
-    @required Result oneRmDoestNotExist(),
+    @required Result oneRmDoesNotExist(),
     @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return previousMonthWithoutOneRm();
@@ -611,7 +611,7 @@ class _$PreviousMonthWithoutOneRm
   Result maybeWhen<Result extends Object>({
     Result storageError(),
     Result unexpectedError(),
-    Result oneRmDoestNotExist(),
+    Result oneRmDoesNotExist(),
     Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
     @required Result orElse(),
@@ -628,13 +628,13 @@ class _$PreviousMonthWithoutOneRm
   Result map<Result extends Object>({
     @required Result storageError(StorageError value),
     @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
     @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
     @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
   }) {
     assert(storageError != null);
     assert(unexpectedError != null);
-    assert(oneRmDoestNotExist != null);
+    assert(oneRmDoesNotExist != null);
     assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
     return previousMonthWithoutOneRm(this);
@@ -645,7 +645,7 @@ class _$PreviousMonthWithoutOneRm
   Result maybeMap<Result extends Object>({
     Result storageError(StorageError value),
     Result unexpectedError(UnexpectedError value),
-    Result oneRmDoestNotExist(OneRmDoestNotExist value),
+    Result oneRmDoesNotExist(OneRmDoestNotExist value),
     Result oneRmAlreadyExists(OneRmAlreadyExists value),
     Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
     @required Result orElse(),

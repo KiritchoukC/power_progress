@@ -8,6 +8,7 @@ import 'package:meta/meta.dart';
 import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
 import 'package:power_progress/domain/one_rm/entities/one_rm_failure.dart';
+import 'package:power_progress/domain/one_rm/repositories/i_one_rm_repository.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_fetch.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_generate_and_save.dart';
 import 'package:power_progress/domain/one_rm/usecases/one_rm_upsert.dart';
@@ -21,10 +22,13 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
   final OneRmUpsert upsert;
   final OneRmGenerateAndSave oneRmGenerateAndSave;
 
+  final IOneRmRepository oneRmRepository;
+
   OneRmBloc({
     @required this.fetch,
     @required this.upsert,
     @required this.oneRmGenerateAndSave,
+    @required this.oneRmRepository,
   });
 
   @override
@@ -38,6 +42,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       fetch: _handleFetchEvent,
       upsert: _handleUpsertEvent,
       generateAndSave: _handleGenerateAndSaveEvent,
+      remove: _handleRemoveEvent,
     );
   }
 
@@ -93,6 +98,21 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       unexpectedError: () => const OneRmState.unexpectedError(),
       itemDoesNotExist: () => const OneRmState.notFoundError(),
       itemAlreadyExists: () => const OneRmState.alreadyExistError(),
+    );
+  }
+
+  Stream<OneRmState> _handleRemoveEvent(Remove event) async* {
+    yield const OneRmState.removeInProgress();
+
+    final output = await oneRmRepository.removeByExerciseId(event.exerciseId);
+
+    yield* output.fold(
+      (failure) async* {
+        yield _mapFailureToState(failure);
+      },
+      (r) async* {
+        yield const OneRmState.removed();
+      },
     );
   }
 }

@@ -10,6 +10,9 @@ abstract class OneRmState with _$OneRmState {
   const factory OneRmState.generateAndSaveInProgress() = GenerateAndSaveInProgress;
   const factory OneRmState.generatedAndSaved({@required OneRm oneRm}) = GeneratedAndSaved;
 
+  const factory OneRmState.removeInProgress() = RemoveInProgress;
+  const factory OneRmState.removed() = Removed;
+
   const factory OneRmState.storageError() = StorageError;
   const factory OneRmState.notFoundError() = NotFoundError;
   const factory OneRmState.alreadyExistError() = AlreadyExistError;
