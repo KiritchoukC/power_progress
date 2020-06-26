@@ -6,4 +6,5 @@ abstract class MonthEvent with _$MonthEvent {
     @required int exerciseId,
     @required Month nextMonth,
   }) = UpdateNextMonth;
+  const factory MonthEvent.fetch({@required int exerciseId}) = Fetch;
 }

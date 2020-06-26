@@ -23,7 +23,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
   });
 
   @override
-  OneRmState get initialState => const OneRmState.initial();
+  OneRmState get initialState => const OneRmState.initial(exerciseId: 0);
 
   @override
   Stream<OneRmState> mapEventToState(
@@ -54,7 +54,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
             yield const OneRmState.notFoundError();
           },
           (oneRm) async* {
-            yield OneRmState.fetched(oneRm: oneRm);
+            yield OneRmState.fetched(exerciseId: event.exerciseId, oneRm: oneRm);
           },
         );
       },
@@ -82,7 +82,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
         yield _mapFailureToState(failure);
       },
       (_) async* {
-        yield OneRmState.generatedAndSaved(oneRm: generatedOneRm);
+        yield OneRmState.generatedAndSaved(exerciseId: event.exerciseId, oneRm: generatedOneRm);
       },
     );
   }

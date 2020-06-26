@@ -21,7 +21,7 @@ class WeekBloc extends Bloc<WeekEvent, WeekState> {
   });
 
   @override
-  WeekState get initialState => const WeekState.initial();
+  WeekState get initialState => const WeekState.initial(exerciseId: 0);
 
   @override
   Stream<WeekState> mapEventToState(
@@ -31,16 +31,16 @@ class WeekBloc extends Bloc<WeekEvent, WeekState> {
   }
 
   Stream<WeekState> _handleUpdateNextWeekEvent(WeekEvent event) async* {
-    yield const WeekState.weekUpdateInProgress();
+    yield WeekState.weekUpdateInProgress(exerciseId: event.exerciseId);
 
     final output = await exerciseRepository.updateNextWeek(event.exerciseId, event.nextWeek);
 
     Stream<WeekState> onFailure(ExerciseFailure failure) async* {
-      yield WeekState.error(message: failure.toErrorMessage());
+      yield WeekState.error(exerciseId: event.exerciseId, message: failure.toErrorMessage());
     }
 
     Stream<WeekState> onSuccess(Unit unit) async* {
-      yield WeekState.weekUpdated(week: Week(event.nextWeek));
+      yield WeekState.weekUpdated(exerciseId: event.exerciseId, week: Week(event.nextWeek));
     }
 
     yield* output.fold(onFailure, onSuccess);

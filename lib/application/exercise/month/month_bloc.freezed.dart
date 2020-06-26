@@ -19,6 +19,12 @@ class _$MonthEventTearOff {
       nextMonth: nextMonth,
     );
   }
+
+  Fetch fetch({@required int exerciseId}) {
+    return Fetch(
+      exerciseId: exerciseId,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -26,7 +32,29 @@ const $MonthEvent = _$MonthEventTearOff();
 
 mixin _$MonthEvent {
   int get exerciseId;
-  Month get nextMonth;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateNextMonth(int exerciseId, Month nextMonth),
+    @required Result fetch(int exerciseId),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateNextMonth(int exerciseId, Month nextMonth),
+    Result fetch(int exerciseId),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateNextMonth(UpdateNextMonth value),
+    @required Result fetch(Fetch value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateNextMonth(UpdateNextMonth value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  });
 
   $MonthEventCopyWith<MonthEvent> get copyWith;
 }
@@ -35,7 +63,7 @@ abstract class $MonthEventCopyWith<$Res> {
   factory $MonthEventCopyWith(
           MonthEvent value, $Res Function(MonthEvent) then) =
       _$MonthEventCopyWithImpl<$Res>;
-  $Res call({int exerciseId, Month nextMonth});
+  $Res call({int exerciseId});
 }
 
 class _$MonthEventCopyWithImpl<$Res> implements $MonthEventCopyWith<$Res> {
@@ -48,11 +76,9 @@ class _$MonthEventCopyWithImpl<$Res> implements $MonthEventCopyWith<$Res> {
   @override
   $Res call({
     Object exerciseId = freezed,
-    Object nextMonth = freezed,
   }) {
     return _then(_value.copyWith(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
-      nextMonth: nextMonth == freezed ? _value.nextMonth : nextMonth as Month,
     ));
   }
 }
@@ -123,6 +149,56 @@ class _$UpdateNextMonth implements UpdateNextMonth {
   @override
   $UpdateNextMonthCopyWith<UpdateNextMonth> get copyWith =>
       _$UpdateNextMonthCopyWithImpl<UpdateNextMonth>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateNextMonth(int exerciseId, Month nextMonth),
+    @required Result fetch(int exerciseId),
+  }) {
+    assert(updateNextMonth != null);
+    assert(fetch != null);
+    return updateNextMonth(exerciseId, nextMonth);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateNextMonth(int exerciseId, Month nextMonth),
+    Result fetch(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateNextMonth != null) {
+      return updateNextMonth(exerciseId, nextMonth);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateNextMonth(UpdateNextMonth value),
+    @required Result fetch(Fetch value),
+  }) {
+    assert(updateNextMonth != null);
+    assert(fetch != null);
+    return updateNextMonth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateNextMonth(UpdateNextMonth value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateNextMonth != null) {
+      return updateNextMonth(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class UpdateNextMonth implements MonthEvent {
@@ -132,31 +208,162 @@ abstract class UpdateNextMonth implements MonthEvent {
 
   @override
   int get exerciseId;
-  @override
   Month get nextMonth;
   @override
   $UpdateNextMonthCopyWith<UpdateNextMonth> get copyWith;
 }
 
+abstract class $FetchCopyWith<$Res> implements $MonthEventCopyWith<$Res> {
+  factory $FetchCopyWith(Fetch value, $Res Function(Fetch) then) =
+      _$FetchCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
+}
+
+class _$FetchCopyWithImpl<$Res> extends _$MonthEventCopyWithImpl<$Res>
+    implements $FetchCopyWith<$Res> {
+  _$FetchCopyWithImpl(Fetch _value, $Res Function(Fetch) _then)
+      : super(_value, (v) => _then(v as Fetch));
+
+  @override
+  Fetch get _value => super._value as Fetch;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(Fetch(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
+}
+
+class _$Fetch implements Fetch {
+  const _$Fetch({@required this.exerciseId}) : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
+
+  @override
+  String toString() {
+    return 'MonthEvent.fetch(exerciseId: $exerciseId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Fetch &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $FetchCopyWith<Fetch> get copyWith =>
+      _$FetchCopyWithImpl<Fetch>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateNextMonth(int exerciseId, Month nextMonth),
+    @required Result fetch(int exerciseId),
+  }) {
+    assert(updateNextMonth != null);
+    assert(fetch != null);
+    return fetch(exerciseId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateNextMonth(int exerciseId, Month nextMonth),
+    Result fetch(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetch != null) {
+      return fetch(exerciseId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateNextMonth(UpdateNextMonth value),
+    @required Result fetch(Fetch value),
+  }) {
+    assert(updateNextMonth != null);
+    assert(fetch != null);
+    return fetch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateNextMonth(UpdateNextMonth value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetch != null) {
+      return fetch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Fetch implements MonthEvent {
+  const factory Fetch({@required int exerciseId}) = _$Fetch;
+
+  @override
+  int get exerciseId;
+  @override
+  $FetchCopyWith<Fetch> get copyWith;
+}
+
 class _$MonthStateTearOff {
   const _$MonthStateTearOff();
 
-  Initial initial() {
-    return const Initial();
+  Initial initial({@required int exerciseId}) {
+    return Initial(
+      exerciseId: exerciseId,
+    );
   }
 
-  MonthUpdateInProgress monthUpdateInProgress() {
-    return const MonthUpdateInProgress();
+  MonthUpdateInProgress monthUpdateInProgress({@required int exerciseId}) {
+    return MonthUpdateInProgress(
+      exerciseId: exerciseId,
+    );
   }
 
-  MonthUpdated monthUpdated({@required Month month}) {
+  MonthUpdated monthUpdated({@required int exerciseId, @required Month month}) {
     return MonthUpdated(
+      exerciseId: exerciseId,
       month: month,
     );
   }
 
-  Error error({@required String message}) {
+  FetchInProgress fetchInProgress({@required int exerciseId}) {
+    return FetchInProgress(
+      exerciseId: exerciseId,
+    );
+  }
+
+  Fetched fetched({@required int exerciseId, @required Month month}) {
+    return Fetched(
+      exerciseId: exerciseId,
+      month: month,
+    );
+  }
+
+  Error error({@required int exerciseId, @required String message}) {
     return Error(
+      exerciseId: exerciseId,
       message: message,
     );
   }
@@ -166,19 +373,25 @@ class _$MonthStateTearOff {
 const $MonthState = _$MonthStateTearOff();
 
 mixin _$MonthState {
+  int get exerciseId;
+
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(Month month),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result monthUpdateInProgress(),
-    Result monthUpdated(Month month),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -186,6 +399,8 @@ mixin _$MonthState {
     @required Result initial(Initial value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   });
   @optionalTypeArgs
@@ -193,15 +408,20 @@ mixin _$MonthState {
     Result initial(Initial value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   });
+
+  $MonthStateCopyWith<MonthState> get copyWith;
 }
 
 abstract class $MonthStateCopyWith<$Res> {
   factory $MonthStateCopyWith(
           MonthState value, $Res Function(MonthState) then) =
       _$MonthStateCopyWithImpl<$Res>;
+  $Res call({int exerciseId});
 }
 
 class _$MonthStateCopyWithImpl<$Res> implements $MonthStateCopyWith<$Res> {
@@ -210,11 +430,22 @@ class _$MonthStateCopyWithImpl<$Res> implements $MonthStateCopyWith<$Res> {
   final MonthState _value;
   // ignore: unused_field
   final $Res Function(MonthState) _then;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
-abstract class $InitialCopyWith<$Res> {
+abstract class $InitialCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
 }
 
 class _$InitialCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
@@ -224,51 +455,78 @@ class _$InitialCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
 
   @override
   Initial get _value => super._value as Initial;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(Initial(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
 class _$Initial implements Initial {
-  const _$Initial();
+  const _$Initial({@required this.exerciseId}) : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
 
   @override
   String toString() {
-    return 'MonthState.initial()';
+    return 'MonthState.initial(exerciseId: $exerciseId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) ||
+        (other is Initial &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $InitialCopyWith<Initial> get copyWith =>
+      _$InitialCopyWithImpl<Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(Month month),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
-    return initial();
+    return initial(exerciseId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result monthUpdateInProgress(),
-    Result monthUpdated(Month month),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(exerciseId);
     }
     return orElse();
   }
@@ -279,11 +537,15 @@ class _$Initial implements Initial {
     @required Result initial(Initial value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return initial(this);
   }
@@ -294,6 +556,8 @@ class _$Initial implements Initial {
     Result initial(Initial value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -306,13 +570,21 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements MonthState {
-  const factory Initial() = _$Initial;
+  const factory Initial({@required int exerciseId}) = _$Initial;
+
+  @override
+  int get exerciseId;
+  @override
+  $InitialCopyWith<Initial> get copyWith;
 }
 
-abstract class $MonthUpdateInProgressCopyWith<$Res> {
+abstract class $MonthUpdateInProgressCopyWith<$Res>
+    implements $MonthStateCopyWith<$Res> {
   factory $MonthUpdateInProgressCopyWith(MonthUpdateInProgress value,
           $Res Function(MonthUpdateInProgress) then) =
       _$MonthUpdateInProgressCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
 }
 
 class _$MonthUpdateInProgressCopyWithImpl<$Res>
@@ -324,51 +596,80 @@ class _$MonthUpdateInProgressCopyWithImpl<$Res>
 
   @override
   MonthUpdateInProgress get _value => super._value as MonthUpdateInProgress;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(MonthUpdateInProgress(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
 class _$MonthUpdateInProgress implements MonthUpdateInProgress {
-  const _$MonthUpdateInProgress();
+  const _$MonthUpdateInProgress({@required this.exerciseId})
+      : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
 
   @override
   String toString() {
-    return 'MonthState.monthUpdateInProgress()';
+    return 'MonthState.monthUpdateInProgress(exerciseId: $exerciseId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is MonthUpdateInProgress);
+    return identical(this, other) ||
+        (other is MonthUpdateInProgress &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $MonthUpdateInProgressCopyWith<MonthUpdateInProgress> get copyWith =>
+      _$MonthUpdateInProgressCopyWithImpl<MonthUpdateInProgress>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(Month month),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
-    return monthUpdateInProgress();
+    return monthUpdateInProgress(exerciseId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result monthUpdateInProgress(),
-    Result monthUpdated(Month month),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (monthUpdateInProgress != null) {
-      return monthUpdateInProgress();
+      return monthUpdateInProgress(exerciseId);
     }
     return orElse();
   }
@@ -379,11 +680,15 @@ class _$MonthUpdateInProgress implements MonthUpdateInProgress {
     @required Result initial(Initial value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return monthUpdateInProgress(this);
   }
@@ -394,6 +699,8 @@ class _$MonthUpdateInProgress implements MonthUpdateInProgress {
     Result initial(Initial value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -406,14 +713,22 @@ class _$MonthUpdateInProgress implements MonthUpdateInProgress {
 }
 
 abstract class MonthUpdateInProgress implements MonthState {
-  const factory MonthUpdateInProgress() = _$MonthUpdateInProgress;
+  const factory MonthUpdateInProgress({@required int exerciseId}) =
+      _$MonthUpdateInProgress;
+
+  @override
+  int get exerciseId;
+  @override
+  $MonthUpdateInProgressCopyWith<MonthUpdateInProgress> get copyWith;
 }
 
-abstract class $MonthUpdatedCopyWith<$Res> {
+abstract class $MonthUpdatedCopyWith<$Res>
+    implements $MonthStateCopyWith<$Res> {
   factory $MonthUpdatedCopyWith(
           MonthUpdated value, $Res Function(MonthUpdated) then) =
       _$MonthUpdatedCopyWithImpl<$Res>;
-  $Res call({Month month});
+  @override
+  $Res call({int exerciseId, Month month});
 }
 
 class _$MonthUpdatedCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
@@ -427,36 +742,47 @@ class _$MonthUpdatedCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object month = freezed,
   }) {
     return _then(MonthUpdated(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       month: month == freezed ? _value.month : month as Month,
     ));
   }
 }
 
 class _$MonthUpdated implements MonthUpdated {
-  const _$MonthUpdated({@required this.month}) : assert(month != null);
+  const _$MonthUpdated({@required this.exerciseId, @required this.month})
+      : assert(exerciseId != null),
+        assert(month != null);
 
+  @override
+  final int exerciseId;
   @override
   final Month month;
 
   @override
   String toString() {
-    return 'MonthState.monthUpdated(month: $month)';
+    return 'MonthState.monthUpdated(exerciseId: $exerciseId, month: $month)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is MonthUpdated &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.month, month) ||
                 const DeepCollectionEquality().equals(other.month, month)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(month);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(month);
 
   @override
   $MonthUpdatedCopyWith<MonthUpdated> get copyWith =>
@@ -465,30 +791,36 @@ class _$MonthUpdated implements MonthUpdated {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(Month month),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
-    return monthUpdated(month);
+    return monthUpdated(exerciseId, month);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result monthUpdateInProgress(),
-    Result monthUpdated(Month month),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (monthUpdated != null) {
-      return monthUpdated(month);
+      return monthUpdated(exerciseId, month);
     }
     return orElse();
   }
@@ -499,11 +831,15 @@ class _$MonthUpdated implements MonthUpdated {
     @required Result initial(Initial value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return monthUpdated(this);
   }
@@ -514,6 +850,8 @@ class _$MonthUpdated implements MonthUpdated {
     Result initial(Initial value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -526,16 +864,311 @@ class _$MonthUpdated implements MonthUpdated {
 }
 
 abstract class MonthUpdated implements MonthState {
-  const factory MonthUpdated({@required Month month}) = _$MonthUpdated;
+  const factory MonthUpdated(
+      {@required int exerciseId, @required Month month}) = _$MonthUpdated;
 
+  @override
+  int get exerciseId;
   Month get month;
+  @override
   $MonthUpdatedCopyWith<MonthUpdated> get copyWith;
 }
 
-abstract class $ErrorCopyWith<$Res> {
+abstract class $FetchInProgressCopyWith<$Res>
+    implements $MonthStateCopyWith<$Res> {
+  factory $FetchInProgressCopyWith(
+          FetchInProgress value, $Res Function(FetchInProgress) then) =
+      _$FetchInProgressCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
+}
+
+class _$FetchInProgressCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
+    implements $FetchInProgressCopyWith<$Res> {
+  _$FetchInProgressCopyWithImpl(
+      FetchInProgress _value, $Res Function(FetchInProgress) _then)
+      : super(_value, (v) => _then(v as FetchInProgress));
+
+  @override
+  FetchInProgress get _value => super._value as FetchInProgress;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(FetchInProgress(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
+}
+
+class _$FetchInProgress implements FetchInProgress {
+  const _$FetchInProgress({@required this.exerciseId})
+      : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
+
+  @override
+  String toString() {
+    return 'MonthState.fetchInProgress(exerciseId: $exerciseId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is FetchInProgress &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $FetchInProgressCopyWith<FetchInProgress> get copyWith =>
+      _$FetchInProgressCopyWithImpl<FetchInProgress>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
+  }) {
+    assert(initial != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetchInProgress(exerciseId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchInProgress != null) {
+      return fetchInProgress(exerciseId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result monthUpdateInProgress(MonthUpdateInProgress value),
+    @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetchInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result monthUpdateInProgress(MonthUpdateInProgress value),
+    Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchInProgress != null) {
+      return fetchInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchInProgress implements MonthState {
+  const factory FetchInProgress({@required int exerciseId}) = _$FetchInProgress;
+
+  @override
+  int get exerciseId;
+  @override
+  $FetchInProgressCopyWith<FetchInProgress> get copyWith;
+}
+
+abstract class $FetchedCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $FetchedCopyWith(Fetched value, $Res Function(Fetched) then) =
+      _$FetchedCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId, Month month});
+}
+
+class _$FetchedCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
+    implements $FetchedCopyWith<$Res> {
+  _$FetchedCopyWithImpl(Fetched _value, $Res Function(Fetched) _then)
+      : super(_value, (v) => _then(v as Fetched));
+
+  @override
+  Fetched get _value => super._value as Fetched;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+    Object month = freezed,
+  }) {
+    return _then(Fetched(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+      month: month == freezed ? _value.month : month as Month,
+    ));
+  }
+}
+
+class _$Fetched implements Fetched {
+  const _$Fetched({@required this.exerciseId, @required this.month})
+      : assert(exerciseId != null),
+        assert(month != null);
+
+  @override
+  final int exerciseId;
+  @override
+  final Month month;
+
+  @override
+  String toString() {
+    return 'MonthState.fetched(exerciseId: $exerciseId, month: $month)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Fetched &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
+            (identical(other.month, month) ||
+                const DeepCollectionEquality().equals(other.month, month)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(month);
+
+  @override
+  $FetchedCopyWith<Fetched> get copyWith =>
+      _$FetchedCopyWithImpl<Fetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
+  }) {
+    assert(initial != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetched(exerciseId, month);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetched != null) {
+      return fetched(exerciseId, month);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result monthUpdateInProgress(MonthUpdateInProgress value),
+    @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(monthUpdateInProgress != null);
+    assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result monthUpdateInProgress(MonthUpdateInProgress value),
+    Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetched != null) {
+      return fetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Fetched implements MonthState {
+  const factory Fetched({@required int exerciseId, @required Month month}) =
+      _$Fetched;
+
+  @override
+  int get exerciseId;
+  Month get month;
+  @override
+  $FetchedCopyWith<Fetched> get copyWith;
+}
+
+abstract class $ErrorCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  $Res call({String message});
+  @override
+  $Res call({int exerciseId, String message});
 }
 
 class _$ErrorCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
@@ -548,36 +1181,47 @@ class _$ErrorCopyWithImpl<$Res> extends _$MonthStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object message = freezed,
   }) {
     return _then(Error(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       message: message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 class _$Error implements Error {
-  const _$Error({@required this.message}) : assert(message != null);
+  const _$Error({@required this.exerciseId, @required this.message})
+      : assert(exerciseId != null),
+        assert(message != null);
 
+  @override
+  final int exerciseId;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'MonthState.error(message: $message)';
+    return 'MonthState.error(exerciseId: $exerciseId, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Error &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(message);
 
   @override
   $ErrorCopyWith<Error> get copyWith =>
@@ -586,30 +1230,36 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result monthUpdateInProgress(),
-    @required Result monthUpdated(Month month),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result monthUpdateInProgress(int exerciseId),
+    @required Result monthUpdated(int exerciseId, Month month),
+    @required Result fetchInProgress(int exerciseId),
+    @required Result fetched(int exerciseId, Month month),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
-    return error(message);
+    return error(exerciseId, message);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result monthUpdateInProgress(),
-    Result monthUpdated(Month month),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result monthUpdateInProgress(int exerciseId),
+    Result monthUpdated(int exerciseId, Month month),
+    Result fetchInProgress(int exerciseId),
+    Result fetched(int exerciseId, Month month),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
-      return error(message);
+      return error(exerciseId, message);
     }
     return orElse();
   }
@@ -620,11 +1270,15 @@ class _$Error implements Error {
     @required Result initial(Initial value),
     @required Result monthUpdateInProgress(MonthUpdateInProgress value),
     @required Result monthUpdated(MonthUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(monthUpdateInProgress != null);
     assert(monthUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return error(this);
   }
@@ -635,6 +1289,8 @@ class _$Error implements Error {
     Result initial(Initial value),
     Result monthUpdateInProgress(MonthUpdateInProgress value),
     Result monthUpdated(MonthUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -647,8 +1303,12 @@ class _$Error implements Error {
 }
 
 abstract class Error implements MonthState {
-  const factory Error({@required String message}) = _$Error;
+  const factory Error({@required int exerciseId, @required String message}) =
+      _$Error;
 
+  @override
+  int get exerciseId;
   String get message;
+  @override
   $ErrorCopyWith<Error> get copyWith;
 }

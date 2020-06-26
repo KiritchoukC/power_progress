@@ -173,12 +173,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       );
 
       event.week.maybeWhen(
-        accumulation: () async => monthBloc.add(
-          MonthEvent.updateNextMonth(
-            exerciseId: event.exerciseId,
-            nextMonth: event.month,
-          ),
-        ),
         //? remove onerm for this month ?
         realization: () async => oneRmBloc.add(
           or_bloc.OneRmEvent.generateAndSave(
@@ -187,6 +181,12 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
             incrementation: event.incrementation,
             month: event.month,
             repsDone: some(WorkoutHelper.getTargetReps(event.month)),
+          ),
+        ),
+        deload: () async => monthBloc.add(
+          MonthEvent.updateNextMonth(
+            exerciseId: event.exerciseId,
+            nextMonth: event.month,
           ),
         ),
         orElse: () {},

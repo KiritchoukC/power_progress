@@ -25,7 +25,7 @@ class WorkoutPageArguments {
 class WorkoutPage extends StatelessWidget {
   final Exercise exercise;
 
-  const WorkoutPage({Key key, @required this.exercise}) : super(key: key);
+  WorkoutPage({Key key, @required this.exercise}) : super(key: key ?? Key(exercise.id.toString()));
 
   @override
   Widget build(BuildContext context) {

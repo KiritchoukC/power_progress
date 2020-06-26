@@ -155,22 +155,28 @@ abstract class UpdateNextWeek implements WeekEvent {
 class _$WeekStateTearOff {
   const _$WeekStateTearOff();
 
-  Initial initial() {
-    return const Initial();
+  Initial initial({@required int exerciseId}) {
+    return Initial(
+      exerciseId: exerciseId,
+    );
   }
 
-  WeekUpdateInProgress weekUpdateInProgress() {
-    return const WeekUpdateInProgress();
+  WeekUpdateInProgress weekUpdateInProgress({@required int exerciseId}) {
+    return WeekUpdateInProgress(
+      exerciseId: exerciseId,
+    );
   }
 
-  WeekUpdated weekUpdated({@required Week week}) {
+  WeekUpdated weekUpdated({@required int exerciseId, @required Week week}) {
     return WeekUpdated(
+      exerciseId: exerciseId,
       week: week,
     );
   }
 
-  Error error({@required String message}) {
+  Error error({@required int exerciseId, @required String message}) {
     return Error(
+      exerciseId: exerciseId,
       message: message,
     );
   }
@@ -180,19 +186,21 @@ class _$WeekStateTearOff {
 const $WeekState = _$WeekStateTearOff();
 
 mixin _$WeekState {
+  int get exerciseId;
+
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result weekUpdateInProgress(),
-    @required Result weekUpdated(Week week),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result weekUpdateInProgress(int exerciseId),
+    @required Result weekUpdated(int exerciseId, Week week),
+    @required Result error(int exerciseId, String message),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result weekUpdateInProgress(),
-    Result weekUpdated(Week week),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result weekUpdateInProgress(int exerciseId),
+    Result weekUpdated(int exerciseId, Week week),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -210,11 +218,14 @@ mixin _$WeekState {
     Result error(Error value),
     @required Result orElse(),
   });
+
+  $WeekStateCopyWith<WeekState> get copyWith;
 }
 
 abstract class $WeekStateCopyWith<$Res> {
   factory $WeekStateCopyWith(WeekState value, $Res Function(WeekState) then) =
       _$WeekStateCopyWithImpl<$Res>;
+  $Res call({int exerciseId});
 }
 
 class _$WeekStateCopyWithImpl<$Res> implements $WeekStateCopyWith<$Res> {
@@ -223,11 +234,22 @@ class _$WeekStateCopyWithImpl<$Res> implements $WeekStateCopyWith<$Res> {
   final WeekState _value;
   // ignore: unused_field
   final $Res Function(WeekState) _then;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
-abstract class $InitialCopyWith<$Res> {
+abstract class $InitialCopyWith<$Res> implements $WeekStateCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
 }
 
 class _$InitialCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
@@ -237,51 +259,72 @@ class _$InitialCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
 
   @override
   Initial get _value => super._value as Initial;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(Initial(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
 class _$Initial implements Initial {
-  const _$Initial();
+  const _$Initial({@required this.exerciseId}) : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
 
   @override
   String toString() {
-    return 'WeekState.initial()';
+    return 'WeekState.initial(exerciseId: $exerciseId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) ||
+        (other is Initial &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $InitialCopyWith<Initial> get copyWith =>
+      _$InitialCopyWithImpl<Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result weekUpdateInProgress(),
-    @required Result weekUpdated(Week week),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result weekUpdateInProgress(int exerciseId),
+    @required Result weekUpdated(int exerciseId, Week week),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(weekUpdateInProgress != null);
     assert(weekUpdated != null);
     assert(error != null);
-    return initial();
+    return initial(exerciseId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result weekUpdateInProgress(),
-    Result weekUpdated(Week week),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result weekUpdateInProgress(int exerciseId),
+    Result weekUpdated(int exerciseId, Week week),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(exerciseId);
     }
     return orElse();
   }
@@ -319,13 +362,21 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements WeekState {
-  const factory Initial() = _$Initial;
+  const factory Initial({@required int exerciseId}) = _$Initial;
+
+  @override
+  int get exerciseId;
+  @override
+  $InitialCopyWith<Initial> get copyWith;
 }
 
-abstract class $WeekUpdateInProgressCopyWith<$Res> {
+abstract class $WeekUpdateInProgressCopyWith<$Res>
+    implements $WeekStateCopyWith<$Res> {
   factory $WeekUpdateInProgressCopyWith(WeekUpdateInProgress value,
           $Res Function(WeekUpdateInProgress) then) =
       _$WeekUpdateInProgressCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId});
 }
 
 class _$WeekUpdateInProgressCopyWithImpl<$Res>
@@ -337,51 +388,74 @@ class _$WeekUpdateInProgressCopyWithImpl<$Res>
 
   @override
   WeekUpdateInProgress get _value => super._value as WeekUpdateInProgress;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(WeekUpdateInProgress(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
 class _$WeekUpdateInProgress implements WeekUpdateInProgress {
-  const _$WeekUpdateInProgress();
+  const _$WeekUpdateInProgress({@required this.exerciseId})
+      : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
 
   @override
   String toString() {
-    return 'WeekState.weekUpdateInProgress()';
+    return 'WeekState.weekUpdateInProgress(exerciseId: $exerciseId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is WeekUpdateInProgress);
+    return identical(this, other) ||
+        (other is WeekUpdateInProgress &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $WeekUpdateInProgressCopyWith<WeekUpdateInProgress> get copyWith =>
+      _$WeekUpdateInProgressCopyWithImpl<WeekUpdateInProgress>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result weekUpdateInProgress(),
-    @required Result weekUpdated(Week week),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result weekUpdateInProgress(int exerciseId),
+    @required Result weekUpdated(int exerciseId, Week week),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(weekUpdateInProgress != null);
     assert(weekUpdated != null);
     assert(error != null);
-    return weekUpdateInProgress();
+    return weekUpdateInProgress(exerciseId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result weekUpdateInProgress(),
-    Result weekUpdated(Week week),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result weekUpdateInProgress(int exerciseId),
+    Result weekUpdated(int exerciseId, Week week),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (weekUpdateInProgress != null) {
-      return weekUpdateInProgress();
+      return weekUpdateInProgress(exerciseId);
     }
     return orElse();
   }
@@ -419,14 +493,21 @@ class _$WeekUpdateInProgress implements WeekUpdateInProgress {
 }
 
 abstract class WeekUpdateInProgress implements WeekState {
-  const factory WeekUpdateInProgress() = _$WeekUpdateInProgress;
+  const factory WeekUpdateInProgress({@required int exerciseId}) =
+      _$WeekUpdateInProgress;
+
+  @override
+  int get exerciseId;
+  @override
+  $WeekUpdateInProgressCopyWith<WeekUpdateInProgress> get copyWith;
 }
 
-abstract class $WeekUpdatedCopyWith<$Res> {
+abstract class $WeekUpdatedCopyWith<$Res> implements $WeekStateCopyWith<$Res> {
   factory $WeekUpdatedCopyWith(
           WeekUpdated value, $Res Function(WeekUpdated) then) =
       _$WeekUpdatedCopyWithImpl<$Res>;
-  $Res call({Week week});
+  @override
+  $Res call({int exerciseId, Week week});
 }
 
 class _$WeekUpdatedCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
@@ -440,36 +521,47 @@ class _$WeekUpdatedCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object week = freezed,
   }) {
     return _then(WeekUpdated(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       week: week == freezed ? _value.week : week as Week,
     ));
   }
 }
 
 class _$WeekUpdated implements WeekUpdated {
-  const _$WeekUpdated({@required this.week}) : assert(week != null);
+  const _$WeekUpdated({@required this.exerciseId, @required this.week})
+      : assert(exerciseId != null),
+        assert(week != null);
 
+  @override
+  final int exerciseId;
   @override
   final Week week;
 
   @override
   String toString() {
-    return 'WeekState.weekUpdated(week: $week)';
+    return 'WeekState.weekUpdated(exerciseId: $exerciseId, week: $week)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is WeekUpdated &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.week, week) ||
                 const DeepCollectionEquality().equals(other.week, week)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(week);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(week);
 
   @override
   $WeekUpdatedCopyWith<WeekUpdated> get copyWith =>
@@ -478,30 +570,30 @@ class _$WeekUpdated implements WeekUpdated {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result weekUpdateInProgress(),
-    @required Result weekUpdated(Week week),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result weekUpdateInProgress(int exerciseId),
+    @required Result weekUpdated(int exerciseId, Week week),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(weekUpdateInProgress != null);
     assert(weekUpdated != null);
     assert(error != null);
-    return weekUpdated(week);
+    return weekUpdated(exerciseId, week);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result weekUpdateInProgress(),
-    Result weekUpdated(Week week),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result weekUpdateInProgress(int exerciseId),
+    Result weekUpdated(int exerciseId, Week week),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (weekUpdated != null) {
-      return weekUpdated(week);
+      return weekUpdated(exerciseId, week);
     }
     return orElse();
   }
@@ -539,16 +631,21 @@ class _$WeekUpdated implements WeekUpdated {
 }
 
 abstract class WeekUpdated implements WeekState {
-  const factory WeekUpdated({@required Week week}) = _$WeekUpdated;
+  const factory WeekUpdated({@required int exerciseId, @required Week week}) =
+      _$WeekUpdated;
 
+  @override
+  int get exerciseId;
   Week get week;
+  @override
   $WeekUpdatedCopyWith<WeekUpdated> get copyWith;
 }
 
-abstract class $ErrorCopyWith<$Res> {
+abstract class $ErrorCopyWith<$Res> implements $WeekStateCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  $Res call({String message});
+  @override
+  $Res call({int exerciseId, String message});
 }
 
 class _$ErrorCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
@@ -561,36 +658,47 @@ class _$ErrorCopyWithImpl<$Res> extends _$WeekStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object message = freezed,
   }) {
     return _then(Error(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       message: message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 class _$Error implements Error {
-  const _$Error({@required this.message}) : assert(message != null);
+  const _$Error({@required this.exerciseId, @required this.message})
+      : assert(exerciseId != null),
+        assert(message != null);
 
+  @override
+  final int exerciseId;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'WeekState.error(message: $message)';
+    return 'WeekState.error(exerciseId: $exerciseId, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Error &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(message);
 
   @override
   $ErrorCopyWith<Error> get copyWith =>
@@ -599,30 +707,30 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result weekUpdateInProgress(),
-    @required Result weekUpdated(Week week),
-    @required Result error(String message),
+    @required Result initial(int exerciseId),
+    @required Result weekUpdateInProgress(int exerciseId),
+    @required Result weekUpdated(int exerciseId, Week week),
+    @required Result error(int exerciseId, String message),
   }) {
     assert(initial != null);
     assert(weekUpdateInProgress != null);
     assert(weekUpdated != null);
     assert(error != null);
-    return error(message);
+    return error(exerciseId, message);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result weekUpdateInProgress(),
-    Result weekUpdated(Week week),
-    Result error(String message),
+    Result initial(int exerciseId),
+    Result weekUpdateInProgress(int exerciseId),
+    Result weekUpdated(int exerciseId, Week week),
+    Result error(int exerciseId, String message),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
-      return error(message);
+      return error(exerciseId, message);
     }
     return orElse();
   }
@@ -660,8 +768,12 @@ class _$Error implements Error {
 }
 
 abstract class Error implements WeekState {
-  const factory Error({@required String message}) = _$Error;
+  const factory Error({@required int exerciseId, @required String message}) =
+      _$Error;
 
+  @override
+  int get exerciseId;
   String get message;
+  @override
   $ErrorCopyWith<Error> get copyWith;
 }

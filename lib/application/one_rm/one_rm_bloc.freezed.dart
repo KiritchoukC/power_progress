@@ -731,16 +731,19 @@ abstract class Remove implements OneRmEvent {
 class _$OneRmStateTearOff {
   const _$OneRmStateTearOff();
 
-  Initial initial() {
-    return const Initial();
+  Initial initial({@required int exerciseId}) {
+    return Initial(
+      exerciseId: exerciseId,
+    );
   }
 
   FetchInProgres fetchInProgress() {
     return const FetchInProgres();
   }
 
-  Fetched fetched({@required OneRm oneRm}) {
+  Fetched fetched({@required int exerciseId, @required OneRm oneRm}) {
     return Fetched(
+      exerciseId: exerciseId,
       oneRm: oneRm,
     );
   }
@@ -749,8 +752,10 @@ class _$OneRmStateTearOff {
     return const GenerateAndSaveInProgress();
   }
 
-  GeneratedAndSaved generatedAndSaved({@required OneRm oneRm}) {
+  GeneratedAndSaved generatedAndSaved(
+      {@required int exerciseId, @required OneRm oneRm}) {
     return GeneratedAndSaved(
+      exerciseId: exerciseId,
       oneRm: oneRm,
     );
   }
@@ -790,11 +795,11 @@ const $OneRmState = _$OneRmStateTearOff();
 mixin _$OneRmState {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -805,11 +810,11 @@ mixin _$OneRmState {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -872,6 +877,7 @@ class _$OneRmStateCopyWithImpl<$Res> implements $OneRmStateCopyWith<$Res> {
 abstract class $InitialCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
+  $Res call({int exerciseId});
 }
 
 class _$InitialCopyWithImpl<$Res> extends _$OneRmStateCopyWithImpl<$Res>
@@ -881,32 +887,53 @@ class _$InitialCopyWithImpl<$Res> extends _$OneRmStateCopyWithImpl<$Res>
 
   @override
   Initial get _value => super._value as Initial;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(Initial(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
 }
 
 class _$Initial implements Initial {
-  const _$Initial();
+  const _$Initial({@required this.exerciseId}) : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
 
   @override
   String toString() {
-    return 'OneRmState.initial()';
+    return 'OneRmState.initial(exerciseId: $exerciseId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) ||
+        (other is Initial &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $InitialCopyWith<Initial> get copyWith =>
+      _$InitialCopyWithImpl<Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -927,17 +954,17 @@ class _$Initial implements Initial {
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
     assert(noExistingDataForThisExerciseError != null);
-    return initial();
+    return initial(exerciseId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -949,7 +976,7 @@ class _$Initial implements Initial {
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(exerciseId);
     }
     return orElse();
   }
@@ -1014,7 +1041,10 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements OneRmState {
-  const factory Initial() = _$Initial;
+  const factory Initial({@required int exerciseId}) = _$Initial;
+
+  int get exerciseId;
+  $InitialCopyWith<Initial> get copyWith;
 }
 
 abstract class $FetchInProgresCopyWith<$Res> {
@@ -1052,11 +1082,11 @@ class _$FetchInProgres implements FetchInProgres {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1083,11 +1113,11 @@ class _$FetchInProgres implements FetchInProgres {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -1170,7 +1200,7 @@ abstract class FetchInProgres implements OneRmState {
 abstract class $FetchedCopyWith<$Res> {
   factory $FetchedCopyWith(Fetched value, $Res Function(Fetched) then) =
       _$FetchedCopyWithImpl<$Res>;
-  $Res call({OneRm oneRm});
+  $Res call({int exerciseId, OneRm oneRm});
 }
 
 class _$FetchedCopyWithImpl<$Res> extends _$OneRmStateCopyWithImpl<$Res>
@@ -1183,36 +1213,47 @@ class _$FetchedCopyWithImpl<$Res> extends _$OneRmStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object oneRm = freezed,
   }) {
     return _then(Fetched(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
 
 class _$Fetched implements Fetched {
-  const _$Fetched({@required this.oneRm}) : assert(oneRm != null);
+  const _$Fetched({@required this.exerciseId, @required this.oneRm})
+      : assert(exerciseId != null),
+        assert(oneRm != null);
 
+  @override
+  final int exerciseId;
   @override
   final OneRm oneRm;
 
   @override
   String toString() {
-    return 'OneRmState.fetched(oneRm: $oneRm)';
+    return 'OneRmState.fetched(exerciseId: $exerciseId, oneRm: $oneRm)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Fetched &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.oneRm, oneRm) ||
                 const DeepCollectionEquality().equals(other.oneRm, oneRm)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(oneRm);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(oneRm);
 
   @override
   $FetchedCopyWith<Fetched> get copyWith =>
@@ -1221,11 +1262,11 @@ class _$Fetched implements Fetched {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1246,17 +1287,17 @@ class _$Fetched implements Fetched {
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
     assert(noExistingDataForThisExerciseError != null);
-    return fetched(oneRm);
+    return fetched(exerciseId, oneRm);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -1268,7 +1309,7 @@ class _$Fetched implements Fetched {
   }) {
     assert(orElse != null);
     if (fetched != null) {
-      return fetched(oneRm);
+      return fetched(exerciseId, oneRm);
     }
     return orElse();
   }
@@ -1333,8 +1374,10 @@ class _$Fetched implements Fetched {
 }
 
 abstract class Fetched implements OneRmState {
-  const factory Fetched({@required OneRm oneRm}) = _$Fetched;
+  const factory Fetched({@required int exerciseId, @required OneRm oneRm}) =
+      _$Fetched;
 
+  int get exerciseId;
   OneRm get oneRm;
   $FetchedCopyWith<Fetched> get copyWith;
 }
@@ -1376,11 +1419,11 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1407,11 +1450,11 @@ class _$GenerateAndSaveInProgress implements GenerateAndSaveInProgress {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -1495,7 +1538,7 @@ abstract class $GeneratedAndSavedCopyWith<$Res> {
   factory $GeneratedAndSavedCopyWith(
           GeneratedAndSaved value, $Res Function(GeneratedAndSaved) then) =
       _$GeneratedAndSavedCopyWithImpl<$Res>;
-  $Res call({OneRm oneRm});
+  $Res call({int exerciseId, OneRm oneRm});
 }
 
 class _$GeneratedAndSavedCopyWithImpl<$Res>
@@ -1510,36 +1553,47 @@ class _$GeneratedAndSavedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object exerciseId = freezed,
     Object oneRm = freezed,
   }) {
     return _then(GeneratedAndSaved(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
 
 class _$GeneratedAndSaved implements GeneratedAndSaved {
-  const _$GeneratedAndSaved({@required this.oneRm}) : assert(oneRm != null);
+  const _$GeneratedAndSaved({@required this.exerciseId, @required this.oneRm})
+      : assert(exerciseId != null),
+        assert(oneRm != null);
 
+  @override
+  final int exerciseId;
   @override
   final OneRm oneRm;
 
   @override
   String toString() {
-    return 'OneRmState.generatedAndSaved(oneRm: $oneRm)';
+    return 'OneRmState.generatedAndSaved(exerciseId: $exerciseId, oneRm: $oneRm)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GeneratedAndSaved &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
             (identical(other.oneRm, oneRm) ||
                 const DeepCollectionEquality().equals(other.oneRm, oneRm)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(oneRm);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(oneRm);
 
   @override
   $GeneratedAndSavedCopyWith<GeneratedAndSaved> get copyWith =>
@@ -1548,11 +1602,11 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1573,17 +1627,17 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
     assert(alreadyExistError != null);
     assert(unexpectedError != null);
     assert(noExistingDataForThisExerciseError != null);
-    return generatedAndSaved(oneRm);
+    return generatedAndSaved(exerciseId, oneRm);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -1595,7 +1649,7 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
   }) {
     assert(orElse != null);
     if (generatedAndSaved != null) {
-      return generatedAndSaved(oneRm);
+      return generatedAndSaved(exerciseId, oneRm);
     }
     return orElse();
   }
@@ -1660,9 +1714,10 @@ class _$GeneratedAndSaved implements GeneratedAndSaved {
 }
 
 abstract class GeneratedAndSaved implements OneRmState {
-  const factory GeneratedAndSaved({@required OneRm oneRm}) =
-      _$GeneratedAndSaved;
+  const factory GeneratedAndSaved(
+      {@required int exerciseId, @required OneRm oneRm}) = _$GeneratedAndSaved;
 
+  int get exerciseId;
   OneRm get oneRm;
   $GeneratedAndSavedCopyWith<GeneratedAndSaved> get copyWith;
 }
@@ -1703,11 +1758,11 @@ class _$RemoveInProgress implements RemoveInProgress {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1734,11 +1789,11 @@ class _$RemoveInProgress implements RemoveInProgress {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -1851,11 +1906,11 @@ class _$Removed implements Removed {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -1882,11 +1937,11 @@ class _$Removed implements Removed {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -2001,11 +2056,11 @@ class _$StorageError implements StorageError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -2032,11 +2087,11 @@ class _$StorageError implements StorageError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -2151,11 +2206,11 @@ class _$NotFoundError implements NotFoundError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -2182,11 +2237,11 @@ class _$NotFoundError implements NotFoundError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -2302,11 +2357,11 @@ class _$AlreadyExistError implements AlreadyExistError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -2333,11 +2388,11 @@ class _$AlreadyExistError implements AlreadyExistError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -2452,11 +2507,11 @@ class _$UnexpectedError implements UnexpectedError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -2483,11 +2538,11 @@ class _$UnexpectedError implements UnexpectedError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),
@@ -2608,11 +2663,11 @@ class _$NoExistingDataForThisExerciseError
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(int exerciseId),
     @required Result fetchInProgress(),
-    @required Result fetched(OneRm oneRm),
+    @required Result fetched(int exerciseId, OneRm oneRm),
     @required Result generateAndSaveInProgress(),
-    @required Result generatedAndSaved(OneRm oneRm),
+    @required Result generatedAndSaved(int exerciseId, OneRm oneRm),
     @required Result removeInProgress(),
     @required Result removed(),
     @required Result storageError(),
@@ -2639,11 +2694,11 @@ class _$NoExistingDataForThisExerciseError
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(int exerciseId),
     Result fetchInProgress(),
-    Result fetched(OneRm oneRm),
+    Result fetched(int exerciseId, OneRm oneRm),
     Result generateAndSaveInProgress(),
-    Result generatedAndSaved(OneRm oneRm),
+    Result generatedAndSaved(int exerciseId, OneRm oneRm),
     Result removeInProgress(),
     Result removed(),
     Result storageError(),

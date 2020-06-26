@@ -2,10 +2,15 @@ part of 'month_bloc.dart';
 
 @freezed
 abstract class MonthState with _$MonthState {
-  const factory MonthState.initial() = Initial;
+  const factory MonthState.initial({@required int exerciseId}) = Initial;
 
-  const factory MonthState.monthUpdateInProgress() = MonthUpdateInProgress;
-  const factory MonthState.monthUpdated({@required Month month}) = MonthUpdated;
+  const factory MonthState.monthUpdateInProgress({@required int exerciseId}) =
+      MonthUpdateInProgress;
+  const factory MonthState.monthUpdated({@required int exerciseId, @required Month month}) =
+      MonthUpdated;
 
-  const factory MonthState.error({@required String message}) = Error;
+  const factory MonthState.fetchInProgress({@required int exerciseId}) = FetchInProgress;
+  const factory MonthState.fetched({@required int exerciseId, @required Month month}) = Fetched;
+
+  const factory MonthState.error({@required int exerciseId, @required String message}) = Error;
 }

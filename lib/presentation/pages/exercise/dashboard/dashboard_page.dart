@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
@@ -47,7 +48,7 @@ class DashboardPage extends StatelessWidget {
             );
           },
           builder: (context, state) {
-            Widget fetch(_) {
+            Widget fetch() {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 BlocProvider.of<ExerciseBloc>(context).add(const ExerciseEvent.fetch());
               });
@@ -55,11 +56,11 @@ class DashboardPage extends StatelessWidget {
               return const CenteredLoading();
             }
 
-            return state.maybeMap(
+            return state.maybeWhen(
               removed: fetch,
               initial: fetch,
               added: fetch,
-              fetched: (value) => _Body(exercises: value.exercises),
+              fetched: (exercises) => _Body(exercises: exercises),
               orElse: () => const CenteredLoading(),
             );
           },

@@ -85,120 +85,171 @@ class _Card extends StatelessWidget {
                       color: Colors.grey.shade700,
                     ),
               ),
-              BlocBuilder<OneRmBloc, OneRmState>(
-                builder: (context, state) {
-                  // happens when loading the one rm
-                  Widget _progress() => Text(
-                        '0.0 Kg',
-                        style: Theme.of(context).textTheme.subtitle1.apply(
-                              color: Colors.black54.withAlpha(20),
-                            ),
-                      );
-
-                  // fetch the one rm
-                  Widget _fetch() {
-                    context
-                        .bloc<OneRmBloc>()
-                        .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
-
-                    return _progress();
-                  }
-
-                  // show the one rm.
-                  Widget _oneRm(OneRm oneRm) => Text(
-                        '${oneRm.getOrCrash()} Kg',
-                        style: Theme.of(context).textTheme.subtitle1.apply(
-                              color: Colors.black54,
-                            ),
-                      );
-
-                  // react to state
-                  return state.maybeWhen(
-                    initial: _fetch,
-                    generatedAndSaved: _oneRm,
-                    fetched: _oneRm,
-                    orElse: _progress,
-                  );
-                },
-              ),
+              _OneRmWidget(exercise: exercise),
               Row(
                 children: [
                   Icon(
                     Icons.keyboard_arrow_right,
                     color: Theme.of(context).accentColor,
                   ),
-                  BlocBuilder<WeekBloc, WeekState>(
-                    builder: (context, state) {
-                      Widget _progress() => Text(
-                            'next week workout',
-                            style: Theme.of(context).textTheme.bodyText1.apply(
-                                  color: Theme.of(context).accentColor.withAlpha(50),
-                                ),
-                          );
-
-                      Widget _nextWeek(Week week) => Text(
-                            week.displayName,
-                            style: Theme.of(context).textTheme.bodyText1.apply(
-                                  color: Theme.of(context).accentColor,
-                                ),
-                          );
-
-                      Widget _initialWeek() => Text(
-                            exercise.nextWeek.displayName,
-                            style: Theme.of(context).textTheme.bodyText1.apply(
-                                  color: Theme.of(context).accentColor,
-                                ),
-                          );
-
-                      return state.maybeWhen(
-                        initial: _initialWeek,
-                        weekUpdated: _nextWeek,
-                        weekUpdateInProgress: _progress,
-                        orElse: _progress,
-                      );
-                    },
-                  ),
+                  _WeekWidget(exercise: exercise),
                 ],
               )
             ],
           ),
           Column(
             children: [
-              BlocBuilder<MonthBloc, MonthState>(
-                builder: (context, state) {
-                  Widget _progress() => Text(
-                        'Month ${exercise.month.getOrCrash()}',
-                        style: Theme.of(context).textTheme.subtitle2.apply(
-                              color: Colors.black54.withAlpha(50),
-                            ),
-                      );
-
-                  Widget _initialMonth() => Text(
-                        'Month ${exercise.month.getOrCrash()}',
-                        style: Theme.of(context).textTheme.subtitle2.apply(
-                              color: Colors.black54,
-                            ),
-                      );
-
-                  Widget _month(Month month) => Text(
-                        'Month ${month.getOrCrash()}',
-                        style: Theme.of(context).textTheme.subtitle2.apply(
-                              color: Colors.black54,
-                            ),
-                      );
-
-                  return state.maybeWhen(
-                    initial: _initialMonth,
-                    monthUpdateInProgress: _progress,
-                    monthUpdated: _month,
-                    orElse: _progress,
-                  );
-                },
-              ),
+              _MonthWidget(exercise: exercise),
             ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class _OneRmWidget extends StatelessWidget {
+  const _OneRmWidget({
+    Key key,
+    @required this.exercise,
+  }) : super(key: key);
+
+  final Exercise exercise;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<OneRmBloc, OneRmState>(
+      condition: (previous, current) => current.maybeWhen(
+        initial: (exerciseId) => exerciseId == exercise.id,
+        generatedAndSaved: (exerciseId, _) => exerciseId == exercise.id,
+        fetched: (exerciseId, _) => exerciseId == exercise.id,
+        orElse: () => false,
+      ),
+      builder: (context, state) {
+        // happens when loading the one rm
+        Widget _progress() => Text(
+              '0.0 Kg',
+              style: Theme.of(context).textTheme.subtitle1.apply(
+                    color: Colors.black54.withAlpha(20),
+                  ),
+            );
+
+        // fetch the one rm
+        Widget _fetch(_) {
+          context
+              .bloc<OneRmBloc>()
+              .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
+
+          return _progress();
+        }
+
+        // show the one rm.
+        Widget _oneRm(_, OneRm oneRm) => Text(
+              '${oneRm.getOrCrash()} Kg',
+              style: Theme.of(context).textTheme.subtitle1.apply(
+                    color: Colors.black54,
+                  ),
+            );
+
+        // react to state
+        return state.maybeWhen(
+          initial: _fetch,
+          generatedAndSaved: _oneRm,
+          fetched: _oneRm,
+          orElse: _progress,
+        );
+      },
+    );
+  }
+}
+
+class _WeekWidget extends StatelessWidget {
+  const _WeekWidget({
+    Key key,
+    @required this.exercise,
+  }) : super(key: key);
+
+  final Exercise exercise;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<WeekBloc, WeekState>(
+      condition: (previous, current) => current.exerciseId == exercise.id,
+      builder: (context, state) {
+        Widget _progress() => Text(
+              'next week workout',
+              style: Theme.of(context).textTheme.bodyText1.apply(
+                    color: Theme.of(context).accentColor.withAlpha(50),
+                  ),
+            );
+
+        Widget _nextWeek(_, Week week) => Text(
+              week.displayName,
+              style: Theme.of(context).textTheme.bodyText1.apply(
+                    color: Theme.of(context).accentColor,
+                  ),
+            );
+
+        Widget _initialWeek(_) => Text(
+              exercise.nextWeek.displayName,
+              style: Theme.of(context).textTheme.bodyText1.apply(
+                    color: Theme.of(context).accentColor,
+                  ),
+            );
+
+        return state.maybeWhen(
+          initial: _initialWeek,
+          weekUpdated: _nextWeek,
+          orElse: _progress,
+        );
+      },
+    );
+  }
+}
+
+class _MonthWidget extends StatelessWidget {
+  const _MonthWidget({
+    Key key,
+    @required this.exercise,
+  }) : super(key: key);
+
+  final Exercise exercise;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MonthBloc, MonthState>(
+      condition: (previous, current) => current.exerciseId == exercise.id,
+      builder: (context, state) {
+        Widget _progress() => Text(
+              'Month ?',
+              style: Theme.of(context).textTheme.subtitle2.apply(
+                    color: Colors.black54.withAlpha(50),
+                  ),
+            );
+
+        Widget _fetch(_) {
+          context.bloc<MonthBloc>().add(MonthEvent.fetch(exerciseId: exercise.id));
+
+          return _progress();
+        }
+
+        Widget _month(exerciseId, month) {
+          print([exerciseId, month]);
+          return Text(
+            'Month ${month.getOrCrash()}',
+            style: Theme.of(context).textTheme.subtitle2.apply(
+                  color: Colors.black54,
+                ),
+          );
+        }
+
+        return state.maybeWhen(
+          initial: _fetch,
+          monthUpdated: _month,
+          fetched: _month,
+          orElse: _progress,
+        );
+      },
     );
   }
 }
