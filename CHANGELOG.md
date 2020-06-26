@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.7](https://github.com/KiritchoukC/power_progress/compare/v2.21.6...v2.21.7) (2020-06-26)
+
+
+### Bug Fixes
+
+* **onerm:** fix week and onerm dashboard update ([ee4f77b](https://github.com/KiritchoukC/power_progress/commit/ee4f77b)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ### [2.21.6](https://github.com/KiritchoukC/power_progress/compare/v2.21.5...v2.21.6) (2020-06-25)
 
 ### [2.21.5](https://github.com/KiritchoukC/power_progress/compare/v2.21.4...v2.21.5) (2020-06-25)
