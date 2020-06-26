@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/exercise_set.dart';
 import 'package:power_progress/theme/pp_light_theme.dart';
 
 class ExerciseSetWidget extends StatelessWidget {

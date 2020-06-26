@@ -7,21 +7,23 @@ import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/core/value_objects/month.dart';
 import 'package:power_progress/domain/core/value_objects/one_rm.dart';
 import 'package:power_progress/domain/core/week_enum.dart';
-import 'package:power_progress/domain/workout/entities/accumulation_workout.dart';
-import 'package:power_progress/domain/workout/entities/deload_workout.dart';
-import 'package:power_progress/domain/workout/entities/exercise_set.dart';
-import 'package:power_progress/domain/workout/entities/intensification_workout.dart';
-import 'package:power_progress/domain/workout/entities/realization_workout.dart';
-import 'package:power_progress/domain/workout/entities/workout.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/workout/accumulation_workout.dart';
+import 'package:power_progress/domain/workout/deload_workout.dart';
+import 'package:power_progress/domain/workout/exercise_set.dart';
+import 'package:power_progress/domain/workout/intensification_workout.dart';
+import 'package:power_progress/domain/workout/realization_workout.dart';
+import 'package:power_progress/domain/workout/workout.dart';
 import 'package:power_progress/theme/pp_light_theme.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/exercise_set_widget.dart';
-import 'package:power_progress/domain/workout/entities/workout_failure.dart';
+import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/realization_dialog.dart';
 
 class WeekSetWidget extends StatelessWidget {
   final Workout workout;
   final List<ExerciseSet> exerciseSets;
   final int exerciseId;
+  final Incrementation incrementation;
   final bool isValidatable;
   final bool isInvalidatable;
 
@@ -30,6 +32,7 @@ class WeekSetWidget extends StatelessWidget {
     @required this.workout,
     @required this.exerciseSets,
     @required this.exerciseId,
+    @required this.incrementation,
     @required this.isValidatable,
     @required this.isInvalidatable,
   }) : super(key: key);
@@ -58,6 +61,7 @@ class WeekSetWidget extends StatelessWidget {
                 UncheckButton(
                   workoutDoneId: workout.workoutDoneId,
                   exerciseId: exerciseId,
+                  incrementation: incrementation,
                   week: week,
                   month: workout.month,
                   oneRm: workout.oneRm,
@@ -66,6 +70,7 @@ class WeekSetWidget extends StatelessWidget {
               else
                 CheckButton(
                   exerciseId: exerciseId,
+                  incrementation: incrementation,
                   month: workout.month,
                   realizationReps: exerciseSets.last.reps,
                   week: week,
@@ -118,6 +123,7 @@ class WeekTitle extends StatelessWidget {
 class UncheckButton extends StatelessWidget {
   final Option<int> workoutDoneId;
   final int exerciseId;
+  final Incrementation incrementation;
   final WeekEnum week;
   final Month month;
   final OneRm oneRm;
@@ -127,6 +133,7 @@ class UncheckButton extends StatelessWidget {
     Key key,
     @required this.workoutDoneId,
     @required this.exerciseId,
+    @required this.incrementation,
     @required this.week,
     @required this.month,
     @required this.oneRm,
@@ -142,6 +149,7 @@ class UncheckButton extends StatelessWidget {
                     WorkoutEvent.markUndone(
                       id: workoutDoneId,
                       exerciseId: exerciseId,
+                      incrementation: incrementation,
                       week: week,
                       month: month,
                       oneRm: oneRm,
@@ -161,6 +169,7 @@ class CheckButton extends StatelessWidget {
   final WeekEnum week;
   final Month month;
   final int exerciseId;
+  final Incrementation incrementation;
   final int realizationReps;
   final OneRm oneRm;
   final bool enabled;
@@ -171,6 +180,7 @@ class CheckButton extends StatelessWidget {
       orElse: () => context.bloc<WorkoutBloc>().add(
             WorkoutEvent.markDone(
               exerciseId: exerciseId,
+              incrementation: incrementation,
               month: month,
               week: week,
               oneRm: oneRm,
@@ -188,6 +198,7 @@ class CheckButton extends StatelessWidget {
         onValidate: (value) => context.bloc<WorkoutBloc>().add(
               WorkoutEvent.markDone(
                 exerciseId: exerciseId,
+                incrementation: incrementation,
                 month: month,
                 week: week,
                 oneRm: oneRm,
@@ -203,6 +214,7 @@ class CheckButton extends StatelessWidget {
     @required this.week,
     @required this.month,
     @required this.exerciseId,
+    @required this.incrementation,
     @required this.realizationReps,
     @required this.oneRm,
     @required this.enabled,

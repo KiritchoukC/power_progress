@@ -15,7 +15,7 @@ class HiveOneRmDatasource implements IOneRmDatasource {
 
   /// Gets the persisted one rm by the given [exerciseId] and [month]
   @override
-  Future<Option<OneRmModel>> getByExerciseIdAndMonthNumber(int exerciseId, Month month) async {
+  Future<Option<OneRmModel>> getByExerciseIdAndMonth(int exerciseId, Month month) async {
     final result = localStorage.values.firstWhere(
       (element) => element.exerciseId == exerciseId && element.month == month.getOrCrash(),
       orElse: () => null,
@@ -30,7 +30,7 @@ class HiveOneRmDatasource implements IOneRmDatasource {
   /// An [ItemAlreadyExistsError] exception is raised if [model] already exists in the local storage.
   @override
   Future<Unit> add(OneRmModel model) async {
-    return (await getByExerciseIdAndMonthNumber(model.exerciseId, Month(model.month))).fold(
+    return (await getByExerciseIdAndMonth(model.exerciseId, Month(model.month))).fold(
       // if it does not exist yet, add it.
       () {
         return localStorage
@@ -49,7 +49,7 @@ class HiveOneRmDatasource implements IOneRmDatasource {
   /// An [ItemDoesNotExistError] exception is raised if [model] does not exist in the local storage.
   @override
   Future<Unit> update(OneRmModel model) async {
-    return (await getByExerciseIdAndMonthNumber(model.exerciseId, Month(model.month))).fold(
+    return (await getByExerciseIdAndMonth(model.exerciseId, Month(model.month))).fold(
       // if it does not exist, throw an error.
       () => throw ItemDoesNotExistError(),
       // if it does not exist yet, add it.
@@ -71,7 +71,7 @@ class HiveOneRmDatasource implements IOneRmDatasource {
 
   @override
   Future<Unit> removeByExerciseIdAndMonth(int exerciseId, Month month) async {
-    return (await getByExerciseIdAndMonthNumber(exerciseId, month)).fold(
+    return (await getByExerciseIdAndMonth(exerciseId, month)).fold(
       // if it does not exist, do nothing.
       () => unit,
       // if it does not exist yet, delete it.

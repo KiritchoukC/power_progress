@@ -7,12 +7,12 @@ import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/core/week_enum.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/domain/core/value_objects/month.dart';
 import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
 

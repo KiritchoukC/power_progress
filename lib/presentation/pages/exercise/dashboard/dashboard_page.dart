@@ -2,11 +2,11 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';

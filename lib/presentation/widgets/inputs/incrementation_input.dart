@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/presentation/widgets/pp_form_field.dart';
 
 class IncrementationInput extends StatelessWidget {

@@ -64,20 +64,25 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
   Stream<OneRmState> _handleGenerateAndSaveEvent(GenerateAndSave event) async* {
     yield const OneRmState.generateAndSaveInProgress();
 
-    final output = await oneRmRepository.generateAndSave(
-      event.exerciseId,
+    final generatedOneRm = OneRm.generate(
       event.month,
       event.incrementation,
       event.oneRm,
       event.repsDone,
     );
 
+    final output = await oneRmRepository.addOrUpdate(
+      event.exerciseId,
+      event.month,
+      generatedOneRm,
+    );
+
     yield* output.fold(
       (failure) async* {
         yield _mapFailureToState(failure);
       },
-      (newOneRm) async* {
-        yield OneRmState.generatedAndSaved(oneRm: newOneRm);
+      (_) async* {
+        yield OneRmState.generatedAndSaved(oneRm: generatedOneRm);
       },
     );
   }

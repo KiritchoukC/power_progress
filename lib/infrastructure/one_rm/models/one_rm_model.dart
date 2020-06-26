@@ -30,7 +30,7 @@ class OneRmModel {
     @required this.id,
   });
 
-  OneRm toEntity() => OneRm(oneRm);
+  OneRm toDomain() => OneRm(oneRm);
 }
 
 extension OneRmModelCopyWithExtension on OneRmModel {

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/domain/core/value_objects/month.dart';
 import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
