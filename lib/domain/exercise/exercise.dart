@@ -23,3 +23,23 @@ class Exercise {
     this.note,
   });
 }
+
+extension ExerciseCopyWithExtension on Exercise {
+  Exercise copyWith({
+    int id,
+    ExerciseName name,
+    Incrementation incrementation,
+    Month month,
+    Week nextWeek,
+    Note note,
+  }) {
+    return Exercise(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      incrementation: incrementation ?? this.incrementation,
+      month: month ?? this.month,
+      nextWeek: nextWeek ?? this.nextWeek,
+      note: note ?? this.note,
+    );
+  }
+}

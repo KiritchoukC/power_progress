@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_bloc.dart';
 
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
@@ -33,30 +34,72 @@ class ExerciseCard extends StatefulWidget {
 }
 
 class _ExerciseCardState extends State<ExerciseCard> {
+  Exercise _exercise;
+
+  @override
+  void initState() {
+    _exercise = widget.exercise;
+    super.initState();
+  }
+
+  void _updateExercise(Exercise newExercise) {
+    setState(() {
+      _exercise = newExercise;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      elevation: 1,
-      child: InkWell(
-        onLongPress: () {
-          widget.onSelect();
-        },
-        onTap: () {
-          if (widget.isInSelectionMode) {
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<MonthBloc, MonthState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              monthUpdated: (exerciseId, month) {
+                if (widget.exercise.id == exerciseId) {
+                  _updateExercise(widget.exercise.copyWith(month: month));
+                }
+              },
+              orElse: () {},
+            );
+          },
+        ),
+        BlocListener<WeekBloc, WeekState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              weekUpdated: (exerciseId, week) {
+                if (widget.exercise.id == exerciseId) {
+                  _updateExercise(widget.exercise.copyWith(nextWeek: week));
+                }
+              },
+              orElse: () {},
+            );
+          },
+        )
+      ],
+      child: Card(
+        color: Colors.white,
+        elevation: 1,
+        child: InkWell(
+          onLongPress: () {
             widget.onSelect();
-            return;
-          }
+          },
+          onTap: () {
+            if (widget.isInSelectionMode) {
+              widget.onSelect();
+              return;
+            }
 
-          Navigator.of(context).pushNamed(
-            RoutePaths.exerciseWorkout,
-            arguments: WorkoutPageArguments(exercise: widget.exercise),
-          );
-        },
-        child: Container(
-          color: widget.isSelected ? Colors.blue.shade100 : null,
-          height: 100,
-          child: _Card(exercise: widget.exercise),
+            Navigator.of(context).pushNamed(
+              RoutePaths.exerciseWorkout,
+              arguments: WorkoutPageArguments(exercise: widget.exercise),
+            );
+          },
+          child: Container(
+            color: widget.isSelected ? Colors.blue.shade100 : null,
+            height: 100,
+            child: _Card(exercise: widget.exercise),
+          ),
         ),
       ),
     );
