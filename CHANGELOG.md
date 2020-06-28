@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.10](https://github.com/KiritchoukC/power_progress/compare/v2.21.9...v2.21.10) (2020-06-28)
+
+
+### Bug Fixes
+
+* **workout-nav:** fix the workout being generated only on the firs time ([d702f21](https://github.com/KiritchoukC/power_progress/commit/d702f21))
+
 ### [2.21.9](https://github.com/KiritchoukC/power_progress/compare/v2.21.8...v2.21.9) (2020-06-28)
 
 
