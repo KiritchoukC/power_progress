@@ -47,11 +47,16 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     WorkoutEvent event,
   ) async* {
     yield* event.map(
+      resetState: _handleResetStateEvent,
       generate: _handleGenerateEvent,
       markDone: _handleMarkDoneEvent,
       markUndone: _handleMarkUndoneEvent,
       remove: _handleRemoveEvent,
     );
+  }
+
+  Stream<WorkoutState> _handleResetStateEvent(ResetState value) async* {
+    yield const WorkoutState.initial();
   }
 
   Future<Either<WorkoutFailure, MonthWorkout>> generate(int exerciseId, Month month) async {

@@ -2,6 +2,7 @@ part of 'workout_bloc.dart';
 
 @freezed
 abstract class WorkoutEvent with _$WorkoutEvent {
+  const factory WorkoutEvent.resetState() = ResetState;
   const factory WorkoutEvent.generate({
     @required int exerciseId,
     @required Month month,

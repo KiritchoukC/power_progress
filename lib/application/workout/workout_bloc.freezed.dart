@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 class _$WorkoutEventTearOff {
   const _$WorkoutEventTearOff();
 
+  ResetState resetState() {
+    return const ResetState();
+  }
+
   Generate generate({@required int exerciseId, @required Month month}) {
     return Generate(
       exerciseId: exerciseId,
@@ -64,10 +68,9 @@ class _$WorkoutEventTearOff {
 const $WorkoutEvent = _$WorkoutEventTearOff();
 
 mixin _$WorkoutEvent {
-  int get exerciseId;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result resetState(),
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Incrementation incrementation,
@@ -84,6 +87,7 @@ mixin _$WorkoutEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result resetState(),
     Result generate(int exerciseId, Month month),
     Result markDone(int exerciseId, Incrementation incrementation, Month month,
         WeekEnum week, OneRm oneRm, Option<int> repsDone),
@@ -94,6 +98,7 @@ mixin _$WorkoutEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
@@ -101,21 +106,19 @@ mixin _$WorkoutEvent {
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
     Result remove(Remove value),
     @required Result orElse(),
   });
-
-  $WorkoutEventCopyWith<WorkoutEvent> get copyWith;
 }
 
 abstract class $WorkoutEventCopyWith<$Res> {
   factory $WorkoutEventCopyWith(
           WorkoutEvent value, $Res Function(WorkoutEvent) then) =
       _$WorkoutEventCopyWithImpl<$Res>;
-  $Res call({int exerciseId});
 }
 
 class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
@@ -124,21 +127,132 @@ class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
   final WorkoutEvent _value;
   // ignore: unused_field
   final $Res Function(WorkoutEvent) _then;
+}
+
+abstract class $ResetStateCopyWith<$Res> {
+  factory $ResetStateCopyWith(
+          ResetState value, $Res Function(ResetState) then) =
+      _$ResetStateCopyWithImpl<$Res>;
+}
+
+class _$ResetStateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
+    implements $ResetStateCopyWith<$Res> {
+  _$ResetStateCopyWithImpl(ResetState _value, $Res Function(ResetState) _then)
+      : super(_value, (v) => _then(v as ResetState));
 
   @override
-  $Res call({
-    Object exerciseId = freezed,
+  ResetState get _value => super._value as ResetState;
+}
+
+class _$ResetState with DiagnosticableTreeMixin implements ResetState {
+  const _$ResetState();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.resetState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.resetState'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ResetState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
+    @required
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    @required
+        Result markUndone(
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   }) {
-    return _then(_value.copyWith(
-      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
-    ));
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
+    @required Result generate(Generate value),
+    @required Result markDone(MarkDone value),
+    @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
+  }) {
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
+    Result generate(Generate value),
+    Result markDone(MarkDone value),
+    Result markUndone(MarkUndone value),
+    Result remove(Remove value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
   }
 }
 
-abstract class $GenerateCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
+abstract class ResetState implements WorkoutEvent {
+  const factory ResetState() = _$ResetState;
+}
+
+abstract class $GenerateCopyWith<$Res> {
   factory $GenerateCopyWith(Generate value, $Res Function(Generate) then) =
       _$GenerateCopyWithImpl<$Res>;
-  @override
   $Res call({int exerciseId, Month month});
 }
 
@@ -210,6 +324,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result resetState(),
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Incrementation incrementation,
@@ -224,6 +339,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
             OneRm oneRm),
     @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -234,6 +350,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result resetState(),
     Result generate(int exerciseId, Month month),
     Result markDone(int exerciseId, Incrementation incrementation, Month month,
         WeekEnum week, OneRm oneRm, Option<int> repsDone),
@@ -252,11 +369,13 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
     @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -267,6 +386,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
@@ -285,17 +405,14 @@ abstract class Generate implements WorkoutEvent {
   const factory Generate({@required int exerciseId, @required Month month}) =
       _$Generate;
 
-  @override
   int get exerciseId;
   Month get month;
-  @override
   $GenerateCopyWith<Generate> get copyWith;
 }
 
-abstract class $MarkDoneCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
+abstract class $MarkDoneCopyWith<$Res> {
   factory $MarkDoneCopyWith(MarkDone value, $Res Function(MarkDone) then) =
       _$MarkDoneCopyWithImpl<$Res>;
-  @override
   $Res call(
       {int exerciseId,
       Incrementation incrementation,
@@ -431,6 +548,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result resetState(),
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Incrementation incrementation,
@@ -445,6 +563,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
             OneRm oneRm),
     @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -455,6 +574,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result resetState(),
     Result generate(int exerciseId, Month month),
     Result markDone(int exerciseId, Incrementation incrementation, Month month,
         WeekEnum week, OneRm oneRm, Option<int> repsDone),
@@ -473,11 +593,13 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
     @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -488,6 +610,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
@@ -511,23 +634,19 @@ abstract class MarkDone implements WorkoutEvent {
       @required OneRm oneRm,
       @required Option<int> repsDone}) = _$MarkDone;
 
-  @override
   int get exerciseId;
   Incrementation get incrementation;
   Month get month;
   WeekEnum get week;
   OneRm get oneRm;
   Option<int> get repsDone;
-  @override
   $MarkDoneCopyWith<MarkDone> get copyWith;
 }
 
-abstract class $MarkUndoneCopyWith<$Res>
-    implements $WorkoutEventCopyWith<$Res> {
+abstract class $MarkUndoneCopyWith<$Res> {
   factory $MarkUndoneCopyWith(
           MarkUndone value, $Res Function(MarkUndone) then) =
       _$MarkUndoneCopyWithImpl<$Res>;
-  @override
   $Res call(
       {Option<int> id,
       int exerciseId,
@@ -662,6 +781,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result resetState(),
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Incrementation incrementation,
@@ -676,6 +796,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
             OneRm oneRm),
     @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -686,6 +807,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result resetState(),
     Result generate(int exerciseId, Month month),
     Result markDone(int exerciseId, Incrementation incrementation, Month month,
         WeekEnum week, OneRm oneRm, Option<int> repsDone),
@@ -704,11 +826,13 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
     @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -719,6 +843,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
@@ -743,20 +868,17 @@ abstract class MarkUndone implements WorkoutEvent {
       @required OneRm oneRm}) = _$MarkUndone;
 
   Option<int> get id;
-  @override
   int get exerciseId;
   Incrementation get incrementation;
   WeekEnum get week;
   Month get month;
   OneRm get oneRm;
-  @override
   $MarkUndoneCopyWith<MarkUndone> get copyWith;
 }
 
-abstract class $RemoveCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
+abstract class $RemoveCopyWith<$Res> {
   factory $RemoveCopyWith(Remove value, $Res Function(Remove) then) =
       _$RemoveCopyWithImpl<$Res>;
-  @override
   $Res call({int exerciseId});
 }
 
@@ -817,6 +939,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result resetState(),
     @required Result generate(int exerciseId, Month month),
     @required
         Result markDone(int exerciseId, Incrementation incrementation,
@@ -831,6 +954,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
             OneRm oneRm),
     @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -841,6 +965,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result resetState(),
     Result generate(int exerciseId, Month month),
     Result markDone(int exerciseId, Incrementation incrementation, Month month,
         WeekEnum week, OneRm oneRm, Option<int> repsDone),
@@ -859,11 +984,13 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
     @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
@@ -874,6 +1001,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
@@ -891,9 +1019,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
 abstract class Remove implements WorkoutEvent {
   const factory Remove({@required int exerciseId}) = _$Remove;
 
-  @override
   int get exerciseId;
-  @override
   $RemoveCopyWith<Remove> get copyWith;
 }
 
