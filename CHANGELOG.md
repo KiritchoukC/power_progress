@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.11](https://github.com/KiritchoukC/power_progress/compare/v2.21.10...v2.21.11) (2020-06-28)
+
+
+### Bug Fixes
+
+* **onerm:** generate onerm for the next month on marking a workout done ([1b18028](https://github.com/KiritchoukC/power_progress/commit/1b18028)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
 ### [2.21.10](https://github.com/KiritchoukC/power_progress/compare/v2.21.9...v2.21.10) (2020-06-28)
 
 
