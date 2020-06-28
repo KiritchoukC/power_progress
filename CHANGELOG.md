@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.9](https://github.com/KiritchoukC/power_progress/compare/v2.21.8...v2.21.9) (2020-06-28)
+
+
+### Bug Fixes
+
+* **exercise-card:** fix week and month dashboard card update ([8d5634a](https://github.com/KiritchoukC/power_progress/commit/8d5634a))
+
 ### [2.21.8](https://github.com/KiritchoukC/power_progress/compare/v2.21.7...v2.21.8) (2020-06-28)
 
 ### [2.21.7](https://github.com/KiritchoukC/power_progress/compare/v2.21.6...v2.21.7) (2020-06-26)
