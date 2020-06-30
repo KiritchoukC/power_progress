@@ -36,7 +36,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     yield* event.map(
       add: _handleExerciseAddEvent,
       fetch: _handleExerciseFetchEvent,
-      selectionMode: _handleExerciseSelectionModeEvent,
       remove: _handleExerciseRemoveEvent,
     );
   }
@@ -81,15 +80,6 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     }
 
     yield* output.fold(onFailure, onSuccess);
-  }
-
-  //! TODO give the selection mode its own bloc/event/state
-  Stream<ExerciseState> _handleExerciseSelectionModeEvent(SelectionMode event) async* {
-    if (event.isInSelectionMode) {
-      yield ExerciseState.selected(selectedIds: event.selectedIds);
-    } else {
-      yield ExerciseState.unselected(unselectedIds: event.selectedIds);
-    }
   }
 
   Stream<ExerciseState> _handleExerciseRemoveEvent(Remove event) async* {

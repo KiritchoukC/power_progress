@@ -2,8 +2,8 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
 
+import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -33,13 +33,6 @@ class DashboardPage extends StatelessWidget {
           );
         },
         child: BlocConsumer<ExerciseBloc, ExerciseState>(
-          buildWhen: (previous, current) {
-            return current.maybeWhen(
-              selected: (_) => false,
-              unselected: (_) => false,
-              orElse: () => true,
-            );
-          },
           listener: (context, state) {
             state.maybeWhen(
               error: (message) =>
@@ -103,8 +96,8 @@ class _BodyState extends State<_Body> {
 
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
 
-      context.bloc<ExerciseBloc>().add(
-            ExerciseEvent.selectionMode(
+      context.bloc<SelectionBloc>().add(
+            SelectionEvent.switchMode(
               isInSelectionMode: isInSelectionMode,
               selectedIds: selectedExerciseIds,
             ),
@@ -145,13 +138,7 @@ class _BodyState extends State<_Body> {
 class _RemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ExerciseBloc, ExerciseState>(
-      condition: (previous, current) {
-        return current.maybeWhen(
-          fetched: (_) => false,
-          orElse: () => true,
-        );
-      },
+    return BlocBuilder<SelectionBloc, SelectionState>(
       builder: (context, state) {
         return state.maybeWhen(
           selected: (selectedIds) => RemoveButton(

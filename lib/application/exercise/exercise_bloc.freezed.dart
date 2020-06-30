@@ -23,14 +23,6 @@ class _$ExerciseEventTearOff {
     return const Fetch();
   }
 
-  SelectionMode selectionMode(
-      {@required bool isInSelectionMode, @required List<int> selectedIds}) {
-    return SelectionMode(
-      isInSelectionMode: isInSelectionMode,
-      selectedIds: selectedIds,
-    );
-  }
-
   Remove remove({@required List<int> ids}) {
     return Remove(
       ids: ids,
@@ -46,15 +38,12 @@ mixin _$ExerciseEvent {
   Result when<Result extends Object>({
     @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
-    @required
-        Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     @required Result remove(List<int> ids),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
-    Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
     @required Result orElse(),
   });
@@ -62,14 +51,12 @@ mixin _$ExerciseEvent {
   Result map<Result extends Object>({
     @required Result add(Add value),
     @required Result fetch(Fetch value),
-    @required Result selectionMode(SelectionMode value),
     @required Result remove(Remove value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result add(Add value),
     Result fetch(Fetch value),
-    Result selectionMode(SelectionMode value),
     Result remove(Remove value),
     @required Result orElse(),
   });
@@ -165,13 +152,10 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   Result when<Result extends Object>({
     @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
-    @required
-        Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     @required Result remove(List<int> ids),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return add(exercise, oneRm);
   }
@@ -181,7 +165,6 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   Result maybeWhen<Result extends Object>({
     Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
-    Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
     @required Result orElse(),
   }) {
@@ -197,12 +180,10 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   Result map<Result extends Object>({
     @required Result add(Add value),
     @required Result fetch(Fetch value),
-    @required Result selectionMode(SelectionMode value),
     @required Result remove(Remove value),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return add(this);
   }
@@ -212,7 +193,6 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   Result maybeMap<Result extends Object>({
     Result add(Add value),
     Result fetch(Fetch value),
-    Result selectionMode(SelectionMode value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -274,13 +254,10 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   Result when<Result extends Object>({
     @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
-    @required
-        Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     @required Result remove(List<int> ids),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return fetch();
   }
@@ -290,7 +267,6 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   Result maybeWhen<Result extends Object>({
     Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
-    Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
     @required Result orElse(),
   }) {
@@ -306,12 +282,10 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   Result map<Result extends Object>({
     @required Result add(Add value),
     @required Result fetch(Fetch value),
-    @required Result selectionMode(SelectionMode value),
     @required Result remove(Remove value),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return fetch(this);
   }
@@ -321,7 +295,6 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   Result maybeMap<Result extends Object>({
     Result add(Add value),
     Result fetch(Fetch value),
-    Result selectionMode(SelectionMode value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -335,160 +308,6 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
 
 abstract class Fetch implements ExerciseEvent {
   const factory Fetch() = _$Fetch;
-}
-
-abstract class $SelectionModeCopyWith<$Res> {
-  factory $SelectionModeCopyWith(
-          SelectionMode value, $Res Function(SelectionMode) then) =
-      _$SelectionModeCopyWithImpl<$Res>;
-  $Res call({bool isInSelectionMode, List<int> selectedIds});
-}
-
-class _$SelectionModeCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res>
-    implements $SelectionModeCopyWith<$Res> {
-  _$SelectionModeCopyWithImpl(
-      SelectionMode _value, $Res Function(SelectionMode) _then)
-      : super(_value, (v) => _then(v as SelectionMode));
-
-  @override
-  SelectionMode get _value => super._value as SelectionMode;
-
-  @override
-  $Res call({
-    Object isInSelectionMode = freezed,
-    Object selectedIds = freezed,
-  }) {
-    return _then(SelectionMode(
-      isInSelectionMode: isInSelectionMode == freezed
-          ? _value.isInSelectionMode
-          : isInSelectionMode as bool,
-      selectedIds: selectedIds == freezed
-          ? _value.selectedIds
-          : selectedIds as List<int>,
-    ));
-  }
-}
-
-class _$SelectionMode with DiagnosticableTreeMixin implements SelectionMode {
-  const _$SelectionMode(
-      {@required this.isInSelectionMode, @required this.selectedIds})
-      : assert(isInSelectionMode != null),
-        assert(selectedIds != null);
-
-  @override
-  final bool isInSelectionMode;
-  @override
-  final List<int> selectedIds;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ExerciseEvent.selectionMode(isInSelectionMode: $isInSelectionMode, selectedIds: $selectedIds)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ExerciseEvent.selectionMode'))
-      ..add(DiagnosticsProperty('isInSelectionMode', isInSelectionMode))
-      ..add(DiagnosticsProperty('selectedIds', selectedIds));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is SelectionMode &&
-            (identical(other.isInSelectionMode, isInSelectionMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.isInSelectionMode, isInSelectionMode)) &&
-            (identical(other.selectedIds, selectedIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedIds, selectedIds)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isInSelectionMode) ^
-      const DeepCollectionEquality().hash(selectedIds);
-
-  @override
-  $SelectionModeCopyWith<SelectionMode> get copyWith =>
-      _$SelectionModeCopyWithImpl<SelectionMode>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(Exercise exercise, OneRm oneRm),
-    @required Result fetch(),
-    @required
-        Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
-    @required Result remove(List<int> ids),
-  }) {
-    assert(add != null);
-    assert(fetch != null);
-    assert(selectionMode != null);
-    assert(remove != null);
-    return selectionMode(isInSelectionMode, selectedIds);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise, OneRm oneRm),
-    Result fetch(),
-    Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
-    Result remove(List<int> ids),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selectionMode != null) {
-      return selectionMode(isInSelectionMode, selectedIds);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(Add value),
-    @required Result fetch(Fetch value),
-    @required Result selectionMode(SelectionMode value),
-    @required Result remove(Remove value),
-  }) {
-    assert(add != null);
-    assert(fetch != null);
-    assert(selectionMode != null);
-    assert(remove != null);
-    return selectionMode(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(Add value),
-    Result fetch(Fetch value),
-    Result selectionMode(SelectionMode value),
-    Result remove(Remove value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selectionMode != null) {
-      return selectionMode(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SelectionMode implements ExerciseEvent {
-  const factory SelectionMode(
-      {@required bool isInSelectionMode,
-      @required List<int> selectedIds}) = _$SelectionMode;
-
-  bool get isInSelectionMode;
-  List<int> get selectedIds;
-  $SelectionModeCopyWith<SelectionMode> get copyWith;
 }
 
 abstract class $RemoveCopyWith<$Res> {
@@ -555,13 +374,10 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   Result when<Result extends Object>({
     @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
-    @required
-        Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     @required Result remove(List<int> ids),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return remove(ids);
   }
@@ -571,7 +387,6 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   Result maybeWhen<Result extends Object>({
     Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
-    Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
     @required Result orElse(),
   }) {
@@ -587,12 +402,10 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   Result map<Result extends Object>({
     @required Result add(Add value),
     @required Result fetch(Fetch value),
-    @required Result selectionMode(SelectionMode value),
     @required Result remove(Remove value),
   }) {
     assert(add != null);
     assert(fetch != null);
-    assert(selectionMode != null);
     assert(remove != null);
     return remove(this);
   }
@@ -602,7 +415,6 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   Result maybeMap<Result extends Object>({
     Result add(Add value),
     Result fetch(Fetch value),
-    Result selectionMode(SelectionMode value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -654,18 +466,6 @@ class _$ExerciseStateTearOff {
     return const Removed();
   }
 
-  Selected selected({@required List<int> selectedIds}) {
-    return Selected(
-      selectedIds: selectedIds,
-    );
-  }
-
-  Unselected unselected({@required List<int> unselectedIds}) {
-    return Unselected(
-      unselectedIds: unselectedIds,
-    );
-  }
-
   Error error({@required String message}) {
     return Error(
       message: message,
@@ -686,8 +486,6 @@ mixin _$ExerciseState {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   });
   @optionalTypeArgs
@@ -699,8 +497,6 @@ mixin _$ExerciseState {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   });
@@ -713,8 +509,6 @@ mixin _$ExerciseState {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   });
   @optionalTypeArgs
@@ -726,8 +520,6 @@ mixin _$ExerciseState {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   });
@@ -794,8 +586,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -805,8 +595,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return initial();
   }
@@ -821,8 +609,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -843,8 +629,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -854,8 +638,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return initial(this);
   }
@@ -870,8 +652,6 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -936,8 +716,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -947,8 +725,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return addInProgress();
   }
@@ -963,8 +739,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -985,8 +759,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -996,8 +768,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return addInProgress(this);
   }
@@ -1012,8 +782,6 @@ class _$AddInProgress with DiagnosticableTreeMixin implements AddInProgress {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1075,8 +843,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1086,8 +852,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return added();
   }
@@ -1102,8 +866,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1124,8 +886,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1135,8 +895,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return added(this);
   }
@@ -1151,8 +909,6 @@ class _$Added with DiagnosticableTreeMixin implements Added {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1220,8 +976,6 @@ class _$FetchInProgress
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1231,8 +985,6 @@ class _$FetchInProgress
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return fetchInProgress();
   }
@@ -1247,8 +999,6 @@ class _$FetchInProgress
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1269,8 +1019,6 @@ class _$FetchInProgress
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1280,8 +1028,6 @@ class _$FetchInProgress
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return fetchInProgress(this);
   }
@@ -1296,8 +1042,6 @@ class _$FetchInProgress
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1384,8 +1128,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1395,8 +1137,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return fetched(exercises);
   }
@@ -1411,8 +1151,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1433,8 +1171,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1444,8 +1180,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return fetched(this);
   }
@@ -1460,8 +1194,6 @@ class _$Fetched with DiagnosticableTreeMixin implements Fetched {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1532,8 +1264,6 @@ class _$RemoveInProgress
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1543,8 +1273,6 @@ class _$RemoveInProgress
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return removeInProgress();
   }
@@ -1559,8 +1287,6 @@ class _$RemoveInProgress
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1581,8 +1307,6 @@ class _$RemoveInProgress
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1592,8 +1316,6 @@ class _$RemoveInProgress
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return removeInProgress(this);
   }
@@ -1608,8 +1330,6 @@ class _$RemoveInProgress
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1671,8 +1391,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1682,8 +1400,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return removed();
   }
@@ -1698,8 +1414,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1720,8 +1434,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1731,8 +1443,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return removed(this);
   }
@@ -1747,8 +1457,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1762,344 +1470,6 @@ class _$Removed with DiagnosticableTreeMixin implements Removed {
 
 abstract class Removed implements ExerciseState {
   const factory Removed() = _$Removed;
-}
-
-abstract class $SelectedCopyWith<$Res> {
-  factory $SelectedCopyWith(Selected value, $Res Function(Selected) then) =
-      _$SelectedCopyWithImpl<$Res>;
-  $Res call({List<int> selectedIds});
-}
-
-class _$SelectedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
-    implements $SelectedCopyWith<$Res> {
-  _$SelectedCopyWithImpl(Selected _value, $Res Function(Selected) _then)
-      : super(_value, (v) => _then(v as Selected));
-
-  @override
-  Selected get _value => super._value as Selected;
-
-  @override
-  $Res call({
-    Object selectedIds = freezed,
-  }) {
-    return _then(Selected(
-      selectedIds: selectedIds == freezed
-          ? _value.selectedIds
-          : selectedIds as List<int>,
-    ));
-  }
-}
-
-class _$Selected with DiagnosticableTreeMixin implements Selected {
-  const _$Selected({@required this.selectedIds}) : assert(selectedIds != null);
-
-  @override
-  final List<int> selectedIds;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ExerciseState.selected(selectedIds: $selectedIds)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ExerciseState.selected'))
-      ..add(DiagnosticsProperty('selectedIds', selectedIds));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Selected &&
-            (identical(other.selectedIds, selectedIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedIds, selectedIds)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(selectedIds);
-
-  @override
-  $SelectedCopyWith<Selected> get copyWith =>
-      _$SelectedCopyWithImpl<Selected>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result addInProgress(),
-    @required Result added(),
-    @required Result fetchInProgress(),
-    @required Result fetched(List<Exercise> exercises),
-    @required Result removeInProgress(),
-    @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
-    @required Result error(String message),
-  }) {
-    assert(initial != null);
-    assert(addInProgress != null);
-    assert(added != null);
-    assert(fetchInProgress != null);
-    assert(fetched != null);
-    assert(removeInProgress != null);
-    assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
-    assert(error != null);
-    return selected(selectedIds);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result addInProgress(),
-    Result added(),
-    Result fetchInProgress(),
-    Result fetched(List<Exercise> exercises),
-    Result removeInProgress(),
-    Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
-    Result error(String message),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selected != null) {
-      return selected(selectedIds);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result addInProgress(AddInProgress value),
-    @required Result added(Added value),
-    @required Result fetchInProgress(FetchInProgress value),
-    @required Result fetched(Fetched value),
-    @required Result removeInProgress(RemoveInProgress value),
-    @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
-    @required Result error(Error value),
-  }) {
-    assert(initial != null);
-    assert(addInProgress != null);
-    assert(added != null);
-    assert(fetchInProgress != null);
-    assert(fetched != null);
-    assert(removeInProgress != null);
-    assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
-    assert(error != null);
-    return selected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result addInProgress(AddInProgress value),
-    Result added(Added value),
-    Result fetchInProgress(FetchInProgress value),
-    Result fetched(Fetched value),
-    Result removeInProgress(RemoveInProgress value),
-    Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
-    Result error(Error value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (selected != null) {
-      return selected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Selected implements ExerciseState {
-  const factory Selected({@required List<int> selectedIds}) = _$Selected;
-
-  List<int> get selectedIds;
-  $SelectedCopyWith<Selected> get copyWith;
-}
-
-abstract class $UnselectedCopyWith<$Res> {
-  factory $UnselectedCopyWith(
-          Unselected value, $Res Function(Unselected) then) =
-      _$UnselectedCopyWithImpl<$Res>;
-  $Res call({List<int> unselectedIds});
-}
-
-class _$UnselectedCopyWithImpl<$Res> extends _$ExerciseStateCopyWithImpl<$Res>
-    implements $UnselectedCopyWith<$Res> {
-  _$UnselectedCopyWithImpl(Unselected _value, $Res Function(Unselected) _then)
-      : super(_value, (v) => _then(v as Unselected));
-
-  @override
-  Unselected get _value => super._value as Unselected;
-
-  @override
-  $Res call({
-    Object unselectedIds = freezed,
-  }) {
-    return _then(Unselected(
-      unselectedIds: unselectedIds == freezed
-          ? _value.unselectedIds
-          : unselectedIds as List<int>,
-    ));
-  }
-}
-
-class _$Unselected with DiagnosticableTreeMixin implements Unselected {
-  const _$Unselected({@required this.unselectedIds})
-      : assert(unselectedIds != null);
-
-  @override
-  final List<int> unselectedIds;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ExerciseState.unselected(unselectedIds: $unselectedIds)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ExerciseState.unselected'))
-      ..add(DiagnosticsProperty('unselectedIds', unselectedIds));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Unselected &&
-            (identical(other.unselectedIds, unselectedIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.unselectedIds, unselectedIds)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(unselectedIds);
-
-  @override
-  $UnselectedCopyWith<Unselected> get copyWith =>
-      _$UnselectedCopyWithImpl<Unselected>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result addInProgress(),
-    @required Result added(),
-    @required Result fetchInProgress(),
-    @required Result fetched(List<Exercise> exercises),
-    @required Result removeInProgress(),
-    @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
-    @required Result error(String message),
-  }) {
-    assert(initial != null);
-    assert(addInProgress != null);
-    assert(added != null);
-    assert(fetchInProgress != null);
-    assert(fetched != null);
-    assert(removeInProgress != null);
-    assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
-    assert(error != null);
-    return unselected(unselectedIds);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result addInProgress(),
-    Result added(),
-    Result fetchInProgress(),
-    Result fetched(List<Exercise> exercises),
-    Result removeInProgress(),
-    Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
-    Result error(String message),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unselected != null) {
-      return unselected(unselectedIds);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(Initial value),
-    @required Result addInProgress(AddInProgress value),
-    @required Result added(Added value),
-    @required Result fetchInProgress(FetchInProgress value),
-    @required Result fetched(Fetched value),
-    @required Result removeInProgress(RemoveInProgress value),
-    @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
-    @required Result error(Error value),
-  }) {
-    assert(initial != null);
-    assert(addInProgress != null);
-    assert(added != null);
-    assert(fetchInProgress != null);
-    assert(fetched != null);
-    assert(removeInProgress != null);
-    assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
-    assert(error != null);
-    return unselected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(Initial value),
-    Result addInProgress(AddInProgress value),
-    Result added(Added value),
-    Result fetchInProgress(FetchInProgress value),
-    Result fetched(Fetched value),
-    Result removeInProgress(RemoveInProgress value),
-    Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
-    Result error(Error value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unselected != null) {
-      return unselected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Unselected implements ExerciseState {
-  const factory Unselected({@required List<int> unselectedIds}) = _$Unselected;
-
-  List<int> get unselectedIds;
-  $UnselectedCopyWith<Unselected> get copyWith;
 }
 
 abstract class $ErrorCopyWith<$Res> {
@@ -2171,8 +1541,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result fetched(List<Exercise> exercises),
     @required Result removeInProgress(),
     @required Result removed(),
-    @required Result selected(List<int> selectedIds),
-    @required Result unselected(List<int> unselectedIds),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -2182,8 +1550,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return error(message);
   }
@@ -2198,8 +1564,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result fetched(List<Exercise> exercises),
     Result removeInProgress(),
     Result removed(),
-    Result selected(List<int> selectedIds),
-    Result unselected(List<int> unselectedIds),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -2220,8 +1584,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result fetched(Fetched value),
     @required Result removeInProgress(RemoveInProgress value),
     @required Result removed(Removed value),
-    @required Result selected(Selected value),
-    @required Result unselected(Unselected value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -2231,8 +1593,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(fetched != null);
     assert(removeInProgress != null);
     assert(removed != null);
-    assert(selected != null);
-    assert(unselected != null);
     assert(error != null);
     return error(this);
   }
@@ -2247,8 +1607,6 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result fetched(Fetched value),
     Result removeInProgress(RemoveInProgress value),
     Result removed(Removed value),
-    Result selected(Selected value),
-    Result unselected(Unselected value),
     Result error(Error value),
     @required Result orElse(),
   }) {

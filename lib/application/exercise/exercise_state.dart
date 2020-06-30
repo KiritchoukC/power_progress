@@ -13,8 +13,5 @@ abstract class ExerciseState with _$ExerciseState {
   const factory ExerciseState.removeInProgress() = RemoveInProgress;
   const factory ExerciseState.removed() = Removed;
 
-  const factory ExerciseState.selected({@required List<int> selectedIds}) = Selected;
-  const factory ExerciseState.unselected({@required List<int> unselectedIds}) = Unselected;
-
   const factory ExerciseState.error({@required String message}) = Error;
 }
