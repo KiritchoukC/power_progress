@@ -6,15 +6,26 @@ import 'package:power_progress/domain/core/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 
 class OneRmWidget extends StatelessWidget {
+  final Exercise exercise;
+
   const OneRmWidget({
     Key key,
     @required this.exercise,
   }) : super(key: key);
 
-  final Exercise exercise;
+  void _fetch(BuildContext context) {
+    context.bloc<OneRmBloc>().add(
+          OneRmEvent.fetch(
+            exerciseId: exercise.id,
+            month: exercise.month,
+          ),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
+    _fetch(context);
+
     return BlocBuilder<OneRmBloc, OneRmState>(
       condition: (previous, current) => current.maybeWhen(
         initial: (exerciseId) => exerciseId == exercise.id,
@@ -31,11 +42,8 @@ class OneRmWidget extends StatelessWidget {
                   ),
             );
 
-        // fetch the one rm
         Widget _fetch(_) {
-          context
-              .bloc<OneRmBloc>()
-              .add(OneRmEvent.fetch(exerciseId: exercise.id, month: exercise.month));
+          this._fetch(context);
 
           return _progress();
         }

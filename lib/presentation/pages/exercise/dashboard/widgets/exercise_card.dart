@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
 
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
-import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/week_widget.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
-class ExerciseCard extends StatefulWidget {
+class ExerciseCard extends StatelessWidget {
   final Exercise exercise;
   final VoidCallback onSelect;
   final bool isInSelectionMode;
@@ -30,76 +24,29 @@ class ExerciseCard extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ExerciseCardState createState() => _ExerciseCardState();
-}
-
-class _ExerciseCardState extends State<ExerciseCard> {
-  Exercise _exercise;
-
-  @override
-  void initState() {
-    _exercise = widget.exercise;
-    super.initState();
-  }
-
-  void _updateExercise(Exercise newExercise) {
-    setState(() {
-      _exercise = newExercise;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<MonthBloc, MonthState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              monthUpdated: (exerciseId, month) {
-                if (widget.exercise.id == exerciseId) {
-                  _updateExercise(widget.exercise.copyWith(month: month));
-                }
-              },
-              orElse: () {},
-            );
-          },
-        ),
-        BlocListener<WeekBloc, WeekState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              weekUpdated: (exerciseId, week) {
-                if (widget.exercise.id == exerciseId) {
-                  _updateExercise(widget.exercise.copyWith(nextWeek: week));
-                }
-              },
-              orElse: () {},
-            );
-          },
-        )
-      ],
-      child: Card(
-        color: Colors.white,
-        elevation: 1,
-        child: InkWell(
-          onLongPress: () {
-            widget.onSelect();
-          },
-          onTap: () {
-            if (widget.isInSelectionMode) {
-              widget.onSelect();
-              return;
-            }
+    return Card(
+      color: Colors.white,
+      elevation: 1,
+      child: InkWell(
+        onLongPress: () {
+          onSelect();
+        },
+        onTap: () {
+          if (isInSelectionMode) {
+            onSelect();
+            return;
+          }
 
-            Navigator.of(context).pushNamed(
-              RoutePaths.exerciseWorkout,
-              arguments: WorkoutPageArguments(exercise: widget.exercise),
-            );
-          },
-          child: Container(
-            color: widget.isSelected ? Colors.blue.shade100 : null,
-            height: 100,
-            child: _Card(exercise: widget.exercise),
-          ),
+          Navigator.of(context).pushNamed(
+            RoutePaths.exerciseWorkout,
+            arguments: WorkoutPageArguments(exercise: exercise),
+          );
+        },
+        child: Container(
+          color: isSelected ? Colors.blue.shade100 : null,
+          height: 100,
+          child: _Card(exercise: exercise),
         ),
       ),
     );
