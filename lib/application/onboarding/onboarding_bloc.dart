@@ -4,24 +4,20 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:power_progress/domain/onboarding/entities/onboarding_failure.dart';
+import 'package:power_progress/domain/onboarding/onboarding_failure.dart';
 
 import 'package:power_progress/core/messages/errors.dart';
-import 'package:power_progress/core/usecases/usecase.dart';
-import 'package:power_progress/domain/onboarding/usecases/done_onboarding.dart';
-import 'package:power_progress/domain/onboarding/usecases/is_done_onboarding.dart';
+import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 
 part 'onboarding_event.dart';
 part 'onboarding_state.dart';
 part 'onboarding_bloc.freezed.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
-  final DoneOnboarding doneOnboarding;
-  final IsDoneOnboarding isDoneOnboarding;
+  final IOnboardingRepository onboardingRepository;
 
   OnboardingBloc({
-    @required this.doneOnboarding,
-    @required this.isDoneOnboarding,
+    @required this.onboardingRepository,
   });
 
   @override
@@ -40,7 +36,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   Stream<OnboardingState> _handleMarkDoneEvent(MarkDone event) async* {
     yield const OnboardingState.markDoneInProgress();
 
-    final output = await doneOnboarding(NoParams());
+    final output = await onboardingRepository.done();
 
     Stream<OnboardingState> onFailure(OnboardingFailure failure) async* {
       yield OnboardingState.error(message: mapFailureToErrorMessage(failure));
@@ -56,7 +52,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   Stream<OnboardingState> _handleIsDoneEvent(IsDone event) async* {
     yield const OnboardingState.isDoneInProgress();
 
-    final output = await isDoneOnboarding(NoParams());
+    final output = await onboardingRepository.isDone;
 
     Stream<OnboardingState> onFailure(OnboardingFailure failure) async* {
       yield OnboardingState.error(message: mapFailureToErrorMessage(failure));

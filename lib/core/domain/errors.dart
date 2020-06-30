@@ -13,3 +13,7 @@ class UnexpectedValueError extends Error {
     return Error.safeToString('$explanation Failure was: $valueFailure');
   }
 }
+
+class ItemAlreadyExistsError extends Error {}
+
+class ItemDoesNotExistError extends Error {}

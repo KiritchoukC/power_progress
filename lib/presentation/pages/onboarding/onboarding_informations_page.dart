@@ -6,15 +6,14 @@ import 'package:power_progress/theme/pp_light_theme.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
-import 'package:power_progress/presentation/widgets/inputs/incrementation_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
 
 class OnboardingInformationsPageArguments {
@@ -129,9 +128,10 @@ class _InformationsFormState extends State<_InformationsForm> {
     super.dispose();
   }
 
+  OneRm get _oneRm => OneRm.parse(_oneRmController.value.text);
+
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(widget.exerciseName),
         incrementation: Incrementation.two(),
         month: Month(1),
@@ -166,7 +166,9 @@ class _InformationsFormState extends State<_InformationsForm> {
               FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context.bloc<ExerciseBloc>().add(ExerciseEvent.add(exercise: _exercise));
+                    context
+                        .bloc<ExerciseBloc>()
+                        .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
                     context.bloc<OnboardingBloc>().add(const OnboardingEvent.markDone());
                   }
                 },

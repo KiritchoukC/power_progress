@@ -1,15 +1,40 @@
 import 'package:flutter/material.dart';
 
-import 'package:power_progress/domain/workout/entities/exercise_set.dart';
+import 'package:power_progress/domain/workout/exercise_set.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 class ExerciseSetWidget extends StatelessWidget {
   final ExerciseSet exerciseSet;
+  final bool isWeekDone;
 
   TextStyle _getTextStyle(BuildContext context) {
     return Theme.of(context).textTheme.subtitle1;
   }
 
-  const ExerciseSetWidget({Key key, @required this.exerciseSet}) : super(key: key);
+  TextStyle _getRepsStyle(BuildContext context) {
+    if (exerciseSet.isAmrap) {
+      if (isWeekDone) {
+        return _getTextStyle(context).copyWith(
+          color: PPTheme.success,
+        );
+      }
+
+      return _getTextStyle(context).copyWith(
+        decoration: TextDecoration.underline,
+        decorationStyle: TextDecorationStyle.dotted,
+        decorationThickness: 2,
+        color: Colors.grey,
+      );
+    }
+
+    return _getTextStyle(context);
+  }
+
+  const ExerciseSetWidget({
+    Key key,
+    @required this.exerciseSet,
+    @required this.isWeekDone,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -33,7 +58,7 @@ class ExerciseSetWidget extends StatelessWidget {
           width: 30,
           child: Text(
             exerciseSet.reps.toString(),
-            style: _getTextStyle(context),
+            style: _getRepsStyle(context),
           ),
         ),
         Container(

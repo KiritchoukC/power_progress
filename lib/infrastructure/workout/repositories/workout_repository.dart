@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
 
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/workout/entities/workout_done.dart';
-import 'package:power_progress/domain/workout/entities/workout_failure.dart';
-import 'package:power_progress/domain/workout/repositories/i_workout_repository.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/workout/workout_done.dart';
+import 'package:power_progress/domain/workout/workout_failure.dart';
+import 'package:power_progress/domain/workout/i_workout_repository.dart';
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 
@@ -27,7 +27,7 @@ class WorkoutRepository implements IWorkoutRepository {
 
   @override
   Future<Either<WorkoutFailure, Unit>> markDone(
-      int exerciseId, Month month, WeekEnum week, int repsDone) async {
+      int exerciseId, Month month, WeekEnum week, Option<int> repsDone) async {
     try {
       return right(await datasource.markDone(exerciseId, month, week, repsDone));
     } on Exception {
@@ -39,6 +39,15 @@ class WorkoutRepository implements IWorkoutRepository {
   Future<Either<WorkoutFailure, Unit>> remove(int id) async {
     try {
       return right(await datasource.remove(id));
+    } on Exception {
+      return left(const WorkoutFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<WorkoutFailure, Unit>> removeByExerciseId(int exerciseId) async {
+    try {
+      return right(await datasource.removeByExerciseId(exerciseId));
     } on Exception {
       return left(const WorkoutFailure.storageError());
     }

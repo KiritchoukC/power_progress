@@ -12,9 +12,10 @@ T _$identity<T>(T value) => value;
 class _$ExerciseEventTearOff {
   const _$ExerciseEventTearOff();
 
-  Add add({@required Exercise exercise}) {
+  Add add({@required Exercise exercise, @required OneRm oneRm}) {
     return Add(
       exercise: exercise,
+      oneRm: oneRm,
     );
   }
 
@@ -43,7 +44,7 @@ const $ExerciseEvent = _$ExerciseEventTearOff();
 mixin _$ExerciseEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result add(Exercise exercise),
+    @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
     @required
         Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
@@ -51,7 +52,7 @@ mixin _$ExerciseEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise),
+    Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
     Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
@@ -92,7 +93,7 @@ class _$ExerciseEventCopyWithImpl<$Res>
 abstract class $AddCopyWith<$Res> {
   factory $AddCopyWith(Add value, $Res Function(Add) then) =
       _$AddCopyWithImpl<$Res>;
-  $Res call({Exercise exercise});
+  $Res call({Exercise exercise, OneRm oneRm});
 }
 
 class _$AddCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
@@ -106,22 +107,28 @@ class _$AddCopyWithImpl<$Res> extends _$ExerciseEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object exercise = freezed,
+    Object oneRm = freezed,
   }) {
     return _then(Add(
       exercise: exercise == freezed ? _value.exercise : exercise as Exercise,
+      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
 
 class _$Add with DiagnosticableTreeMixin implements Add {
-  const _$Add({@required this.exercise}) : assert(exercise != null);
+  const _$Add({@required this.exercise, @required this.oneRm})
+      : assert(exercise != null),
+        assert(oneRm != null);
 
   @override
   final Exercise exercise;
+  @override
+  final OneRm oneRm;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ExerciseEvent.add(exercise: $exercise)';
+    return 'ExerciseEvent.add(exercise: $exercise, oneRm: $oneRm)';
   }
 
   @override
@@ -129,7 +136,8 @@ class _$Add with DiagnosticableTreeMixin implements Add {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ExerciseEvent.add'))
-      ..add(DiagnosticsProperty('exercise', exercise));
+      ..add(DiagnosticsProperty('exercise', exercise))
+      ..add(DiagnosticsProperty('oneRm', oneRm));
   }
 
   @override
@@ -138,12 +146,16 @@ class _$Add with DiagnosticableTreeMixin implements Add {
         (other is Add &&
             (identical(other.exercise, exercise) ||
                 const DeepCollectionEquality()
-                    .equals(other.exercise, exercise)));
+                    .equals(other.exercise, exercise)) &&
+            (identical(other.oneRm, oneRm) ||
+                const DeepCollectionEquality().equals(other.oneRm, oneRm)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exercise);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exercise) ^
+      const DeepCollectionEquality().hash(oneRm);
 
   @override
   $AddCopyWith<Add> get copyWith => _$AddCopyWithImpl<Add>(this, _$identity);
@@ -151,7 +163,7 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result add(Exercise exercise),
+    @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
     @required
         Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
@@ -161,13 +173,13 @@ class _$Add with DiagnosticableTreeMixin implements Add {
     assert(fetch != null);
     assert(selectionMode != null);
     assert(remove != null);
-    return add(exercise);
+    return add(exercise, oneRm);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise),
+    Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
     Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
@@ -175,7 +187,7 @@ class _$Add with DiagnosticableTreeMixin implements Add {
   }) {
     assert(orElse != null);
     if (add != null) {
-      return add(exercise);
+      return add(exercise, oneRm);
     }
     return orElse();
   }
@@ -213,9 +225,11 @@ class _$Add with DiagnosticableTreeMixin implements Add {
 }
 
 abstract class Add implements ExerciseEvent {
-  const factory Add({@required Exercise exercise}) = _$Add;
+  const factory Add({@required Exercise exercise, @required OneRm oneRm}) =
+      _$Add;
 
   Exercise get exercise;
+  OneRm get oneRm;
   $AddCopyWith<Add> get copyWith;
 }
 
@@ -258,7 +272,7 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result add(Exercise exercise),
+    @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
     @required
         Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
@@ -274,7 +288,7 @@ class _$Fetch with DiagnosticableTreeMixin implements Fetch {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise),
+    Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
     Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
@@ -406,7 +420,7 @@ class _$SelectionMode with DiagnosticableTreeMixin implements SelectionMode {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result add(Exercise exercise),
+    @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
     @required
         Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
@@ -422,7 +436,7 @@ class _$SelectionMode with DiagnosticableTreeMixin implements SelectionMode {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise),
+    Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
     Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),
@@ -539,7 +553,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result add(Exercise exercise),
+    @required Result add(Exercise exercise, OneRm oneRm),
     @required Result fetch(),
     @required
         Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
@@ -555,7 +569,7 @@ class _$Remove with DiagnosticableTreeMixin implements Remove {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result add(Exercise exercise),
+    Result add(Exercise exercise, OneRm oneRm),
     Result fetch(),
     Result selectionMode(bool isInSelectionMode, List<int> selectedIds),
     Result remove(List<int> ids),

@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/workout/entities/month_workout.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/workout/month_workout.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
@@ -24,7 +25,7 @@ class WorkoutPageArguments {
 class WorkoutPage extends StatelessWidget {
   final Exercise exercise;
 
-  const WorkoutPage({Key key, @required this.exercise}) : super(key: key);
+  WorkoutPage({Key key, @required this.exercise}) : super(key: key ?? Key(exercise.id.toString()));
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,6 @@ class WorkoutPage extends StatelessWidget {
                     WorkoutEvent.generate(
                       exerciseId: id,
                       month: month,
-                      oneRm: oneRm,
                     ),
                   );
             }
@@ -72,17 +72,19 @@ class WorkoutPage extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               initial: () {
-                context.bloc<WorkoutBloc>().add(WorkoutEvent.generate(
-                      exerciseId: exercise.id,
-                      month: exercise.month,
-                      oneRm: exercise.oneRm,
-                    ));
+                context.bloc<WorkoutBloc>().add(
+                      WorkoutEvent.generate(
+                        exerciseId: exercise.id,
+                        month: exercise.month,
+                      ),
+                    );
 
                 return const CenteredLoading();
               },
               generated: (workout, month) => _Body(
                 monthWorkout: workout,
                 exerciseId: exercise.id,
+                incrementation: exercise.incrementation,
                 month: month,
               ),
               orElse: () => const CenteredLoading(),
@@ -97,12 +99,14 @@ class WorkoutPage extends StatelessWidget {
 class _Body extends StatelessWidget {
   final MonthWorkout monthWorkout;
   final int exerciseId;
+  final Incrementation incrementation;
   final Month month;
 
   const _Body({
     Key key,
     @required this.monthWorkout,
     @required this.exerciseId,
+    @required this.incrementation,
     @required this.month,
   }) : super(key: key);
 
@@ -117,6 +121,7 @@ class _Body extends StatelessWidget {
               workout: monthWorkout.accumulationWorkout,
               exerciseSets: monthWorkout.accumulationWorkout.exerciseSets,
               exerciseId: exerciseId,
+              incrementation: incrementation,
               isValidatable: monthWorkout.validatable(const WeekEnum.accumulation()),
               isInvalidatable: monthWorkout.invalidatable(const WeekEnum.accumulation()),
             ),
@@ -124,6 +129,7 @@ class _Body extends StatelessWidget {
               workout: monthWorkout.intensificationWorkout,
               exerciseSets: monthWorkout.intensificationWorkout.exerciseSets,
               exerciseId: exerciseId,
+              incrementation: incrementation,
               isValidatable: monthWorkout.validatable(const WeekEnum.intensification()),
               isInvalidatable: monthWorkout.invalidatable(const WeekEnum.intensification()),
             ),
@@ -131,6 +137,7 @@ class _Body extends StatelessWidget {
               workout: monthWorkout.realizationWorkout,
               exerciseSets: monthWorkout.realizationWorkout.exerciseSets,
               exerciseId: exerciseId,
+              incrementation: incrementation,
               isValidatable: monthWorkout.validatable(const WeekEnum.realization()),
               isInvalidatable: monthWorkout.invalidatable(const WeekEnum.realization()),
             ),
@@ -138,6 +145,7 @@ class _Body extends StatelessWidget {
               workout: monthWorkout.deloadWorkout,
               exerciseSets: monthWorkout.deloadWorkout.exerciseSets,
               exerciseId: exerciseId,
+              incrementation: incrementation,
               isValidatable: monthWorkout.validatable(const WeekEnum.deload()),
               isInvalidatable: monthWorkout.invalidatable(const WeekEnum.deload()),
             ),
@@ -190,7 +198,6 @@ class MonthNavigation extends StatelessWidget {
                             WorkoutEvent.generate(
                               exerciseId: exerciseId,
                               month: Month(currentMonth - 1),
-                              oneRm: oneRm,
                             ),
                           );
                     }
@@ -212,7 +219,6 @@ class MonthNavigation extends StatelessWidget {
                       WorkoutEvent.generate(
                         exerciseId: exerciseId,
                         month: Month(currentMonth + 1),
-                        oneRm: oneRm,
                       ),
                     );
               }),

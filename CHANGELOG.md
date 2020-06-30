@@ -2,6 +2,195 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.22.0](https://github.com/KiritchoukC/power_progress/compare/v2.21.11...v2.22.0) (2020-06-30)
+
+
+### Features
+
+* **onerm:** update onerm on dashboard exercise card ([a2af777](https://github.com/KiritchoukC/power_progress/commit/a2af777)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.21.11](https://github.com/KiritchoukC/power_progress/compare/v2.21.10...v2.21.11) (2020-06-28)
+
+
+### Bug Fixes
+
+* **onerm:** generate onerm for the next month on marking a workout done ([1b18028](https://github.com/KiritchoukC/power_progress/commit/1b18028)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.21.10](https://github.com/KiritchoukC/power_progress/compare/v2.21.9...v2.21.10) (2020-06-28)
+
+
+### Bug Fixes
+
+* **workout-nav:** fix the workout being generated only on the firs time ([d702f21](https://github.com/KiritchoukC/power_progress/commit/d702f21))
+
+### [2.21.9](https://github.com/KiritchoukC/power_progress/compare/v2.21.8...v2.21.9) (2020-06-28)
+
+
+### Bug Fixes
+
+* **exercise-card:** fix week and month dashboard card update ([8d5634a](https://github.com/KiritchoukC/power_progress/commit/8d5634a))
+
+### [2.21.8](https://github.com/KiritchoukC/power_progress/compare/v2.21.7...v2.21.8) (2020-06-28)
+
+### [2.21.7](https://github.com/KiritchoukC/power_progress/compare/v2.21.6...v2.21.7) (2020-06-26)
+
+
+### Bug Fixes
+
+* **onerm:** fix week and onerm dashboard update ([ee4f77b](https://github.com/KiritchoukC/power_progress/commit/ee4f77b)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.21.6](https://github.com/KiritchoukC/power_progress/compare/v2.21.5...v2.21.6) (2020-06-25)
+
+### [2.21.5](https://github.com/KiritchoukC/power_progress/compare/v2.21.4...v2.21.5) (2020-06-25)
+
+### [2.21.4](https://github.com/KiritchoukC/power_progress/compare/v2.21.3...v2.21.4) (2020-06-25)
+
+### [2.21.3](https://github.com/KiritchoukC/power_progress/compare/v2.21.2...v2.21.3) (2020-06-25)
+
+### [2.21.2](https://github.com/KiritchoukC/power_progress/compare/v2.21.1...v2.21.2) (2020-06-25)
+
+### [2.21.1](https://github.com/KiritchoukC/power_progress/compare/v2.21.0...v2.21.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* **onrm:** remove redondant code in mark workout undone usecase ([8d65d46](https://github.com/KiritchoukC/power_progress/commit/8d65d46)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.21.0](https://github.com/KiritchoukC/power_progress/compare/v2.20.0...v2.21.0) (2020-06-24)
+
+
+### Features
+
+* **onerm:** update dashboard next week and current month ([b7ce5c6](https://github.com/KiritchoukC/power_progress/commit/b7ce5c6)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.20.0](https://github.com/KiritchoukC/power_progress/compare/v2.19.2...v2.20.0) (2020-06-23)
+
+
+### Features
+
+* **onerm:** update week and month ([08dafef](https://github.com/KiritchoukC/power_progress/commit/08dafef)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.19.2](https://github.com/KiritchoukC/power_progress/compare/v2.19.1...v2.19.2) (2020-06-21)
+
+### [2.19.1](https://github.com/KiritchoukC/power_progress/compare/v2.19.0...v2.19.1) (2020-06-21)
+
+
+### Bug Fixes
+
+* **onerm:** fix week validation ([9033155](https://github.com/KiritchoukC/power_progress/commit/9033155)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.19.0](https://github.com/KiritchoukC/power_progress/compare/v2.18.1...v2.19.0) (2020-06-19)
+
+
+### Features
+
+* **onerm:** remove onerm when removing an exercise or unvalidating a workout ([28aa369](https://github.com/KiritchoukC/power_progress/commit/28aa369)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.18.1](https://github.com/KiritchoukC/power_progress/compare/v2.18.0...v2.18.1) (2020-06-18)
+
+## [2.18.0](https://github.com/KiritchoukC/power_progress/compare/v2.17.0...v2.18.0) (2020-06-18)
+
+
+### Features
+
+* **onerm:** use previous one rm when generating a month without one ([fa388a7](https://github.com/KiritchoukC/power_progress/commit/fa388a7)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.17.0](https://github.com/KiritchoukC/power_progress/compare/v2.16.0...v2.17.0) (2020-06-18)
+
+
+### Features
+
+* **onerm:** generate a new onerm when validating a realization workout ([139233f](https://github.com/KiritchoukC/power_progress/commit/139233f)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.16.0](https://github.com/KiritchoukC/power_progress/compare/v2.15.0...v2.16.0) (2020-06-18)
+
+
+### Features
+
+* **exercise-remove:** remove associated onerm and workouts on exercise remove ([c0a6601](https://github.com/KiritchoukC/power_progress/commit/c0a6601))
+
+## [2.15.0](https://github.com/KiritchoukC/power_progress/compare/v2.14.0...v2.15.0) (2020-06-17)
+
+
+### Features
+
+* **onerm:** adapt exercise add and workout generate ([cc248c3](https://github.com/KiritchoukC/power_progress/commit/cc248c3)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.14.0](https://github.com/KiritchoukC/power_progress/compare/v2.13.0...v2.14.0) (2020-06-16)
+
+
+### Features
+
+* **onerm:** add one rm bloc and adapt the rest ([72e45fb](https://github.com/KiritchoukC/power_progress/commit/72e45fb)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.13.0](https://github.com/KiritchoukC/power_progress/compare/v2.12.1...v2.13.0) (2020-06-16)
+
+
+### Features
+
+* **onerm:** add one rm upsert usecase ([9571c35](https://github.com/KiritchoukC/power_progress/commit/9571c35)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.12.1](https://github.com/KiritchoukC/power_progress/compare/v2.12.0...v2.12.1) (2020-06-13)
+
+
+### Bug Fixes
+
+* **onerm:** add injection for repository ([fa029d6](https://github.com/KiritchoukC/power_progress/commit/fa029d6)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.12.0](https://github.com/KiritchoukC/power_progress/compare/v2.11.1...v2.12.0) (2020-06-13)
+
+
+### Features
+
+* **onerm:** add repository implementation ([f0808d6](https://github.com/KiritchoukC/power_progress/commit/f0808d6)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+### [2.11.1](https://github.com/KiritchoukC/power_progress/compare/v2.11.0...v2.11.1) (2020-06-13)
+
+## [2.11.0](https://github.com/KiritchoukC/power_progress/compare/v2.10.0...v2.11.0) (2020-06-11)
+
+
+### Features
+
+* **onerm:** add a hive box to manage onerm for different exercise and month ([20c84c7](https://github.com/KiritchoukC/power_progress/commit/20c84c7)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+* **onerm:** update onerm on realization done ([378bdd6](https://github.com/KiritchoukC/power_progress/commit/378bdd6)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.10.0](https://github.com/KiritchoukC/power_progress/compare/v2.9.0...v2.10.0) (2020-06-10)
+
+
+### Features
+
+* **onerm:** add update_one_rm usecase ([fb08f1b](https://github.com/KiritchoukC/power_progress/commit/fb08f1b)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.9.0](https://github.com/KiritchoukC/power_progress/compare/v2.8.0...v2.9.0) (2020-06-10)
+
+
+### Features
+
+* **onerm:** add repository implementation ([7e430db](https://github.com/KiritchoukC/power_progress/commit/7e430db)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.8.0](https://github.com/KiritchoukC/power_progress/compare/v2.7.0...v2.8.0) (2020-06-10)
+
+
+### Features
+
+* **onerm:** add datasource implementation ([bb44100](https://github.com/KiritchoukC/power_progress/commit/bb44100)), closes [#59](https://github.com/KiritchoukC/power_progress/issues/59)
+
+## [2.7.0](https://github.com/KiritchoukC/power_progress/compare/v2.6.0...v2.7.0) (2020-06-10)
+
+
+### Features
+
+* **amrap:** style done amrap reps ([875aab8](https://github.com/KiritchoukC/power_progress/commit/875aab8))
+
+## [2.6.0](https://github.com/KiritchoukC/power_progress/compare/v2.5.1...v2.6.0) (2020-06-10)
+
+
+### Features
+
+* **amrap:** style amrap reps ([45f14d8](https://github.com/KiritchoukC/power_progress/commit/45f14d8))
+
+### [2.5.1](https://github.com/KiritchoukC/power_progress/compare/v2.5.0...v2.5.1) (2020-06-10)
+
 ## [2.5.0](https://github.com/KiritchoukC/power_progress/compare/v2.4.0...v2.5.0) (2020-06-10)
 
 

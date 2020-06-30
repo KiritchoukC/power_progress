@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/week_widget.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
-class ExerciseCard extends StatefulWidget {
+class ExerciseCard extends StatelessWidget {
   final Exercise exercise;
   final VoidCallback onSelect;
   final bool isInSelectionMode;
@@ -19,34 +24,29 @@ class ExerciseCard extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ExerciseCardState createState() => _ExerciseCardState();
-}
-
-class _ExerciseCardState extends State<ExerciseCard> {
-  @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
       elevation: 1,
       child: InkWell(
         onLongPress: () {
-          widget.onSelect();
+          onSelect();
         },
         onTap: () {
-          if (widget.isInSelectionMode) {
-            widget.onSelect();
+          if (isInSelectionMode) {
+            onSelect();
             return;
           }
 
           Navigator.of(context).pushNamed(
             RoutePaths.exerciseWorkout,
-            arguments: WorkoutPageArguments(exercise: widget.exercise),
+            arguments: WorkoutPageArguments(exercise: exercise),
           );
         },
         child: Container(
-          color: widget.isSelected ? Colors.blue.shade100 : null,
+          color: isSelected ? Colors.blue.shade100 : null,
           height: 100,
-          child: _Card(exercise: widget.exercise),
+          child: _Card(exercise: exercise),
         ),
       ),
     );
@@ -56,7 +56,10 @@ class _ExerciseCardState extends State<ExerciseCard> {
 class _Card extends StatelessWidget {
   final Exercise exercise;
 
-  const _Card({Key key, @required this.exercise}) : super(key: key);
+  const _Card({
+    Key key,
+    @required this.exercise,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,36 +78,21 @@ class _Card extends StatelessWidget {
                       color: Colors.grey.shade700,
                     ),
               ),
-              Text(
-                '${exercise.oneRm.getOrCrash()} Kg',
-                style: Theme.of(context).textTheme.subtitle1.apply(
-                      color: Colors.black54,
-                    ),
-              ),
+              OneRmWidget(exercise: exercise),
               Row(
                 children: [
                   Icon(
                     Icons.keyboard_arrow_right,
                     color: Theme.of(context).accentColor,
                   ),
-                  Text(
-                    exercise.nextWeek.displayName,
-                    style: Theme.of(context).textTheme.bodyText1.apply(
-                          color: Theme.of(context).accentColor,
-                        ),
-                  ),
+                  WeekWidget(exercise: exercise),
                 ],
               )
             ],
           ),
           Column(
             children: [
-              Text(
-                'Month ${exercise.month.getOrCrash()}',
-                style: Theme.of(context).textTheme.subtitle2.apply(
-                      color: Colors.black54,
-                    ),
-              ),
+              MonthWidget(exercise: exercise),
             ],
           ),
         ],

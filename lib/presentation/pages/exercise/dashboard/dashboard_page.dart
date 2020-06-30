@@ -2,11 +2,12 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
+import 'package:power_progress/application/exercise/week/week_bloc.dart';
 
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
@@ -40,14 +41,14 @@ class DashboardPage extends StatelessWidget {
             );
           },
           listener: (context, state) {
-            state.maybeMap(
-              error: (value) =>
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(value.message))),
+            state.maybeWhen(
+              error: (message) =>
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(message))),
               orElse: () {},
             );
           },
           builder: (context, state) {
-            Widget fetch(_) {
+            Widget fetch() {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 BlocProvider.of<ExerciseBloc>(context).add(const ExerciseEvent.fetch());
               });
@@ -55,11 +56,11 @@ class DashboardPage extends StatelessWidget {
               return const CenteredLoading();
             }
 
-            return state.maybeMap(
+            return state.maybeWhen(
               removed: fetch,
               initial: fetch,
               added: fetch,
-              fetched: (value) => _Body(exercises: value.exercises),
+              fetched: (exercises) => _Body(exercises: exercises),
               orElse: () => const CenteredLoading(),
             );
           },
@@ -152,13 +153,13 @@ class _RemoveButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return state.maybeMap(
-          selected: (value) => RemoveButton(
+        return state.maybeWhen(
+          selected: (selectedIds) => RemoveButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return DeleteConfirmDialog(exerciseIds: value.selectedIds);
+                  return DeleteConfirmDialog(exerciseIds: selectedIds);
                 },
               );
             },

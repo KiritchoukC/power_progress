@@ -3,8 +3,9 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
 import 'package:power_progress/core/util/util_functions.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 
@@ -14,7 +15,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
   HiveExerciseDatasource({@required this.localStorage}) : assert(localStorage != null);
 
   @override
-  Future<Unit> add(ExerciseModel exercise) async {
+  Future<int> add(ExerciseModel exercise) async {
     // insert and retrieve auto-increment id
     final int insertedId = await tryOrCrash(
       () => localStorage.add(exercise),
@@ -30,7 +31,7 @@ class HiveExerciseDatasource implements IExerciseDatasource {
       (_) => throw Exception(),
     );
 
-    return unit;
+    return insertedId;
   }
 
   @override
@@ -58,7 +59,6 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
-      oneRm: currentModel.oneRm,
       name: currentModel.name,
       incrementation: currentModel.incrementation,
       month: currentModel.month,
@@ -76,14 +76,10 @@ class HiveExerciseDatasource implements IExerciseDatasource {
 
   @override
   Future<Unit> updateNextMonth(int exerciseId, Month nextMonth) async {
-    final currentModel = localStorage.values.firstWhere(
-      (element) => element.id == exerciseId,
-      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
-    );
+    final currentModel = await getById(exerciseId);
 
     final updatedModel = ExerciseModel(
       id: currentModel.id,
-      oneRm: currentModel.oneRm,
       name: currentModel.name,
       incrementation: currentModel.incrementation,
       nextWeekIndex: currentModel.nextWeekIndex,
@@ -97,5 +93,13 @@ class HiveExerciseDatasource implements IExerciseDatasource {
     );
 
     return unit;
+  }
+
+  @override
+  Future<ExerciseModel> getById(int exerciseId) async {
+    return localStorage.values.firstWhere(
+      (element) => element.id == exerciseId,
+      orElse: () => throw Exception('Exercise $exerciseId does not exist'),
+    );
   }
 }

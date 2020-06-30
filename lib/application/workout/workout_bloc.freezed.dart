@@ -12,25 +12,27 @@ T _$identity<T>(T value) => value;
 class _$WorkoutEventTearOff {
   const _$WorkoutEventTearOff();
 
-  Generate generate(
-      {@required int exerciseId,
-      @required Month month,
-      @required OneRm oneRm}) {
+  ResetState resetState() {
+    return const ResetState();
+  }
+
+  Generate generate({@required int exerciseId, @required Month month}) {
     return Generate(
       exerciseId: exerciseId,
       month: month,
-      oneRm: oneRm,
     );
   }
 
   MarkDone markDone(
       {@required int exerciseId,
+      @required Incrementation incrementation,
       @required Month month,
       @required WeekEnum week,
       @required OneRm oneRm,
-      int repsDone}) {
+      @required Option<int> repsDone}) {
     return MarkDone(
       exerciseId: exerciseId,
+      incrementation: incrementation,
       month: month,
       week: week,
       oneRm: oneRm,
@@ -39,17 +41,25 @@ class _$WorkoutEventTearOff {
   }
 
   MarkUndone markUndone(
-      {@required int id,
+      {@required Option<int> id,
       @required int exerciseId,
+      @required Incrementation incrementation,
       @required WeekEnum week,
       @required Month month,
       @required OneRm oneRm}) {
     return MarkUndone(
       id: id,
       exerciseId: exerciseId,
+      incrementation: incrementation,
       week: week,
       month: month,
       oneRm: oneRm,
+    );
+  }
+
+  Remove remove({@required int exerciseId}) {
+    return Remove(
+      exerciseId: exerciseId,
     );
   }
 }
@@ -58,51 +68,57 @@ class _$WorkoutEventTearOff {
 const $WorkoutEvent = _$WorkoutEventTearOff();
 
 mixin _$WorkoutEvent {
-  int get exerciseId;
-  Month get month;
-  OneRm get oneRm;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
     @required
-        Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
     @required
         Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
+    Result remove(Remove value),
     @required Result orElse(),
   });
-
-  $WorkoutEventCopyWith<WorkoutEvent> get copyWith;
 }
 
 abstract class $WorkoutEventCopyWith<$Res> {
   factory $WorkoutEventCopyWith(
           WorkoutEvent value, $Res Function(WorkoutEvent) then) =
       _$WorkoutEventCopyWithImpl<$Res>;
-  $Res call({int exerciseId, Month month, OneRm oneRm});
 }
 
 class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
@@ -111,26 +127,133 @@ class _$WorkoutEventCopyWithImpl<$Res> implements $WorkoutEventCopyWith<$Res> {
   final WorkoutEvent _value;
   // ignore: unused_field
   final $Res Function(WorkoutEvent) _then;
+}
+
+abstract class $ResetStateCopyWith<$Res> {
+  factory $ResetStateCopyWith(
+          ResetState value, $Res Function(ResetState) then) =
+      _$ResetStateCopyWithImpl<$Res>;
+}
+
+class _$ResetStateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
+    implements $ResetStateCopyWith<$Res> {
+  _$ResetStateCopyWithImpl(ResetState _value, $Res Function(ResetState) _then)
+      : super(_value, (v) => _then(v as ResetState));
 
   @override
-  $Res call({
-    Object exerciseId = freezed,
-    Object month = freezed,
-    Object oneRm = freezed,
+  ResetState get _value => super._value as ResetState;
+}
+
+class _$ResetState with DiagnosticableTreeMixin implements ResetState {
+  const _$ResetState();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.resetState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutEvent.resetState'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ResetState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
+    @required
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    @required
+        Result markUndone(
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   }) {
-    return _then(_value.copyWith(
-      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
-      month: month == freezed ? _value.month : month as Month,
-      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
-    ));
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
+    @required Result generate(Generate value),
+    @required Result markDone(MarkDone value),
+    @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
+  }) {
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
+    Result generate(Generate value),
+    Result markDone(MarkDone value),
+    Result markUndone(MarkUndone value),
+    Result remove(Remove value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
   }
 }
 
-abstract class $GenerateCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
+abstract class ResetState implements WorkoutEvent {
+  const factory ResetState() = _$ResetState;
+}
+
+abstract class $GenerateCopyWith<$Res> {
   factory $GenerateCopyWith(Generate value, $Res Function(Generate) then) =
       _$GenerateCopyWithImpl<$Res>;
-  @override
-  $Res call({int exerciseId, Month month, OneRm oneRm});
+  $Res call({int exerciseId, Month month});
 }
 
 class _$GenerateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
@@ -145,33 +268,27 @@ class _$GenerateCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
   $Res call({
     Object exerciseId = freezed,
     Object month = freezed,
-    Object oneRm = freezed,
   }) {
     return _then(Generate(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
       month: month == freezed ? _value.month : month as Month,
-      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
     ));
   }
 }
 
 class _$Generate with DiagnosticableTreeMixin implements Generate {
-  const _$Generate(
-      {@required this.exerciseId, @required this.month, @required this.oneRm})
+  const _$Generate({@required this.exerciseId, @required this.month})
       : assert(exerciseId != null),
-        assert(month != null),
-        assert(oneRm != null);
+        assert(month != null);
 
   @override
   final int exerciseId;
   @override
   final Month month;
-  @override
-  final OneRm oneRm;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutEvent.generate(exerciseId: $exerciseId, month: $month, oneRm: $oneRm)';
+    return 'WorkoutEvent.generate(exerciseId: $exerciseId, month: $month)';
   }
 
   @override
@@ -180,8 +297,7 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
     properties
       ..add(DiagnosticsProperty('type', 'WorkoutEvent.generate'))
       ..add(DiagnosticsProperty('exerciseId', exerciseId))
-      ..add(DiagnosticsProperty('month', month))
-      ..add(DiagnosticsProperty('oneRm', oneRm));
+      ..add(DiagnosticsProperty('month', month));
   }
 
   @override
@@ -192,17 +308,14 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
                 const DeepCollectionEquality()
                     .equals(other.exerciseId, exerciseId)) &&
             (identical(other.month, month) ||
-                const DeepCollectionEquality().equals(other.month, month)) &&
-            (identical(other.oneRm, oneRm) ||
-                const DeepCollectionEquality().equals(other.oneRm, oneRm)));
+                const DeepCollectionEquality().equals(other.month, month)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exerciseId) ^
-      const DeepCollectionEquality().hash(month) ^
-      const DeepCollectionEquality().hash(oneRm);
+      const DeepCollectionEquality().hash(month);
 
   @override
   $GenerateCopyWith<Generate> get copyWith =>
@@ -211,33 +324,44 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
     @required
-        Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
     @required
         Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
-    return generate(exerciseId, month, oneRm);
+    assert(remove != null);
+    return generate(exerciseId, month);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (generate != null) {
-      return generate(exerciseId, month, oneRm);
+      return generate(exerciseId, month);
     }
     return orElse();
   }
@@ -245,22 +369,28 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
+    assert(remove != null);
     return generate(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
+    Result remove(Remove value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -272,27 +402,24 @@ class _$Generate with DiagnosticableTreeMixin implements Generate {
 }
 
 abstract class Generate implements WorkoutEvent {
-  const factory Generate(
-      {@required int exerciseId,
-      @required Month month,
-      @required OneRm oneRm}) = _$Generate;
+  const factory Generate({@required int exerciseId, @required Month month}) =
+      _$Generate;
 
-  @override
   int get exerciseId;
-  @override
   Month get month;
-  @override
-  OneRm get oneRm;
-  @override
   $GenerateCopyWith<Generate> get copyWith;
 }
 
-abstract class $MarkDoneCopyWith<$Res> implements $WorkoutEventCopyWith<$Res> {
+abstract class $MarkDoneCopyWith<$Res> {
   factory $MarkDoneCopyWith(MarkDone value, $Res Function(MarkDone) then) =
       _$MarkDoneCopyWithImpl<$Res>;
-  @override
   $Res call(
-      {int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone});
+      {int exerciseId,
+      Incrementation incrementation,
+      Month month,
+      WeekEnum week,
+      OneRm oneRm,
+      Option<int> repsDone});
 
   $WeekEnumCopyWith<$Res> get week;
 }
@@ -308,6 +435,7 @@ class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object exerciseId = freezed,
+    Object incrementation = freezed,
     Object month = freezed,
     Object week = freezed,
     Object oneRm = freezed,
@@ -315,10 +443,13 @@ class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
   }) {
     return _then(MarkDone(
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+      incrementation: incrementation == freezed
+          ? _value.incrementation
+          : incrementation as Incrementation,
       month: month == freezed ? _value.month : month as Month,
       week: week == freezed ? _value.week : week as WeekEnum,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
-      repsDone: repsDone == freezed ? _value.repsDone : repsDone as int,
+      repsDone: repsDone == freezed ? _value.repsDone : repsDone as Option<int>,
     ));
   }
 
@@ -336,17 +467,22 @@ class _$MarkDoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
 class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   const _$MarkDone(
       {@required this.exerciseId,
+      @required this.incrementation,
       @required this.month,
       @required this.week,
       @required this.oneRm,
-      this.repsDone})
+      @required this.repsDone})
       : assert(exerciseId != null),
+        assert(incrementation != null),
         assert(month != null),
         assert(week != null),
-        assert(oneRm != null);
+        assert(oneRm != null),
+        assert(repsDone != null);
 
   @override
   final int exerciseId;
+  @override
+  final Incrementation incrementation;
   @override
   final Month month;
   @override
@@ -354,11 +490,11 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   final OneRm oneRm;
   @override
-  final int repsDone;
+  final Option<int> repsDone;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutEvent.markDone(exerciseId: $exerciseId, month: $month, week: $week, oneRm: $oneRm, repsDone: $repsDone)';
+    return 'WorkoutEvent.markDone(exerciseId: $exerciseId, incrementation: $incrementation, month: $month, week: $week, oneRm: $oneRm, repsDone: $repsDone)';
   }
 
   @override
@@ -367,6 +503,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
     properties
       ..add(DiagnosticsProperty('type', 'WorkoutEvent.markDone'))
       ..add(DiagnosticsProperty('exerciseId', exerciseId))
+      ..add(DiagnosticsProperty('incrementation', incrementation))
       ..add(DiagnosticsProperty('month', month))
       ..add(DiagnosticsProperty('week', week))
       ..add(DiagnosticsProperty('oneRm', oneRm))
@@ -380,6 +517,9 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
             (identical(other.exerciseId, exerciseId) ||
                 const DeepCollectionEquality()
                     .equals(other.exerciseId, exerciseId)) &&
+            (identical(other.incrementation, incrementation) ||
+                const DeepCollectionEquality()
+                    .equals(other.incrementation, incrementation)) &&
             (identical(other.month, month) ||
                 const DeepCollectionEquality().equals(other.month, month)) &&
             (identical(other.week, week) ||
@@ -395,6 +535,7 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(incrementation) ^
       const DeepCollectionEquality().hash(month) ^
       const DeepCollectionEquality().hash(week) ^
       const DeepCollectionEquality().hash(oneRm) ^
@@ -407,33 +548,44 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
     @required
-        Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
     @required
         Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
-    return markDone(exerciseId, month, week, oneRm, repsDone);
+    assert(remove != null);
+    return markDone(exerciseId, incrementation, month, week, oneRm, repsDone);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (markDone != null) {
-      return markDone(exerciseId, month, week, oneRm, repsDone);
+      return markDone(exerciseId, incrementation, month, week, oneRm, repsDone);
     }
     return orElse();
   }
@@ -441,22 +593,28 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
+    assert(remove != null);
     return markDone(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
+    Result remove(Remove value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -470,30 +628,32 @@ class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
 abstract class MarkDone implements WorkoutEvent {
   const factory MarkDone(
       {@required int exerciseId,
+      @required Incrementation incrementation,
       @required Month month,
       @required WeekEnum week,
       @required OneRm oneRm,
-      int repsDone}) = _$MarkDone;
+      @required Option<int> repsDone}) = _$MarkDone;
 
-  @override
   int get exerciseId;
-  @override
+  Incrementation get incrementation;
   Month get month;
   WeekEnum get week;
-  @override
   OneRm get oneRm;
-  int get repsDone;
-  @override
+  Option<int> get repsDone;
   $MarkDoneCopyWith<MarkDone> get copyWith;
 }
 
-abstract class $MarkUndoneCopyWith<$Res>
-    implements $WorkoutEventCopyWith<$Res> {
+abstract class $MarkUndoneCopyWith<$Res> {
   factory $MarkUndoneCopyWith(
           MarkUndone value, $Res Function(MarkUndone) then) =
       _$MarkUndoneCopyWithImpl<$Res>;
-  @override
-  $Res call({int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm});
+  $Res call(
+      {Option<int> id,
+      int exerciseId,
+      Incrementation incrementation,
+      WeekEnum week,
+      Month month,
+      OneRm oneRm});
 
   $WeekEnumCopyWith<$Res> get week;
 }
@@ -510,13 +670,17 @@ class _$MarkUndoneCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object exerciseId = freezed,
+    Object incrementation = freezed,
     Object week = freezed,
     Object month = freezed,
     Object oneRm = freezed,
   }) {
     return _then(MarkUndone(
-      id: id == freezed ? _value.id : id as int,
+      id: id == freezed ? _value.id : id as Option<int>,
       exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+      incrementation: incrementation == freezed
+          ? _value.incrementation
+          : incrementation as Incrementation,
       week: week == freezed ? _value.week : week as WeekEnum,
       month: month == freezed ? _value.month : month as Month,
       oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
@@ -538,19 +702,23 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   const _$MarkUndone(
       {@required this.id,
       @required this.exerciseId,
+      @required this.incrementation,
       @required this.week,
       @required this.month,
       @required this.oneRm})
       : assert(id != null),
         assert(exerciseId != null),
+        assert(incrementation != null),
         assert(week != null),
         assert(month != null),
         assert(oneRm != null);
 
   @override
-  final int id;
+  final Option<int> id;
   @override
   final int exerciseId;
+  @override
+  final Incrementation incrementation;
   @override
   final WeekEnum week;
   @override
@@ -560,7 +728,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutEvent.markUndone(id: $id, exerciseId: $exerciseId, week: $week, month: $month, oneRm: $oneRm)';
+    return 'WorkoutEvent.markUndone(id: $id, exerciseId: $exerciseId, incrementation: $incrementation, week: $week, month: $month, oneRm: $oneRm)';
   }
 
   @override
@@ -570,6 +738,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
       ..add(DiagnosticsProperty('type', 'WorkoutEvent.markUndone'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('exerciseId', exerciseId))
+      ..add(DiagnosticsProperty('incrementation', incrementation))
       ..add(DiagnosticsProperty('week', week))
       ..add(DiagnosticsProperty('month', month))
       ..add(DiagnosticsProperty('oneRm', oneRm));
@@ -584,6 +753,9 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
             (identical(other.exerciseId, exerciseId) ||
                 const DeepCollectionEquality()
                     .equals(other.exerciseId, exerciseId)) &&
+            (identical(other.incrementation, incrementation) ||
+                const DeepCollectionEquality()
+                    .equals(other.incrementation, incrementation)) &&
             (identical(other.week, week) ||
                 const DeepCollectionEquality().equals(other.week, week)) &&
             (identical(other.month, month) ||
@@ -597,6 +769,7 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(incrementation) ^
       const DeepCollectionEquality().hash(week) ^
       const DeepCollectionEquality().hash(month) ^
       const DeepCollectionEquality().hash(oneRm);
@@ -608,33 +781,44 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result generate(int exerciseId, Month month, OneRm oneRm),
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
     @required
-        Result markDone(int exerciseId, Month month, WeekEnum week, OneRm oneRm,
-            int repsDone),
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
     @required
         Result markUndone(
-            int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
-    return markUndone(id, exerciseId, week, month, oneRm);
+    assert(remove != null);
+    return markUndone(id, exerciseId, incrementation, week, month, oneRm);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result generate(int exerciseId, Month month, OneRm oneRm),
-    Result markDone(
-        int exerciseId, Month month, WeekEnum week, OneRm oneRm, int repsDone),
-    Result markUndone(
-        int id, int exerciseId, WeekEnum week, Month month, OneRm oneRm),
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (markUndone != null) {
-      return markUndone(id, exerciseId, week, month, oneRm);
+      return markUndone(id, exerciseId, incrementation, week, month, oneRm);
     }
     return orElse();
   }
@@ -642,22 +826,28 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
     @required Result generate(Generate value),
     @required Result markDone(MarkDone value),
     @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
   }) {
+    assert(resetState != null);
     assert(generate != null);
     assert(markDone != null);
     assert(markUndone != null);
+    assert(remove != null);
     return markUndone(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
     Result generate(Generate value),
     Result markDone(MarkDone value),
     Result markUndone(MarkUndone value),
+    Result remove(Remove value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -670,22 +860,167 @@ class _$MarkUndone with DiagnosticableTreeMixin implements MarkUndone {
 
 abstract class MarkUndone implements WorkoutEvent {
   const factory MarkUndone(
-      {@required int id,
+      {@required Option<int> id,
       @required int exerciseId,
+      @required Incrementation incrementation,
       @required WeekEnum week,
       @required Month month,
       @required OneRm oneRm}) = _$MarkUndone;
 
-  int get id;
-  @override
+  Option<int> get id;
   int get exerciseId;
+  Incrementation get incrementation;
   WeekEnum get week;
-  @override
   Month get month;
-  @override
   OneRm get oneRm;
-  @override
   $MarkUndoneCopyWith<MarkUndone> get copyWith;
+}
+
+abstract class $RemoveCopyWith<$Res> {
+  factory $RemoveCopyWith(Remove value, $Res Function(Remove) then) =
+      _$RemoveCopyWithImpl<$Res>;
+  $Res call({int exerciseId});
+}
+
+class _$RemoveCopyWithImpl<$Res> extends _$WorkoutEventCopyWithImpl<$Res>
+    implements $RemoveCopyWith<$Res> {
+  _$RemoveCopyWithImpl(Remove _value, $Res Function(Remove) _then)
+      : super(_value, (v) => _then(v as Remove));
+
+  @override
+  Remove get _value => super._value as Remove;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(Remove(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+    ));
+  }
+}
+
+class _$Remove with DiagnosticableTreeMixin implements Remove {
+  const _$Remove({@required this.exerciseId}) : assert(exerciseId != null);
+
+  @override
+  final int exerciseId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutEvent.remove(exerciseId: $exerciseId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutEvent.remove'))
+      ..add(DiagnosticsProperty('exerciseId', exerciseId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Remove &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  $RemoveCopyWith<Remove> get copyWith =>
+      _$RemoveCopyWithImpl<Remove>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result resetState(),
+    @required Result generate(int exerciseId, Month month),
+    @required
+        Result markDone(int exerciseId, Incrementation incrementation,
+            Month month, WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    @required
+        Result markUndone(
+            Option<int> id,
+            int exerciseId,
+            Incrementation incrementation,
+            WeekEnum week,
+            Month month,
+            OneRm oneRm),
+    @required Result remove(int exerciseId),
+  }) {
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return remove(exerciseId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result resetState(),
+    Result generate(int exerciseId, Month month),
+    Result markDone(int exerciseId, Incrementation incrementation, Month month,
+        WeekEnum week, OneRm oneRm, Option<int> repsDone),
+    Result markUndone(Option<int> id, int exerciseId,
+        Incrementation incrementation, WeekEnum week, Month month, OneRm oneRm),
+    Result remove(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (remove != null) {
+      return remove(exerciseId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result resetState(ResetState value),
+    @required Result generate(Generate value),
+    @required Result markDone(MarkDone value),
+    @required Result markUndone(MarkUndone value),
+    @required Result remove(Remove value),
+  }) {
+    assert(resetState != null);
+    assert(generate != null);
+    assert(markDone != null);
+    assert(markUndone != null);
+    assert(remove != null);
+    return remove(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result resetState(ResetState value),
+    Result generate(Generate value),
+    Result markDone(MarkDone value),
+    Result markUndone(MarkUndone value),
+    Result remove(Remove value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (remove != null) {
+      return remove(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Remove implements WorkoutEvent {
+  const factory Remove({@required int exerciseId}) = _$Remove;
+
+  int get exerciseId;
+  $RemoveCopyWith<Remove> get copyWith;
 }
 
 class _$WorkoutStateTearOff {
@@ -736,6 +1071,14 @@ class _$WorkoutStateTearOff {
     );
   }
 
+  RemoveInProgress removeInProgress() {
+    return const RemoveInProgress();
+  }
+
+  Removed removed() {
+    return const Removed();
+  }
+
   Error error({@required String message}) {
     return Error(
       message: message,
@@ -756,6 +1099,8 @@ mixin _$WorkoutState {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   });
   @optionalTypeArgs
@@ -767,6 +1112,8 @@ mixin _$WorkoutState {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   });
@@ -779,6 +1126,8 @@ mixin _$WorkoutState {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   });
   @optionalTypeArgs
@@ -790,6 +1139,8 @@ mixin _$WorkoutState {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   });
@@ -855,6 +1206,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -864,6 +1217,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return initial();
   }
@@ -878,6 +1233,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -898,6 +1255,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -907,6 +1266,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return initial(this);
   }
@@ -921,6 +1282,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -988,6 +1351,8 @@ class _$GenerateInProgress
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -997,6 +1362,8 @@ class _$GenerateInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return generateInProgress();
   }
@@ -1011,6 +1378,8 @@ class _$GenerateInProgress
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1031,6 +1400,8 @@ class _$GenerateInProgress
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1040,6 +1411,8 @@ class _$GenerateInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return generateInProgress(this);
   }
@@ -1054,6 +1427,8 @@ class _$GenerateInProgress
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1150,6 +1525,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1159,6 +1536,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return generated(workout, month);
   }
@@ -1173,6 +1552,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1193,6 +1574,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1202,6 +1585,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return generated(this);
   }
@@ -1216,6 +1601,8 @@ class _$Generated with DiagnosticableTreeMixin implements Generated {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1288,6 +1675,8 @@ class _$MarkDoneInProgress
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1297,6 +1686,8 @@ class _$MarkDoneInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markDoneInProgress();
   }
@@ -1311,6 +1702,8 @@ class _$MarkDoneInProgress
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1331,6 +1724,8 @@ class _$MarkDoneInProgress
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1340,6 +1735,8 @@ class _$MarkDoneInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markDoneInProgress(this);
   }
@@ -1354,6 +1751,8 @@ class _$MarkDoneInProgress
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1461,6 +1860,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1470,6 +1871,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markedDone(exerciseId, month, oneRm);
   }
@@ -1484,6 +1887,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1504,6 +1909,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1513,6 +1920,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markedDone(this);
   }
@@ -1527,6 +1936,8 @@ class _$MarkedDone with DiagnosticableTreeMixin implements MarkedDone {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1602,6 +2013,8 @@ class _$MarkUndoneInProgress
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1611,6 +2024,8 @@ class _$MarkUndoneInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markUndoneInProgress();
   }
@@ -1625,6 +2040,8 @@ class _$MarkUndoneInProgress
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1645,6 +2062,8 @@ class _$MarkUndoneInProgress
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1654,6 +2073,8 @@ class _$MarkUndoneInProgress
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markUndoneInProgress(this);
   }
@@ -1668,6 +2089,8 @@ class _$MarkUndoneInProgress
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1776,6 +2199,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1785,6 +2210,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markedUndone(exerciseId, month, oneRm);
   }
@@ -1799,6 +2226,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1819,6 +2248,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1828,6 +2259,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return markedUndone(this);
   }
@@ -1842,6 +2275,8 @@ class _$MarkedUndone with DiagnosticableTreeMixin implements MarkedUndone {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -1863,6 +2298,290 @@ abstract class MarkedUndone implements WorkoutState {
   Month get month;
   OneRm get oneRm;
   $MarkedUndoneCopyWith<MarkedUndone> get copyWith;
+}
+
+abstract class $RemoveInProgressCopyWith<$Res> {
+  factory $RemoveInProgressCopyWith(
+          RemoveInProgress value, $Res Function(RemoveInProgress) then) =
+      _$RemoveInProgressCopyWithImpl<$Res>;
+}
+
+class _$RemoveInProgressCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $RemoveInProgressCopyWith<$Res> {
+  _$RemoveInProgressCopyWithImpl(
+      RemoveInProgress _value, $Res Function(RemoveInProgress) _then)
+      : super(_value, (v) => _then(v as RemoveInProgress));
+
+  @override
+  RemoveInProgress get _value => super._value as RemoveInProgress;
+}
+
+class _$RemoveInProgress
+    with DiagnosticableTreeMixin
+    implements RemoveInProgress {
+  const _$RemoveInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.removeInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutState.removeInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is RemoveInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(error != null);
+    return removeInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(int exerciseId, Month month, OneRm oneRm),
+    Result markUndoneInProgress(),
+    Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (removeInProgress != null) {
+      return removeInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(error != null);
+    return removeInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (removeInProgress != null) {
+      return removeInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveInProgress implements WorkoutState {
+  const factory RemoveInProgress() = _$RemoveInProgress;
+}
+
+abstract class $RemovedCopyWith<$Res> {
+  factory $RemovedCopyWith(Removed value, $Res Function(Removed) then) =
+      _$RemovedCopyWithImpl<$Res>;
+}
+
+class _$RemovedCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res>
+    implements $RemovedCopyWith<$Res> {
+  _$RemovedCopyWithImpl(Removed _value, $Res Function(Removed) _then)
+      : super(_value, (v) => _then(v as Removed));
+
+  @override
+  Removed get _value => super._value as Removed;
+}
+
+class _$Removed with DiagnosticableTreeMixin implements Removed {
+  const _$Removed();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutState.removed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WorkoutState.removed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Removed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result generateInProgress(),
+    @required Result generated(MonthWorkout workout, Month month),
+    @required Result markDoneInProgress(),
+    @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
+    @required Result markUndoneInProgress(),
+    @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(error != null);
+    return removed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result generateInProgress(),
+    Result generated(MonthWorkout workout, Month month),
+    Result markDoneInProgress(),
+    Result markedDone(int exerciseId, Month month, OneRm oneRm),
+    Result markUndoneInProgress(),
+    Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (removed != null) {
+      return removed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result generateInProgress(GenerateInProgress value),
+    @required Result generated(Generated value),
+    @required Result markDoneInProgress(MarkDoneInProgress value),
+    @required Result markedDone(MarkedDone value),
+    @required Result markUndoneInProgress(MarkUndoneInProgress value),
+    @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(generateInProgress != null);
+    assert(generated != null);
+    assert(markDoneInProgress != null);
+    assert(markedDone != null);
+    assert(markUndoneInProgress != null);
+    assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
+    assert(error != null);
+    return removed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result generateInProgress(GenerateInProgress value),
+    Result generated(Generated value),
+    Result markDoneInProgress(MarkDoneInProgress value),
+    Result markedDone(MarkedDone value),
+    Result markUndoneInProgress(MarkUndoneInProgress value),
+    Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (removed != null) {
+      return removed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Removed implements WorkoutState {
+  const factory Removed() = _$Removed;
 }
 
 abstract class $ErrorCopyWith<$Res> {
@@ -1934,6 +2653,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result markedDone(int exerciseId, Month month, OneRm oneRm),
     @required Result markUndoneInProgress(),
     @required Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    @required Result removeInProgress(),
+    @required Result removed(),
     @required Result error(String message),
   }) {
     assert(initial != null);
@@ -1943,6 +2664,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return error(message);
   }
@@ -1957,6 +2680,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result markedDone(int exerciseId, Month month, OneRm oneRm),
     Result markUndoneInProgress(),
     Result markedUndone(int exerciseId, Month month, OneRm oneRm),
+    Result removeInProgress(),
+    Result removed(),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -1977,6 +2702,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result markedDone(MarkedDone value),
     @required Result markUndoneInProgress(MarkUndoneInProgress value),
     @required Result markedUndone(MarkedUndone value),
+    @required Result removeInProgress(RemoveInProgress value),
+    @required Result removed(Removed value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
@@ -1986,6 +2713,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     assert(markedDone != null);
     assert(markUndoneInProgress != null);
     assert(markedUndone != null);
+    assert(removeInProgress != null);
+    assert(removed != null);
     assert(error != null);
     return error(this);
   }
@@ -2000,6 +2729,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result markedDone(MarkedDone value),
     Result markUndoneInProgress(MarkUndoneInProgress value),
     Result markedUndone(MarkedUndone value),
+    Result removeInProgress(RemoveInProgress value),
+    Result removed(Removed value),
     Result error(Error value),
     @required Result orElse(),
   }) {

@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/exercise_name.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
-import 'package:power_progress/domain/core/entities/value_objects/one_rm.dart';
-import 'package:power_progress/domain/exercise/entities/value_objects/week.dart';
-import 'package:power_progress/domain/core/entities/week_enum.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
+import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/exercise/value_objects/week.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
@@ -67,9 +67,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
     super.dispose();
   }
 
+  OneRm get _oneRm => OneRm.parse(_oneRmController.value.text);
+
   Exercise get _exercise => Exercise(
         id: 0,
-        oneRm: OneRm.parse(_oneRmController.value.text),
         name: ExerciseName(_exerciseNameController.value.text),
         incrementation: Incrementation.two(),
         month: Month(1),
@@ -109,7 +110,8 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            BlocProvider.of<ExerciseBloc>(context).add(ExerciseEvent.add(exercise: _exercise));
+            BlocProvider.of<ExerciseBloc>(context)
+                .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
           }
         },
         label: const Text('Add'),

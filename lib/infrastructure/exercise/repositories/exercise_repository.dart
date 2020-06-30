@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/entities/value_objects/month.dart';
 
-import 'package:power_progress/domain/core/entities/week_enum.dart';
-import 'package:power_progress/domain/exercise/entities/exercise.dart';
-import 'package:power_progress/domain/exercise/entities/exercise_failure.dart';
-import 'package:power_progress/domain/exercise/repositories/i_exercise_repository.dart';
+import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/domain/exercise/exercise_failure.dart';
+import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
 
@@ -15,11 +15,10 @@ class ExerciseRepository implements IExerciseRepository {
   ExerciseRepository({@required this.datasource}) : assert(datasource != null);
 
   @override
-  Future<Either<ExerciseFailure, Unit>> add(Exercise exercise) async {
+  Future<Either<ExerciseFailure, int>> add(Exercise exercise) async {
     try {
       final model = ExerciseModel.fromEntity(exercise);
-      await datasource.add(model);
-      return right(unit);
+      return right(await datasource.add(model));
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }
@@ -60,6 +59,16 @@ class ExerciseRepository implements IExerciseRepository {
     try {
       await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
+    } on Exception {
+      return left(const ExerciseFailure.storageError());
+    }
+  }
+
+  @override
+  Future<Either<ExerciseFailure, Exercise>> getById(int exerciseId) async {
+    try {
+      final model = await datasource.getById(exerciseId);
+      return right(ExerciseModel.toEntity(model));
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }
