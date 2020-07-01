@@ -71,9 +71,10 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       event.repsDone,
     );
 
+    // add or update the one rm for the next month
     final output = await oneRmRepository.addOrUpdate(
       event.exerciseId,
-      event.month,
+      event.month.next,
       generatedOneRm,
     );
 
