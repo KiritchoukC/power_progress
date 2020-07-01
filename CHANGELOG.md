@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.22.5](https://github.com/KiritchoukC/power_progress/compare/v2.22.4...v2.22.5) (2020-07-01)
+
+
+### Bug Fixes
+
+* **onrm:** send generateAndSave event with the actual month instead of the next one ([e8865bc](https://github.com/KiritchoukC/power_progress/commit/e8865bc)), closes [#108](https://github.com/KiritchoukC/power_progress/issues/108)
+
 ### [2.22.4](https://github.com/KiritchoukC/power_progress/compare/v2.22.3...v2.22.4) (2020-07-01)
 
 ### [2.22.3](https://github.com/KiritchoukC/power_progress/compare/v2.22.2...v2.22.3) (2020-06-30)
