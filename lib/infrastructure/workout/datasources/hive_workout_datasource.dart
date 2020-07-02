@@ -40,8 +40,11 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   @override
   Future<Unit> removeByExerciseId(int exerciseId) async {
     final workoutsDone = await getWorkoutsDone(exerciseId);
+
     final workoutsDoneIds = workoutsDone.map((x) => x.id);
+
     await localStorage.deleteAll(workoutsDoneIds);
+
     return unit;
   }
 }

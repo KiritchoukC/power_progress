@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
-import 'package:power_progress/core/util/util_functions.dart';
 import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 
 class HiveOnboardingDatasource implements IOnboardingDatasource {
@@ -11,18 +10,11 @@ class HiveOnboardingDatasource implements IOnboardingDatasource {
   HiveOnboardingDatasource({@required this.localStorage}) : assert(localStorage != null);
 
   @override
-  Future<bool> get isDone async => tryOrCrash(
-        () => localStorage.values.isNotEmpty,
-        (_) => throw Exception(),
-      );
+  Future<bool> get isDone async => localStorage.values.isNotEmpty;
 
   @override
   Future<Unit> done() async {
-    await tryOrCrash(
-      () => localStorage.add(true),
-      (_) => throw Exception(),
-    );
-
+    await localStorage.add(true);
     return unit;
   }
 }

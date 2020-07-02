@@ -65,10 +65,14 @@ class ExerciseRepository implements IExerciseRepository {
   }
 
   @override
-  Future<Either<ExerciseFailure, Exercise>> getById(int exerciseId) async {
+  Future<Either<ExerciseFailure, Option<Exercise>>> getById(int exerciseId) async {
     try {
-      final model = await datasource.getById(exerciseId);
-      return right(ExerciseModel.toEntity(model));
+      final modelOption = await datasource.getById(exerciseId);
+
+      return modelOption.fold(
+        () => right(none()),
+        (model) => right(some(ExerciseModel.toEntity(model))),
+      );
     } on Exception {
       return left(const ExerciseFailure.storageError());
     }

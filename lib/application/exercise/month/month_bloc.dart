@@ -59,8 +59,18 @@ class MonthBloc extends Bloc<MonthEvent, MonthState> {
       yield MonthState.error(exerciseId: event.exerciseId, message: failure.toErrorMessage());
     }
 
-    Stream<MonthState> onSuccess(Exercise exercise) async* {
-      yield MonthState.fetched(exerciseId: event.exerciseId, month: exercise.month);
+    Stream<MonthState> onSuccess(Option<Exercise> exerciseOption) async* {
+      yield* exerciseOption.fold(
+        () async* {
+          yield MonthState.error(
+            exerciseId: event.exerciseId,
+            message: 'This item does not exist.',
+          );
+        },
+        (exercise) async* {
+          yield MonthState.fetched(exerciseId: event.exerciseId, month: exercise.month);
+        },
+      );
     }
 
     yield* output.fold(onFailure, onSuccess);
