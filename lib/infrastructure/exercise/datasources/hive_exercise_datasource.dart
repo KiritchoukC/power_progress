@@ -3,8 +3,8 @@ import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:power_progress/core/domain/errors.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
 import 'package:power_progress/infrastructure/exercise/datasources/i_exercise_datasource.dart';
 
