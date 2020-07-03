@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.23.0](https://github.com/KiritchoukC/power_progress/compare/v2.22.6...v2.23.0) (2020-07-03)
+
+
+### Features
+
+* **errors:** add error handling on repository layer ([3095a9d](https://github.com/KiritchoukC/power_progress/commit/3095a9d)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+
 ### [2.22.6](https://github.com/KiritchoukC/power_progress/compare/v2.22.5...v2.22.6) (2020-07-02)
 
 ### [2.22.5](https://github.com/KiritchoukC/power_progress/compare/v2.22.4...v2.22.5) (2020-07-01)
