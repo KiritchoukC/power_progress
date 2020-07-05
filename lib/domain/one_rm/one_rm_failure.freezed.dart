@@ -12,24 +12,22 @@ T _$identity<T>(T value) => value;
 class _$OneRmFailureTearOff {
   const _$OneRmFailureTearOff();
 
-  StorageError storageError() {
-    return const StorageError();
+  _ItemDoesNotExist itemDoesNotExist() {
+    return const _ItemDoesNotExist();
   }
 
-  UnexpectedError unexpectedError() {
-    return const UnexpectedError();
+  _ItemAlreadyExists itemAlreadyExists() {
+    return const _ItemAlreadyExists();
   }
 
-  ItemDoesNotExist itemDoesNotExist() {
-    return const ItemDoesNotExist();
+  _NoExistingDataForThisExercise noExistingDataForThisExercise() {
+    return const _NoExistingDataForThisExercise();
   }
 
-  ItemAlreadyExists itemAlreadyExists() {
-    return const ItemAlreadyExists();
-  }
-
-  NoExistingDataForThisExercise noExistingDataForThisExercise() {
-    return const NoExistingDataForThisExercise();
+  _Common common(CommonFailure failure) {
+    return _Common(
+      failure,
+    );
   }
 }
 
@@ -39,38 +37,34 @@ const $OneRmFailure = _$OneRmFailureTearOff();
 mixin _$OneRmFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
     @required Result noExistingDataForThisExercise(),
+    @required Result common(CommonFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     Result noExistingDataForThisExercise(),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required Result itemDoesNotExist(_ItemDoesNotExist value),
+    @required Result itemAlreadyExists(_ItemAlreadyExists value),
     @required
         Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
+            _NoExistingDataForThisExercise value),
+    @required Result common(_Common value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
+    Result itemDoesNotExist(_ItemDoesNotExist value),
+    Result itemAlreadyExists(_ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(_NoExistingDataForThisExercise value),
+    Result common(_Common value),
     @required Result orElse(),
   });
 }
@@ -89,257 +83,27 @@ class _$OneRmFailureCopyWithImpl<$Res> implements $OneRmFailureCopyWith<$Res> {
   final $Res Function(OneRmFailure) _then;
 }
 
-abstract class $StorageErrorCopyWith<$Res> {
-  factory $StorageErrorCopyWith(
-          StorageError value, $Res Function(StorageError) then) =
-      _$StorageErrorCopyWithImpl<$Res>;
+abstract class _$ItemDoesNotExistCopyWith<$Res> {
+  factory _$ItemDoesNotExistCopyWith(
+          _ItemDoesNotExist value, $Res Function(_ItemDoesNotExist) then) =
+      __$ItemDoesNotExistCopyWithImpl<$Res>;
 }
 
-class _$StorageErrorCopyWithImpl<$Res> extends _$OneRmFailureCopyWithImpl<$Res>
-    implements $StorageErrorCopyWith<$Res> {
-  _$StorageErrorCopyWithImpl(
-      StorageError _value, $Res Function(StorageError) _then)
-      : super(_value, (v) => _then(v as StorageError));
-
-  @override
-  StorageError get _value => super._value as StorageError;
-}
-
-class _$StorageError with DiagnosticableTreeMixin implements StorageError {
-  const _$StorageError();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OneRmFailure.storageError()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'OneRmFailure.storageError'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is StorageError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result itemDoesNotExist(),
-    @required Result itemAlreadyExists(),
-    @required Result noExistingDataForThisExercise(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(itemDoesNotExist != null);
-    assert(itemAlreadyExists != null);
-    assert(noExistingDataForThisExercise != null);
-    return storageError();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result itemDoesNotExist(),
-    Result itemAlreadyExists(),
-    Result noExistingDataForThisExercise(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (storageError != null) {
-      return storageError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
-    @required
-        Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(itemDoesNotExist != null);
-    assert(itemAlreadyExists != null);
-    assert(noExistingDataForThisExercise != null);
-    return storageError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (storageError != null) {
-      return storageError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StorageError implements OneRmFailure {
-  const factory StorageError() = _$StorageError;
-}
-
-abstract class $UnexpectedErrorCopyWith<$Res> {
-  factory $UnexpectedErrorCopyWith(
-          UnexpectedError value, $Res Function(UnexpectedError) then) =
-      _$UnexpectedErrorCopyWithImpl<$Res>;
-}
-
-class _$UnexpectedErrorCopyWithImpl<$Res>
+class __$ItemDoesNotExistCopyWithImpl<$Res>
     extends _$OneRmFailureCopyWithImpl<$Res>
-    implements $UnexpectedErrorCopyWith<$Res> {
-  _$UnexpectedErrorCopyWithImpl(
-      UnexpectedError _value, $Res Function(UnexpectedError) _then)
-      : super(_value, (v) => _then(v as UnexpectedError));
+    implements _$ItemDoesNotExistCopyWith<$Res> {
+  __$ItemDoesNotExistCopyWithImpl(
+      _ItemDoesNotExist _value, $Res Function(_ItemDoesNotExist) _then)
+      : super(_value, (v) => _then(v as _ItemDoesNotExist));
 
   @override
-  UnexpectedError get _value => super._value as UnexpectedError;
+  _ItemDoesNotExist get _value => super._value as _ItemDoesNotExist;
 }
 
-class _$UnexpectedError
+class _$_ItemDoesNotExist
     with DiagnosticableTreeMixin
-    implements UnexpectedError {
-  const _$UnexpectedError();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OneRmFailure.unexpectedError()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OneRmFailure.unexpectedError'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UnexpectedError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result itemDoesNotExist(),
-    @required Result itemAlreadyExists(),
-    @required Result noExistingDataForThisExercise(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(itemDoesNotExist != null);
-    assert(itemAlreadyExists != null);
-    assert(noExistingDataForThisExercise != null);
-    return unexpectedError();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result itemDoesNotExist(),
-    Result itemAlreadyExists(),
-    Result noExistingDataForThisExercise(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unexpectedError != null) {
-      return unexpectedError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
-    @required
-        Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(itemDoesNotExist != null);
-    assert(itemAlreadyExists != null);
-    assert(noExistingDataForThisExercise != null);
-    return unexpectedError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unexpectedError != null) {
-      return unexpectedError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnexpectedError implements OneRmFailure {
-  const factory UnexpectedError() = _$UnexpectedError;
-}
-
-abstract class $ItemDoesNotExistCopyWith<$Res> {
-  factory $ItemDoesNotExistCopyWith(
-          ItemDoesNotExist value, $Res Function(ItemDoesNotExist) then) =
-      _$ItemDoesNotExistCopyWithImpl<$Res>;
-}
-
-class _$ItemDoesNotExistCopyWithImpl<$Res>
-    extends _$OneRmFailureCopyWithImpl<$Res>
-    implements $ItemDoesNotExistCopyWith<$Res> {
-  _$ItemDoesNotExistCopyWithImpl(
-      ItemDoesNotExist _value, $Res Function(ItemDoesNotExist) _then)
-      : super(_value, (v) => _then(v as ItemDoesNotExist));
-
-  @override
-  ItemDoesNotExist get _value => super._value as ItemDoesNotExist;
-}
-
-class _$ItemDoesNotExist
-    with DiagnosticableTreeMixin
-    implements ItemDoesNotExist {
-  const _$ItemDoesNotExist();
+    implements _ItemDoesNotExist {
+  const _$_ItemDoesNotExist();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -355,7 +119,7 @@ class _$ItemDoesNotExist
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ItemDoesNotExist);
+    return identical(this, other) || (other is _ItemDoesNotExist);
   }
 
   @override
@@ -364,28 +128,25 @@ class _$ItemDoesNotExist
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
     @required Result noExistingDataForThisExercise(),
+    @required Result common(CommonFailure failure),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return itemDoesNotExist();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     Result noExistingDataForThisExercise(),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -398,30 +159,27 @@ class _$ItemDoesNotExist
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required Result itemDoesNotExist(_ItemDoesNotExist value),
+    @required Result itemAlreadyExists(_ItemAlreadyExists value),
     @required
         Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
+            _NoExistingDataForThisExercise value),
+    @required Result common(_Common value),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return itemDoesNotExist(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
+    Result itemDoesNotExist(_ItemDoesNotExist value),
+    Result itemAlreadyExists(_ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(_NoExistingDataForThisExercise value),
+    Result common(_Common value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -432,31 +190,31 @@ class _$ItemDoesNotExist
   }
 }
 
-abstract class ItemDoesNotExist implements OneRmFailure {
-  const factory ItemDoesNotExist() = _$ItemDoesNotExist;
+abstract class _ItemDoesNotExist implements OneRmFailure {
+  const factory _ItemDoesNotExist() = _$_ItemDoesNotExist;
 }
 
-abstract class $ItemAlreadyExistsCopyWith<$Res> {
-  factory $ItemAlreadyExistsCopyWith(
-          ItemAlreadyExists value, $Res Function(ItemAlreadyExists) then) =
-      _$ItemAlreadyExistsCopyWithImpl<$Res>;
+abstract class _$ItemAlreadyExistsCopyWith<$Res> {
+  factory _$ItemAlreadyExistsCopyWith(
+          _ItemAlreadyExists value, $Res Function(_ItemAlreadyExists) then) =
+      __$ItemAlreadyExistsCopyWithImpl<$Res>;
 }
 
-class _$ItemAlreadyExistsCopyWithImpl<$Res>
+class __$ItemAlreadyExistsCopyWithImpl<$Res>
     extends _$OneRmFailureCopyWithImpl<$Res>
-    implements $ItemAlreadyExistsCopyWith<$Res> {
-  _$ItemAlreadyExistsCopyWithImpl(
-      ItemAlreadyExists _value, $Res Function(ItemAlreadyExists) _then)
-      : super(_value, (v) => _then(v as ItemAlreadyExists));
+    implements _$ItemAlreadyExistsCopyWith<$Res> {
+  __$ItemAlreadyExistsCopyWithImpl(
+      _ItemAlreadyExists _value, $Res Function(_ItemAlreadyExists) _then)
+      : super(_value, (v) => _then(v as _ItemAlreadyExists));
 
   @override
-  ItemAlreadyExists get _value => super._value as ItemAlreadyExists;
+  _ItemAlreadyExists get _value => super._value as _ItemAlreadyExists;
 }
 
-class _$ItemAlreadyExists
+class _$_ItemAlreadyExists
     with DiagnosticableTreeMixin
-    implements ItemAlreadyExists {
-  const _$ItemAlreadyExists();
+    implements _ItemAlreadyExists {
+  const _$_ItemAlreadyExists();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -472,7 +230,7 @@ class _$ItemAlreadyExists
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ItemAlreadyExists);
+    return identical(this, other) || (other is _ItemAlreadyExists);
   }
 
   @override
@@ -481,28 +239,25 @@ class _$ItemAlreadyExists
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
     @required Result noExistingDataForThisExercise(),
+    @required Result common(CommonFailure failure),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return itemAlreadyExists();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     Result noExistingDataForThisExercise(),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -515,30 +270,27 @@ class _$ItemAlreadyExists
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required Result itemDoesNotExist(_ItemDoesNotExist value),
+    @required Result itemAlreadyExists(_ItemAlreadyExists value),
     @required
         Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
+            _NoExistingDataForThisExercise value),
+    @required Result common(_Common value),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return itemAlreadyExists(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
+    Result itemDoesNotExist(_ItemDoesNotExist value),
+    Result itemAlreadyExists(_ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(_NoExistingDataForThisExercise value),
+    Result common(_Common value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -549,34 +301,34 @@ class _$ItemAlreadyExists
   }
 }
 
-abstract class ItemAlreadyExists implements OneRmFailure {
-  const factory ItemAlreadyExists() = _$ItemAlreadyExists;
+abstract class _ItemAlreadyExists implements OneRmFailure {
+  const factory _ItemAlreadyExists() = _$_ItemAlreadyExists;
 }
 
-abstract class $NoExistingDataForThisExerciseCopyWith<$Res> {
-  factory $NoExistingDataForThisExerciseCopyWith(
-          NoExistingDataForThisExercise value,
-          $Res Function(NoExistingDataForThisExercise) then) =
-      _$NoExistingDataForThisExerciseCopyWithImpl<$Res>;
+abstract class _$NoExistingDataForThisExerciseCopyWith<$Res> {
+  factory _$NoExistingDataForThisExerciseCopyWith(
+          _NoExistingDataForThisExercise value,
+          $Res Function(_NoExistingDataForThisExercise) then) =
+      __$NoExistingDataForThisExerciseCopyWithImpl<$Res>;
 }
 
-class _$NoExistingDataForThisExerciseCopyWithImpl<$Res>
+class __$NoExistingDataForThisExerciseCopyWithImpl<$Res>
     extends _$OneRmFailureCopyWithImpl<$Res>
-    implements $NoExistingDataForThisExerciseCopyWith<$Res> {
-  _$NoExistingDataForThisExerciseCopyWithImpl(
-      NoExistingDataForThisExercise _value,
-      $Res Function(NoExistingDataForThisExercise) _then)
-      : super(_value, (v) => _then(v as NoExistingDataForThisExercise));
+    implements _$NoExistingDataForThisExerciseCopyWith<$Res> {
+  __$NoExistingDataForThisExerciseCopyWithImpl(
+      _NoExistingDataForThisExercise _value,
+      $Res Function(_NoExistingDataForThisExercise) _then)
+      : super(_value, (v) => _then(v as _NoExistingDataForThisExercise));
 
   @override
-  NoExistingDataForThisExercise get _value =>
-      super._value as NoExistingDataForThisExercise;
+  _NoExistingDataForThisExercise get _value =>
+      super._value as _NoExistingDataForThisExercise;
 }
 
-class _$NoExistingDataForThisExercise
+class _$_NoExistingDataForThisExercise
     with DiagnosticableTreeMixin
-    implements NoExistingDataForThisExercise {
-  const _$NoExistingDataForThisExercise();
+    implements _NoExistingDataForThisExercise {
+  const _$_NoExistingDataForThisExercise();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -593,7 +345,7 @@ class _$NoExistingDataForThisExercise
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NoExistingDataForThisExercise);
+    return identical(this, other) || (other is _NoExistingDataForThisExercise);
   }
 
   @override
@@ -602,28 +354,25 @@ class _$NoExistingDataForThisExercise
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
     @required Result itemDoesNotExist(),
     @required Result itemAlreadyExists(),
     @required Result noExistingDataForThisExercise(),
+    @required Result common(CommonFailure failure),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return noExistingDataForThisExercise();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
     Result itemDoesNotExist(),
     Result itemAlreadyExists(),
     Result noExistingDataForThisExercise(),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -636,30 +385,27 @@ class _$NoExistingDataForThisExercise
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result itemDoesNotExist(ItemDoesNotExist value),
-    @required Result itemAlreadyExists(ItemAlreadyExists value),
+    @required Result itemDoesNotExist(_ItemDoesNotExist value),
+    @required Result itemAlreadyExists(_ItemAlreadyExists value),
     @required
         Result noExistingDataForThisExercise(
-            NoExistingDataForThisExercise value),
+            _NoExistingDataForThisExercise value),
+    @required Result common(_Common value),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
     assert(itemDoesNotExist != null);
     assert(itemAlreadyExists != null);
     assert(noExistingDataForThisExercise != null);
+    assert(common != null);
     return noExistingDataForThisExercise(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result itemDoesNotExist(ItemDoesNotExist value),
-    Result itemAlreadyExists(ItemAlreadyExists value),
-    Result noExistingDataForThisExercise(NoExistingDataForThisExercise value),
+    Result itemDoesNotExist(_ItemDoesNotExist value),
+    Result itemAlreadyExists(_ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(_NoExistingDataForThisExercise value),
+    Result common(_Common value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -670,7 +416,150 @@ class _$NoExistingDataForThisExercise
   }
 }
 
-abstract class NoExistingDataForThisExercise implements OneRmFailure {
-  const factory NoExistingDataForThisExercise() =
-      _$NoExistingDataForThisExercise;
+abstract class _NoExistingDataForThisExercise implements OneRmFailure {
+  const factory _NoExistingDataForThisExercise() =
+      _$_NoExistingDataForThisExercise;
+}
+
+abstract class _$CommonCopyWith<$Res> {
+  factory _$CommonCopyWith(_Common value, $Res Function(_Common) then) =
+      __$CommonCopyWithImpl<$Res>;
+  $Res call({CommonFailure failure});
+
+  $CommonFailureCopyWith<$Res> get failure;
+}
+
+class __$CommonCopyWithImpl<$Res> extends _$OneRmFailureCopyWithImpl<$Res>
+    implements _$CommonCopyWith<$Res> {
+  __$CommonCopyWithImpl(_Common _value, $Res Function(_Common) _then)
+      : super(_value, (v) => _then(v as _Common));
+
+  @override
+  _Common get _value => super._value as _Common;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_Common(
+      failure == freezed ? _value.failure : failure as CommonFailure,
+    ));
+  }
+
+  @override
+  $CommonFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $CommonFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+class _$_Common with DiagnosticableTreeMixin implements _Common {
+  const _$_Common(this.failure) : assert(failure != null);
+
+  @override
+  final CommonFailure failure;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'OneRmFailure.common(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'OneRmFailure.common'))
+      ..add(DiagnosticsProperty('failure', failure));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Common &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$CommonCopyWith<_Common> get copyWith =>
+      __$CommonCopyWithImpl<_Common>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result itemDoesNotExist(),
+    @required Result itemAlreadyExists(),
+    @required Result noExistingDataForThisExercise(),
+    @required Result common(CommonFailure failure),
+  }) {
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
+    assert(common != null);
+    return common(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result itemDoesNotExist(),
+    Result itemAlreadyExists(),
+    Result noExistingDataForThisExercise(),
+    Result common(CommonFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result itemDoesNotExist(_ItemDoesNotExist value),
+    @required Result itemAlreadyExists(_ItemAlreadyExists value),
+    @required
+        Result noExistingDataForThisExercise(
+            _NoExistingDataForThisExercise value),
+    @required Result common(_Common value),
+  }) {
+    assert(itemDoesNotExist != null);
+    assert(itemAlreadyExists != null);
+    assert(noExistingDataForThisExercise != null);
+    assert(common != null);
+    return common(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result itemDoesNotExist(_ItemDoesNotExist value),
+    Result itemAlreadyExists(_ItemAlreadyExists value),
+    Result noExistingDataForThisExercise(_NoExistingDataForThisExercise value),
+    Result common(_Common value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Common implements OneRmFailure {
+  const factory _Common(CommonFailure failure) = _$_Common;
+
+  CommonFailure get failure;
+  _$CommonCopyWith<_Common> get copyWith;
 }

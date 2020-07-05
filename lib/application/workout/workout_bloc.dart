@@ -63,12 +63,14 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
       return oneRmFailure.when(
-        storageError: () => const WorkoutFailure.common(CommonFailure.storageError()),
-        unexpectedError: () => const WorkoutFailure.common(CommonFailure.unexpectedError()),
         itemDoesNotExist: () => const WorkoutFailure.oneRm(OneRmFailure.itemDoesNotExist()),
         itemAlreadyExists: () => const WorkoutFailure.oneRm(OneRmFailure.itemAlreadyExists()),
         noExistingDataForThisExercise: () =>
             const WorkoutFailure.oneRm(OneRmFailure.noExistingDataForThisExercise()),
+        common: (commonFailure) => commonFailure.when(
+          storageError: () => const WorkoutFailure.common(CommonFailure.storageError()),
+          unexpectedError: () => const WorkoutFailure.common(CommonFailure.unexpectedError()),
+        ),
       );
     }
 

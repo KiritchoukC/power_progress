@@ -102,11 +102,13 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
 
   OneRmState _mapFailureToState(OneRmFailure failure) {
     return failure.when(
-      storageError: () => const OneRmState.storageError(),
-      unexpectedError: () => const OneRmState.unexpectedError(),
       itemDoesNotExist: () => const OneRmState.notFoundError(),
       itemAlreadyExists: () => const OneRmState.alreadyExistError(),
       noExistingDataForThisExercise: () => const OneRmState.noExistingDataForThisExerciseError(),
+      common: (commonFailure) => commonFailure.when(
+        storageError: () => const OneRmState.storageError(),
+        unexpectedError: () => const OneRmState.unexpectedError(),
+      ),
     );
   }
 }
