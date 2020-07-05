@@ -37,10 +37,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     @required this.oneRmBloc,
     @required this.workoutRepository,
     @required this.oneRmRepository,
-  });
-
-  @override
-  WorkoutState get initialState => const WorkoutState.initial();
+  }) : super(const WorkoutState.initial());
 
   @override
   Stream<WorkoutState> mapEventToState(

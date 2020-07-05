@@ -19,10 +19,7 @@ class MonthBloc extends Bloc<MonthEvent, MonthState> {
 
   MonthBloc({
     @required this.exerciseRepository,
-  });
-
-  @override
-  MonthState get initialState => const MonthState.initial(exerciseId: 0);
+  }) : super(const MonthState.initial(exerciseId: 0));
 
   @override
   Stream<MonthState> mapEventToState(

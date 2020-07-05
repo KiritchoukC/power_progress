@@ -9,8 +9,7 @@ part 'selection_state.dart';
 part 'selection_bloc.freezed.dart';
 
 class SelectionBloc extends Bloc<SelectionEvent, SelectionState> {
-  @override
-  SelectionState get initialState => const SelectionState.initial();
+  SelectionBloc() : super(const SelectionState.initial());
 
   @override
   Stream<SelectionState> mapEventToState(SelectionEvent event) async* {

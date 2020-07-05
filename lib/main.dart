@@ -42,11 +42,11 @@ Future initHive() async {
 void initBlocLogging() {
   // only in debug mode
   if (!kReleaseMode) {
-    BlocSupervisor.delegate = SimpleBlocDelegate();
+    Bloc.observer = SimpleBlocDelegate();
   }
 }
 
-class SimpleBlocDelegate extends BlocDelegate {
+class SimpleBlocDelegate extends BlocObserver {
   final _logger = Logger('Bloc');
   @override
   void onEvent(Bloc bloc, Object event) {

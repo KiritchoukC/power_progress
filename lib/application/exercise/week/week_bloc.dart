@@ -18,10 +18,7 @@ class WeekBloc extends Bloc<WeekEvent, WeekState> {
 
   WeekBloc({
     @required this.exerciseRepository,
-  });
-
-  @override
-  WeekState get initialState => const WeekState.initial(exerciseId: 0);
+  }) : super(const WeekState.initial(exerciseId: 0));
 
   @override
   Stream<WeekState> mapEventToState(

@@ -26,10 +26,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     @required this.exerciseRepository,
     @required this.oneRmBloc,
     @required this.workoutBloc,
-  });
-
-  @override
-  ExerciseState get initialState => const ExerciseState.initial();
+  }) : super(const ExerciseState.initial());
 
   @override
   Stream<ExerciseState> mapEventToState(ExerciseEvent event) async* {

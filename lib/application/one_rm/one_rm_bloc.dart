@@ -20,10 +20,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
 
   OneRmBloc({
     @required this.oneRmRepository,
-  });
-
-  @override
-  OneRmState get initialState => const OneRmState.initial(exerciseId: 0);
+  }) : super(const OneRmState.initial(exerciseId: 0));
 
   @override
   Stream<OneRmState> mapEventToState(

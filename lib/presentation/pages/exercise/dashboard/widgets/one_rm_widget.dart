@@ -27,7 +27,7 @@ class OneRmWidget extends StatelessWidget {
     _fetch(context);
 
     return BlocBuilder<OneRmBloc, OneRmState>(
-      condition: (previous, current) => current.maybeWhen(
+      buildWhen: (previous, current) => current.maybeWhen(
         initial: (exerciseId) => exerciseId == exercise.id,
         generatedAndSaved: (exerciseId, _) => exerciseId == exercise.id,
         fetched: (exerciseId, _) => exerciseId == exercise.id,

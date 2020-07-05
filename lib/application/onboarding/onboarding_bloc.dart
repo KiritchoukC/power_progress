@@ -18,10 +18,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
   OnboardingBloc({
     @required this.onboardingRepository,
-  });
-
-  @override
-  OnboardingState get initialState => const OnboardingState.initial();
+  }) : super(const OnboardingState.initial());
 
   @override
   Stream<OnboardingState> mapEventToState(
