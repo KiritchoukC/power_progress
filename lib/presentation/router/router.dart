@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/presentation/pages/exercise/add/exercise_add_page.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_page.dart';

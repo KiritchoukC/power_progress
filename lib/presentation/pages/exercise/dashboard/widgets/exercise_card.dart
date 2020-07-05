@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';

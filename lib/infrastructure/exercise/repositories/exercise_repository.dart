@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
 
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
@@ -20,7 +21,7 @@ class ExerciseRepository implements IExerciseRepository {
       final model = ExerciseModel.fromEntity(exercise);
       return right(await datasource.add(model));
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -30,7 +31,7 @@ class ExerciseRepository implements IExerciseRepository {
       final models = await datasource.exercises;
       return right(models.map(ExerciseModel.toEntity).toList());
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -40,7 +41,7 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.remove(ids);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -50,7 +51,7 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.updateNextWeek(exerciseId, nextWeek);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -60,7 +61,7 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -74,7 +75,7 @@ class ExerciseRepository implements IExerciseRepository {
         (model) => right(some(ExerciseModel.toEntity(model))),
       );
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 }
