@@ -68,8 +68,6 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   String mapFailureToErrorMessage(OnboardingFailure failure) {
-    if (failure is StorageError) return storageErrorMessage;
-
-    return unknownErrorMessage;
+    return storageErrorMessage;
   }
 }
