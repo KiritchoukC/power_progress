@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:power_progress/core/messages/errors.dart';
 import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
 import 'package:power_progress/domain/shared/common_failure.dart';
