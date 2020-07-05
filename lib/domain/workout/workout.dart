@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/workout/exercise_set.dart';
 
 abstract class Workout {
@@ -20,6 +21,8 @@ abstract class Workout {
     @required this.workoutDoneId,
   })  : assert(month != null),
         assert(oneRm != null);
+
+  WeekEnum get week;
 }
 
 class WorkoutHelper {

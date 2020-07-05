@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
+import 'package:power_progress/domain/shared/common_failure.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
@@ -62,11 +63,12 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
       return oneRmFailure.when(
-        storageError: () => const WorkoutFailure.storageError(),
-        unexpectedError: () => const WorkoutFailure.unexpectedError(),
-        itemDoesNotExist: () => const WorkoutFailure.oneRmDoesNotExist(),
-        itemAlreadyExists: () => const WorkoutFailure.oneRmAlreadyExists(),
-        noExistingDataForThisExercise: () => const WorkoutFailure.unexpectedError(),
+        storageError: () => const WorkoutFailure.common(CommonFailure.storageError()),
+        unexpectedError: () => const WorkoutFailure.common(CommonFailure.unexpectedError()),
+        itemDoesNotExist: () => const WorkoutFailure.oneRm(OneRmFailure.itemDoesNotExist()),
+        itemAlreadyExists: () => const WorkoutFailure.oneRm(OneRmFailure.itemAlreadyExists()),
+        noExistingDataForThisExercise: () =>
+            const WorkoutFailure.oneRm(OneRmFailure.noExistingDataForThisExercise()),
       );
     }
 

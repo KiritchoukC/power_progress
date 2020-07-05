@@ -1,16 +1,23 @@
+import 'package:dartz/dartz.dart';
+
 import 'package:power_progress/core/domain/value_failure.dart';
 
 class NotAuthenticatedError extends Error {}
 
 class UnexpectedValueError extends Error {
-  final ValueFailure valueFailure;
+  final Option<ValueFailure> valueFailureOption;
 
-  UnexpectedValueError(this.valueFailure);
+  UnexpectedValueError(this.valueFailureOption);
 
   @override
   String toString() {
     const explanation = 'Encountered a ValueFailure at an unrecoverable point. Terminating.';
-    return Error.safeToString('$explanation Failure was: $valueFailure');
+    return Error.safeToString(
+      valueFailureOption.fold(
+        () => explanation,
+        (valueFailure) => '$explanation Failure was: $valueFailure',
+      ),
+    );
   }
 }
 

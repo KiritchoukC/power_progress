@@ -37,15 +37,6 @@ class WeekSetWidget extends StatelessWidget {
     @required this.isInvalidatable,
   }) : super(key: key);
 
-  WeekEnum get week {
-    if (workout is AccumulationWorkout) return const WeekEnum.accumulation();
-    if (workout is IntensificationWorkout) return const WeekEnum.intensification();
-    if (workout is RealizationWorkout) return const WeekEnum.realization();
-    if (workout is DeloadWorkout) return const WeekEnum.deload();
-
-    throw const UnexpectedError();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,13 +47,13 @@ class WeekSetWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const DummyIcon(),
-              WeekTitle(week: week),
+              WeekTitle(week: workout.week),
               if (workout.isDone)
                 UncheckButton(
                   workoutDoneId: workout.workoutDoneId,
                   exerciseId: exerciseId,
                   incrementation: incrementation,
-                  week: week,
+                  week: workout.week,
                   month: workout.month,
                   oneRm: workout.oneRm,
                   enabled: isInvalidatable,
@@ -73,7 +64,7 @@ class WeekSetWidget extends StatelessWidget {
                   incrementation: incrementation,
                   month: workout.month,
                   realizationReps: exerciseSets.last.reps,
-                  week: week,
+                  week: workout.week,
                   oneRm: workout.oneRm,
                   enabled: isValidatable,
                 ),
