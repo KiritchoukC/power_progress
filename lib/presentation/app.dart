@@ -32,42 +32,60 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
         theme: PPTheme.light(),
-        home: ErrorListener(
-          child: BlocListener<OnboardingBloc, OnboardingState>(
-            listener: (context, state) {
-              void navigateToDashboard() {
-                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
-                });
-              }
-
-              void navigateToOnboarding() {
-                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                  Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
-                });
-              }
-
-              state.maybeWhen(
-                done: navigateToDashboard,
-                notDone: navigateToOnboarding,
-                orElse: () {},
-              );
-            },
-            child: BlocBuilder<OnboardingBloc, OnboardingState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  initial: () {
-                    context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
-                    return Scaffold(body: SplashScreen());
-                  },
-                  orElse: () => Scaffold(body: SplashScreen()),
-                );
-              },
+        home: Scaffold(
+          body: ErrorListener(
+            child: OnboardingListener(
+              child: BlocBuilder<OnboardingBloc, OnboardingState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    initial: () {
+                      context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
+                      return SplashScreen();
+                    },
+                    orElse: () => SplashScreen(),
+                  );
+                },
+              ),
             ),
           ),
         ),
         onGenerateRoute: Router.generateRoute,
       ),
+    );
+  }
+}
+
+class OnboardingListener extends StatelessWidget {
+  final Widget child;
+
+  const OnboardingListener({
+    Key key,
+    @required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<OnboardingBloc, OnboardingState>(
+      listener: (context, state) {
+        void navigateToDashboard() {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+          });
+        }
+
+        void navigateToOnboarding() {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            Navigator.of(context).pushReplacementNamed(RoutePaths.onboardingWelcome);
+          });
+        }
+
+        state.maybeWhen(
+          done: navigateToDashboard,
+          notDone: navigateToOnboarding,
+          orElse: () {},
+        );
+      },
+      child: child,
     );
   }
 }

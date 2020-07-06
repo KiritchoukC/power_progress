@@ -7,6 +7,8 @@ import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/core/util/spacing.dart';
+import 'package:power_progress/theme/pp_light_theme.dart';
 
 class ErrorListener extends StatelessWidget {
   final Widget child;
@@ -14,7 +16,17 @@ class ErrorListener extends StatelessWidget {
   const ErrorListener({@required this.child});
 
   void _handleError(BuildContext context, String errorMessage) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text(errorMessage)));
+    Scaffold.of(context).showSnackBar(SnackBar(
+        content: Row(
+      children: [
+        const Icon(
+          Icons.error,
+          color: PPTheme.red,
+        ),
+        const HSpacing.small(),
+        Text(errorMessage),
+      ],
+    )));
   }
 
   @override
@@ -132,11 +144,11 @@ class OneRmListener extends BlocListener<OneRmBloc, OneRmState> {
           ),
           listener: (context, state) {
             state.maybeWhen(
-              alreadyExistError: () => onError(context, state.toString()),
-              noExistingDataForThisExerciseError: () => onError(context, state.toString()),
-              notFoundError: () => onError(context, state.toString()),
-              storageError: () => onError(context, state.toString()),
-              unexpectedError: () => onError(context, state.toString()),
+              alreadyExistError: () => onError(context, state.toErrorMessage()),
+              noExistingDataForThisExerciseError: () => onError(context, state.toErrorMessage()),
+              notFoundError: () => onError(context, state.toErrorMessage()),
+              storageError: () => onError(context, state.toErrorMessage()),
+              unexpectedError: () => onError(context, state.toErrorMessage()),
               orElse: () {},
             );
           },
