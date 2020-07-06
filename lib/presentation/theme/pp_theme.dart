@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class PPTheme {
   static ThemeData light() {
     return ThemeData.light().copyWith(
-      primaryColor: Colors.black,
       accentColor: Colors.black,
+      cardColor: Colors.grey.shade200,
+      primaryColor: Colors.black,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Colors.black,
       ),

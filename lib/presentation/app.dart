@@ -31,8 +31,9 @@ class App extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
-        theme: PPTheme.dark(),
+        theme: PPTheme.light(),
         darkTheme: PPTheme.dark(),
+        themeMode: ThemeMode.dark,
         home: Scaffold(
           body: ErrorListener(
             child: OnboardingListener(
