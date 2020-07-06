@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.25.0](https://github.com/KiritchoukC/power_progress/compare/v2.24.3...v2.25.0) (2020-07-06)
+
+
+### Features
+
+* **dark-theme:** add dark theme for dashboard ([6069215](https://github.com/KiritchoukC/power_progress/commit/6069215)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
 ### [2.24.3](https://github.com/KiritchoukC/power_progress/compare/v2.24.2...v2.24.3) (2020-07-06)
 
 ### [2.24.2](https://github.com/KiritchoukC/power_progress/compare/v2.24.1...v2.24.2) (2020-07-06)
