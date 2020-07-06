@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.26.0](https://github.com/KiritchoukC/power_progress/compare/v2.25.0...v2.26.0) (2020-07-06)
+
+
+### Features
+
+* **dark-theme:** update light theme card color ([ed6ce50](https://github.com/KiritchoukC/power_progress/commit/ed6ce50)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
 ## [2.25.0](https://github.com/KiritchoukC/power_progress/compare/v2.24.3...v2.25.0) (2020-07-06)
 
 
