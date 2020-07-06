@@ -14,7 +14,7 @@ import 'package:power_progress/domain/workout/exercise_set.dart';
 import 'package:power_progress/domain/workout/intensification_workout.dart';
 import 'package:power_progress/domain/workout/realization_workout.dart';
 import 'package:power_progress/domain/workout/workout.dart';
-import 'package:power_progress/presentation/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/exercise_set_widget.dart';
 import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/realization_dialog.dart';

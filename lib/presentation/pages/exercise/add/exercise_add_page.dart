@@ -28,7 +28,10 @@ class ExerciseAddPage extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           addInProgress: () => Scaffold(
-            appBar: PPAppBar(titleLabel: 'New exercise'),
+            appBar: PPAppBar(
+              context: context,
+              titleLabel: 'New exercise',
+            ),
             body: const CenteredLoading(),
           ),
           orElse: () => const _ExerciseForm(),
@@ -80,7 +83,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PPAppBar(titleLabel: 'New exercise'),
+      appBar: PPAppBar(
+        context: context,
+        titleLabel: 'New exercise',
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
         child: Form(

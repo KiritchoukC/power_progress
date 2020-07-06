@@ -6,7 +6,7 @@ class DummyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.grey.shade100,
+      color: Theme.of(context).cardColor,
       elevation: 0,
       child: InkWell(
         onTap: () {

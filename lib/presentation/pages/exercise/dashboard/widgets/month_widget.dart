@@ -14,9 +14,7 @@ class MonthWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Month ${exercise.month.getOrCrash()}',
-      style: Theme.of(context).textTheme.subtitle2.apply(
-            color: Colors.black54,
-          ),
+      style: Theme.of(context).textTheme.subtitle2,
     );
   }
 }

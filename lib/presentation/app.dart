@@ -12,7 +12,7 @@ import 'package:power_progress/dependency_injection.dart' as di;
 import 'package:power_progress/presentation/error_listener.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/router/router.dart';
-import 'package:power_progress/presentation/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 import 'package:power_progress/presentation/widgets/splash_screen.dart';
 
 class App extends StatelessWidget {
@@ -31,7 +31,8 @@ class App extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Power Progress',
-        theme: PPTheme.light(),
+        theme: PPTheme.dark(),
+        darkTheme: PPTheme.dark(),
         home: Scaffold(
           body: ErrorListener(
             child: OnboardingListener(

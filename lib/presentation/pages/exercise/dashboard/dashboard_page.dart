@@ -32,14 +32,7 @@ class DashboardPage extends StatelessWidget {
             orElse: () {},
           );
         },
-        child: BlocConsumer<ExerciseBloc, ExerciseState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              error: (message) =>
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text(message))),
-              orElse: () {},
-            );
-          },
+        child: BlocBuilder<ExerciseBloc, ExerciseState>(
           builder: (context, state) {
             Widget fetch() {
               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -60,6 +53,7 @@ class DashboardPage extends StatelessWidget {
         ),
       ),
       appBar: PPAppBar(
+        context: context,
         titleLabel: 'Dashboard',
         actions: [
           _RemoveButton(),

@@ -9,7 +9,7 @@ class RemoveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.delete),
-      color: Colors.black,
+      color: Theme.of(context).primaryColor,
       onPressed: onPressed,
     );
   }

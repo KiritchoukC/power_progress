@@ -38,7 +38,7 @@ class OneRmWidget extends StatelessWidget {
         Widget _progress() => Text(
               '0.0 Kg',
               style: Theme.of(context).textTheme.subtitle1.apply(
-                    color: Colors.black54.withAlpha(20),
+                    color: Theme.of(context).disabledColor,
                   ),
             );
 
@@ -51,9 +51,7 @@ class OneRmWidget extends StatelessWidget {
         // show the one rm.
         Widget _oneRm(_, OneRm oneRm) => Text(
               '${oneRm.getOrCrash()} Kg',
-              style: Theme.of(context).textTheme.subtitle1.apply(
-                    color: Colors.black54,
-                  ),
+              style: Theme.of(context).textTheme.subtitle1,
             );
 
         // react to state
