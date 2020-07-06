@@ -55,7 +55,6 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       yield OnboardingState.error(message: mapFailureToErrorMessage(failure));
     }
 
-    // ignore: avoid_positional_boolean_parameters
     Stream<OnboardingState> onSuccess(bool isDone) async* {
       if (isDone) {
         yield const OnboardingState.done();
