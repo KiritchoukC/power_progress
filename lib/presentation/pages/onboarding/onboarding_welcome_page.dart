@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_light_theme.dart';
 
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';

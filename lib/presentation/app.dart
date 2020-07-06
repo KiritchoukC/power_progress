@@ -12,7 +12,7 @@ import 'package:power_progress/dependency_injection.dart' as di;
 import 'package:power_progress/presentation/error_listener.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/router/router.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_light_theme.dart';
 import 'package:power_progress/presentation/widgets/splash_screen.dart';
 
 class App extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_light_theme.dart';
 
 class MainButton extends StatelessWidget {
   final VoidCallback onPressed;
