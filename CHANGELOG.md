@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.24.0](https://github.com/KiritchoukC/power_progress/compare/v2.23.6...v2.24.0) (2020-07-06)
+
+
+### Features
+
+* **errors:** add error listener widget listener to all errors and displaying snack bar ([22d3a7e](https://github.com/KiritchoukC/power_progress/commit/22d3a7e)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+* **errors:** style snackbar error message ([e460424](https://github.com/KiritchoukC/power_progress/commit/e460424)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+
 ### [2.23.6](https://github.com/KiritchoukC/power_progress/compare/v2.23.5...v2.23.6) (2020-07-05)
 
 ### [2.23.5](https://github.com/KiritchoukC/power_progress/compare/v2.23.4...v2.23.5) (2020-07-05)
