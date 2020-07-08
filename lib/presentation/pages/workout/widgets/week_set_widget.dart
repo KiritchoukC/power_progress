@@ -8,15 +8,10 @@ import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/workout/accumulation_workout.dart';
-import 'package:power_progress/domain/workout/deload_workout.dart';
 import 'package:power_progress/domain/workout/exercise_set.dart';
-import 'package:power_progress/domain/workout/intensification_workout.dart';
-import 'package:power_progress/domain/workout/realization_workout.dart';
 import 'package:power_progress/domain/workout/workout.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/exercise_set_widget.dart';
-import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/realization_dialog.dart';
 
 class WeekSetWidget extends StatelessWidget {
@@ -200,6 +195,10 @@ class CheckButton extends StatelessWidget {
     );
   }
 
+  Color _getIconColor(BuildContext context) {
+    return enabled ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withAlpha(50);
+  }
+
   const CheckButton({
     Key key,
     @required this.week,
@@ -216,7 +215,7 @@ class CheckButton extends StatelessWidget {
       onPressed: enabled ? () => _handleWeekValidation(context) : null,
       icon: Icon(
         Icons.check_circle_outline,
-        color: enabled ? Colors.black : Colors.black.withAlpha(50),
+        color: _getIconColor(context),
       ),
     );
   }

@@ -11,6 +11,7 @@ class PPTheme {
       ),
       selectedRowColor: Colors.blue.shade100,
       disabledColor: Colors.black54.withAlpha(20),
+      backgroundColor: Colors.grey.shade200,
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.grey.shade700),
         subtitle1: const TextStyle(color: Colors.black54),
@@ -28,6 +29,7 @@ class PPTheme {
       ),
       selectedRowColor: Colors.blue.shade900,
       disabledColor: Colors.white.withAlpha(20),
+      backgroundColor: Colors.grey.shade900,
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.grey.shade100),
         subtitle1: const TextStyle(color: Colors.white70),
