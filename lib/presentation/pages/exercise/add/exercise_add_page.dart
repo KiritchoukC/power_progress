@@ -120,7 +120,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                 .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
           }
         },
-        label: const Text('Add'),
+        label: const Text(
+          'Add',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomAppBar(
