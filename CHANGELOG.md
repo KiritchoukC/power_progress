@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.28.0](https://github.com/KiritchoukC/power_progress/compare/v2.27.0...v2.28.0) (2020-07-08)
+
+
+### Features
+
+* **dark-theme:** apply dark theme to workout page ([bc58be3](https://github.com/KiritchoukC/power_progress/commit/bc58be3)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
 ## [2.27.0](https://github.com/KiritchoukC/power_progress/compare/v2.26.0...v2.27.0) (2020-07-08)
 
 
