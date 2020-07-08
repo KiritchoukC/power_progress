@@ -18,5 +18,10 @@ abstract class OneRmEvent with _$OneRmEvent {
     @required Month month,
     @required Option<int> repsDone,
   }) = GenerateAndSave;
+  const factory OneRmEvent.init({
+    @required int exerciseId,
+    @required OneRm oneRm,
+    @required Incrementation incrementation,
+  }) = Init;
   const factory OneRmEvent.remove({@required int exerciseId}) = Remove;
 }

@@ -50,12 +50,10 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
       yield const ExerciseState.added();
 
       oneRmBloc.add(
-        OneRmEvent.generateAndSave(
+        OneRmEvent.init(
           exerciseId: addedExerciseId,
           oneRm: event.oneRm,
           incrementation: event.exercise.incrementation,
-          month: Month(1),
-          repsDone: none(),
         ),
       );
     }

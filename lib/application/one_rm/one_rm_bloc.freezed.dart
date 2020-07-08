@@ -45,6 +45,17 @@ class _$OneRmEventTearOff {
     );
   }
 
+  Init init(
+      {@required int exerciseId,
+      @required OneRm oneRm,
+      @required Incrementation incrementation}) {
+    return Init(
+      exerciseId: exerciseId,
+      oneRm: oneRm,
+      incrementation: incrementation,
+    );
+  }
+
   Remove remove({@required int exerciseId}) {
     return Remove(
       exerciseId: exerciseId,
@@ -65,6 +76,8 @@ mixin _$OneRmEvent {
     @required
         Result generateAndSave(int exerciseId, OneRm oneRm,
             Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     @required Result remove(int exerciseId),
   });
   @optionalTypeArgs
@@ -73,6 +86,7 @@ mixin _$OneRmEvent {
     Result upsert(int exerciseId, Month month, OneRm oneRm),
     Result generateAndSave(int exerciseId, OneRm oneRm,
         Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     Result remove(int exerciseId),
     @required Result orElse(),
   });
@@ -81,6 +95,7 @@ mixin _$OneRmEvent {
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
     @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
     @required Result remove(Remove value),
   });
   @optionalTypeArgs
@@ -88,6 +103,7 @@ mixin _$OneRmEvent {
     Result fetch(Fetch value),
     Result upsert(Upsert value),
     Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
     Result remove(Remove value),
     @required Result orElse(),
   });
@@ -190,11 +206,14 @@ class _$Fetch implements Fetch {
     @required
         Result generateAndSave(int exerciseId, OneRm oneRm,
             Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return fetch(exerciseId, month);
   }
@@ -206,6 +225,7 @@ class _$Fetch implements Fetch {
     Result upsert(int exerciseId, Month month, OneRm oneRm),
     Result generateAndSave(int exerciseId, OneRm oneRm,
         Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -222,11 +242,13 @@ class _$Fetch implements Fetch {
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
     @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
     @required Result remove(Remove value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return fetch(this);
   }
@@ -237,6 +259,7 @@ class _$Fetch implements Fetch {
     Result fetch(Fetch value),
     Result upsert(Upsert value),
     Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -339,11 +362,14 @@ class _$Upsert implements Upsert {
     @required
         Result generateAndSave(int exerciseId, OneRm oneRm,
             Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return upsert(exerciseId, month, oneRm);
   }
@@ -355,6 +381,7 @@ class _$Upsert implements Upsert {
     Result upsert(int exerciseId, Month month, OneRm oneRm),
     Result generateAndSave(int exerciseId, OneRm oneRm,
         Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -371,11 +398,13 @@ class _$Upsert implements Upsert {
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
     @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
     @required Result remove(Remove value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return upsert(this);
   }
@@ -386,6 +415,7 @@ class _$Upsert implements Upsert {
     Result fetch(Fetch value),
     Result upsert(Upsert value),
     Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -523,11 +553,14 @@ class _$GenerateAndSave implements GenerateAndSave {
     @required
         Result generateAndSave(int exerciseId, OneRm oneRm,
             Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return generateAndSave(exerciseId, oneRm, incrementation, month, repsDone);
   }
@@ -539,6 +572,7 @@ class _$GenerateAndSave implements GenerateAndSave {
     Result upsert(int exerciseId, Month month, OneRm oneRm),
     Result generateAndSave(int exerciseId, OneRm oneRm,
         Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -556,11 +590,13 @@ class _$GenerateAndSave implements GenerateAndSave {
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
     @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
     @required Result remove(Remove value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return generateAndSave(this);
   }
@@ -571,6 +607,7 @@ class _$GenerateAndSave implements GenerateAndSave {
     Result fetch(Fetch value),
     Result upsert(Upsert value),
     Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {
@@ -598,6 +635,170 @@ abstract class GenerateAndSave implements OneRmEvent {
   Option<int> get repsDone;
   @override
   $GenerateAndSaveCopyWith<GenerateAndSave> get copyWith;
+}
+
+abstract class $InitCopyWith<$Res> implements $OneRmEventCopyWith<$Res> {
+  factory $InitCopyWith(Init value, $Res Function(Init) then) =
+      _$InitCopyWithImpl<$Res>;
+  @override
+  $Res call({int exerciseId, OneRm oneRm, Incrementation incrementation});
+}
+
+class _$InitCopyWithImpl<$Res> extends _$OneRmEventCopyWithImpl<$Res>
+    implements $InitCopyWith<$Res> {
+  _$InitCopyWithImpl(Init _value, $Res Function(Init) _then)
+      : super(_value, (v) => _then(v as Init));
+
+  @override
+  Init get _value => super._value as Init;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+    Object oneRm = freezed,
+    Object incrementation = freezed,
+  }) {
+    return _then(Init(
+      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
+      oneRm: oneRm == freezed ? _value.oneRm : oneRm as OneRm,
+      incrementation: incrementation == freezed
+          ? _value.incrementation
+          : incrementation as Incrementation,
+    ));
+  }
+}
+
+class _$Init implements Init {
+  const _$Init(
+      {@required this.exerciseId,
+      @required this.oneRm,
+      @required this.incrementation})
+      : assert(exerciseId != null),
+        assert(oneRm != null),
+        assert(incrementation != null);
+
+  @override
+  final int exerciseId;
+  @override
+  final OneRm oneRm;
+  @override
+  final Incrementation incrementation;
+
+  @override
+  String toString() {
+    return 'OneRmEvent.init(exerciseId: $exerciseId, oneRm: $oneRm, incrementation: $incrementation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Init &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)) &&
+            (identical(other.oneRm, oneRm) ||
+                const DeepCollectionEquality().equals(other.oneRm, oneRm)) &&
+            (identical(other.incrementation, incrementation) ||
+                const DeepCollectionEquality()
+                    .equals(other.incrementation, incrementation)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(exerciseId) ^
+      const DeepCollectionEquality().hash(oneRm) ^
+      const DeepCollectionEquality().hash(incrementation);
+
+  @override
+  $InitCopyWith<Init> get copyWith =>
+      _$InitCopyWithImpl<Init>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result fetch(int exerciseId, Month month),
+    @required Result upsert(int exerciseId, Month month, OneRm oneRm),
+    @required
+        Result generateAndSave(int exerciseId, OneRm oneRm,
+            Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
+    @required Result remove(int exerciseId),
+  }) {
+    assert(fetch != null);
+    assert(upsert != null);
+    assert(generateAndSave != null);
+    assert(init != null);
+    assert(remove != null);
+    return init(exerciseId, oneRm, incrementation);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result fetch(int exerciseId, Month month),
+    Result upsert(int exerciseId, Month month, OneRm oneRm),
+    Result generateAndSave(int exerciseId, OneRm oneRm,
+        Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
+    Result remove(int exerciseId),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (init != null) {
+      return init(exerciseId, oneRm, incrementation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result fetch(Fetch value),
+    @required Result upsert(Upsert value),
+    @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
+    @required Result remove(Remove value),
+  }) {
+    assert(fetch != null);
+    assert(upsert != null);
+    assert(generateAndSave != null);
+    assert(init != null);
+    assert(remove != null);
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result fetch(Fetch value),
+    Result upsert(Upsert value),
+    Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
+    Result remove(Remove value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Init implements OneRmEvent {
+  const factory Init(
+      {@required int exerciseId,
+      @required OneRm oneRm,
+      @required Incrementation incrementation}) = _$Init;
+
+  @override
+  int get exerciseId;
+  OneRm get oneRm;
+  Incrementation get incrementation;
+  @override
+  $InitCopyWith<Init> get copyWith;
 }
 
 abstract class $RemoveCopyWith<$Res> implements $OneRmEventCopyWith<$Res> {
@@ -661,11 +862,14 @@ class _$Remove implements Remove {
     @required
         Result generateAndSave(int exerciseId, OneRm oneRm,
             Incrementation incrementation, Month month, Option<int> repsDone),
+    @required
+        Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     @required Result remove(int exerciseId),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return remove(exerciseId);
   }
@@ -677,6 +881,7 @@ class _$Remove implements Remove {
     Result upsert(int exerciseId, Month month, OneRm oneRm),
     Result generateAndSave(int exerciseId, OneRm oneRm,
         Incrementation incrementation, Month month, Option<int> repsDone),
+    Result init(int exerciseId, OneRm oneRm, Incrementation incrementation),
     Result remove(int exerciseId),
     @required Result orElse(),
   }) {
@@ -693,11 +898,13 @@ class _$Remove implements Remove {
     @required Result fetch(Fetch value),
     @required Result upsert(Upsert value),
     @required Result generateAndSave(GenerateAndSave value),
+    @required Result init(Init value),
     @required Result remove(Remove value),
   }) {
     assert(fetch != null);
     assert(upsert != null);
     assert(generateAndSave != null);
+    assert(init != null);
     assert(remove != null);
     return remove(this);
   }
@@ -708,6 +915,7 @@ class _$Remove implements Remove {
     Result fetch(Fetch value),
     Result upsert(Upsert value),
     Result generateAndSave(GenerateAndSave value),
+    Result init(Init value),
     Result remove(Remove value),
     @required Result orElse(),
   }) {

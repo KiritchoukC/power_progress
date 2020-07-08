@@ -32,6 +32,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       upsert: _handleUpsertEvent,
       generateAndSave: _handleGenerateAndSaveEvent,
       remove: _handleRemoveEvent,
+      init: _handleInitEvent,
     );
   }
 
@@ -110,6 +111,33 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
         storageError: () => const OneRmState.storageError(),
         unexpectedError: () => const OneRmState.unexpectedError(),
       ),
+    );
+  }
+
+  Stream<OneRmState> _handleInitEvent(Init event) async* {
+    yield const OneRmState.generateAndSaveInProgress();
+
+    final generatedOneRm = OneRm.generate(
+      Month(1),
+      event.incrementation,
+      event.oneRm,
+      none(),
+    );
+
+    // add or update the one rm for the next month
+    final output = await oneRmRepository.addOrUpdate(
+      event.exerciseId,
+      Month(1),
+      generatedOneRm,
+    );
+
+    yield* output.fold(
+      (failure) async* {
+        yield _mapFailureToState(failure);
+      },
+      (_) async* {
+        yield OneRmState.generatedAndSaved(exerciseId: event.exerciseId, oneRm: generatedOneRm);
+      },
     );
   }
 }
