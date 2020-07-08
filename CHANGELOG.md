@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.27.0](https://github.com/KiritchoukC/power_progress/compare/v2.26.0...v2.27.0) (2020-07-08)
+
+
+### Bug Fixes
+
+* **init-onerm:** init onerm on exercise add ([7d388cc](https://github.com/KiritchoukC/power_progress/commit/7d388cc)), closes [#110](https://github.com/KiritchoukC/power_progress/issues/110)
+
+
+### Features
+
+* **dark-theme:** update add exercise page style ([bc0271c](https://github.com/KiritchoukC/power_progress/commit/bc0271c)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
 ## [2.26.0](https://github.com/KiritchoukC/power_progress/compare/v2.25.0...v2.26.0) (2020-07-06)
 
 
