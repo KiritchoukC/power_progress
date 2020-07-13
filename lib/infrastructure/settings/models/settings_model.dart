@@ -14,5 +14,7 @@ class SettingsModel {
     @required this.isThemeDark,
   });
 
+  SettingsModel.fromDomain(Settings settings) : isThemeDark = settings.isThemeDark;
+
   Settings toDomain() => Settings(isThemeDark: isThemeDark);
 }

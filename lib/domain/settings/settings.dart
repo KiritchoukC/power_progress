@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class Settings {
-  Settings({@required bool isThemeDark}) : assert(isThemeDark != null);
+  final bool isThemeDark;
+  Settings({@required this.isThemeDark}) : assert(isThemeDark != null);
+  Settings.init() : this(isThemeDark: false);
 }
