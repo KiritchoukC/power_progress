@@ -1,0 +1,1 @@
+class SettingsDoesNotExistError extends Error {}

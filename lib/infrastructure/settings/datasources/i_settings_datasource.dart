@@ -3,6 +3,10 @@ import 'package:power_progress/infrastructure/settings/models/settings_model.dar
 
 abstract class ISettingsDatasource {
   Future<Unit> add(SettingsModel model);
+
+  /// throws [SettingsDoesNotExistError] if no existing settings yet
   Future<Unit> update(SettingsModel model);
-  Future<SettingsModel> get;
+
+  /// throws [SettingsDoesNotExistError] if no existing settings yet
+  Future<SettingsModel> get settings;
 }
