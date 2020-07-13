@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.31.0](https://github.com/KiritchoukC/power_progress/compare/v2.30.0...v2.31.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add datasource interface ([631f236](https://github.com/KiritchoukC/power_progress/commit/631f236)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
 ## [2.30.0](https://github.com/KiritchoukC/power_progress/compare/v2.29.0...v2.30.0) (2020-07-13)
 
 
