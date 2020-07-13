@@ -40,7 +40,8 @@ class OnboardingInformationsPage extends StatelessWidget {
               added: () {
                 Future.delayed(const Duration(seconds: 1)).then(
                   (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil(RoutePaths.dashboard, (route) => false);
                   }),
                 );
               },
