@@ -7,6 +7,7 @@ import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_p
 import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_welcome_page.dart';
+import 'package:power_progress/presentation/pages/settings/settings_page.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -32,6 +33,9 @@ class Router {
       case RoutePaths.onboardingInformations:
         return OnboardingInformationsPageRoute(
             settings.arguments as OnboardingInformationsPageArguments);
+
+      case RoutePaths.settings:
+        return SettingsPageRoute();
 
       // NotFound route
       default:
@@ -115,6 +119,18 @@ class WorkoutPageRoute extends MaterialPageRoute {
           },
           settings: const RouteSettings(
             name: RoutePaths.exerciseWorkout,
+          ),
+        );
+}
+
+class SettingsPageRoute extends MaterialPageRoute {
+  SettingsPageRoute()
+      : super(
+          builder: (context) {
+            return SettingsPage();
+          },
+          settings: const RouteSettings(
+            name: RoutePaths.settings,
           ),
         );
 }

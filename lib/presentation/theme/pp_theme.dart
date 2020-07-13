@@ -17,6 +17,17 @@ class PPTheme {
         subtitle1: const TextStyle(color: Colors.black54),
         subtitle2: const TextStyle(color: Colors.black54),
       ),
+      appBarTheme: const AppBarTheme(
+        color: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
+      bottomAppBarTheme: const BottomAppBarTheme(
+        color: Colors.black,
+        elevation: 10,
+        shape: CircularNotchedRectangle(),
+      ),
     );
   }
 
@@ -34,6 +45,17 @@ class PPTheme {
         headline6: TextStyle(color: Colors.grey.shade100),
         subtitle1: const TextStyle(color: Colors.white70),
         subtitle2: const TextStyle(color: Colors.white70),
+      ),
+      appBarTheme: const AppBarTheme(
+        color: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+      ),
+      bottomAppBarTheme: const BottomAppBarTheme(
+        color: Colors.black,
+        elevation: 10,
+        shape: CircularNotchedRectangle(),
       ),
     );
   }
