@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.29.0](https://github.com/KiritchoukC/power_progress/compare/v2.28.2...v2.29.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add settings page ([ef02547](https://github.com/KiritchoukC/power_progress/commit/ef02547)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
 ### [2.28.2](https://github.com/KiritchoukC/power_progress/compare/v2.28.1...v2.28.2) (2020-07-13)
 
 
