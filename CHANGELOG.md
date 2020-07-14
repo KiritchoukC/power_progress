@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.34.0](https://github.com/KiritchoukC/power_progress/compare/v2.33.0...v2.34.0) (2020-07-14)
+
+
+### Features
+
+* **settings:** add bloc implementation ([fb702e4](https://github.com/KiritchoukC/power_progress/commit/fb702e4)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
 ## [2.33.0](https://github.com/KiritchoukC/power_progress/compare/v2.32.0...v2.33.0) (2020-07-13)
 
 
