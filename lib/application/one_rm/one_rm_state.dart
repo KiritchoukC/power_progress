@@ -21,3 +21,16 @@ abstract class OneRmState with _$OneRmState {
   const factory OneRmState.noExistingDataForThisExerciseError() =
       NoExistingDataForThisExerciseError;
 }
+
+extension OneRmStateX on OneRmState {
+  String toErrorMessage() {
+    return maybeWhen(
+      alreadyExistError: () => itemAlreadyExistsErrorMessage,
+      noExistingDataForThisExerciseError: () => noExistingDataForThisExerciseErrorMessage,
+      notFoundError: () => itemDoesNotExistErrorMessage,
+      storageError: () => storageErrorMessage,
+      unexpectedError: () => unexpectedErrorMessage,
+      orElse: () => unknownErrorMessage,
+    );
+  }
+}

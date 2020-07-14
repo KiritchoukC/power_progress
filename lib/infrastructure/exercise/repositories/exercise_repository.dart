@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
@@ -20,7 +21,7 @@ class ExerciseRepository implements IExerciseRepository {
       final model = ExerciseModel.fromEntity(exercise);
       return right(await datasource.add(model));
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -30,7 +31,7 @@ class ExerciseRepository implements IExerciseRepository {
       final models = await datasource.exercises;
       return right(models.map(ExerciseModel.toEntity).toList());
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -40,7 +41,7 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.remove(ids);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -50,7 +51,7 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.updateNextWeek(exerciseId, nextWeek);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -60,17 +61,21 @@ class ExerciseRepository implements IExerciseRepository {
       await datasource.updateNextMonth(exerciseId, nextMonth);
       return right(unit);
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 
   @override
-  Future<Either<ExerciseFailure, Exercise>> getById(int exerciseId) async {
+  Future<Either<ExerciseFailure, Option<Exercise>>> getById(int exerciseId) async {
     try {
-      final model = await datasource.getById(exerciseId);
-      return right(ExerciseModel.toEntity(model));
+      final modelOption = await datasource.getById(exerciseId);
+
+      return modelOption.fold(
+        () => right(none()),
+        (model) => right(some(ExerciseModel.toEntity(model))),
+      );
     } on Exception {
-      return left(const ExerciseFailure.storageError());
+      return left(const ExerciseFailure.common(CommonFailure.storageError()));
     }
   }
 }

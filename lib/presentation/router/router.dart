@@ -2,88 +2,135 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/presentation/pages/exercise/add/exercise_add_page.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_welcome_page.dart';
+import 'package:power_progress/presentation/pages/settings/settings_page.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
-
-const String onboarding = "onboarding";
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutePaths.dashboard:
-        return MaterialPageRoute(
+        return DashboardPageRoute();
+
+      case RoutePaths.exerciseAdd:
+        return ExerciseAddPageRoute();
+
+      case RoutePaths.exerciseWorkout:
+        return WorkoutPageRoute(settings.arguments as WorkoutPageArguments);
+
+      case RoutePaths.onboardingWelcome:
+        return OnboardingWelcomePageRoute();
+
+      case RoutePaths.onboardingExercise:
+        return OnboardingExercisePageRoute();
+
+      case RoutePaths.onboardingInformations:
+        return OnboardingInformationsPageRoute(
+            settings.arguments as OnboardingInformationsPageArguments);
+
+      case RoutePaths.settings:
+        return SettingsPageRoute();
+
+      // NotFound route
+      default:
+        return NotFoundPageRoute(settings);
+    }
+  }
+}
+
+class NotFoundPageRoute extends MaterialPageRoute {
+  NotFoundPageRoute(RouteSettings routeSettings)
+      : super(
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route defined for ${routeSettings.name}'),
+            ),
+          ),
+        );
+}
+
+class DashboardPageRoute extends MaterialPageRoute {
+  DashboardPageRoute()
+      : super(
           builder: (_) => DashboardPage(),
           settings: const RouteSettings(
             name: RoutePaths.dashboard,
           ),
         );
+}
 
-      case RoutePaths.exerciseAdd:
-        return MaterialPageRoute(
+class ExerciseAddPageRoute extends MaterialPageRoute {
+  ExerciseAddPageRoute()
+      : super(
           builder: (_) => ExerciseAddPage(),
           settings: const RouteSettings(
             name: RoutePaths.exerciseAdd,
           ),
           fullscreenDialog: true,
         );
+}
 
-      case RoutePaths.exerciseWorkout:
-        final args = settings.arguments as WorkoutPageArguments;
-        return MaterialPageRoute(
+class OnboardingWelcomePageRoute extends MaterialPageRoute {
+  OnboardingWelcomePageRoute()
+      : super(
+          builder: (_) => OnboardingWelcomePage(),
+          settings: const RouteSettings(
+            name: RoutePaths.onboardingWelcome,
+          ),
+        );
+}
+
+class OnboardingExercisePageRoute extends MaterialPageRoute {
+  OnboardingExercisePageRoute()
+      : super(
+          builder: (_) => OnboardingExercisePage(),
+          settings: const RouteSettings(
+            name: RoutePaths.onboardingExercise,
+          ),
+        );
+}
+
+class OnboardingInformationsPageRoute extends MaterialPageRoute {
+  OnboardingInformationsPageRoute(OnboardingInformationsPageArguments routeArgs)
+      : super(
+          builder: (_) => OnboardingInformationsPage(
+            exerciseName: routeArgs.exerciseName,
+          ),
+          settings: const RouteSettings(
+            name: RoutePaths.onboardingInformations,
+          ),
+        );
+}
+
+class WorkoutPageRoute extends MaterialPageRoute {
+  WorkoutPageRoute(WorkoutPageArguments routeArgs)
+      : super(
           builder: (context) {
             context.bloc<WorkoutBloc>().add(const WorkoutEvent.resetState());
             return WorkoutPage(
-              exercise: args.exercise,
+              exercise: routeArgs.exercise,
             );
           },
           settings: const RouteSettings(
             name: RoutePaths.exerciseWorkout,
           ),
         );
+}
 
-      case RoutePaths.onboardingWelcome:
-        return MaterialPageRoute(
-          builder: (_) => OnboardingWelcomePage(),
+class SettingsPageRoute extends MaterialPageRoute {
+  SettingsPageRoute()
+      : super(
+          builder: (context) {
+            return SettingsPage();
+          },
           settings: const RouteSettings(
-            name: RoutePaths.onboardingWelcome,
+            name: RoutePaths.settings,
           ),
         );
-
-      case RoutePaths.onboardingExercise:
-        return MaterialPageRoute(
-          builder: (_) => OnboardingExercisePage(),
-          settings: const RouteSettings(
-            name: RoutePaths.onboardingExercise,
-          ),
-        );
-
-      case RoutePaths.onboardingInformations:
-        final args = settings.arguments as OnboardingInformationsPageArguments;
-        return MaterialPageRoute(
-          builder: (_) => OnboardingInformationsPage(
-            exerciseName: args.exerciseName,
-          ),
-          settings: const RouteSettings(
-            name: RoutePaths.onboardingInformations,
-          ),
-        );
-
-      // NotFound route
-      default:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
-          ),
-        );
-    }
-  }
 }

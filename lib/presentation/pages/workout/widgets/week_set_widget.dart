@@ -4,19 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/workout/accumulation_workout.dart';
-import 'package:power_progress/domain/workout/deload_workout.dart';
 import 'package:power_progress/domain/workout/exercise_set.dart';
-import 'package:power_progress/domain/workout/intensification_workout.dart';
-import 'package:power_progress/domain/workout/realization_workout.dart';
 import 'package:power_progress/domain/workout/workout.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/exercise_set_widget.dart';
-import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/realization_dialog.dart';
 
 class WeekSetWidget extends StatelessWidget {
@@ -37,15 +32,6 @@ class WeekSetWidget extends StatelessWidget {
     @required this.isInvalidatable,
   }) : super(key: key);
 
-  WeekEnum get week {
-    if (workout is AccumulationWorkout) return const WeekEnum.accumulation();
-    if (workout is IntensificationWorkout) return const WeekEnum.intensification();
-    if (workout is RealizationWorkout) return const WeekEnum.realization();
-    if (workout is DeloadWorkout) return const WeekEnum.deload();
-
-    throw const UnexpectedError();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,13 +42,13 @@ class WeekSetWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const DummyIcon(),
-              WeekTitle(week: week),
+              WeekTitle(week: workout.week),
               if (workout.isDone)
                 UncheckButton(
                   workoutDoneId: workout.workoutDoneId,
                   exerciseId: exerciseId,
                   incrementation: incrementation,
-                  week: week,
+                  week: workout.week,
                   month: workout.month,
                   oneRm: workout.oneRm,
                   enabled: isInvalidatable,
@@ -73,7 +59,7 @@ class WeekSetWidget extends StatelessWidget {
                   incrementation: incrementation,
                   month: workout.month,
                   realizationReps: exerciseSets.last.reps,
-                  week: week,
+                  week: workout.week,
                   oneRm: workout.oneRm,
                   enabled: isValidatable,
                 ),
@@ -209,6 +195,10 @@ class CheckButton extends StatelessWidget {
     );
   }
 
+  Color _getIconColor(BuildContext context) {
+    return enabled ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withAlpha(50);
+  }
+
   const CheckButton({
     Key key,
     @required this.week,
@@ -225,7 +215,7 @@ class CheckButton extends StatelessWidget {
       onPressed: enabled ? () => _handleWeekValidation(context) : null,
       icon: Icon(
         Icons.check_circle_outline,
-        color: enabled ? Colors.black : Colors.black.withAlpha(50),
+        color: _getIconColor(context),
       ),
     );
   }

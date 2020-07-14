@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/workout/accumulation_workout.dart';
 import 'package:power_progress/domain/workout/deload_workout.dart';
 import 'package:power_progress/domain/workout/intensification_workout.dart';

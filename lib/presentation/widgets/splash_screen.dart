@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 
 class SplashScreen extends StatelessWidget {

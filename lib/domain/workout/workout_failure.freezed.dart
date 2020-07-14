@@ -12,24 +12,20 @@ T _$identity<T>(T value) => value;
 class _$WorkoutFailureTearOff {
   const _$WorkoutFailureTearOff();
 
-  StorageError storageError() {
-    return const StorageError();
+  _PreviousMonthWithoutOneRm previousMonthWithoutOneRm() {
+    return const _PreviousMonthWithoutOneRm();
   }
 
-  UnexpectedError unexpectedError() {
-    return const UnexpectedError();
+  _OneRm oneRm(OneRmFailure failure) {
+    return _OneRm(
+      failure,
+    );
   }
 
-  OneRmDoestNotExist oneRmDoesNotExist() {
-    return const OneRmDoestNotExist();
-  }
-
-  OneRmAlreadyExists oneRmAlreadyExists() {
-    return const OneRmAlreadyExists();
-  }
-
-  PreviousMonthWithoutOneRm previousMonthWithoutOneRm() {
-    return const PreviousMonthWithoutOneRm();
+  _Common common(CommonFailure failure) {
+    return _Common(
+      failure,
+    );
   }
 }
 
@@ -39,36 +35,29 @@ const $WorkoutFailure = _$WorkoutFailureTearOff();
 mixin _$WorkoutFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
+    @required Result oneRm(OneRmFailure failure),
+    @required Result common(CommonFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
+    Result oneRm(OneRmFailure failure),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
+    @required
+        Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    @required Result oneRm(_OneRm value),
+    @required Result common(_Common value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    Result oneRm(_OneRm value),
+    Result common(_Common value),
     @required Result orElse(),
   });
 }
@@ -88,485 +77,28 @@ class _$WorkoutFailureCopyWithImpl<$Res>
   final $Res Function(WorkoutFailure) _then;
 }
 
-abstract class $StorageErrorCopyWith<$Res> {
-  factory $StorageErrorCopyWith(
-          StorageError value, $Res Function(StorageError) then) =
-      _$StorageErrorCopyWithImpl<$Res>;
+abstract class _$PreviousMonthWithoutOneRmCopyWith<$Res> {
+  factory _$PreviousMonthWithoutOneRmCopyWith(_PreviousMonthWithoutOneRm value,
+          $Res Function(_PreviousMonthWithoutOneRm) then) =
+      __$PreviousMonthWithoutOneRmCopyWithImpl<$Res>;
 }
 
-class _$StorageErrorCopyWithImpl<$Res>
+class __$PreviousMonthWithoutOneRmCopyWithImpl<$Res>
     extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $StorageErrorCopyWith<$Res> {
-  _$StorageErrorCopyWithImpl(
-      StorageError _value, $Res Function(StorageError) _then)
-      : super(_value, (v) => _then(v as StorageError));
+    implements _$PreviousMonthWithoutOneRmCopyWith<$Res> {
+  __$PreviousMonthWithoutOneRmCopyWithImpl(_PreviousMonthWithoutOneRm _value,
+      $Res Function(_PreviousMonthWithoutOneRm) _then)
+      : super(_value, (v) => _then(v as _PreviousMonthWithoutOneRm));
 
   @override
-  StorageError get _value => super._value as StorageError;
+  _PreviousMonthWithoutOneRm get _value =>
+      super._value as _PreviousMonthWithoutOneRm;
 }
 
-class _$StorageError with DiagnosticableTreeMixin implements StorageError {
-  const _$StorageError();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.storageError()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WorkoutFailure.storageError'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is StorageError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
-    @required Result previousMonthWithoutOneRm(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return storageError();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
-    Result previousMonthWithoutOneRm(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (storageError != null) {
-      return storageError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return storageError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (storageError != null) {
-      return storageError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StorageError implements WorkoutFailure {
-  const factory StorageError() = _$StorageError;
-}
-
-abstract class $UnexpectedErrorCopyWith<$Res> {
-  factory $UnexpectedErrorCopyWith(
-          UnexpectedError value, $Res Function(UnexpectedError) then) =
-      _$UnexpectedErrorCopyWithImpl<$Res>;
-}
-
-class _$UnexpectedErrorCopyWithImpl<$Res>
-    extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $UnexpectedErrorCopyWith<$Res> {
-  _$UnexpectedErrorCopyWithImpl(
-      UnexpectedError _value, $Res Function(UnexpectedError) _then)
-      : super(_value, (v) => _then(v as UnexpectedError));
-
-  @override
-  UnexpectedError get _value => super._value as UnexpectedError;
-}
-
-class _$UnexpectedError
+class _$_PreviousMonthWithoutOneRm
     with DiagnosticableTreeMixin
-    implements UnexpectedError {
-  const _$UnexpectedError();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.unexpectedError()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WorkoutFailure.unexpectedError'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UnexpectedError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
-    @required Result previousMonthWithoutOneRm(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return unexpectedError();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
-    Result previousMonthWithoutOneRm(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unexpectedError != null) {
-      return unexpectedError();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return unexpectedError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (unexpectedError != null) {
-      return unexpectedError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnexpectedError implements WorkoutFailure {
-  const factory UnexpectedError() = _$UnexpectedError;
-}
-
-abstract class $OneRmDoestNotExistCopyWith<$Res> {
-  factory $OneRmDoestNotExistCopyWith(
-          OneRmDoestNotExist value, $Res Function(OneRmDoestNotExist) then) =
-      _$OneRmDoestNotExistCopyWithImpl<$Res>;
-}
-
-class _$OneRmDoestNotExistCopyWithImpl<$Res>
-    extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $OneRmDoestNotExistCopyWith<$Res> {
-  _$OneRmDoestNotExistCopyWithImpl(
-      OneRmDoestNotExist _value, $Res Function(OneRmDoestNotExist) _then)
-      : super(_value, (v) => _then(v as OneRmDoestNotExist));
-
-  @override
-  OneRmDoestNotExist get _value => super._value as OneRmDoestNotExist;
-}
-
-class _$OneRmDoestNotExist
-    with DiagnosticableTreeMixin
-    implements OneRmDoestNotExist {
-  const _$OneRmDoestNotExist();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.oneRmDoesNotExist()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WorkoutFailure.oneRmDoesNotExist'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is OneRmDoestNotExist);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
-    @required Result previousMonthWithoutOneRm(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return oneRmDoesNotExist();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
-    Result previousMonthWithoutOneRm(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (oneRmDoesNotExist != null) {
-      return oneRmDoesNotExist();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return oneRmDoesNotExist(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (oneRmDoesNotExist != null) {
-      return oneRmDoesNotExist(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class OneRmDoestNotExist implements WorkoutFailure {
-  const factory OneRmDoestNotExist() = _$OneRmDoestNotExist;
-}
-
-abstract class $OneRmAlreadyExistsCopyWith<$Res> {
-  factory $OneRmAlreadyExistsCopyWith(
-          OneRmAlreadyExists value, $Res Function(OneRmAlreadyExists) then) =
-      _$OneRmAlreadyExistsCopyWithImpl<$Res>;
-}
-
-class _$OneRmAlreadyExistsCopyWithImpl<$Res>
-    extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $OneRmAlreadyExistsCopyWith<$Res> {
-  _$OneRmAlreadyExistsCopyWithImpl(
-      OneRmAlreadyExists _value, $Res Function(OneRmAlreadyExists) _then)
-      : super(_value, (v) => _then(v as OneRmAlreadyExists));
-
-  @override
-  OneRmAlreadyExists get _value => super._value as OneRmAlreadyExists;
-}
-
-class _$OneRmAlreadyExists
-    with DiagnosticableTreeMixin
-    implements OneRmAlreadyExists {
-  const _$OneRmAlreadyExists();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WorkoutFailure.oneRmAlreadyExists()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WorkoutFailure.oneRmAlreadyExists'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is OneRmAlreadyExists);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
-    @required Result previousMonthWithoutOneRm(),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return oneRmAlreadyExists();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
-    Result previousMonthWithoutOneRm(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (oneRmAlreadyExists != null) {
-      return oneRmAlreadyExists();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-  }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
-    assert(previousMonthWithoutOneRm != null);
-    return oneRmAlreadyExists(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (oneRmAlreadyExists != null) {
-      return oneRmAlreadyExists(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class OneRmAlreadyExists implements WorkoutFailure {
-  const factory OneRmAlreadyExists() = _$OneRmAlreadyExists;
-}
-
-abstract class $PreviousMonthWithoutOneRmCopyWith<$Res> {
-  factory $PreviousMonthWithoutOneRmCopyWith(PreviousMonthWithoutOneRm value,
-          $Res Function(PreviousMonthWithoutOneRm) then) =
-      _$PreviousMonthWithoutOneRmCopyWithImpl<$Res>;
-}
-
-class _$PreviousMonthWithoutOneRmCopyWithImpl<$Res>
-    extends _$WorkoutFailureCopyWithImpl<$Res>
-    implements $PreviousMonthWithoutOneRmCopyWith<$Res> {
-  _$PreviousMonthWithoutOneRmCopyWithImpl(PreviousMonthWithoutOneRm _value,
-      $Res Function(PreviousMonthWithoutOneRm) _then)
-      : super(_value, (v) => _then(v as PreviousMonthWithoutOneRm));
-
-  @override
-  PreviousMonthWithoutOneRm get _value =>
-      super._value as PreviousMonthWithoutOneRm;
-}
-
-class _$PreviousMonthWithoutOneRm
-    with DiagnosticableTreeMixin
-    implements PreviousMonthWithoutOneRm {
-  const _$PreviousMonthWithoutOneRm();
+    implements _PreviousMonthWithoutOneRm {
+  const _$_PreviousMonthWithoutOneRm();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -583,7 +115,7 @@ class _$PreviousMonthWithoutOneRm
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is PreviousMonthWithoutOneRm);
+    return identical(this, other) || (other is _PreviousMonthWithoutOneRm);
   }
 
   @override
@@ -592,28 +124,22 @@ class _$PreviousMonthWithoutOneRm
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result storageError(),
-    @required Result unexpectedError(),
-    @required Result oneRmDoesNotExist(),
-    @required Result oneRmAlreadyExists(),
     @required Result previousMonthWithoutOneRm(),
+    @required Result oneRm(OneRmFailure failure),
+    @required Result common(CommonFailure failure),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
     return previousMonthWithoutOneRm();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result storageError(),
-    Result unexpectedError(),
-    Result oneRmDoesNotExist(),
-    Result oneRmAlreadyExists(),
     Result previousMonthWithoutOneRm(),
+    Result oneRm(OneRmFailure failure),
+    Result common(CommonFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -626,28 +152,23 @@ class _$PreviousMonthWithoutOneRm
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result storageError(StorageError value),
-    @required Result unexpectedError(UnexpectedError value),
-    @required Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    @required Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    @required Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
+    @required
+        Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    @required Result oneRm(_OneRm value),
+    @required Result common(_Common value),
   }) {
-    assert(storageError != null);
-    assert(unexpectedError != null);
-    assert(oneRmDoesNotExist != null);
-    assert(oneRmAlreadyExists != null);
     assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
     return previousMonthWithoutOneRm(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result storageError(StorageError value),
-    Result unexpectedError(UnexpectedError value),
-    Result oneRmDoesNotExist(OneRmDoestNotExist value),
-    Result oneRmAlreadyExists(OneRmAlreadyExists value),
-    Result previousMonthWithoutOneRm(PreviousMonthWithoutOneRm value),
+    Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    Result oneRm(_OneRm value),
+    Result common(_Common value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -658,6 +179,278 @@ class _$PreviousMonthWithoutOneRm
   }
 }
 
-abstract class PreviousMonthWithoutOneRm implements WorkoutFailure {
-  const factory PreviousMonthWithoutOneRm() = _$PreviousMonthWithoutOneRm;
+abstract class _PreviousMonthWithoutOneRm implements WorkoutFailure {
+  const factory _PreviousMonthWithoutOneRm() = _$_PreviousMonthWithoutOneRm;
+}
+
+abstract class _$OneRmCopyWith<$Res> {
+  factory _$OneRmCopyWith(_OneRm value, $Res Function(_OneRm) then) =
+      __$OneRmCopyWithImpl<$Res>;
+  $Res call({OneRmFailure failure});
+
+  $OneRmFailureCopyWith<$Res> get failure;
+}
+
+class __$OneRmCopyWithImpl<$Res> extends _$WorkoutFailureCopyWithImpl<$Res>
+    implements _$OneRmCopyWith<$Res> {
+  __$OneRmCopyWithImpl(_OneRm _value, $Res Function(_OneRm) _then)
+      : super(_value, (v) => _then(v as _OneRm));
+
+  @override
+  _OneRm get _value => super._value as _OneRm;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_OneRm(
+      failure == freezed ? _value.failure : failure as OneRmFailure,
+    ));
+  }
+
+  @override
+  $OneRmFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $OneRmFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+class _$_OneRm with DiagnosticableTreeMixin implements _OneRm {
+  const _$_OneRm(this.failure) : assert(failure != null);
+
+  @override
+  final OneRmFailure failure;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutFailure.oneRm(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutFailure.oneRm'))
+      ..add(DiagnosticsProperty('failure', failure));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OneRm &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$OneRmCopyWith<_OneRm> get copyWith =>
+      __$OneRmCopyWithImpl<_OneRm>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result previousMonthWithoutOneRm(),
+    @required Result oneRm(OneRmFailure failure),
+    @required Result common(CommonFailure failure),
+  }) {
+    assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
+    return oneRm(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result previousMonthWithoutOneRm(),
+    Result oneRm(OneRmFailure failure),
+    Result common(CommonFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (oneRm != null) {
+      return oneRm(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required
+        Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    @required Result oneRm(_OneRm value),
+    @required Result common(_Common value),
+  }) {
+    assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
+    return oneRm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    Result oneRm(_OneRm value),
+    Result common(_Common value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (oneRm != null) {
+      return oneRm(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OneRm implements WorkoutFailure {
+  const factory _OneRm(OneRmFailure failure) = _$_OneRm;
+
+  OneRmFailure get failure;
+  _$OneRmCopyWith<_OneRm> get copyWith;
+}
+
+abstract class _$CommonCopyWith<$Res> {
+  factory _$CommonCopyWith(_Common value, $Res Function(_Common) then) =
+      __$CommonCopyWithImpl<$Res>;
+  $Res call({CommonFailure failure});
+
+  $CommonFailureCopyWith<$Res> get failure;
+}
+
+class __$CommonCopyWithImpl<$Res> extends _$WorkoutFailureCopyWithImpl<$Res>
+    implements _$CommonCopyWith<$Res> {
+  __$CommonCopyWithImpl(_Common _value, $Res Function(_Common) _then)
+      : super(_value, (v) => _then(v as _Common));
+
+  @override
+  _Common get _value => super._value as _Common;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_Common(
+      failure == freezed ? _value.failure : failure as CommonFailure,
+    ));
+  }
+
+  @override
+  $CommonFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $CommonFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+class _$_Common with DiagnosticableTreeMixin implements _Common {
+  const _$_Common(this.failure) : assert(failure != null);
+
+  @override
+  final CommonFailure failure;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WorkoutFailure.common(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WorkoutFailure.common'))
+      ..add(DiagnosticsProperty('failure', failure));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Common &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$CommonCopyWith<_Common> get copyWith =>
+      __$CommonCopyWithImpl<_Common>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result previousMonthWithoutOneRm(),
+    @required Result oneRm(OneRmFailure failure),
+    @required Result common(CommonFailure failure),
+  }) {
+    assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
+    return common(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result previousMonthWithoutOneRm(),
+    Result oneRm(OneRmFailure failure),
+    Result common(CommonFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required
+        Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    @required Result oneRm(_OneRm value),
+    @required Result common(_Common value),
+  }) {
+    assert(previousMonthWithoutOneRm != null);
+    assert(oneRm != null);
+    assert(common != null);
+    return common(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result previousMonthWithoutOneRm(_PreviousMonthWithoutOneRm value),
+    Result oneRm(_OneRm value),
+    Result common(_Common value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Common implements WorkoutFailure {
+  const factory _Common(CommonFailure failure) = _$_Common;
+
+  CommonFailure get failure;
+  _$CommonCopyWith<_Common> get copyWith;
 }

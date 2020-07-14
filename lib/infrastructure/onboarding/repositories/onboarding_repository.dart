@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/domain/onboarding/onboarding_failure.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
 import 'package:power_progress/infrastructure/onboarding/datasources/i_onboarding_datasource.dart';
 
 class OnboardingRepository implements IOnboardingRepository {
@@ -16,7 +17,7 @@ class OnboardingRepository implements IOnboardingRepository {
       await datasource.done();
       return right(unit);
     } on Exception {
-      return left(const OnboardingFailure.storageError());
+      return left(const OnboardingFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -25,7 +26,7 @@ class OnboardingRepository implements IOnboardingRepository {
     try {
       return right(await datasource.isDone);
     } on Exception {
-      return left(const OnboardingFailure.storageError());
+      return left(const OnboardingFailure.common(CommonFailure.storageError()));
     }
   }
 }

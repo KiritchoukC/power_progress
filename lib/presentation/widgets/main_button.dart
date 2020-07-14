@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 
 class MainButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -23,7 +23,9 @@ class MainButton extends StatelessWidget {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
           alignment: Alignment.center,
-          child: Icon(icon),
+          child: Icon(
+            icon,
+          ),
         ),
       ),
     );

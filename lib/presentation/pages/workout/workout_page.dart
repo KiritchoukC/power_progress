@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/domain/workout/month_workout.dart';
+import 'package:power_progress/presentation/pages/workout/widgets/month_navigation.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
@@ -38,6 +39,7 @@ class WorkoutPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: PPAppBar(
+          context: context,
           titleLabel: exercise.name.getOrCrash(),
           actions: [
             RemoveButton(
@@ -161,69 +163,6 @@ class _Body extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-class MonthNavigation extends StatelessWidget {
-  final int currentMonth;
-  final OneRm oneRm;
-  final int exerciseId;
-
-  Color get _color => Colors.grey.shade700;
-
-  bool get isPreviousNavigatable => currentMonth > 1;
-
-  const MonthNavigation({
-    Key key,
-    @required this.currentMonth,
-    @required this.oneRm,
-    @required this.exerciseId,
-  }) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade300.withAlpha(200),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-              icon: Icon(
-                Icons.chevron_left,
-                color: isPreviousNavigatable ? _color : Colors.transparent,
-              ),
-              onPressed: isPreviousNavigatable
-                  ? () {
-                      context.bloc<WorkoutBloc>().add(
-                            WorkoutEvent.generate(
-                              exerciseId: exerciseId,
-                              month: Month(currentMonth - 1),
-                            ),
-                          );
-                    }
-                  : null),
-          Text(
-            'Month $currentMonth',
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: _color,
-                ),
-          ),
-          IconButton(
-              icon: Icon(
-                Icons.chevron_right,
-                color: _color,
-              ),
-              onPressed: () {
-                context.bloc<WorkoutBloc>().add(
-                      WorkoutEvent.generate(
-                        exerciseId: exerciseId,
-                        month: Month(currentMonth + 1),
-                      ),
-                    );
-              }),
-        ],
-      ),
     );
   }
 }

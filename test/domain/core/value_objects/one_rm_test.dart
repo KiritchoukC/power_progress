@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 
 void main() {

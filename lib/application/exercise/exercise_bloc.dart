@@ -5,8 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
@@ -26,10 +26,7 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
     @required this.exerciseRepository,
     @required this.oneRmBloc,
     @required this.workoutBloc,
-  });
-
-  @override
-  ExerciseState get initialState => const ExerciseState.initial();
+  }) : super(const ExerciseState.initial());
 
   @override
   Stream<ExerciseState> mapEventToState(ExerciseEvent event) async* {
@@ -53,12 +50,10 @@ class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
       yield const ExerciseState.added();
 
       oneRmBloc.add(
-        OneRmEvent.generateAndSave(
+        OneRmEvent.init(
           exerciseId: addedExerciseId,
           oneRm: event.oneRm,
           incrementation: event.exercise.incrementation,
-          month: Month(1),
-          repsDone: none(),
         ),
       );
     }

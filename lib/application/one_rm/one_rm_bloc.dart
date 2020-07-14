@@ -4,9 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:power_progress/core/messages/errors.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
@@ -20,10 +21,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
 
   OneRmBloc({
     @required this.oneRmRepository,
-  });
-
-  @override
-  OneRmState get initialState => const OneRmState.initial(exerciseId: 0);
+  }) : super(const OneRmState.initial(exerciseId: 0));
 
   @override
   Stream<OneRmState> mapEventToState(
@@ -34,6 +32,7 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
       upsert: _handleUpsertEvent,
       generateAndSave: _handleGenerateAndSaveEvent,
       remove: _handleRemoveEvent,
+      init: _handleInitEvent,
     );
   }
 
@@ -105,11 +104,40 @@ class OneRmBloc extends Bloc<OneRmEvent, OneRmState> {
 
   OneRmState _mapFailureToState(OneRmFailure failure) {
     return failure.when(
-      storageError: () => const OneRmState.storageError(),
-      unexpectedError: () => const OneRmState.unexpectedError(),
       itemDoesNotExist: () => const OneRmState.notFoundError(),
       itemAlreadyExists: () => const OneRmState.alreadyExistError(),
       noExistingDataForThisExercise: () => const OneRmState.noExistingDataForThisExerciseError(),
+      common: (commonFailure) => commonFailure.when(
+        storageError: () => const OneRmState.storageError(),
+        unexpectedError: () => const OneRmState.unexpectedError(),
+      ),
+    );
+  }
+
+  Stream<OneRmState> _handleInitEvent(Init event) async* {
+    yield const OneRmState.generateAndSaveInProgress();
+
+    final generatedOneRm = OneRm.generate(
+      Month(1),
+      event.incrementation,
+      event.oneRm,
+      none(),
+    );
+
+    // add or update the one rm for the next month
+    final output = await oneRmRepository.addOrUpdate(
+      event.exerciseId,
+      Month(1),
+      generatedOneRm,
+    );
+
+    yield* output.fold(
+      (failure) async* {
+        yield _mapFailureToState(failure);
+      },
+      (_) async* {
+        yield OneRmState.generatedAndSaved(exerciseId: event.exerciseId, oneRm: generatedOneRm);
+      },
     );
   }
 }

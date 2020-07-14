@@ -14,3 +14,5 @@ analyzer:
     directives_ordering: ignore
     prefer_const_constructors_in_immutables: warning
     avoid_catching_errors: ignore
+    avoid_positional_boolean_parameters: ignore
+    avoid_classes_with_only_static_members: ignore

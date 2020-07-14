@@ -18,10 +18,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
   OnboardingBloc({
     @required this.onboardingRepository,
-  });
-
-  @override
-  OnboardingState get initialState => const OnboardingState.initial();
+  }) : super(const OnboardingState.initial());
 
   @override
   Stream<OnboardingState> mapEventToState(
@@ -58,7 +55,6 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       yield OnboardingState.error(message: mapFailureToErrorMessage(failure));
     }
 
-    // ignore: avoid_positional_boolean_parameters
     Stream<OnboardingState> onSuccess(bool isDone) async* {
       if (isDone) {
         yield const OnboardingState.done();
@@ -71,8 +67,6 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   String mapFailureToErrorMessage(OnboardingFailure failure) {
-    if (failure is StorageError) return storageErrorMessage;
-
-    return unknownErrorMessage;
+    return storageErrorMessage;
   }
 }

@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:power_progress/core/domain/errors.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/workout/exercise_set.dart';
 import 'package:power_progress/domain/workout/value_objects/weight.dart';
 import 'package:power_progress/domain/workout/workout.dart';
@@ -21,11 +23,14 @@ class IntensificationWorkout extends Workout {
           exerciseSets: _getExerciseSets(month, oneRm),
           workoutDoneId: workoutDoneId,
         );
+
+  @override
+  WeekEnum get week => const WeekEnum.intensification();
 }
 
 List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm) {
   return month.moduloMonthNumber.fold(
-    (l) => throw const UnexpectedError(),
+    (l) => throw UnexpectedValueError(some(l)),
     (r) {
       switch (r) {
         case 1:
@@ -53,7 +58,7 @@ List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm) {
             ExerciseSet(reps: 3, sets: 5, weight: Weight.fromOneRm(oneRm, 0.825)),
           ];
         default:
-          throw const UnexpectedError();
+          throw throw UnexpectedValueError(none());
       }
     },
   );

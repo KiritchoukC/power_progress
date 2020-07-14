@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 
 abstract class IWorkoutDatasource {

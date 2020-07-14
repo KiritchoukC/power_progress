@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/workout/workout_done.dart';
 import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/domain/workout/i_workout_repository.dart';
@@ -21,7 +22,7 @@ class WorkoutRepository implements IWorkoutRepository {
 
       return right(models.map(WorkoutDoneModel.toEntity).toList());
     } on Exception {
-      return left(const WorkoutFailure.storageError());
+      return left(const WorkoutFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -31,7 +32,7 @@ class WorkoutRepository implements IWorkoutRepository {
     try {
       return right(await datasource.markDone(exerciseId, month, week, repsDone));
     } on Exception {
-      return left(const WorkoutFailure.storageError());
+      return left(const WorkoutFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -40,7 +41,7 @@ class WorkoutRepository implements IWorkoutRepository {
     try {
       return right(await datasource.remove(id));
     } on Exception {
-      return left(const WorkoutFailure.storageError());
+      return left(const WorkoutFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -49,7 +50,7 @@ class WorkoutRepository implements IWorkoutRepository {
     try {
       return right(await datasource.removeByExerciseId(exerciseId));
     } on Exception {
-      return left(const WorkoutFailure.storageError());
+      return left(const WorkoutFailure.common(CommonFailure.storageError()));
     }
   }
 }

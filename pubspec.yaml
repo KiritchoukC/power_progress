@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   rxdart: ^0.24.0
-  bloc: ^4.0.0
-  flutter_bloc: ^4.0.0
+  bloc: ^5.0.0
+  flutter_bloc: ^5.0.0
   get_it: ^4.0.2
   dartz: ^0.9.0
   logging: ^0.11.4

@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
@@ -19,10 +19,7 @@ class MonthBloc extends Bloc<MonthEvent, MonthState> {
 
   MonthBloc({
     @required this.exerciseRepository,
-  });
-
-  @override
-  MonthState get initialState => const MonthState.initial(exerciseId: 0);
+  }) : super(const MonthState.initial(exerciseId: 0));
 
   @override
   Stream<MonthState> mapEventToState(
@@ -59,8 +56,18 @@ class MonthBloc extends Bloc<MonthEvent, MonthState> {
       yield MonthState.error(exerciseId: event.exerciseId, message: failure.toErrorMessage());
     }
 
-    Stream<MonthState> onSuccess(Exercise exercise) async* {
-      yield MonthState.fetched(exerciseId: event.exerciseId, month: exercise.month);
+    Stream<MonthState> onSuccess(Option<Exercise> exerciseOption) async* {
+      yield* exerciseOption.fold(
+        () async* {
+          yield MonthState.error(
+            exerciseId: event.exerciseId,
+            message: 'This item does not exist.',
+          );
+        },
+        (exercise) async* {
+          yield MonthState.fetched(exerciseId: event.exerciseId, month: exercise.month);
+        },
+      );
     }
 
     yield* output.fold(onFailure, onSuccess);

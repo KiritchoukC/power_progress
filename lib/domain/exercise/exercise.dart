@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/value_objects/note.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
 

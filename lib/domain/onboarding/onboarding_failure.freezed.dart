@@ -12,20 +12,29 @@ T _$identity<T>(T value) => value;
 class _$OnboardingFailureTearOff {
   const _$OnboardingFailureTearOff();
 
-  StorageError storageError() {
-    return const StorageError();
+  _Common common(CommonFailure failure) {
+    return _Common(
+      failure,
+    );
   }
 }
 
 // ignore: unused_element
 const $OnboardingFailure = _$OnboardingFailureTearOff();
 
-mixin _$OnboardingFailure {}
+mixin _$OnboardingFailure {
+  CommonFailure get failure;
+
+  $OnboardingFailureCopyWith<OnboardingFailure> get copyWith;
+}
 
 abstract class $OnboardingFailureCopyWith<$Res> {
   factory $OnboardingFailureCopyWith(
           OnboardingFailure value, $Res Function(OnboardingFailure) then) =
       _$OnboardingFailureCopyWithImpl<$Res>;
+  $Res call({CommonFailure failure});
+
+  $CommonFailureCopyWith<$Res> get failure;
 }
 
 class _$OnboardingFailureCopyWithImpl<$Res>
@@ -35,49 +44,97 @@ class _$OnboardingFailureCopyWithImpl<$Res>
   final OnboardingFailure _value;
   // ignore: unused_field
   final $Res Function(OnboardingFailure) _then;
-}
-
-abstract class $StorageErrorCopyWith<$Res> {
-  factory $StorageErrorCopyWith(
-          StorageError value, $Res Function(StorageError) then) =
-      _$StorageErrorCopyWithImpl<$Res>;
-}
-
-class _$StorageErrorCopyWithImpl<$Res>
-    extends _$OnboardingFailureCopyWithImpl<$Res>
-    implements $StorageErrorCopyWith<$Res> {
-  _$StorageErrorCopyWithImpl(
-      StorageError _value, $Res Function(StorageError) _then)
-      : super(_value, (v) => _then(v as StorageError));
 
   @override
-  StorageError get _value => super._value as StorageError;
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_value.copyWith(
+      failure: failure == freezed ? _value.failure : failure as CommonFailure,
+    ));
+  }
+
+  @override
+  $CommonFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $CommonFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
 }
 
-class _$StorageError with DiagnosticableTreeMixin implements StorageError {
-  const _$StorageError();
+abstract class _$CommonCopyWith<$Res>
+    implements $OnboardingFailureCopyWith<$Res> {
+  factory _$CommonCopyWith(_Common value, $Res Function(_Common) then) =
+      __$CommonCopyWithImpl<$Res>;
+  @override
+  $Res call({CommonFailure failure});
+
+  @override
+  $CommonFailureCopyWith<$Res> get failure;
+}
+
+class __$CommonCopyWithImpl<$Res> extends _$OnboardingFailureCopyWithImpl<$Res>
+    implements _$CommonCopyWith<$Res> {
+  __$CommonCopyWithImpl(_Common _value, $Res Function(_Common) _then)
+      : super(_value, (v) => _then(v as _Common));
+
+  @override
+  _Common get _value => super._value as _Common;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_Common(
+      failure == freezed ? _value.failure : failure as CommonFailure,
+    ));
+  }
+}
+
+class _$_Common with DiagnosticableTreeMixin implements _Common {
+  const _$_Common(this.failure) : assert(failure != null);
+
+  @override
+  final CommonFailure failure;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OnboardingFailure.storageError()';
+    return 'OnboardingFailure.common(failure: $failure)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'OnboardingFailure.storageError'));
+      ..add(DiagnosticsProperty('type', 'OnboardingFailure.common'))
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is StorageError);
+    return identical(this, other) ||
+        (other is _Common &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$CommonCopyWith<_Common> get copyWith =>
+      __$CommonCopyWithImpl<_Common>(this, _$identity);
 }
 
-abstract class StorageError implements OnboardingFailure {
-  const factory StorageError() = _$StorageError;
+abstract class _Common implements OnboardingFailure {
+  const factory _Common(CommonFailure failure) = _$_Common;
+
+  @override
+  CommonFailure get failure;
+  @override
+  _$CommonCopyWith<_Common> get copyWith;
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/exercise/value_objects/note.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
 

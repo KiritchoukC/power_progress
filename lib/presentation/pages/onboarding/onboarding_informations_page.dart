@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
-import 'package:power_progress/theme/pp_light_theme.dart';
+import 'package:power_progress/presentation/theme/pp_theme.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
@@ -40,7 +40,8 @@ class OnboardingInformationsPage extends StatelessWidget {
               added: () {
                 Future.delayed(const Duration(seconds: 1)).then(
                   (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Navigator.of(context).pushReplacementNamed(RoutePaths.dashboard);
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil(RoutePaths.dashboard, (route) => false);
                   }),
                 );
               },

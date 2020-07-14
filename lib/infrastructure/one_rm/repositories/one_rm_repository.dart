@@ -3,8 +3,9 @@ import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/core/domain/errors.dart';
 import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
 import 'package:power_progress/infrastructure/one_rm/datasources/i_one_rm_datasource.dart';
 import 'package:power_progress/infrastructure/one_rm/models/one_rm_model.dart';
@@ -29,29 +30,33 @@ class OneRmRepository implements IOneRmRepository {
     } on ItemAlreadyExistsError {
       return left(const OneRmFailure.itemAlreadyExists());
     } catch (e) {
-      return left(const OneRmFailure.storageError());
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
   }
 
   @override
-  Future<Either<OneRmFailure, Unit>> addOrUpdate(int exerciseId, Month month, OneRm oneRm) {
-    return getByExerciseIdAndMonth(exerciseId, month).then(
-      (oneRmEither) => oneRmEither.fold(
-        (failure) async => left(failure),
-        (oneRmOption) => oneRmOption.fold(
-          () => add(
-            exerciseId,
-            month,
-            oneRm,
-          ),
-          (_) => update(
-            exerciseId,
-            month,
-            oneRm,
+  Future<Either<OneRmFailure, Unit>> addOrUpdate(int exerciseId, Month month, OneRm oneRm) async {
+    try {
+      return getByExerciseIdAndMonth(exerciseId, month).then(
+        (oneRmEither) => oneRmEither.fold(
+          (failure) async => left(failure),
+          (oneRmOption) => oneRmOption.fold(
+            () => add(
+              exerciseId,
+              month,
+              oneRm,
+            ),
+            (_) => update(
+              exerciseId,
+              month,
+              oneRm,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    } catch (_) {
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
+    }
   }
 
   @override
@@ -62,7 +67,7 @@ class OneRmRepository implements IOneRmRepository {
           .getByExerciseIdAndMonth(exerciseId, month)
           .then((option) => option.fold(() => right(none()), (a) => right(some(a.toDomain()))));
     } catch (e) {
-      return left(const OneRmFailure.storageError());
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -98,7 +103,7 @@ class OneRmRepository implements IOneRmRepository {
     try {
       return datasource.removeByExerciseId(exerciseId).then((value) => right(unit));
     } catch (e) {
-      return left(const OneRmFailure.storageError());
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -107,7 +112,7 @@ class OneRmRepository implements IOneRmRepository {
     try {
       return datasource.removeByExerciseIdAndMonth(exerciseId, month).then((value) => right(unit));
     } catch (e) {
-      return left(const OneRmFailure.storageError());
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
   }
 
@@ -126,7 +131,7 @@ class OneRmRepository implements IOneRmRepository {
     } on ItemDoesNotExistError {
       return left(const OneRmFailure.itemDoesNotExist());
     } catch (e) {
-      return left(const OneRmFailure.storageError());
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
   }
 }

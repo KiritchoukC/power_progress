@@ -8,9 +8,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/common_failure.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
 import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
@@ -37,10 +38,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     @required this.oneRmBloc,
     @required this.workoutRepository,
     @required this.oneRmRepository,
-  });
-
-  @override
-  WorkoutState get initialState => const WorkoutState.initial();
+  }) : super(const WorkoutState.initial());
 
   @override
   Stream<WorkoutState> mapEventToState(
@@ -65,11 +63,14 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
     WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
       return oneRmFailure.when(
-        storageError: () => const WorkoutFailure.storageError(),
-        unexpectedError: () => const WorkoutFailure.unexpectedError(),
-        itemDoesNotExist: () => const WorkoutFailure.oneRmDoesNotExist(),
-        itemAlreadyExists: () => const WorkoutFailure.oneRmAlreadyExists(),
-        noExistingDataForThisExercise: () => const WorkoutFailure.unexpectedError(),
+        itemDoesNotExist: () => const WorkoutFailure.oneRm(OneRmFailure.itemDoesNotExist()),
+        itemAlreadyExists: () => const WorkoutFailure.oneRm(OneRmFailure.itemAlreadyExists()),
+        noExistingDataForThisExercise: () =>
+            const WorkoutFailure.oneRm(OneRmFailure.noExistingDataForThisExercise()),
+        common: (commonFailure) => commonFailure.when(
+          storageError: () => const WorkoutFailure.common(CommonFailure.storageError()),
+          unexpectedError: () => const WorkoutFailure.common(CommonFailure.unexpectedError()),
+        ),
       );
     }
 

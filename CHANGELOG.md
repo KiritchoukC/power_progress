@@ -2,6 +2,132 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.35.0](https://github.com/KiritchoukC/power_progress/compare/v2.34.0...v2.35.0) (2020-07-14)
+
+
+### Features
+
+* **settings:** add bloc to ui ([f0f18da](https://github.com/KiritchoukC/power_progress/commit/f0f18da)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.34.0](https://github.com/KiritchoukC/power_progress/compare/v2.33.0...v2.34.0) (2020-07-14)
+
+
+### Features
+
+* **settings:** add bloc implementation ([fb702e4](https://github.com/KiritchoukC/power_progress/commit/fb702e4)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.33.0](https://github.com/KiritchoukC/power_progress/compare/v2.32.0...v2.33.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add repository ([04d7071](https://github.com/KiritchoukC/power_progress/commit/04d7071)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.32.0](https://github.com/KiritchoukC/power_progress/compare/v2.31.0...v2.32.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add datasource implementation ([0a87524](https://github.com/KiritchoukC/power_progress/commit/0a87524)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.31.0](https://github.com/KiritchoukC/power_progress/compare/v2.30.0...v2.31.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add datasource interface ([631f236](https://github.com/KiritchoukC/power_progress/commit/631f236)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.30.0](https://github.com/KiritchoukC/power_progress/compare/v2.29.0...v2.30.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add ui ([088e9ac](https://github.com/KiritchoukC/power_progress/commit/088e9ac)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+## [2.29.0](https://github.com/KiritchoukC/power_progress/compare/v2.28.2...v2.29.0) (2020-07-13)
+
+
+### Features
+
+* **settings:** add settings page ([ef02547](https://github.com/KiritchoukC/power_progress/commit/ef02547)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
+### [2.28.2](https://github.com/KiritchoukC/power_progress/compare/v2.28.1...v2.28.2) (2020-07-13)
+
+
+### Bug Fixes
+
+* **routing:** prevent user from going back to the onboarding pages ([585e9fc](https://github.com/KiritchoukC/power_progress/commit/585e9fc))
+
+### [2.28.1](https://github.com/KiritchoukC/power_progress/compare/v2.28.0...v2.28.1) (2020-07-13)
+
+## [2.28.0](https://github.com/KiritchoukC/power_progress/compare/v2.27.0...v2.28.0) (2020-07-08)
+
+
+### Features
+
+* **dark-theme:** apply dark theme to workout page ([bc58be3](https://github.com/KiritchoukC/power_progress/commit/bc58be3)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
+## [2.27.0](https://github.com/KiritchoukC/power_progress/compare/v2.26.0...v2.27.0) (2020-07-08)
+
+
+### Bug Fixes
+
+* **init-onerm:** init onerm on exercise add ([7d388cc](https://github.com/KiritchoukC/power_progress/commit/7d388cc)), closes [#110](https://github.com/KiritchoukC/power_progress/issues/110)
+
+
+### Features
+
+* **dark-theme:** update add exercise page style ([bc0271c](https://github.com/KiritchoukC/power_progress/commit/bc0271c)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
+## [2.26.0](https://github.com/KiritchoukC/power_progress/compare/v2.25.0...v2.26.0) (2020-07-06)
+
+
+### Features
+
+* **dark-theme:** update light theme card color ([ed6ce50](https://github.com/KiritchoukC/power_progress/commit/ed6ce50)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
+## [2.25.0](https://github.com/KiritchoukC/power_progress/compare/v2.24.3...v2.25.0) (2020-07-06)
+
+
+### Features
+
+* **dark-theme:** add dark theme for dashboard ([6069215](https://github.com/KiritchoukC/power_progress/commit/6069215)), closes [#53](https://github.com/KiritchoukC/power_progress/issues/53)
+
+### [2.24.3](https://github.com/KiritchoukC/power_progress/compare/v2.24.2...v2.24.3) (2020-07-06)
+
+### [2.24.2](https://github.com/KiritchoukC/power_progress/compare/v2.24.1...v2.24.2) (2020-07-06)
+
+### [2.24.1](https://github.com/KiritchoukC/power_progress/compare/v2.24.0...v2.24.1) (2020-07-06)
+
+## [2.24.0](https://github.com/KiritchoukC/power_progress/compare/v2.23.6...v2.24.0) (2020-07-06)
+
+
+### Features
+
+* **errors:** add error listener widget listener to all errors and displaying snack bar ([22d3a7e](https://github.com/KiritchoukC/power_progress/commit/22d3a7e)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+* **errors:** style snackbar error message ([e460424](https://github.com/KiritchoukC/power_progress/commit/e460424)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+
+### [2.23.6](https://github.com/KiritchoukC/power_progress/compare/v2.23.5...v2.23.6) (2020-07-05)
+
+### [2.23.5](https://github.com/KiritchoukC/power_progress/compare/v2.23.4...v2.23.5) (2020-07-05)
+
+### [2.23.4](https://github.com/KiritchoukC/power_progress/compare/v2.23.3...v2.23.4) (2020-07-05)
+
+### [2.23.3](https://github.com/KiritchoukC/power_progress/compare/v2.23.2...v2.23.3) (2020-07-05)
+
+### [2.23.2](https://github.com/KiritchoukC/power_progress/compare/v2.23.1...v2.23.2) (2020-07-05)
+
+### [2.23.1](https://github.com/KiritchoukC/power_progress/compare/v2.23.0...v2.23.1) (2020-07-03)
+
+## [2.23.0](https://github.com/KiritchoukC/power_progress/compare/v2.22.6...v2.23.0) (2020-07-03)
+
+
+### Features
+
+* **errors:** add error handling on repository layer ([3095a9d](https://github.com/KiritchoukC/power_progress/commit/3095a9d)), closes [#65](https://github.com/KiritchoukC/power_progress/issues/65)
+
+### [2.22.6](https://github.com/KiritchoukC/power_progress/compare/v2.22.5...v2.22.6) (2020-07-02)
+
 ### [2.22.5](https://github.com/KiritchoukC/power_progress/compare/v2.22.4...v2.22.5) (2020-07-01)
 
 

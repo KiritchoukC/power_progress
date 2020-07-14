@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:power_progress/core/domain/value_failure.dart';
 import 'package:power_progress/core/domain/value_object.dart';
 import 'package:power_progress/core/util/util_functions.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 
 class Weight extends ValueObject<double> {
   @override

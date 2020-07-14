@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';
@@ -26,7 +24,7 @@ class ExerciseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).cardColor,
       elevation: 1,
       child: InkWell(
         onLongPress: () {
@@ -44,7 +42,7 @@ class ExerciseCard extends StatelessWidget {
           );
         },
         child: Container(
-          color: isSelected ? Colors.blue.shade100 : null,
+          color: isSelected ? Theme.of(context).selectedRowColor : null,
           height: 100,
           child: _Card(exercise: exercise),
         ),
@@ -74,9 +72,7 @@ class _Card extends StatelessWidget {
             children: [
               Text(
                 exercise.name.getOrCrash(),
-                style: Theme.of(context).textTheme.headline6.apply(
-                      color: Colors.grey.shade700,
-                    ),
+                style: Theme.of(context).textTheme.headline6,
               ),
               OneRmWidget(exercise: exercise),
               Row(

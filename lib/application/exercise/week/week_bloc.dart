@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
@@ -18,10 +18,7 @@ class WeekBloc extends Bloc<WeekEvent, WeekState> {
 
   WeekBloc({
     @required this.exerciseRepository,
-  });
-
-  @override
-  WeekState get initialState => const WeekState.initial(exerciseId: 0);
+  }) : super(const WeekState.initial(exerciseId: 0));
 
   @override
   Stream<WeekState> mapEventToState(

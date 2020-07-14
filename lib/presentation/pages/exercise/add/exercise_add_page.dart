@@ -6,10 +6,10 @@ import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/value_objects/one_rm.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
@@ -28,7 +28,10 @@ class ExerciseAddPage extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           addInProgress: () => Scaffold(
-            appBar: PPAppBar(titleLabel: 'New exercise'),
+            appBar: PPAppBar(
+              context: context,
+              titleLabel: 'New exercise',
+            ),
             body: const CenteredLoading(),
           ),
           orElse: () => const _ExerciseForm(),
@@ -80,7 +83,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PPAppBar(titleLabel: 'New exercise'),
+      appBar: PPAppBar(
+        context: context,
+        titleLabel: 'New exercise',
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
         child: Form(
@@ -114,7 +120,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
                 .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
           }
         },
-        label: const Text('Add'),
+        label: const Text(
+          'Add',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomAppBar(

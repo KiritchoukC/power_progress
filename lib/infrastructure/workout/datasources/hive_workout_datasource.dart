@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 
-import 'package:power_progress/domain/core/value_objects/month.dart';
-import 'package:power_progress/domain/core/week_enum.dart';
+import 'package:power_progress/domain/shared/value_objects/month.dart';
+import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/infrastructure/workout/models/workout_done_model.dart';
 import 'package:power_progress/infrastructure/workout/datasources/i_workout_datasource.dart';
 
@@ -40,8 +40,11 @@ class HiveWorkoutDatasource implements IWorkoutDatasource {
   @override
   Future<Unit> removeByExerciseId(int exerciseId) async {
     final workoutsDone = await getWorkoutsDone(exerciseId);
+
     final workoutsDoneIds = workoutsDone.map((x) => x.id);
+
     await localStorage.deleteAll(workoutsDoneIds);
+
     return unit;
   }
 }

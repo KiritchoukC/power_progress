@@ -12,7 +12,7 @@ abstract class ValueObject<T> implements IValidatable {
 
   /// Throws [UnexpectedValueError] containing the [ValueFailure]
   T getOrCrash() {
-    return value.fold((f) => throw UnexpectedValueError(f), (r) => r);
+    return value.fold((f) => throw UnexpectedValueError(some(f)), (r) => r);
   }
 
   T getOrElse(T dflt) {
