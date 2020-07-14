@@ -6,6 +6,7 @@ import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
@@ -39,6 +40,7 @@ class ErrorListener extends StatelessWidget {
         WeekListener(onError: _handleError),
         MonthListener(onError: _handleError),
         OneRmListener(onError: _handleError),
+        SettingsListener(onError: _handleError),
       ],
       child: child,
     );
@@ -149,6 +151,23 @@ class OneRmListener extends BlocListener<OneRmBloc, OneRmState> {
               notFoundError: () => onError(context, state.toErrorMessage()),
               storageError: () => onError(context, state.toErrorMessage()),
               unexpectedError: () => onError(context, state.toErrorMessage()),
+              orElse: () {},
+            );
+          },
+        );
+}
+
+class SettingsListener extends BlocListener<SettingsBloc, SettingsState> {
+  final Function(BuildContext, String) onError;
+  SettingsListener({@required this.onError})
+      : super(
+          listenWhen: (previous, current) => current.maybeWhen(
+            error: (_) => true,
+            orElse: () => false,
+          ),
+          listener: (context, state) {
+            state.maybeWhen(
+              error: (errorMessage) => onError(context, errorMessage),
               orElse: () {},
             );
           },

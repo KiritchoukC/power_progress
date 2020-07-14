@@ -24,17 +24,16 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   Stream<SettingsState> mapEventToState(
     SettingsEvent event,
   ) async* {
-    yield* _handleUpdateThemeEvent(event);
+    yield* event.map(
+      fetch: _handleFetchEvent,
+      updateTheme: _handleUpdateThemeEvent,
+    );
   }
 
-  Stream<SettingsState> _handleUpdateThemeEvent(SettingsEvent event) async* {
+  Stream<SettingsState> _handleUpdateThemeEvent(UpdateTheme event) async* {
     yield const SettingsState.themeUpdateInProgress();
 
     final currentSettingsEither = await settingsRepository.settings;
-
-    Stream<SettingsState> onFailure(SettingsFailure failure) async* {
-      yield SettingsState.error(message: failure.toErrorMessage());
-    }
 
     yield* currentSettingsEither.fold(
       onFailure,
@@ -48,5 +47,22 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         });
       },
     );
+  }
+
+  Stream<SettingsState> _handleFetchEvent(Fetch event) async* {
+    yield const SettingsState.fetchInProgress();
+
+    final currentSettingsEither = await settingsRepository.settings;
+
+    yield* currentSettingsEither.fold(
+      onFailure,
+      (currentSettings) async* {
+        yield SettingsState.fetched(settings: currentSettings);
+      },
+    );
+  }
+
+  Stream<SettingsState> onFailure(SettingsFailure failure) async* {
+    yield SettingsState.error(message: failure.toErrorMessage());
   }
 }

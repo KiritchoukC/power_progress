@@ -17,22 +17,44 @@ class _$SettingsEventTearOff {
       isThemeDark: isThemeDark,
     );
   }
+
+  Fetch fetch() {
+    return const Fetch();
+  }
 }
 
 // ignore: unused_element
 const $SettingsEvent = _$SettingsEventTearOff();
 
 mixin _$SettingsEvent {
-  bool get isThemeDark;
-
-  $SettingsEventCopyWith<SettingsEvent> get copyWith;
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateTheme(bool isThemeDark),
+    @required Result fetch(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateTheme(bool isThemeDark),
+    Result fetch(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateTheme(UpdateTheme value),
+    @required Result fetch(Fetch value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateTheme(UpdateTheme value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  });
 }
 
 abstract class $SettingsEventCopyWith<$Res> {
   factory $SettingsEventCopyWith(
           SettingsEvent value, $Res Function(SettingsEvent) then) =
       _$SettingsEventCopyWithImpl<$Res>;
-  $Res call({bool isThemeDark});
 }
 
 class _$SettingsEventCopyWithImpl<$Res>
@@ -42,24 +64,12 @@ class _$SettingsEventCopyWithImpl<$Res>
   final SettingsEvent _value;
   // ignore: unused_field
   final $Res Function(SettingsEvent) _then;
-
-  @override
-  $Res call({
-    Object isThemeDark = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isThemeDark:
-          isThemeDark == freezed ? _value.isThemeDark : isThemeDark as bool,
-    ));
-  }
 }
 
-abstract class $UpdateThemeCopyWith<$Res>
-    implements $SettingsEventCopyWith<$Res> {
+abstract class $UpdateThemeCopyWith<$Res> {
   factory $UpdateThemeCopyWith(
           UpdateTheme value, $Res Function(UpdateTheme) then) =
       _$UpdateThemeCopyWithImpl<$Res>;
-  @override
   $Res call({bool isThemeDark});
 }
 
@@ -119,15 +129,154 @@ class _$UpdateTheme with DiagnosticableTreeMixin implements UpdateTheme {
   @override
   $UpdateThemeCopyWith<UpdateTheme> get copyWith =>
       _$UpdateThemeCopyWithImpl<UpdateTheme>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateTheme(bool isThemeDark),
+    @required Result fetch(),
+  }) {
+    assert(updateTheme != null);
+    assert(fetch != null);
+    return updateTheme(isThemeDark);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateTheme(bool isThemeDark),
+    Result fetch(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateTheme != null) {
+      return updateTheme(isThemeDark);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateTheme(UpdateTheme value),
+    @required Result fetch(Fetch value),
+  }) {
+    assert(updateTheme != null);
+    assert(fetch != null);
+    return updateTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateTheme(UpdateTheme value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateTheme != null) {
+      return updateTheme(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class UpdateTheme implements SettingsEvent {
   const factory UpdateTheme({@required bool isThemeDark}) = _$UpdateTheme;
 
-  @override
   bool get isThemeDark;
-  @override
   $UpdateThemeCopyWith<UpdateTheme> get copyWith;
+}
+
+abstract class $FetchCopyWith<$Res> {
+  factory $FetchCopyWith(Fetch value, $Res Function(Fetch) then) =
+      _$FetchCopyWithImpl<$Res>;
+}
+
+class _$FetchCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
+    implements $FetchCopyWith<$Res> {
+  _$FetchCopyWithImpl(Fetch _value, $Res Function(Fetch) _then)
+      : super(_value, (v) => _then(v as Fetch));
+
+  @override
+  Fetch get _value => super._value as Fetch;
+}
+
+class _$Fetch with DiagnosticableTreeMixin implements Fetch {
+  const _$Fetch();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SettingsEvent.fetch()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'SettingsEvent.fetch'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Fetch);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updateTheme(bool isThemeDark),
+    @required Result fetch(),
+  }) {
+    assert(updateTheme != null);
+    assert(fetch != null);
+    return fetch();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updateTheme(bool isThemeDark),
+    Result fetch(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetch != null) {
+      return fetch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updateTheme(UpdateTheme value),
+    @required Result fetch(Fetch value),
+  }) {
+    assert(updateTheme != null);
+    assert(fetch != null);
+    return fetch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updateTheme(UpdateTheme value),
+    Result fetch(Fetch value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetch != null) {
+      return fetch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Fetch implements SettingsEvent {
+  const factory Fetch() = _$Fetch;
 }
 
 class _$SettingsStateTearOff {
@@ -147,6 +296,16 @@ class _$SettingsStateTearOff {
     );
   }
 
+  FetchInProgress fetchInProgress() {
+    return const FetchInProgress();
+  }
+
+  Fetched fetched({@required Settings settings}) {
+    return Fetched(
+      settings: settings,
+    );
+  }
+
   Error error({@required String message}) {
     return Error(
       message: message,
@@ -163,6 +322,8 @@ mixin _$SettingsState {
     @required Result initial(),
     @required Result themeUpdateInProgress(),
     @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
     @required Result error(String message),
   });
   @optionalTypeArgs
@@ -170,6 +331,8 @@ mixin _$SettingsState {
     Result initial(),
     Result themeUpdateInProgress(),
     Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
     Result error(String message),
     @required Result orElse(),
   });
@@ -178,6 +341,8 @@ mixin _$SettingsState {
     @required Result initial(Initial value),
     @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
     @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   });
   @optionalTypeArgs
@@ -185,6 +350,8 @@ mixin _$SettingsState {
     Result initial(Initial value),
     Result themeUpdateInProgress(ThemeUpdateInProgress value),
     Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   });
@@ -247,11 +414,15 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result initial(),
     @required Result themeUpdateInProgress(),
     @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
     @required Result error(String message),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return initial();
   }
@@ -262,6 +433,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result initial(),
     Result themeUpdateInProgress(),
     Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -278,11 +451,15 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     @required Result initial(Initial value),
     @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
     @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return initial(this);
   }
@@ -293,6 +470,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     Result initial(Initial value),
     Result themeUpdateInProgress(ThemeUpdateInProgress value),
     Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -356,11 +535,15 @@ class _$ThemeUpdateInProgress
     @required Result initial(),
     @required Result themeUpdateInProgress(),
     @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
     @required Result error(String message),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return themeUpdateInProgress();
   }
@@ -371,6 +554,8 @@ class _$ThemeUpdateInProgress
     Result initial(),
     Result themeUpdateInProgress(),
     Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -387,11 +572,15 @@ class _$ThemeUpdateInProgress
     @required Result initial(Initial value),
     @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
     @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return themeUpdateInProgress(this);
   }
@@ -402,6 +591,8 @@ class _$ThemeUpdateInProgress
     Result initial(Initial value),
     Result themeUpdateInProgress(ThemeUpdateInProgress value),
     Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -489,11 +680,15 @@ class _$ThemeUpdated with DiagnosticableTreeMixin implements ThemeUpdated {
     @required Result initial(),
     @required Result themeUpdateInProgress(),
     @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
     @required Result error(String message),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return themeUpdated(updatedSettings);
   }
@@ -504,6 +699,8 @@ class _$ThemeUpdated with DiagnosticableTreeMixin implements ThemeUpdated {
     Result initial(),
     Result themeUpdateInProgress(),
     Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -520,11 +717,15 @@ class _$ThemeUpdated with DiagnosticableTreeMixin implements ThemeUpdated {
     @required Result initial(Initial value),
     @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
     @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return themeUpdated(this);
   }
@@ -535,6 +736,8 @@ class _$ThemeUpdated with DiagnosticableTreeMixin implements ThemeUpdated {
     Result initial(Initial value),
     Result themeUpdateInProgress(ThemeUpdateInProgress value),
     Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
@@ -552,6 +755,269 @@ abstract class ThemeUpdated implements SettingsState {
 
   Settings get updatedSettings;
   $ThemeUpdatedCopyWith<ThemeUpdated> get copyWith;
+}
+
+abstract class $FetchInProgressCopyWith<$Res> {
+  factory $FetchInProgressCopyWith(
+          FetchInProgress value, $Res Function(FetchInProgress) then) =
+      _$FetchInProgressCopyWithImpl<$Res>;
+}
+
+class _$FetchInProgressCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res>
+    implements $FetchInProgressCopyWith<$Res> {
+  _$FetchInProgressCopyWithImpl(
+      FetchInProgress _value, $Res Function(FetchInProgress) _then)
+      : super(_value, (v) => _then(v as FetchInProgress));
+
+  @override
+  FetchInProgress get _value => super._value as FetchInProgress;
+}
+
+class _$FetchInProgress
+    with DiagnosticableTreeMixin
+    implements FetchInProgress {
+  const _$FetchInProgress();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SettingsState.fetchInProgress()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsState.fetchInProgress'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is FetchInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result themeUpdateInProgress(),
+    @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(themeUpdateInProgress != null);
+    assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetchInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result themeUpdateInProgress(),
+    Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchInProgress != null) {
+      return fetchInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
+    @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(themeUpdateInProgress != null);
+    assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetchInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result themeUpdateInProgress(ThemeUpdateInProgress value),
+    Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchInProgress != null) {
+      return fetchInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchInProgress implements SettingsState {
+  const factory FetchInProgress() = _$FetchInProgress;
+}
+
+abstract class $FetchedCopyWith<$Res> {
+  factory $FetchedCopyWith(Fetched value, $Res Function(Fetched) then) =
+      _$FetchedCopyWithImpl<$Res>;
+  $Res call({Settings settings});
+}
+
+class _$FetchedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements $FetchedCopyWith<$Res> {
+  _$FetchedCopyWithImpl(Fetched _value, $Res Function(Fetched) _then)
+      : super(_value, (v) => _then(v as Fetched));
+
+  @override
+  Fetched get _value => super._value as Fetched;
+
+  @override
+  $Res call({
+    Object settings = freezed,
+  }) {
+    return _then(Fetched(
+      settings: settings == freezed ? _value.settings : settings as Settings,
+    ));
+  }
+}
+
+class _$Fetched with DiagnosticableTreeMixin implements Fetched {
+  const _$Fetched({@required this.settings}) : assert(settings != null);
+
+  @override
+  final Settings settings;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SettingsState.fetched(settings: $settings)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsState.fetched'))
+      ..add(DiagnosticsProperty('settings', settings));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Fetched &&
+            (identical(other.settings, settings) ||
+                const DeepCollectionEquality()
+                    .equals(other.settings, settings)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(settings);
+
+  @override
+  $FetchedCopyWith<Fetched> get copyWith =>
+      _$FetchedCopyWithImpl<Fetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result themeUpdateInProgress(),
+    @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
+    @required Result error(String message),
+  }) {
+    assert(initial != null);
+    assert(themeUpdateInProgress != null);
+    assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetched(settings);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result themeUpdateInProgress(),
+    Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
+    Result error(String message),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetched != null) {
+      return fetched(settings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
+    @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
+    @required Result error(Error value),
+  }) {
+    assert(initial != null);
+    assert(themeUpdateInProgress != null);
+    assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
+    assert(error != null);
+    return fetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result themeUpdateInProgress(ThemeUpdateInProgress value),
+    Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
+    Result error(Error value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetched != null) {
+      return fetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Fetched implements SettingsState {
+  const factory Fetched({@required Settings settings}) = _$Fetched;
+
+  Settings get settings;
+  $FetchedCopyWith<Fetched> get copyWith;
 }
 
 abstract class $ErrorCopyWith<$Res> {
@@ -619,11 +1085,15 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result initial(),
     @required Result themeUpdateInProgress(),
     @required Result themeUpdated(Settings updatedSettings),
+    @required Result fetchInProgress(),
+    @required Result fetched(Settings settings),
     @required Result error(String message),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return error(message);
   }
@@ -634,6 +1104,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result initial(),
     Result themeUpdateInProgress(),
     Result themeUpdated(Settings updatedSettings),
+    Result fetchInProgress(),
+    Result fetched(Settings settings),
     Result error(String message),
     @required Result orElse(),
   }) {
@@ -650,11 +1122,15 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     @required Result initial(Initial value),
     @required Result themeUpdateInProgress(ThemeUpdateInProgress value),
     @required Result themeUpdated(ThemeUpdated value),
+    @required Result fetchInProgress(FetchInProgress value),
+    @required Result fetched(Fetched value),
     @required Result error(Error value),
   }) {
     assert(initial != null);
     assert(themeUpdateInProgress != null);
     assert(themeUpdated != null);
+    assert(fetchInProgress != null);
+    assert(fetched != null);
     assert(error != null);
     return error(this);
   }
@@ -665,6 +1141,8 @@ class _$Error with DiagnosticableTreeMixin implements Error {
     Result initial(Initial value),
     Result themeUpdateInProgress(ThemeUpdateInProgress value),
     Result themeUpdated(ThemeUpdated value),
+    Result fetchInProgress(FetchInProgress value),
+    Result fetched(Fetched value),
     Result error(Error value),
     @required Result orElse(),
   }) {
