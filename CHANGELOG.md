@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.35.0](https://github.com/KiritchoukC/power_progress/compare/v2.34.0...v2.35.0) (2020-07-14)
+
+
+### Features
+
+* **settings:** add bloc to ui ([f0f18da](https://github.com/KiritchoukC/power_progress/commit/f0f18da)), closes [#111](https://github.com/KiritchoukC/power_progress/issues/111)
+
 ## [2.34.0](https://github.com/KiritchoukC/power_progress/compare/v2.33.0...v2.34.0) (2020-07-14)
 
 
