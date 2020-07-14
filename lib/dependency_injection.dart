@@ -7,6 +7,7 @@ import 'package:power_progress/application/exercise/selection/selection_bloc.dar
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
@@ -143,6 +144,9 @@ void _initOneRmFeature() {
 }
 
 void _initSettingsFeature() {
+  // Bloc
+  sl.registerFactory(() => SettingsBloc(settingsRepository: sl<ISettingsRepository>()));
+
   // Repositories
   sl.registerLazySingleton<ISettingsRepository>(
       () => SettingsRepository(datasource: sl<ISettingsDatasource>()));
