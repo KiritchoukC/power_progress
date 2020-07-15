@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.35.2](https://github.com/KiritchoukC/power_progress/compare/v2.35.1...v2.35.2) (2020-07-15)
+
+
+### Bug Fixes
+
+* **amrap-picker:** fix amrap picker blurred number being white on white on light theme ([e4fe9ed](https://github.com/KiritchoukC/power_progress/commit/e4fe9ed)), closes [#116](https://github.com/KiritchoukC/power_progress/issues/116)
+
+### [2.35.1](https://github.com/KiritchoukC/power_progress/compare/v2.35.0...v2.35.1) (2020-07-15)
+
+
+### Bug Fixes
+
+* **next-week:** fix next week update on deload check and accumulation uncheck ([c50d6c9](https://github.com/KiritchoukC/power_progress/commit/c50d6c9)), closes [#115](https://github.com/KiritchoukC/power_progress/issues/115)
+
 ## [2.35.0](https://github.com/KiritchoukC/power_progress/compare/v2.34.0...v2.35.0) (2020-07-14)
 
 

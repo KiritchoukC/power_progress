@@ -12,18 +12,18 @@ import 'package:power_progress/domain/exercise/value_objects/week.dart';
 part 'exercise_model.g.dart';
 
 @HiveType(typeId: 0)
-class ExerciseModel {
+class ExerciseModel extends HiveObject {
   @HiveField(0)
   int id;
-  @HiveField(2)
+  @HiveField(1)
   String name;
-  @HiveField(3)
+  @HiveField(2)
   double incrementation;
-  @HiveField(4)
+  @HiveField(3)
   String note;
-  @HiveField(5)
+  @HiveField(4)
   int month;
-  @HiveField(6)
+  @HiveField(5)
   int nextWeekIndex;
 
   ExerciseModel({
