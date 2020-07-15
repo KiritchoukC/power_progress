@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
-import 'package:power_progress/core/domain/errors.dart';
 
+import 'package:power_progress/core/domain/errors.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/infrastructure/exercise/models/exercise_model.dart';
@@ -44,16 +44,9 @@ class HiveExerciseDatasource implements IExerciseDatasource {
     return currentModelOption.fold(
       () => throw ItemDoesNotExistError(),
       (currentModel) async {
-        final updatedModel = ExerciseModel(
-          id: currentModel.id,
-          name: currentModel.name,
-          incrementation: currentModel.incrementation,
-          month: currentModel.month,
-          note: currentModel.note,
-          nextWeekIndex: nextWeek.index(),
-        );
+        currentModel.nextWeekIndex = nextWeek.index();
 
-        await localStorage.put(exerciseId, updatedModel);
+        await currentModel.save();
 
         return unit;
       },
@@ -67,16 +60,9 @@ class HiveExerciseDatasource implements IExerciseDatasource {
     return currentModelOption.fold(
       () => throw ItemDoesNotExistError(),
       (currentModel) async {
-        final updatedModel = ExerciseModel(
-          id: currentModel.id,
-          name: currentModel.name,
-          incrementation: currentModel.incrementation,
-          nextWeekIndex: currentModel.nextWeekIndex,
-          note: currentModel.note,
-          month: nextMonth.getOrCrash(),
-        );
+        currentModel.month = nextMonth.getOrCrash();
 
-        await localStorage.put(exerciseId, updatedModel);
+        await currentModel.save();
 
         return unit;
       },

@@ -18,11 +18,11 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
     };
     return ExerciseModel(
       id: fields[0] as int,
-      name: fields[2] as String,
-      incrementation: fields[3] as double,
-      month: fields[5] as int,
-      nextWeekIndex: fields[6] as int,
-      note: fields[4] as String,
+      name: fields[1] as String,
+      incrementation: fields[2] as double,
+      month: fields[4] as int,
+      nextWeekIndex: fields[5] as int,
+      note: fields[3] as String,
     );
   }
 
@@ -32,15 +32,15 @@ class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
       ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
-      ..writeByte(2)
+      ..writeByte(1)
       ..write(obj.name)
-      ..writeByte(3)
+      ..writeByte(2)
       ..write(obj.incrementation)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.note)
-      ..writeByte(5)
+      ..writeByte(4)
       ..write(obj.month)
-      ..writeByte(6)
+      ..writeByte(5)
       ..write(obj.nextWeekIndex);
   }
 }
