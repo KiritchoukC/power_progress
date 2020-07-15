@@ -16,6 +16,7 @@ class PPTheme {
         headline6: TextStyle(color: Colors.grey.shade700),
         subtitle1: const TextStyle(color: Colors.black54),
         subtitle2: const TextStyle(color: Colors.black54),
+        bodyText2: const TextStyle(color: Colors.black),
       ),
       appBarTheme: const AppBarTheme(
         color: Colors.transparent,
