@@ -1,6 +1,6 @@
 {
   "name": "power_progress",
-  "version": "2.35.4",
+  "version": "2.36.0",
   "description": "Powerlifting progress tracking mobile app",
   "main": "index.js",
   "directories": {
@@ -10,7 +10,8 @@
   "dependencies": {},
   "devDependencies": {
     "cz-conventional-changelog": "^3.2.0",
-    "pre-commit": "1.2.2"
+    "pre-commit": "1.2.2",
+    "js-yaml": "3.14.0"
   },
   "scripts": {
     "start": "flutter run",
