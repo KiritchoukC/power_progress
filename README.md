@@ -13,13 +13,13 @@
 
 ---
 ## Demo <small>`(2020-07-21)`</small>
-<div style="width: 100%; display: flex; justify-content: center">
-  <video controls>
-      <source src="https://raw.githubusercontent.com/KiritchoukC/power_progress/master/assets/20200721_demo.webm"
-              type="video/webm">
 
-      Sorry, your browser doesn't support embedded videos.
-  </video>
+<div style="width: 100%;display: flex; justify-content: center">
+  <div style="width: 256px">
+
+  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/assets/20200721_demo.gif)
+
+  </div>
 </div>
 
 ---
