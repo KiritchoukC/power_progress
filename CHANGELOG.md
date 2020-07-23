@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.37.0](https://github.com/KiritchoukC/power_progress/compare/v2.36.6...v2.37.0) (2020-07-23)
+
+
+### Features
+
+* **onerm-increment:** increment onerm every 4 month ([be09258](https://github.com/KiritchoukC/power_progress/commit/be09258)), closes [#120](https://github.com/KiritchoukC/power_progress/issues/120)
+
 ### [2.36.6](https://github.com/KiritchoukC/power_progress/compare/v2.36.5...v2.36.6) (2020-07-22)
 
 ### [2.36.5](https://github.com/KiritchoukC/power_progress/compare/v2.36.2...v2.36.5) (2020-07-21)
