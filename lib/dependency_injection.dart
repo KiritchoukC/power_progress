@@ -8,6 +8,7 @@ import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
+import 'package:power_progress/application/workout/handlers/generate_handler.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
@@ -109,14 +110,21 @@ void _initOnboardingFeature() {
 
 /// Register the dependencies needed for the onboarding feature
 void _initWorkoutFeature() {
+  // Handlers
+  sl.registerFactory(() => GenerateHandler(
+        oneRmRepository: sl<IOneRmRepository>(),
+        exerciseRepository: sl<IExerciseRepository>(),
+        workoutRepository: sl<IWorkoutRepository>(),
+      ));
+
   // Bloc
   sl.registerFactory(
     () => WorkoutBloc(
       workoutRepository: sl<IWorkoutRepository>(),
-      oneRmRepository: sl<IOneRmRepository>(),
       weekBloc: sl<WeekBloc>(),
       monthBloc: sl<MonthBloc>(),
       oneRmBloc: sl<OneRmBloc>(),
+      generateHandler: sl<GenerateHandler>(),
     ),
   );
 

@@ -77,4 +77,63 @@ void main() {
     shouldReturnExpectedValue(monthNumber: 15, expected: 3);
     shouldReturnExpectedValue(monthNumber: 16, expected: 4);
   });
+
+  group('isStartWorkout', () {
+    void shouldReturnFalse({@required int monthNumber}) {
+      test('$monthNumber should return false', () async {
+        // ARRANGE
+        final month = Month(monthNumber);
+
+        // ACT
+        final actual = month.isStartWorkout;
+
+        // ASSERT
+        expect(actual, false);
+      });
+    }
+
+    shouldReturnFalse(monthNumber: 1);
+    shouldReturnFalse(monthNumber: 2);
+    shouldReturnFalse(monthNumber: 3);
+    shouldReturnFalse(monthNumber: 4);
+    shouldReturnFalse(monthNumber: 6);
+    shouldReturnFalse(monthNumber: 7);
+    shouldReturnFalse(monthNumber: 8);
+    shouldReturnFalse(monthNumber: 10);
+    shouldReturnFalse(monthNumber: 11);
+    shouldReturnFalse(monthNumber: 12);
+    shouldReturnFalse(monthNumber: 14);
+    shouldReturnFalse(monthNumber: 15);
+    shouldReturnFalse(monthNumber: 16);
+    shouldReturnFalse(monthNumber: 18);
+    shouldReturnFalse(monthNumber: 19);
+    shouldReturnFalse(monthNumber: 20);
+    shouldReturnFalse(monthNumber: 22);
+    shouldReturnFalse(monthNumber: 23);
+    shouldReturnFalse(monthNumber: 24);
+    shouldReturnFalse(monthNumber: 26);
+    shouldReturnFalse(monthNumber: 27);
+    shouldReturnFalse(monthNumber: 28);
+
+    void shouldReturnTrue({@required int monthNumber}) {
+      test('$monthNumber should return true', () async {
+        // ARRANGE
+        final month = Month(monthNumber);
+
+        // ACT
+        final actual = month.isStartWorkout;
+
+        // ASSERT
+        expect(actual, true);
+      });
+    }
+
+    shouldReturnTrue(monthNumber: 5);
+    shouldReturnTrue(monthNumber: 9);
+    shouldReturnTrue(monthNumber: 13);
+    shouldReturnTrue(monthNumber: 17);
+    shouldReturnTrue(monthNumber: 21);
+    shouldReturnTrue(monthNumber: 25);
+    shouldReturnTrue(monthNumber: 29);
+  });
 }

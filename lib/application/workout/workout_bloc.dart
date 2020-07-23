@@ -7,14 +7,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart' as or_bloc;
-import 'package:power_progress/domain/shared/common_failure.dart';
+import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/workout/handlers/generate_handler.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/value_objects/incrementation.dart';
-import 'package:power_progress/domain/one_rm/one_rm_failure.dart';
-import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
 import 'package:power_progress/domain/workout/month_workout.dart';
 import 'package:power_progress/domain/workout/workout.dart';
 import 'package:power_progress/domain/workout/workout_failure.dart';
@@ -27,17 +25,18 @@ part 'workout_bloc.freezed.dart';
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   final WeekBloc weekBloc;
   final MonthBloc monthBloc;
-  final or_bloc.OneRmBloc oneRmBloc;
+  final OneRmBloc oneRmBloc;
 
   final IWorkoutRepository workoutRepository;
-  final IOneRmRepository oneRmRepository;
+
+  final GenerateHandler generateHandler;
 
   WorkoutBloc({
     @required this.weekBloc,
     @required this.monthBloc,
     @required this.oneRmBloc,
     @required this.workoutRepository,
-    @required this.oneRmRepository,
+    @required this.generateHandler,
   }) : super(const WorkoutState.initial());
 
   @override
@@ -46,7 +45,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   ) async* {
     yield* event.map(
       resetState: _handleResetStateEvent,
-      generate: _handleGenerateEvent,
+      generate: generateHandler,
       markDone: _handleMarkDoneEvent,
       markUndone: _handleMarkUndoneEvent,
       remove: _handleRemoveEvent,
@@ -55,55 +54,6 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
   Stream<WorkoutState> _handleResetStateEvent(ResetState value) async* {
     yield const WorkoutState.initial();
-  }
-
-  Future<Either<WorkoutFailure, MonthWorkout>> generate(int exerciseId, Month month) async {
-    final workoutsDoneEither = await workoutRepository.getWorkoutsDone(exerciseId);
-    final oneRmEither = await oneRmRepository.getOrPrevious(exerciseId, month);
-
-    WorkoutFailure _mapToWorkoutFailure(OneRmFailure oneRmFailure) {
-      return oneRmFailure.when(
-        itemDoesNotExist: () => const WorkoutFailure.oneRm(OneRmFailure.itemDoesNotExist()),
-        itemAlreadyExists: () => const WorkoutFailure.oneRm(OneRmFailure.itemAlreadyExists()),
-        noExistingDataForThisExercise: () =>
-            const WorkoutFailure.oneRm(OneRmFailure.noExistingDataForThisExercise()),
-        common: (commonFailure) => commonFailure.when(
-          storageError: () => const WorkoutFailure.common(CommonFailure.storageError()),
-          unexpectedError: () => const WorkoutFailure.common(CommonFailure.unexpectedError()),
-        ),
-      );
-    }
-
-    return workoutsDoneEither.fold(
-      (workoutsDoneFailure) => left(workoutsDoneFailure),
-      (workoutsDone) => oneRmEither.fold(
-        (oneRmFailure) => left(_mapToWorkoutFailure(oneRmFailure)),
-        (oneRm) => right(
-          MonthWorkout.generate(
-            exerciseId,
-            month,
-            workoutsDone,
-            oneRm,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Stream<WorkoutState> _handleGenerateEvent(Generate event) async* {
-    yield const WorkoutState.generateInProgress();
-
-    final output = await generate(event.exerciseId, event.month);
-
-    Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutState.error(message: failure.toErrorMessage());
-    }
-
-    Stream<WorkoutState> onSuccess(MonthWorkout workout) async* {
-      yield WorkoutState.generated(workout: workout, month: event.month);
-    }
-
-    yield* output.fold(onFailure, onSuccess);
   }
 
   Stream<WorkoutState> _handleMarkDoneEvent(MarkDone event) async* {
@@ -132,7 +82,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
         event.week.maybeWhen(
           realization: () async => oneRmBloc.add(
-            or_bloc.OneRmEvent.generateAndSave(
+            OneRmEvent.generateAndSave(
               exerciseId: event.exerciseId,
               oneRm: event.oneRm,
               incrementation: event.incrementation,
@@ -181,7 +131,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
       event.week.maybeWhen(
         //? remove onerm for this month ?
         realization: () async => oneRmBloc.add(
-          or_bloc.OneRmEvent.generateAndSave(
+          OneRmEvent.generateAndSave(
             exerciseId: event.exerciseId,
             oneRm: event.oneRm,
             incrementation: event.incrementation,

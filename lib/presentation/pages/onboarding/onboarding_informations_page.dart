@@ -134,7 +134,7 @@ class _InformationsFormState extends State<_InformationsForm> {
   Exercise get _exercise => Exercise(
         id: 0,
         name: ExerciseName(widget.exerciseName),
-        incrementation: Incrementation.two(),
+        incrementation: Incrementation.deflt(),
         month: Month(1),
         nextWeek: Week(const WeekEnum.accumulation()),
       );

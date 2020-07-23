@@ -26,10 +26,22 @@ class HiveOneRmDatasource implements IOneRmDatasource {
     return some(result);
   }
 
+  @override
+  Future<Option<OneRmModel>> getById(int id) async {
+    final result = localStorage.values.firstWhere(
+      (element) => element.id == id,
+      orElse: () => null,
+    );
+
+    if (result == null) return none();
+
+    return some(result);
+  }
+
   /// Adds the given one rm [model] to the local storage.
   /// An [ItemAlreadyExistsError] exception is raised if [model] already exists in the local storage.
   @override
-  Future<Unit> add(OneRmModel model) async {
+  Future<int> add(OneRmModel model) async {
     return (await getByExerciseIdAndMonth(model.exerciseId, Month(model.month))).fold(
       // if it does not exist yet, add it.
       () {
@@ -37,8 +49,10 @@ class HiveOneRmDatasource implements IOneRmDatasource {
             .add(model)
             .then((insertedId) => model.copyWith(id: insertedId))
             // update the model with the auto generated identifier.
-            .then((addedModel) => localStorage.put(addedModel.id, addedModel))
-            .then((value) => unit);
+            .then(
+              (addedModel) =>
+                  localStorage.put(addedModel.id, addedModel).then((value) => addedModel.id),
+            );
       },
       // if it already exists, throw an error.
       (_) => throw ItemAlreadyExistsError(),
@@ -48,14 +62,14 @@ class HiveOneRmDatasource implements IOneRmDatasource {
   /// updates the given one rm [model] to the local storage
   /// An [ItemDoesNotExistError] exception is raised if [model] does not exist in the local storage.
   @override
-  Future<Unit> update(OneRmModel model) async {
+  Future<int> update(OneRmModel model) async {
     return (await getByExerciseIdAndMonth(model.exerciseId, Month(model.month))).fold(
       // if it does not exist, throw an error.
       () => throw ItemDoesNotExistError(),
       // if it does not exist yet, add it.
       (existingModel) => localStorage
           .put(existingModel.id, existingModel.copyWith(oneRm: model.oneRm))
-          .then((_) => unit),
+          .then((_) => existingModel.id),
     );
   }
 

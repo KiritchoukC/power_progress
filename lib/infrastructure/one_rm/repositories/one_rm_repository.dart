@@ -16,7 +16,7 @@ class OneRmRepository implements IOneRmRepository {
   OneRmRepository({@required this.datasource}) : assert(datasource != null);
 
   @override
-  Future<Either<OneRmFailure, Unit>> add(int exerciseId, Month month, OneRm oneRm) async {
+  Future<Either<OneRmFailure, int>> add(int exerciseId, Month month, OneRm oneRm) async {
     try {
       return datasource
           .add(
@@ -26,7 +26,7 @@ class OneRmRepository implements IOneRmRepository {
               oneRm: oneRm.getOrCrash(),
             ),
           )
-          .then((value) => right(unit));
+          .then((insertedId) => right(insertedId));
     } on ItemAlreadyExistsError {
       return left(const OneRmFailure.itemAlreadyExists());
     } catch (e) {
@@ -35,7 +35,7 @@ class OneRmRepository implements IOneRmRepository {
   }
 
   @override
-  Future<Either<OneRmFailure, Unit>> addOrUpdate(int exerciseId, Month month, OneRm oneRm) async {
+  Future<Either<OneRmFailure, int>> addOrUpdate(int exerciseId, Month month, OneRm oneRm) async {
     try {
       return getByExerciseIdAndMonth(exerciseId, month).then(
         (oneRmEither) => oneRmEither.fold(
@@ -71,32 +71,43 @@ class OneRmRepository implements IOneRmRepository {
     }
   }
 
-  @override
-  Future<Either<OneRmFailure, OneRm>> getOrPrevious(int exerciseId, Month month) async {
-    final oneRm = await getByExerciseIdAndMonth(exerciseId, month);
+  // @override
+  // Future<Either<OneRmFailure, OneRm>> get(int exerciseId, Month month) async {
+  //   final oneRm = await getByExerciseIdAndMonth(exerciseId, month);
 
-    Future<Either<OneRmFailure, OneRm>> getPreviousIfNone() async {
-      if (month.getOrCrash() == 1) {
-        return left(const OneRmFailure.noExistingDataForThisExercise());
-      }
-      final previousOneRmEither = await getOrPrevious(exerciseId, month.previous);
-      return previousOneRmEither.fold(
-        (failure) => left(failure),
-        (previousOneRm) async {
-          await addOrUpdate(exerciseId, month, previousOneRm);
-          return right(previousOneRm);
-        },
-      );
-    }
+  //   Future<Either<OneRmFailure, OneRm>> ifNone() async {
+  //     // if the current month is 1 then we can go further back in time.
+  //     // meaning there's no one rm for this exercise.
+  //     if (month.getOrCrash() == 1) {
+  //       return left(const OneRmFailure.noExistingDataForThisExercise());
+  //     }
 
-    return oneRm.fold(
-      (failure) => left(failure),
-      (oneRmOption) => oneRmOption.fold(
-        getPreviousIfNone,
-        (someOneRm) => right(someOneRm),
-      ),
-    );
-  }
+  //     if (month.getOrCrash() == 5) {
+  //       final previousOneRm = await get(exerciseId, month.previous);
+
+  //     }
+
+  //     // get one rm of the previous month
+  //     final previousOneRmEither = await get(exerciseId, month.previous);
+
+  //     // if there's one rm for the previous month, persist it for the current month
+  //     return previousOneRmEither.fold(
+  //       (failure) => left(failure),
+  //       (previousOneRm) async {
+  //         await addOrUpdate(exerciseId, month, previousOneRm);
+  //         return right(previousOneRm);
+  //       },
+  //     );
+  //   }
+
+  //   return oneRm.fold(
+  //     (failure) => left(failure),
+  //     (oneRmOption) => oneRmOption.fold(
+  //       ifNone,
+  //       (some) => right(some),
+  //     ),
+  //   );
+  // }
 
   @override
   Future<Either<OneRmFailure, Unit>> removeByExerciseId(int exerciseId) async {
@@ -117,7 +128,7 @@ class OneRmRepository implements IOneRmRepository {
   }
 
   @override
-  Future<Either<OneRmFailure, Unit>> update(int exerciseId, Month month, OneRm oneRm) async {
+  Future<Either<OneRmFailure, int>> update(int exerciseId, Month month, OneRm oneRm) async {
     try {
       return datasource
           .update(
@@ -127,9 +138,46 @@ class OneRmRepository implements IOneRmRepository {
               oneRm: oneRm.getOrCrash(),
             ),
           )
-          .then((value) => right(unit));
+          .then((updatedId) => right(updatedId));
     } on ItemDoesNotExistError {
       return left(const OneRmFailure.itemDoesNotExist());
+    } catch (e) {
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
+    }
+  }
+
+  @override
+  Future<Either<OneRmFailure, OneRm>> getOrPrevious(int exerciseId, Month month) async {
+    final previousOneRmEither = await getByExerciseIdAndMonth(exerciseId, month);
+
+    return previousOneRmEither.fold(
+      (l) => left(l),
+      (previousOneRmOption) => previousOneRmOption.fold(
+        () => getOrPrevious(exerciseId, month.previous),
+        (some) => right(some),
+      ),
+    );
+  }
+
+  @override
+  Future<Either<OneRmFailure, int>> addFromPreviousMonth(int exerciseId, Month month) async {
+    try {
+      final previousOneRmEither = await getOrPrevious(exerciseId, month);
+      return previousOneRmEither.fold(
+        (failure) => left(failure),
+        (previousOneRm) async => add(exerciseId, month, previousOneRm),
+      );
+    } catch (e) {
+      return left(const OneRmFailure.common(CommonFailure.storageError()));
+    }
+  }
+
+  @override
+  Future<Either<OneRmFailure, Option<OneRm>>> getById(int id) async {
+    try {
+      return datasource
+          .getById(id)
+          .then((option) => option.fold(() => right(none()), (a) => right(some(a.toDomain()))));
     } catch (e) {
       return left(const OneRmFailure.common(CommonFailure.storageError()));
     }
