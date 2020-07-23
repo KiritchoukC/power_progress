@@ -29,21 +29,16 @@ class AccumulationWorkout extends Workout {
 }
 
 List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm) {
-  return month.moduloMonthNumber.fold(
-    (l) => throw UnexpectedValueError(some(l)),
-    (r) {
-      switch (r) {
-        case 1:
-          return [ExerciseSet(reps: 10, sets: 5, weight: Weight.fromOneRm(oneRm, 0.6))];
-        case 2:
-          return [ExerciseSet(reps: 8, sets: 5, weight: Weight.fromOneRm(oneRm, 0.65))];
-        case 3:
-          return [ExerciseSet(reps: 5, sets: 6, weight: Weight.fromOneRm(oneRm, 0.7))];
-        case 4:
-          return [ExerciseSet(reps: 3, sets: 7, weight: Weight.fromOneRm(oneRm, 0.75))];
-        default:
-          throw UnexpectedValueError(none());
-      }
-    },
-  );
+  switch (month.moduloMonthNumber) {
+    case 1:
+      return [ExerciseSet(reps: 10, sets: 5, weight: Weight.fromOneRm(oneRm, 0.6))];
+    case 2:
+      return [ExerciseSet(reps: 8, sets: 5, weight: Weight.fromOneRm(oneRm, 0.65))];
+    case 3:
+      return [ExerciseSet(reps: 5, sets: 6, weight: Weight.fromOneRm(oneRm, 0.7))];
+    case 4:
+      return [ExerciseSet(reps: 3, sets: 7, weight: Weight.fromOneRm(oneRm, 0.75))];
+    default:
+      throw UnexpectedValueError(none());
+  }
 }

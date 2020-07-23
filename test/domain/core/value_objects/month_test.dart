@@ -28,8 +28,8 @@ void main() {
         final actual = month.moduloMonthNumber;
 
         // ASSERT
-        expect(actual.getOrElse(() => 0), lessThan(5));
-        expect(actual.getOrElse(() => 0), greaterThan(0));
+        expect(actual, lessThan(5));
+        expect(actual, greaterThan(0));
       });
     }
 
@@ -56,7 +56,7 @@ void main() {
         final actual = month.moduloMonthNumber;
 
         // ASSERT
-        expect(actual.getOrElse(() => 0), expected);
+        expect(actual, expected);
       });
     }
 

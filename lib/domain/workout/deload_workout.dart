@@ -29,37 +29,32 @@ class DeloadWorkout extends Workout {
 }
 
 List<ExerciseSet> _getExerciseSets(Month month, OneRm oneRm) {
-  return month.moduloMonthNumber.fold(
-    (l) => throw UnexpectedValueError(some(l)),
-    (r) {
-      switch (r) {
-        case 1:
-          return [
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
-          ];
-        case 2:
-          return [
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
-          ];
-        case 3:
-          return [
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
-          ];
-        case 4:
-          return [
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
-            ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
-          ];
-        default:
-          throw UnexpectedValueError(none());
-      }
-    },
-  );
+  switch (month.moduloMonthNumber) {
+    case 1:
+      return [
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
+      ];
+    case 2:
+      return [
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
+      ];
+    case 3:
+      return [
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
+      ];
+    case 4:
+      return [
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.4)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.5)),
+        ExerciseSet(reps: 5, sets: 1, weight: Weight.fromOneRm(oneRm, 0.6)),
+      ];
+    default:
+      throw UnexpectedValueError(none());
+  }
 }
