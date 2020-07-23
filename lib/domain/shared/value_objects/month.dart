@@ -23,7 +23,6 @@ class Month extends ValueObject<int> {
 
   const Month._(this.value);
 
-  // TODO: remove either
   int get moduloMonthNumber {
     final monthNumber = getOrCrash();
 
