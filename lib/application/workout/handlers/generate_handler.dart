@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';

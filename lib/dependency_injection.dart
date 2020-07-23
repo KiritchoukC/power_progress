@@ -9,6 +9,9 @@ import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/handlers/generate_handler.dart';
+import 'package:power_progress/application/workout/handlers/mark_done_handler.dart';
+import 'package:power_progress/application/workout/handlers/mark_undone_handler.dart';
+import 'package:power_progress/application/workout/handlers/remove_handler.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
@@ -116,15 +119,29 @@ void _initWorkoutFeature() {
         exerciseRepository: sl<IExerciseRepository>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
+  sl.registerFactory(() => MarkDoneHandler(
+        weekBloc: sl<WeekBloc>(),
+        monthBloc: sl<MonthBloc>(),
+        oneRmBloc: sl<OneRmBloc>(),
+        workoutRepository: sl<IWorkoutRepository>(),
+      ));
+  sl.registerFactory(() => MarkUndoneHandler(
+        weekBloc: sl<WeekBloc>(),
+        monthBloc: sl<MonthBloc>(),
+        oneRmBloc: sl<OneRmBloc>(),
+        workoutRepository: sl<IWorkoutRepository>(),
+      ));
+  sl.registerFactory(() => RemoveHandler(
+        workoutRepository: sl<IWorkoutRepository>(),
+      ));
 
   // Bloc
   sl.registerFactory(
     () => WorkoutBloc(
-      workoutRepository: sl<IWorkoutRepository>(),
-      weekBloc: sl<WeekBloc>(),
-      monthBloc: sl<MonthBloc>(),
-      oneRmBloc: sl<OneRmBloc>(),
       generateHandler: sl<GenerateHandler>(),
+      markDoneHandler: sl<MarkDoneHandler>(),
+      markUndoneHandler: sl<MarkUndoneHandler>(),
+      removeHandler: sl<RemoveHandler>(),
     ),
   );
 
