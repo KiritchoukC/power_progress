@@ -27,8 +27,7 @@ abstract class Workout {
 
 class WorkoutHelper {
   static int getTargetReps(Month month) {
-    final moduloMonth = month.moduloMonthNumber.getOrElse(() => throw Error());
-    switch (moduloMonth) {
+    switch (month.moduloMonthNumber) {
       case 1:
         return 10;
       case 2:

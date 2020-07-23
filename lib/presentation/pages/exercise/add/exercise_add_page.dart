@@ -75,7 +75,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   Exercise get _exercise => Exercise(
         id: 0,
         name: ExerciseName(_exerciseNameController.value.text),
-        incrementation: Incrementation.two(),
+        incrementation: Incrementation.deflt(),
         month: Month(1),
         nextWeek: Week(const WeekEnum.accumulation()),
       );

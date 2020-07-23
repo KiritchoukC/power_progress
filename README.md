@@ -1,5 +1,5 @@
 <p align="center">
-  <img title="Power Progress logo" alt="Power Progress logo" width="400" height="400" src="https://raw.githubusercontent.com/KiritchoukC/power_progress/master/design/500px_logo.png">
+  <img title="Power Progress logo" alt="Power Progress logo" width="192" height="192" src="https://raw.githubusercontent.com/KiritchoukC/power_progress/master/design/192px_logo.png">
 </p>
 
 # Power Progress
@@ -10,6 +10,17 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/kiritchoukc/power_progress)
 ![GitHub](https://img.shields.io/github/license/kiritchoukc/power_progress)
 ![GitHub stars](https://img.shields.io/github/stars/kiritchoukc/power_progress?style=social)
+
+---
+## Demo <small>`(2020-07-21)`</small>
+
+<div style="width: 100%;display: flex; justify-content: center">
+  <div style="width: 256px">
+
+  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/assets/20200721_demo.gif)
+
+  </div>
+</div>
 
 ---
 

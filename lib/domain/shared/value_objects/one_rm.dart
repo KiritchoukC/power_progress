@@ -35,16 +35,33 @@ class OneRm extends ValueObject<double> {
     OneRm oneRm,
     Option<int> repsDone,
   ) {
-    return repsDone.fold(() => oneRm, (repsDone) {
-      final targetReps = WorkoutHelper.getTargetReps(month);
+    return repsDone.fold(
+      () {
+        if (month.next.isStartWorkout) {
+          return OneRm.increment(oneRm, incrementation);
+        }
+        return oneRm;
+      },
+      (repsDone) {
+        final targetReps = WorkoutHelper.getTargetReps(month);
 
-      final newOneRm = ((repsDone - targetReps) * incrementation.getOrCrash()) + oneRm.getOrCrash();
+        final newOneRm =
+            ((repsDone - targetReps) * incrementation.getOrCrash()) + oneRm.getOrCrash();
 
-      return OneRm(newOneRm);
-    });
+        if (month.next.isStartWorkout) {
+          return OneRm.increment(OneRm(newOneRm), incrementation);
+        }
+
+        return OneRm(newOneRm);
+      },
+    );
   }
 
   const OneRm._(this.value);
+
+  factory OneRm.increment(OneRm previousOneRm, Incrementation incrementation) {
+    return OneRm(previousOneRm.getOrCrash() + incrementation.getOrCrash() * 4);
+  }
 }
 
 Either<ValueFailure<double>, double> parseAndvalidateOneRm(String input) {
