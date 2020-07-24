@@ -17,7 +17,7 @@
 <div style="width: 100%;display: flex; justify-content: center">
   <div style="width: 256px">
 
-  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/assets/20200721_demo.gif)
+  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/docs/20200721_demo.gif)
 
   </div>
 </div>
