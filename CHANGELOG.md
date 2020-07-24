@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.38.0](https://github.com/KiritchoukC/power_progress/compare/v2.37.4...v2.38.0) (2020-07-24)
+
+
+### Features
+
+* **onerm-icon:** add custom one rm icon ([e73a399](https://github.com/KiritchoukC/power_progress/commit/e73a399)), closes [#100](https://github.com/KiritchoukC/power_progress/issues/100)
+
 ### [2.37.4](https://github.com/KiritchoukC/power_progress/compare/v2.37.3...v2.37.4) (2020-07-24)
 
 ### [2.37.3](https://github.com/KiritchoukC/power_progress/compare/v2.37.2...v2.37.3) (2020-07-23)
