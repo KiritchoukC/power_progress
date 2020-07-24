@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.37.4](https://github.com/KiritchoukC/power_progress/compare/v2.37.3...v2.37.4) (2020-07-24)
+
 ### [2.37.3](https://github.com/KiritchoukC/power_progress/compare/v2.37.2...v2.37.3) (2020-07-23)
 
 ### [2.37.2](https://github.com/KiritchoukC/power_progress/compare/v2.37.1...v2.37.2) (2020-07-23)
