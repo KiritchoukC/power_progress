@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
+import 'package:power_progress/presentation/theme/custom_icons.dart';
 import 'package:power_progress/presentation/widgets/pp_form_field.dart';
 
 class OneRmInput extends StatelessWidget {
@@ -34,10 +35,10 @@ class OneRmInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return PPTextFormFieldWidget(
       controller: controller,
-      labelText: '1RM',
+      labelText: 'One Rep Maximum',
       keyboardType: TextInputType.number,
-      textInputAction: TextInputAction.next,
-      prefixIcon: Icons.confirmation_number,
+      textInputAction: TextInputAction.done,
+      prefixIcon: CustomIcons.oneRm,
       focusNode: focusNode,
       onEditingComplete: () {
         nextFocusNode.requestFocus();
