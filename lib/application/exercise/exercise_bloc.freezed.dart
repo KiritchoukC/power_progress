@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'exercise_bloc.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$ExerciseEventTearOff {
   const _$ExerciseEventTearOff();
 
+// ignore: unused_element
   Add add({@required Exercise exercise, @required OneRm oneRm}) {
     return Add(
       exercise: exercise,
@@ -19,10 +20,12 @@ class _$ExerciseEventTearOff {
     );
   }
 
+// ignore: unused_element
   Fetch fetch() {
     return const Fetch();
   }
 
+// ignore: unused_element
   Remove remove({@required List<int> ids}) {
     return Remove(
       ids: ids,
@@ -436,36 +439,44 @@ abstract class Remove implements ExerciseEvent {
 class _$ExerciseStateTearOff {
   const _$ExerciseStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   AddInProgress addInProgress() {
     return const AddInProgress();
   }
 
+// ignore: unused_element
   Added added() {
     return const Added();
   }
 
+// ignore: unused_element
   FetchInProgress fetchInProgress() {
     return const FetchInProgress();
   }
 
+// ignore: unused_element
   Fetched fetched({@required List<Exercise> exercises}) {
     return Fetched(
       exercises: exercises,
     );
   }
 
+// ignore: unused_element
   RemoveInProgress removeInProgress() {
     return const RemoveInProgress();
   }
 
+// ignore: unused_element
   Removed removed() {
     return const Removed();
   }
 
+// ignore: unused_element
   Error error({@required String message}) {
     return Error(
       message: message,

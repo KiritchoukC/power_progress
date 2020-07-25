@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'one_rm_bloc.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$OneRmEventTearOff {
   const _$OneRmEventTearOff();
 
+// ignore: unused_element
   Fetch fetch({@required int exerciseId, @required Month month}) {
     return Fetch(
       exerciseId: exerciseId,
@@ -19,6 +20,7 @@ class _$OneRmEventTearOff {
     );
   }
 
+// ignore: unused_element
   Upsert upsert(
       {@required int exerciseId,
       @required Month month,
@@ -30,6 +32,7 @@ class _$OneRmEventTearOff {
     );
   }
 
+// ignore: unused_element
   GenerateAndSave generateAndSave(
       {@required int exerciseId,
       @required OneRm oneRm,
@@ -45,6 +48,7 @@ class _$OneRmEventTearOff {
     );
   }
 
+// ignore: unused_element
   Init init(
       {@required int exerciseId,
       @required OneRm oneRm,
@@ -56,6 +60,7 @@ class _$OneRmEventTearOff {
     );
   }
 
+// ignore: unused_element
   Remove remove({@required int exerciseId}) {
     return Remove(
       exerciseId: exerciseId,
@@ -939,16 +944,19 @@ abstract class Remove implements OneRmEvent {
 class _$OneRmStateTearOff {
   const _$OneRmStateTearOff();
 
+// ignore: unused_element
   Initial initial({@required int exerciseId}) {
     return Initial(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   FetchInProgres fetchInProgress() {
     return const FetchInProgres();
   }
 
+// ignore: unused_element
   Fetched fetched({@required int exerciseId, @required OneRm oneRm}) {
     return Fetched(
       exerciseId: exerciseId,
@@ -956,10 +964,12 @@ class _$OneRmStateTearOff {
     );
   }
 
+// ignore: unused_element
   GenerateAndSaveInProgress generateAndSaveInProgress() {
     return const GenerateAndSaveInProgress();
   }
 
+// ignore: unused_element
   GeneratedAndSaved generatedAndSaved(
       {@required int exerciseId, @required OneRm oneRm}) {
     return GeneratedAndSaved(
@@ -968,30 +978,37 @@ class _$OneRmStateTearOff {
     );
   }
 
+// ignore: unused_element
   RemoveInProgress removeInProgress() {
     return const RemoveInProgress();
   }
 
+// ignore: unused_element
   Removed removed() {
     return const Removed();
   }
 
+// ignore: unused_element
   StorageError storageError() {
     return const StorageError();
   }
 
+// ignore: unused_element
   NotFoundError notFoundError() {
     return const NotFoundError();
   }
 
+// ignore: unused_element
   AlreadyExistError alreadyExistError() {
     return const AlreadyExistError();
   }
 
+// ignore: unused_element
   UnexpectedError unexpectedError() {
     return const UnexpectedError();
   }
 
+// ignore: unused_element
   NoExistingDataForThisExerciseError noExistingDataForThisExerciseError() {
     return const NoExistingDataForThisExerciseError();
   }

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'onboarding_failure.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$OnboardingFailureTearOff {
   const _$OnboardingFailureTearOff();
 
+// ignore: unused_element
   _Common common(CommonFailure failure) {
     return _Common(
       failure,
@@ -24,6 +25,25 @@ const $OnboardingFailure = _$OnboardingFailureTearOff();
 
 mixin _$OnboardingFailure {
   CommonFailure get failure;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result common(CommonFailure failure),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result common(CommonFailure failure),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result common(_Common value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result common(_Common value),
+    @required Result orElse(),
+  });
 
   $OnboardingFailureCopyWith<OnboardingFailure> get copyWith;
 }
@@ -128,6 +148,50 @@ class _$_Common with DiagnosticableTreeMixin implements _Common {
   @override
   _$CommonCopyWith<_Common> get copyWith =>
       __$CommonCopyWithImpl<_Common>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result common(CommonFailure failure),
+  }) {
+    assert(common != null);
+    return common(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result common(CommonFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result common(_Common value),
+  }) {
+    assert(common != null);
+    return common(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result common(_Common value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (common != null) {
+      return common(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _Common implements OnboardingFailure {

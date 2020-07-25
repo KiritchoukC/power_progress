@@ -1,4 +1,4 @@
-part of 'week_bloc.dart';
+part of 'week_cubit.dart';
 
 @freezed
 abstract class WeekState with _$WeekState {

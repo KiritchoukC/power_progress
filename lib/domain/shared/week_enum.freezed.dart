@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'week_enum.dart';
 
@@ -12,18 +12,22 @@ T _$identity<T>(T value) => value;
 class _$WeekEnumTearOff {
   const _$WeekEnumTearOff();
 
+// ignore: unused_element
   Accumulation accumulation() {
     return const Accumulation();
   }
 
+// ignore: unused_element
   Intensification intensification() {
     return const Intensification();
   }
 
+// ignore: unused_element
   Realization realization() {
     return const Realization();
   }
 
+// ignore: unused_element
   Deload deload() {
     return const Deload();
   }

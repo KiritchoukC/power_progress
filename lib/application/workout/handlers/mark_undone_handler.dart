@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/workout/i_workout_repository.dart';
@@ -10,14 +11,14 @@ import 'package:power_progress/domain/workout/workout.dart';
 import 'package:power_progress/domain/workout/workout_failure.dart';
 
 class MarkUndoneHandler {
-  final WeekBloc weekBloc;
+  final WeekCubit weekCubit;
   final MonthBloc monthBloc;
   final OneRmBloc oneRmBloc;
 
   final IWorkoutRepository workoutRepository;
 
   MarkUndoneHandler({
-    @required this.weekBloc,
+    @required this.weekCubit,
     @required this.monthBloc,
     @required this.oneRmBloc,
     @required this.workoutRepository,
@@ -42,12 +43,7 @@ class MarkUndoneHandler {
         oneRm: event.oneRm,
       );
 
-      weekBloc.add(
-        WeekEvent.updateNextWeek(
-          exerciseId: event.exerciseId,
-          nextWeek: event.week,
-        ),
-      );
+      weekCubit.updateNextWeek(event.exerciseId, event.week);
 
       event.week.maybeWhen(
         //? remove onerm for this month ?

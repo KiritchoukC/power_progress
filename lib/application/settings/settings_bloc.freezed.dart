@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'settings_bloc.dart';
 
@@ -12,12 +12,14 @@ T _$identity<T>(T value) => value;
 class _$SettingsEventTearOff {
   const _$SettingsEventTearOff();
 
+// ignore: unused_element
   UpdateTheme updateTheme({@required bool isThemeDark}) {
     return UpdateTheme(
       isThemeDark: isThemeDark,
     );
   }
 
+// ignore: unused_element
   Fetch fetch() {
     return const Fetch();
   }
@@ -282,30 +284,36 @@ abstract class Fetch implements SettingsEvent {
 class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   ThemeUpdateInProgress themeUpdateInProgress() {
     return const ThemeUpdateInProgress();
   }
 
+// ignore: unused_element
   ThemeUpdated themeUpdated({@required Settings updatedSettings}) {
     return ThemeUpdated(
       updatedSettings: updatedSettings,
     );
   }
 
+// ignore: unused_element
   FetchInProgress fetchInProgress() {
     return const FetchInProgress();
   }
 
+// ignore: unused_element
   Fetched fetched({@required Settings settings}) {
     return Fetched(
       settings: settings,
     );
   }
 
+// ignore: unused_element
   Error error({@required String message}) {
     return Error(
       message: message,

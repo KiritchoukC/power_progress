@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'month_bloc.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$MonthEventTearOff {
   const _$MonthEventTearOff();
 
+// ignore: unused_element
   UpdateNextMonth updateNextMonth(
       {@required int exerciseId, @required Month nextMonth}) {
     return UpdateNextMonth(
@@ -20,6 +21,7 @@ class _$MonthEventTearOff {
     );
   }
 
+// ignore: unused_element
   Fetch fetch({@required int exerciseId}) {
     return Fetch(
       exerciseId: exerciseId,
@@ -329,18 +331,21 @@ abstract class Fetch implements MonthEvent {
 class _$MonthStateTearOff {
   const _$MonthStateTearOff();
 
+// ignore: unused_element
   Initial initial({@required int exerciseId}) {
     return Initial(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   MonthUpdateInProgress monthUpdateInProgress({@required int exerciseId}) {
     return MonthUpdateInProgress(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   MonthUpdated monthUpdated({@required int exerciseId, @required Month month}) {
     return MonthUpdated(
       exerciseId: exerciseId,
@@ -348,12 +353,14 @@ class _$MonthStateTearOff {
     );
   }
 
+// ignore: unused_element
   FetchInProgress fetchInProgress({@required int exerciseId}) {
     return FetchInProgress(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   Fetched fetched({@required int exerciseId, @required Month month}) {
     return Fetched(
       exerciseId: exerciseId,
@@ -361,6 +368,7 @@ class _$MonthStateTearOff {
     );
   }
 
+// ignore: unused_element
   Error error({@required int exerciseId, @required String message}) {
     return Error(
       exerciseId: exerciseId,

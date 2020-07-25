@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'workout_bloc.dart';
 
@@ -12,10 +12,12 @@ T _$identity<T>(T value) => value;
 class _$WorkoutEventTearOff {
   const _$WorkoutEventTearOff();
 
+// ignore: unused_element
   ResetState resetState() {
     return const ResetState();
   }
 
+// ignore: unused_element
   Generate generate({@required int exerciseId, @required Month month}) {
     return Generate(
       exerciseId: exerciseId,
@@ -23,6 +25,7 @@ class _$WorkoutEventTearOff {
     );
   }
 
+// ignore: unused_element
   MarkDone markDone(
       {@required int exerciseId,
       @required Incrementation incrementation,
@@ -40,6 +43,7 @@ class _$WorkoutEventTearOff {
     );
   }
 
+// ignore: unused_element
   MarkUndone markUndone(
       {@required Option<int> id,
       @required int exerciseId,
@@ -57,6 +61,7 @@ class _$WorkoutEventTearOff {
     );
   }
 
+// ignore: unused_element
   Remove remove({@required int exerciseId}) {
     return Remove(
       exerciseId: exerciseId,
@@ -1026,14 +1031,17 @@ abstract class Remove implements WorkoutEvent {
 class _$WorkoutStateTearOff {
   const _$WorkoutStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   GenerateInProgress generateInProgress() {
     return const GenerateInProgress();
   }
 
+// ignore: unused_element
   Generated generated({@required MonthWorkout workout, @required Month month}) {
     return Generated(
       workout: workout,
@@ -1041,10 +1049,12 @@ class _$WorkoutStateTearOff {
     );
   }
 
+// ignore: unused_element
   MarkDoneInProgress markDoneInProgress() {
     return const MarkDoneInProgress();
   }
 
+// ignore: unused_element
   MarkedDone markedDone(
       {@required int exerciseId,
       @required Month month,
@@ -1056,10 +1066,12 @@ class _$WorkoutStateTearOff {
     );
   }
 
+// ignore: unused_element
   MarkUndoneInProgress markUndoneInProgress() {
     return const MarkUndoneInProgress();
   }
 
+// ignore: unused_element
   MarkedUndone markedUndone(
       {@required int exerciseId,
       @required Month month,
@@ -1071,14 +1083,17 @@ class _$WorkoutStateTearOff {
     );
   }
 
+// ignore: unused_element
   RemoveInProgress removeInProgress() {
     return const RemoveInProgress();
   }
 
+// ignore: unused_element
   Removed removed() {
     return const Removed();
   }
 
+// ignore: unused_element
   Error error({@required String message}) {
     return Error(
       message: message,

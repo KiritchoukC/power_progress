@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'selection_bloc.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$SelectionEventTearOff {
   const _$SelectionEventTearOff();
 
+// ignore: unused_element
   SwitchMode switchMode(
       {@required bool isInSelectionMode, @required List<int> selectedIds}) {
     return SwitchMode(
@@ -27,6 +28,25 @@ const $SelectionEvent = _$SelectionEventTearOff();
 mixin _$SelectionEvent {
   bool get isInSelectionMode;
   List<int> get selectedIds;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result switchMode(bool isInSelectionMode, List<int> selectedIds),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result switchMode(bool isInSelectionMode, List<int> selectedIds),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result switchMode(SwitchMode value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result switchMode(SwitchMode value),
+    @required Result orElse(),
+  });
 
   $SelectionEventCopyWith<SelectionEvent> get copyWith;
 }
@@ -141,6 +161,50 @@ class _$SwitchMode with DiagnosticableTreeMixin implements SwitchMode {
   @override
   $SwitchModeCopyWith<SwitchMode> get copyWith =>
       _$SwitchModeCopyWithImpl<SwitchMode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result switchMode(bool isInSelectionMode, List<int> selectedIds),
+  }) {
+    assert(switchMode != null);
+    return switchMode(isInSelectionMode, selectedIds);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result switchMode(bool isInSelectionMode, List<int> selectedIds),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (switchMode != null) {
+      return switchMode(isInSelectionMode, selectedIds);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result switchMode(SwitchMode value),
+  }) {
+    assert(switchMode != null);
+    return switchMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result switchMode(SwitchMode value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (switchMode != null) {
+      return switchMode(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class SwitchMode implements SelectionEvent {
@@ -159,16 +223,19 @@ abstract class SwitchMode implements SelectionEvent {
 class _$SelectionStateTearOff {
   const _$SelectionStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   Selected selected({@required List<int> selectedIds}) {
     return Selected(
       selectedIds: selectedIds,
     );
   }
 
+// ignore: unused_element
   Unselected unselected({@required List<int> unselectedIds}) {
     return Unselected(
       unselectedIds: unselectedIds,

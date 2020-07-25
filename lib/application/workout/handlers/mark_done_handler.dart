@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 
 import 'package:power_progress/application/exercise/week/week_bloc.dart';
+import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/domain/workout/i_workout_repository.dart';
@@ -9,14 +10,14 @@ import 'package:power_progress/domain/workout/workout_failure.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 
 class MarkDoneHandler {
-  final WeekBloc weekBloc;
+  final WeekCubit weekCubit;
   final MonthBloc monthBloc;
   final OneRmBloc oneRmBloc;
 
   final IWorkoutRepository workoutRepository;
 
   MarkDoneHandler({
-    @required this.weekBloc,
+    @required this.weekCubit,
     @required this.monthBloc,
     @required this.oneRmBloc,
     @required this.workoutRepository,
@@ -39,12 +40,7 @@ class MarkDoneHandler {
           oneRm: event.oneRm,
         );
 
-        weekBloc.add(
-          WeekEvent.updateNextWeek(
-            exerciseId: event.exerciseId,
-            nextWeek: event.week.next(),
-          ),
-        );
+        weekCubit.updateNextWeek(event.exerciseId, event.week.next());
 
         event.week.maybeWhen(
           realization: () async => oneRmBloc.add(

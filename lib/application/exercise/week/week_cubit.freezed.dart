@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'week_bloc.dart';
+part of 'week_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,164 +9,24 @@ part of 'week_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$WeekEventTearOff {
-  const _$WeekEventTearOff();
-
-  UpdateNextWeek updateNextWeek(
-      {@required int exerciseId, @required WeekEnum nextWeek}) {
-    return UpdateNextWeek(
-      exerciseId: exerciseId,
-      nextWeek: nextWeek,
-    );
-  }
-}
-
-// ignore: unused_element
-const $WeekEvent = _$WeekEventTearOff();
-
-mixin _$WeekEvent {
-  int get exerciseId;
-  WeekEnum get nextWeek;
-
-  $WeekEventCopyWith<WeekEvent> get copyWith;
-}
-
-abstract class $WeekEventCopyWith<$Res> {
-  factory $WeekEventCopyWith(WeekEvent value, $Res Function(WeekEvent) then) =
-      _$WeekEventCopyWithImpl<$Res>;
-  $Res call({int exerciseId, WeekEnum nextWeek});
-
-  $WeekEnumCopyWith<$Res> get nextWeek;
-}
-
-class _$WeekEventCopyWithImpl<$Res> implements $WeekEventCopyWith<$Res> {
-  _$WeekEventCopyWithImpl(this._value, this._then);
-
-  final WeekEvent _value;
-  // ignore: unused_field
-  final $Res Function(WeekEvent) _then;
-
-  @override
-  $Res call({
-    Object exerciseId = freezed,
-    Object nextWeek = freezed,
-  }) {
-    return _then(_value.copyWith(
-      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
-      nextWeek: nextWeek == freezed ? _value.nextWeek : nextWeek as WeekEnum,
-    ));
-  }
-
-  @override
-  $WeekEnumCopyWith<$Res> get nextWeek {
-    if (_value.nextWeek == null) {
-      return null;
-    }
-    return $WeekEnumCopyWith<$Res>(_value.nextWeek, (value) {
-      return _then(_value.copyWith(nextWeek: value));
-    });
-  }
-}
-
-abstract class $UpdateNextWeekCopyWith<$Res>
-    implements $WeekEventCopyWith<$Res> {
-  factory $UpdateNextWeekCopyWith(
-          UpdateNextWeek value, $Res Function(UpdateNextWeek) then) =
-      _$UpdateNextWeekCopyWithImpl<$Res>;
-  @override
-  $Res call({int exerciseId, WeekEnum nextWeek});
-
-  @override
-  $WeekEnumCopyWith<$Res> get nextWeek;
-}
-
-class _$UpdateNextWeekCopyWithImpl<$Res> extends _$WeekEventCopyWithImpl<$Res>
-    implements $UpdateNextWeekCopyWith<$Res> {
-  _$UpdateNextWeekCopyWithImpl(
-      UpdateNextWeek _value, $Res Function(UpdateNextWeek) _then)
-      : super(_value, (v) => _then(v as UpdateNextWeek));
-
-  @override
-  UpdateNextWeek get _value => super._value as UpdateNextWeek;
-
-  @override
-  $Res call({
-    Object exerciseId = freezed,
-    Object nextWeek = freezed,
-  }) {
-    return _then(UpdateNextWeek(
-      exerciseId: exerciseId == freezed ? _value.exerciseId : exerciseId as int,
-      nextWeek: nextWeek == freezed ? _value.nextWeek : nextWeek as WeekEnum,
-    ));
-  }
-}
-
-class _$UpdateNextWeek implements UpdateNextWeek {
-  const _$UpdateNextWeek({@required this.exerciseId, @required this.nextWeek})
-      : assert(exerciseId != null),
-        assert(nextWeek != null);
-
-  @override
-  final int exerciseId;
-  @override
-  final WeekEnum nextWeek;
-
-  @override
-  String toString() {
-    return 'WeekEvent.updateNextWeek(exerciseId: $exerciseId, nextWeek: $nextWeek)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is UpdateNextWeek &&
-            (identical(other.exerciseId, exerciseId) ||
-                const DeepCollectionEquality()
-                    .equals(other.exerciseId, exerciseId)) &&
-            (identical(other.nextWeek, nextWeek) ||
-                const DeepCollectionEquality()
-                    .equals(other.nextWeek, nextWeek)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(exerciseId) ^
-      const DeepCollectionEquality().hash(nextWeek);
-
-  @override
-  $UpdateNextWeekCopyWith<UpdateNextWeek> get copyWith =>
-      _$UpdateNextWeekCopyWithImpl<UpdateNextWeek>(this, _$identity);
-}
-
-abstract class UpdateNextWeek implements WeekEvent {
-  const factory UpdateNextWeek(
-      {@required int exerciseId,
-      @required WeekEnum nextWeek}) = _$UpdateNextWeek;
-
-  @override
-  int get exerciseId;
-  @override
-  WeekEnum get nextWeek;
-  @override
-  $UpdateNextWeekCopyWith<UpdateNextWeek> get copyWith;
-}
-
 class _$WeekStateTearOff {
   const _$WeekStateTearOff();
 
+// ignore: unused_element
   Initial initial({@required int exerciseId}) {
     return Initial(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   WeekUpdateInProgress weekUpdateInProgress({@required int exerciseId}) {
     return WeekUpdateInProgress(
       exerciseId: exerciseId,
     );
   }
 
+// ignore: unused_element
   WeekUpdated weekUpdated({@required int exerciseId, @required Week week}) {
     return WeekUpdated(
       exerciseId: exerciseId,
@@ -174,6 +34,7 @@ class _$WeekStateTearOff {
     );
   }
 
+// ignore: unused_element
   Error error({@required int exerciseId, @required String message}) {
     return Error(
       exerciseId: exerciseId,
