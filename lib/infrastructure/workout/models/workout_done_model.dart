@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
-import 'package:power_progress/core/domain/errors.dart';
 
+import 'package:power_progress/core/domain/errors.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/workout/workout_done.dart';
-import 'package:power_progress/domain/workout/workout_failure.dart';
 
 part 'workout_done_model.g.dart';
 
