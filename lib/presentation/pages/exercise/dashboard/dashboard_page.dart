@@ -3,7 +3,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
+import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -90,12 +90,11 @@ class _BodyState extends State<_Body> {
 
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
 
-      context.bloc<SelectionBloc>().add(
-            SelectionEvent.switchMode(
-              isInSelectionMode: isInSelectionMode,
-              selectedIds: selectedExerciseIds,
-            ),
-          );
+      if (isInSelectionMode) {
+        context.bloc<SelectionCubit>().select(selectedIds: selectedExerciseIds);
+      } else {
+        context.bloc<SelectionCubit>().unselect(unselectedIds: selectedExerciseIds);
+      }
     });
   }
 
@@ -132,7 +131,7 @@ class _BodyState extends State<_Body> {
 class _RemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SelectionBloc, SelectionState>(
+    return BlocBuilder<SelectionCubit, SelectionState>(
       builder: (context, state) {
         return state.maybeWhen(
           selected: (selectedIds) => RemoveButton(

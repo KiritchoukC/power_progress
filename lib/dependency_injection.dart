@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
-import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
+import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
@@ -84,7 +84,7 @@ void _initExerciseFeature() {
   );
   sl.registerFactory(() => WeekCubit(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerFactory(() => MonthCubit(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerFactory(() => SelectionBloc());
+  sl.registerFactory(() => SelectionCubit());
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(

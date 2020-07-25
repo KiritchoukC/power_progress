@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
-import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
+import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
@@ -28,7 +28,7 @@ class App extends StatelessWidget {
         BlocProvider<OneRmBloc>(create: (_) => di.sl<OneRmBloc>()),
         BlocProvider<WeekCubit>(create: (_) => di.sl<WeekCubit>()),
         BlocProvider<MonthCubit>(create: (_) => di.sl<MonthCubit>()),
-        BlocProvider<SelectionBloc>(create: (_) => di.sl<SelectionBloc>()),
+        BlocProvider<SelectionCubit>(create: (_) => di.sl<SelectionCubit>()),
         BlocProvider<SettingsBloc>(create: (_) => di.sl<SettingsBloc>()),
       ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
