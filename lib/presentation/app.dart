@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';

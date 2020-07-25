@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:power_progress/application/exercise/month/month_bloc.dart';
 
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
