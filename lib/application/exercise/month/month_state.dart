@@ -1,4 +1,4 @@
-part of 'month_bloc.dart';
+part of 'month_cubit.dart';
 
 @freezed
 abstract class MonthState with _$MonthState {

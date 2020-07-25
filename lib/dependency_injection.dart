@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
@@ -83,7 +83,7 @@ void _initExerciseFeature() {
     ),
   );
   sl.registerFactory(() => WeekCubit(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerFactory(() => MonthBloc(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerFactory(() => MonthCubit(exerciseRepository: sl<IExerciseRepository>()));
   sl.registerFactory(() => SelectionBloc());
 
   // Repositories
@@ -121,13 +121,13 @@ void _initWorkoutFeature() {
       ));
   sl.registerFactory(() => MarkDoneHandler(
         weekCubit: sl<WeekCubit>(),
-        monthBloc: sl<MonthBloc>(),
+        monthCubit: sl<MonthCubit>(),
         oneRmBloc: sl<OneRmBloc>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => MarkUndoneHandler(
         weekCubit: sl<WeekCubit>(),
-        monthBloc: sl<MonthBloc>(),
+        monthCubit: sl<MonthCubit>(),
         oneRmBloc: sl<OneRmBloc>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
@@ -115,7 +115,7 @@ class WeekListener extends BlocListener<WeekCubit, WeekState> {
         );
 }
 
-class MonthListener extends BlocListener<MonthBloc, MonthState> {
+class MonthListener extends BlocListener<MonthCubit, MonthState> {
   final Function(BuildContext, String) onError;
   MonthListener({@required this.onError})
       : super(

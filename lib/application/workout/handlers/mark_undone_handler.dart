@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
+import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -11,14 +11,14 @@ import 'package:power_progress/domain/workout/workout_failure.dart';
 
 class MarkUndoneHandler {
   final WeekCubit weekCubit;
-  final MonthBloc monthBloc;
+  final MonthCubit monthCubit;
   final OneRmBloc oneRmBloc;
 
   final IWorkoutRepository workoutRepository;
 
   MarkUndoneHandler({
     @required this.weekCubit,
-    @required this.monthBloc,
+    @required this.monthCubit,
     @required this.oneRmBloc,
     @required this.workoutRepository,
   });
@@ -42,7 +42,10 @@ class MarkUndoneHandler {
         oneRm: event.oneRm,
       );
 
-      weekCubit.updateNextWeek(event.exerciseId, event.week);
+      weekCubit.updateNextWeek(
+        exerciseId: event.exerciseId,
+        nextWeek: event.week,
+      );
 
       event.week.maybeWhen(
         //? remove onerm for this month ?
@@ -55,11 +58,9 @@ class MarkUndoneHandler {
             repsDone: some(WorkoutHelper.getTargetReps(event.month)),
           ),
         ),
-        deload: () async => monthBloc.add(
-          MonthEvent.updateNextMonth(
-            exerciseId: event.exerciseId,
-            nextMonth: event.month,
-          ),
+        deload: () async => monthCubit.updateNextMonth(
+          exerciseId: event.exerciseId,
+          nextMonth: event.month,
         ),
         orElse: () {},
       );

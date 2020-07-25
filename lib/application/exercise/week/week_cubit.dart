@@ -17,7 +17,7 @@ class WeekCubit extends Cubit<WeekState> {
     @required this.exerciseRepository,
   }) : super(const WeekState.initial(exerciseId: 0));
 
-  Future updateNextWeek(int exerciseId, WeekEnum nextWeek) async {
+  Future updateNextWeek({@required int exerciseId, @required WeekEnum nextWeek}) async {
     emit(WeekState.weekUpdateInProgress(exerciseId: exerciseId));
 
     final output = await exerciseRepository.updateNextWeek(exerciseId, nextWeek);
