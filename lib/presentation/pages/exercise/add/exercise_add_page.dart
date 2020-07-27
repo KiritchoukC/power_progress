@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/value_objects/exercise_name.dart';
@@ -18,7 +18,7 @@ import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 class ExerciseAddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ExerciseBloc, ExerciseState>(
+    return BlocConsumer<ExerciseCubit, ExerciseState>(
       listener: (context, state) {
         state.maybeWhen(
           added: () => Navigator.of(context).pop(),
@@ -116,8 +116,7 @@ class _ExerciseFormState extends State<_ExerciseForm> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            BlocProvider.of<ExerciseBloc>(context)
-                .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
+            BlocProvider.of<ExerciseCubit>(context).add(exercise: _exercise, oneRm: _oneRm);
           }
         },
         label: const Text(

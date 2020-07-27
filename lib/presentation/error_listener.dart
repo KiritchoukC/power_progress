@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
@@ -47,7 +47,7 @@ class ErrorListener extends StatelessWidget {
   }
 }
 
-class ExerciseListener extends BlocListener<ExerciseBloc, ExerciseState> {
+class ExerciseListener extends BlocListener<ExerciseCubit, ExerciseState> {
   final Function(BuildContext, String) onError;
   ExerciseListener({@required this.onError})
       : super(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
@@ -30,7 +30,7 @@ class WorkoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ExerciseBloc, ExerciseState>(
+    return BlocListener<ExerciseCubit, ExerciseState>(
       listener: (context, state) {
         state.maybeWhen(
           removed: () => Navigator.of(context).pop(),

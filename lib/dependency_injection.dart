@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
@@ -76,7 +76,7 @@ Future<void> init() async {
 void _initExerciseFeature() {
   // Bloc
   sl.registerFactory(
-    () => ExerciseBloc(
+    () => ExerciseCubit(
       exerciseRepository: sl<IExerciseRepository>(),
       oneRmBloc: sl<OneRmBloc>(),
       workoutBloc: sl<WorkoutBloc>(),
