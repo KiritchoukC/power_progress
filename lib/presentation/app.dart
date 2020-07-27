@@ -5,7 +5,7 @@ import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -23,7 +23,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ExerciseCubit>(create: (_) => di.sl<ExerciseCubit>()),
-        BlocProvider<OnboardingBloc>(create: (_) => di.sl<OnboardingBloc>()),
+        BlocProvider<OnboardingCubit>(create: (_) => di.sl<OnboardingCubit>()),
         BlocProvider<WorkoutBloc>(create: (_) => di.sl<WorkoutBloc>()),
         BlocProvider<OneRmBloc>(create: (_) => di.sl<OneRmBloc>()),
         BlocProvider<WeekCubit>(create: (_) => di.sl<WeekCubit>()),
@@ -78,11 +78,11 @@ class MaterialAppWithSettings extends StatelessWidget {
       home: Scaffold(
         body: ErrorListener(
           child: OnboardingListener(
-            child: BlocBuilder<OnboardingBloc, OnboardingState>(
+            child: BlocBuilder<OnboardingCubit, OnboardingState>(
               builder: (context, state) {
                 return state.maybeWhen(
                   initial: () {
-                    context.bloc<OnboardingBloc>().add(const OnboardingEvent.isDone());
+                    context.bloc<OnboardingCubit>().isDone();
                     return SplashScreen();
                   },
                   orElse: () => SplashScreen(),
@@ -107,7 +107,7 @@ class OnboardingListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<OnboardingBloc, OnboardingState>(
+    return BlocListener<OnboardingCubit, OnboardingState>(
       listener: (context, state) {
         void navigateToDashboard() {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

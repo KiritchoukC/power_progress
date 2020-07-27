@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
@@ -64,7 +64,7 @@ class ExerciseListener extends BlocListener<ExerciseCubit, ExerciseState> {
         );
 }
 
-class OnboardingListener extends BlocListener<OnboardingBloc, OnboardingState> {
+class OnboardingListener extends BlocListener<OnboardingCubit, OnboardingState> {
   final Function(BuildContext, String) onError;
   OnboardingListener({@required this.onError})
       : super(

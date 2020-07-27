@@ -5,7 +5,7 @@ import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/handlers/generate_handler.dart';
@@ -99,7 +99,7 @@ void _initExerciseFeature() {
 /// Register the dependencies needed for the onboarding feature
 void _initOnboardingFeature() {
   // Bloc
-  sl.registerFactory(() => OnboardingBloc(onboardingRepository: sl<IOnboardingRepository>()));
+  sl.registerFactory(() => OnboardingCubit(onboardingRepository: sl<IOnboardingRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOnboardingRepository>(
