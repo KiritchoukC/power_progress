@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.38.9](https://github.com/KiritchoukC/power_progress/compare/v2.38.8...v2.38.9) (2020-07-27)
+
+
+### Bug Fixes
+
+* **cubit-migration:** fix exercise cubit ([258b910](https://github.com/KiritchoukC/power_progress/commit/258b910))
+
 ### [2.38.8](https://github.com/KiritchoukC/power_progress/compare/v2.38.7...v2.38.8) (2020-07-27)
 
 ### [2.38.7](https://github.com/KiritchoukC/power_progress/compare/v2.38.6...v2.38.7) (2020-07-27)
