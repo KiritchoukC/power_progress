@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +11,6 @@ import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 
-part 'exercise_event.dart';
 part 'exercise_state.dart';
 part 'exercise_cubit.freezed.dart';
 
