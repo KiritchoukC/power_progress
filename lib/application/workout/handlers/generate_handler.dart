@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:bloc/bloc.dart';
 
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
@@ -11,7 +12,7 @@ import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/workout/i_workout_repository.dart';
 import 'package:power_progress/domain/workout/month_workout.dart';
 import 'package:power_progress/domain/workout/workout_failure.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 
 class GenerateHandler {
   final IOneRmRepository oneRmRepository;
@@ -25,20 +26,19 @@ class GenerateHandler {
   });
 
   /// handle the [Generate] event
-  Stream<WorkoutState> call(Generate event) async* {
-    yield const WorkoutState.generateInProgress();
+  Future call({
+    @required Function(WorkoutState) emit,
+    @required int exerciseId,
+    @required Month month,
+  }) async {
+    emit(const WorkoutState.generateInProgress());
 
-    final output = await generate(event.exerciseId, event.month);
+    final output = await generate(exerciseId, month);
 
-    Stream<WorkoutState> onFailure(WorkoutFailure failure) async* {
-      yield WorkoutState.error(message: failure.toErrorMessage());
-    }
-
-    Stream<WorkoutState> onSuccess(MonthWorkout workout) async* {
-      yield WorkoutState.generated(workout: workout, month: event.month);
-    }
-
-    yield* output.fold(onFailure, onSuccess);
+    output.fold(
+      (failure) => emit(WorkoutState.error(message: failure.toErrorMessage())),
+      (workout) => WorkoutState.generated(workout: workout, month: month),
+    );
   }
 
   Future<Either<OneRmFailure, OneRm>> getOneRm(int exerciseId, Month month) async {

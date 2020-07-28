@@ -10,7 +10,7 @@ import 'package:power_progress/presentation/pages/onboarding/onboarding_welcome_
 import 'package:power_progress/presentation/pages/settings/settings_page.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -112,7 +112,7 @@ class WorkoutPageRoute extends MaterialPageRoute {
   WorkoutPageRoute(WorkoutPageArguments routeArgs)
       : super(
           builder: (context) {
-            context.bloc<WorkoutBloc>().add(const WorkoutEvent.resetState());
+            context.bloc<WorkoutCubit>().resetState();
             return WorkoutPage(
               exercise: routeArgs.exercise,
             );

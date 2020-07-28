@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 
 class MonthNavigation extends StatelessWidget {
   final int currentMonth;
@@ -42,11 +42,9 @@ class MonthNavigation extends StatelessWidget {
               ),
               onPressed: isPreviousNavigatable
                   ? () {
-                      context.bloc<WorkoutBloc>().add(
-                            WorkoutEvent.generate(
-                              exerciseId: exerciseId,
-                              month: Month(currentMonth - 1),
-                            ),
+                      context.bloc<WorkoutCubit>().generate(
+                            exerciseId: exerciseId,
+                            month: Month(currentMonth - 1),
                           );
                     }
                   : null),
@@ -63,11 +61,9 @@ class MonthNavigation extends StatelessWidget {
                 color: _getNextChevronColor(context),
               ),
               onPressed: () {
-                context.bloc<WorkoutBloc>().add(
-                      WorkoutEvent.generate(
-                        exerciseId: exerciseId,
-                        month: Month(currentMonth + 1),
-                      ),
+                context.bloc<WorkoutCubit>().generate(
+                      exerciseId: exerciseId,
+                      month: Month(currentMonth + 1),
                     );
               }),
         ],

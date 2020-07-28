@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
@@ -54,14 +54,12 @@ class WorkoutPage extends StatelessWidget {
             )
           ],
         ),
-        body: BlocConsumer<WorkoutBloc, WorkoutState>(
+        body: BlocConsumer<WorkoutCubit, WorkoutState>(
           listener: (context, state) {
             void generate(int id, Month month, OneRm oneRm) {
-              context.bloc<WorkoutBloc>().add(
-                    WorkoutEvent.generate(
-                      exerciseId: id,
-                      month: month,
-                    ),
+              context.bloc<WorkoutCubit>().generate(
+                    exerciseId: id,
+                    month: month,
                   );
             }
 
@@ -74,11 +72,9 @@ class WorkoutPage extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               initial: () {
-                context.bloc<WorkoutBloc>().add(
-                      WorkoutEvent.generate(
-                        exerciseId: exercise.id,
-                        month: exercise.month,
-                      ),
+                context.bloc<WorkoutCubit>().generate(
+                      exerciseId: exercise.id,
+                      month: exercise.month,
                     );
 
                 return const CenteredLoading();

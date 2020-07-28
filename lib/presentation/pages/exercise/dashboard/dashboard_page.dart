@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
@@ -20,7 +20,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<WorkoutBloc, WorkoutState>(
+      body: BlocListener<WorkoutCubit, WorkoutState>(
         listener: (previous, current) {
           void fetch(_) {
             context.bloc<ExerciseCubit>().fetch();

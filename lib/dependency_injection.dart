@@ -12,7 +12,7 @@ import 'package:power_progress/application/workout/handlers/generate_handler.dar
 import 'package:power_progress/application/workout/handlers/mark_done_handler.dart';
 import 'package:power_progress/application/workout/handlers/mark_undone_handler.dart';
 import 'package:power_progress/application/workout/handlers/remove_handler.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
@@ -79,7 +79,7 @@ void _initExerciseFeature() {
     () => ExerciseCubit(
       exerciseRepository: sl<IExerciseRepository>(),
       oneRmBloc: sl<OneRmCubit>(),
-      workoutBloc: sl<WorkoutBloc>(),
+      workoutCubit: sl<WorkoutCubit>(),
     ),
   );
   sl.registerFactory(() => WeekCubit(exerciseRepository: sl<IExerciseRepository>()));
@@ -122,13 +122,13 @@ void _initWorkoutFeature() {
   sl.registerFactory(() => MarkDoneHandler(
         weekCubit: sl<WeekCubit>(),
         monthCubit: sl<MonthCubit>(),
-        oneRmBloc: sl<OneRmCubit>(),
+        oneRmCubit: sl<OneRmCubit>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => MarkUndoneHandler(
         weekCubit: sl<WeekCubit>(),
         monthCubit: sl<MonthCubit>(),
-        oneRmBloc: sl<OneRmCubit>(),
+        oneRmCubit: sl<OneRmCubit>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => RemoveHandler(
@@ -137,7 +137,7 @@ void _initWorkoutFeature() {
 
   // Bloc
   sl.registerFactory(
-    () => WorkoutBloc(
+    () => WorkoutCubit(
       generateHandler: sl<GenerateHandler>(),
       markDoneHandler: sl<MarkDoneHandler>(),
       markUndoneHandler: sl<MarkUndoneHandler>(),

@@ -7,7 +7,7 @@ import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
 import 'package:power_progress/application/settings/settings_cubit.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
 
@@ -81,7 +81,7 @@ class OnboardingListener extends BlocListener<OnboardingCubit, OnboardingState> 
         );
 }
 
-class WorkoutListener extends BlocListener<WorkoutBloc, WorkoutState> {
+class WorkoutListener extends BlocListener<WorkoutCubit, WorkoutState> {
   final Function(BuildContext, String) onError;
   WorkoutListener({@required this.onError})
       : super(
