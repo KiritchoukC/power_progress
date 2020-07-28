@@ -6,7 +6,7 @@ import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/dependency_injection.dart' as di;
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
         BlocProvider<ExerciseCubit>(create: (_) => di.sl<ExerciseCubit>()),
         BlocProvider<OnboardingCubit>(create: (_) => di.sl<OnboardingCubit>()),
         BlocProvider<WorkoutBloc>(create: (_) => di.sl<WorkoutBloc>()),
-        BlocProvider<OneRmBloc>(create: (_) => di.sl<OneRmBloc>()),
+        BlocProvider<OneRmCubit>(create: (_) => di.sl<OneRmCubit>()),
         BlocProvider<WeekCubit>(create: (_) => di.sl<WeekCubit>()),
         BlocProvider<MonthCubit>(create: (_) => di.sl<MonthCubit>()),
         BlocProvider<SelectionCubit>(create: (_) => di.sl<SelectionCubit>()),

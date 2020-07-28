@@ -5,7 +5,7 @@ import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
 import 'package:power_progress/application/settings/settings_bloc.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
@@ -132,7 +132,7 @@ class MonthListener extends BlocListener<MonthCubit, MonthState> {
         );
 }
 
-class OneRmListener extends BlocListener<OneRmBloc, OneRmState> {
+class OneRmListener extends BlocListener<OneRmCubit, OneRmState> {
   final Function(BuildContext, String) onError;
   OneRmListener({@required this.onError})
       : super(

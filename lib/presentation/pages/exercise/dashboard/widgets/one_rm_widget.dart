@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 
@@ -14,11 +14,9 @@ class OneRmWidget extends StatelessWidget {
   }) : super(key: key);
 
   void _fetch(BuildContext context) {
-    context.bloc<OneRmBloc>().add(
-          OneRmEvent.fetch(
-            exerciseId: exercise.id,
-            month: exercise.month,
-          ),
+    context.bloc<OneRmCubit>().fetch(
+          exerciseId: exercise.id,
+          month: exercise.month,
         );
   }
 
@@ -26,7 +24,7 @@ class OneRmWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     _fetch(context);
 
-    return BlocBuilder<OneRmBloc, OneRmState>(
+    return BlocBuilder<OneRmCubit, OneRmState>(
       buildWhen: (previous, current) => current.maybeWhen(
         initial: (exerciseId) => exerciseId == exercise.id,
         generatedAndSaved: (exerciseId, _) => exerciseId == exercise.id,

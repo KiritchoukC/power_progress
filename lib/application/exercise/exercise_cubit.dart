@@ -8,7 +8,7 @@ import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/domain/exercise/exercise_failure.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 
 part 'exercise_state.dart';
@@ -16,7 +16,7 @@ part 'exercise_cubit.freezed.dart';
 
 class ExerciseCubit extends Cubit<ExerciseState> {
   final IExerciseRepository exerciseRepository;
-  final OneRmBloc oneRmBloc;
+  final OneRmCubit oneRmBloc;
   final WorkoutBloc workoutBloc;
 
   ExerciseCubit({
@@ -36,12 +36,10 @@ class ExerciseCubit extends Cubit<ExerciseState> {
       (addedExerciseId) {
         emit(const ExerciseState.added());
 
-        oneRmBloc.add(
-          OneRmEvent.init(
-            exerciseId: addedExerciseId,
-            oneRm: oneRm,
-            incrementation: exercise.incrementation,
-          ),
+        oneRmBloc.init(
+          exerciseId: addedExerciseId,
+          oneRm: oneRm,
+          incrementation: exercise.incrementation,
         );
       },
     );
@@ -69,7 +67,7 @@ class ExerciseCubit extends Cubit<ExerciseState> {
         // remove workout done persisted data associated to this exercise
         exerciseIdsToRemove.map((id) => workoutBloc.add(WorkoutEvent.remove(exerciseId: id)));
         // remove one rm data associated to this exercise
-        exerciseIdsToRemove.map((id) => oneRmBloc.add(OneRmEvent.remove(exerciseId: id)));
+        exerciseIdsToRemove.map((id) => oneRmBloc.remove(exerciseId: id));
 
         emit(const ExerciseState.removed());
       },
