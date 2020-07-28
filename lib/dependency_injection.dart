@@ -7,7 +7,7 @@ import 'package:power_progress/application/exercise/selection/selection_cubit.da
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
-import 'package:power_progress/application/settings/settings_bloc.dart';
+import 'package:power_progress/application/settings/settings_cubit.dart';
 import 'package:power_progress/application/workout/handlers/generate_handler.dart';
 import 'package:power_progress/application/workout/handlers/mark_done_handler.dart';
 import 'package:power_progress/application/workout/handlers/mark_undone_handler.dart';
@@ -170,7 +170,7 @@ void _initOneRmFeature() {
 
 void _initSettingsFeature() {
   // Bloc
-  sl.registerFactory(() => SettingsBloc(settingsRepository: sl<ISettingsRepository>()));
+  sl.registerFactory(() => SettingsCubit(settingsRepository: sl<ISettingsRepository>()));
 
   // Repositories
   sl.registerLazySingleton<ISettingsRepository>(

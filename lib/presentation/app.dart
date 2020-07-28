@@ -7,7 +7,7 @@ import 'package:power_progress/application/exercise/selection/selection_cubit.da
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
-import 'package:power_progress/application/settings/settings_bloc.dart';
+import 'package:power_progress/application/settings/settings_cubit.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/dependency_injection.dart' as di;
 import 'package:power_progress/domain/settings/settings.dart';
@@ -29,16 +29,16 @@ class App extends StatelessWidget {
         BlocProvider<WeekCubit>(create: (_) => di.sl<WeekCubit>()),
         BlocProvider<MonthCubit>(create: (_) => di.sl<MonthCubit>()),
         BlocProvider<SelectionCubit>(create: (_) => di.sl<SelectionCubit>()),
-        BlocProvider<SettingsBloc>(create: (_) => di.sl<SettingsBloc>()),
+        BlocProvider<SettingsCubit>(create: (_) => di.sl<SettingsCubit>()),
       ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
+      child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           Widget _progress() {
             return MaterialAppWithSettings(settings: Settings.init());
           }
 
           Widget _fetch() {
-            context.bloc<SettingsBloc>().add(const SettingsEvent.fetch());
+            context.bloc<SettingsCubit>().fetch();
 
             return _progress();
           }

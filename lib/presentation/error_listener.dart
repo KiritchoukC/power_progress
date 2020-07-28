@@ -6,7 +6,7 @@ import 'package:power_progress/application/exercise/month/month_cubit.dart';
 import 'package:power_progress/application/exercise/week/week_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
-import 'package:power_progress/application/settings/settings_bloc.dart';
+import 'package:power_progress/application/settings/settings_cubit.dart';
 import 'package:power_progress/application/workout/workout_bloc.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
@@ -157,7 +157,7 @@ class OneRmListener extends BlocListener<OneRmCubit, OneRmState> {
         );
 }
 
-class SettingsListener extends BlocListener<SettingsBloc, SettingsState> {
+class SettingsListener extends BlocListener<SettingsCubit, SettingsState> {
   final Function(BuildContext, String) onError;
   SettingsListener({@required this.onError})
       : super(
