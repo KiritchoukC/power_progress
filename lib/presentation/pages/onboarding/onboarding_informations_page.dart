@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
-
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
@@ -34,7 +34,7 @@ class OnboardingInformationsPage extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: PPTheme.royalBlueGradient,
         ),
-        child: BlocConsumer<ExerciseBloc, ExerciseState>(
+        child: BlocConsumer<ExerciseCubit, ExerciseState>(
           listener: (BuildContext context, ExerciseState state) {
             state.maybeWhen(
               added: () {
@@ -167,10 +167,8 @@ class _InformationsFormState extends State<_InformationsForm> {
               FloatingActionButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context
-                        .bloc<ExerciseBloc>()
-                        .add(ExerciseEvent.add(exercise: _exercise, oneRm: _oneRm));
-                    context.bloc<OnboardingBloc>().add(const OnboardingEvent.markDone());
+                    context.bloc<ExerciseCubit>().add(exercise: _exercise, oneRm: _oneRm);
+                    context.bloc<OnboardingCubit>().markDone();
                   }
                 },
                 child: const Icon(Icons.check),

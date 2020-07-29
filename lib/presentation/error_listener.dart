@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
-import 'package:power_progress/application/settings/settings_bloc.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
+import 'package:power_progress/application/exercise/month/month_cubit.dart';
+import 'package:power_progress/application/exercise/week/week_cubit.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
+import 'package:power_progress/application/settings/settings_cubit.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
 
@@ -47,7 +47,7 @@ class ErrorListener extends StatelessWidget {
   }
 }
 
-class ExerciseListener extends BlocListener<ExerciseBloc, ExerciseState> {
+class ExerciseListener extends BlocListener<ExerciseCubit, ExerciseState> {
   final Function(BuildContext, String) onError;
   ExerciseListener({@required this.onError})
       : super(
@@ -64,7 +64,7 @@ class ExerciseListener extends BlocListener<ExerciseBloc, ExerciseState> {
         );
 }
 
-class OnboardingListener extends BlocListener<OnboardingBloc, OnboardingState> {
+class OnboardingListener extends BlocListener<OnboardingCubit, OnboardingState> {
   final Function(BuildContext, String) onError;
   OnboardingListener({@required this.onError})
       : super(
@@ -81,7 +81,7 @@ class OnboardingListener extends BlocListener<OnboardingBloc, OnboardingState> {
         );
 }
 
-class WorkoutListener extends BlocListener<WorkoutBloc, WorkoutState> {
+class WorkoutListener extends BlocListener<WorkoutCubit, WorkoutState> {
   final Function(BuildContext, String) onError;
   WorkoutListener({@required this.onError})
       : super(
@@ -98,7 +98,7 @@ class WorkoutListener extends BlocListener<WorkoutBloc, WorkoutState> {
         );
 }
 
-class WeekListener extends BlocListener<WeekBloc, WeekState> {
+class WeekListener extends BlocListener<WeekCubit, WeekState> {
   final Function(BuildContext, String) onError;
   WeekListener({@required this.onError})
       : super(
@@ -115,7 +115,7 @@ class WeekListener extends BlocListener<WeekBloc, WeekState> {
         );
 }
 
-class MonthListener extends BlocListener<MonthBloc, MonthState> {
+class MonthListener extends BlocListener<MonthCubit, MonthState> {
   final Function(BuildContext, String) onError;
   MonthListener({@required this.onError})
       : super(
@@ -132,7 +132,7 @@ class MonthListener extends BlocListener<MonthBloc, MonthState> {
         );
 }
 
-class OneRmListener extends BlocListener<OneRmBloc, OneRmState> {
+class OneRmListener extends BlocListener<OneRmCubit, OneRmState> {
   final Function(BuildContext, String) onError;
   OneRmListener({@required this.onError})
       : super(
@@ -157,7 +157,7 @@ class OneRmListener extends BlocListener<OneRmBloc, OneRmState> {
         );
 }
 
-class SettingsListener extends BlocListener<SettingsBloc, SettingsState> {
+class SettingsListener extends BlocListener<SettingsCubit, SettingsState> {
   final Function(BuildContext, String) onError;
   SettingsListener({@required this.onError})
       : super(

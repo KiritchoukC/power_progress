@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
 
 class DeleteConfirmDialog extends StatelessWidget {
   final List<int> exerciseIds;
@@ -24,7 +24,7 @@ class DeleteConfirmDialog extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {
-            context.bloc<ExerciseBloc>().add(ExerciseEvent.remove(ids: exerciseIds));
+            context.bloc<ExerciseCubit>().remove(exerciseIdsToRemove: exerciseIds);
             Navigator.of(context).pop();
           },
           child: const Text('Delete'),

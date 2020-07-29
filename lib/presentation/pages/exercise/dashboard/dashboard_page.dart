@@ -3,10 +3,10 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
+import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
@@ -20,10 +20,10 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<WorkoutBloc, WorkoutState>(
+      body: BlocListener<WorkoutCubit, WorkoutState>(
         listener: (previous, current) {
           void fetch(_) {
-            context.bloc<ExerciseBloc>().add(const ExerciseEvent.fetch());
+            context.bloc<ExerciseCubit>().fetch();
           }
 
           current.maybeMap(
@@ -32,11 +32,11 @@ class DashboardPage extends StatelessWidget {
             orElse: () {},
           );
         },
-        child: BlocBuilder<ExerciseBloc, ExerciseState>(
+        child: BlocBuilder<ExerciseCubit, ExerciseState>(
           builder: (context, state) {
             Widget fetch() {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                BlocProvider.of<ExerciseBloc>(context).add(const ExerciseEvent.fetch());
+                BlocProvider.of<ExerciseCubit>(context).fetch();
               });
 
               return const CenteredLoading();
@@ -90,12 +90,11 @@ class _BodyState extends State<_Body> {
 
       isInSelectionMode = selectedExerciseIds.isNotEmpty;
 
-      context.bloc<SelectionBloc>().add(
-            SelectionEvent.switchMode(
-              isInSelectionMode: isInSelectionMode,
-              selectedIds: selectedExerciseIds,
-            ),
-          );
+      if (isInSelectionMode) {
+        context.bloc<SelectionCubit>().select(selectedIds: selectedExerciseIds);
+      } else {
+        context.bloc<SelectionCubit>().unselect(unselectedIds: selectedExerciseIds);
+      }
     });
   }
 
@@ -132,7 +131,7 @@ class _BodyState extends State<_Body> {
 class _RemoveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SelectionBloc, SelectionState>(
+    return BlocBuilder<SelectionCubit, SelectionState>(
       builder: (context, state) {
         return state.maybeWhen(
           selected: (selectedIds) => RemoveButton(

@@ -1,18 +1,18 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 
-import 'package:power_progress/application/exercise/exercise_bloc.dart';
-import 'package:power_progress/application/exercise/month/month_bloc.dart';
-import 'package:power_progress/application/exercise/selection/selection_bloc.dart';
-import 'package:power_progress/application/exercise/week/week_bloc.dart';
-import 'package:power_progress/application/onboarding/onboarding_bloc.dart';
-import 'package:power_progress/application/one_rm/one_rm_bloc.dart';
-import 'package:power_progress/application/settings/settings_bloc.dart';
+import 'package:power_progress/application/exercise/exercise_cubit.dart';
+import 'package:power_progress/application/exercise/month/month_cubit.dart';
+import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
+import 'package:power_progress/application/exercise/week/week_cubit.dart';
+import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
+import 'package:power_progress/application/one_rm/one_rm_cubit.dart';
+import 'package:power_progress/application/settings/settings_cubit.dart';
 import 'package:power_progress/application/workout/handlers/generate_handler.dart';
 import 'package:power_progress/application/workout/handlers/mark_done_handler.dart';
 import 'package:power_progress/application/workout/handlers/mark_undone_handler.dart';
 import 'package:power_progress/application/workout/handlers/remove_handler.dart';
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/i_exercise_repository.dart';
 import 'package:power_progress/domain/onboarding/i_onboarding_repository.dart';
 import 'package:power_progress/domain/one_rm/i_one_rm_repository.dart';
@@ -76,15 +76,15 @@ Future<void> init() async {
 void _initExerciseFeature() {
   // Bloc
   sl.registerFactory(
-    () => ExerciseBloc(
+    () => ExerciseCubit(
       exerciseRepository: sl<IExerciseRepository>(),
-      oneRmBloc: sl<OneRmBloc>(),
-      workoutBloc: sl<WorkoutBloc>(),
+      oneRmBloc: sl<OneRmCubit>(),
+      workoutCubit: sl<WorkoutCubit>(),
     ),
   );
-  sl.registerFactory(() => WeekBloc(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerFactory(() => MonthBloc(exerciseRepository: sl<IExerciseRepository>()));
-  sl.registerFactory(() => SelectionBloc());
+  sl.registerFactory(() => WeekCubit(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerFactory(() => MonthCubit(exerciseRepository: sl<IExerciseRepository>()));
+  sl.registerFactory(() => SelectionCubit());
 
   // Repositories
   sl.registerLazySingleton<IExerciseRepository>(
@@ -99,7 +99,7 @@ void _initExerciseFeature() {
 /// Register the dependencies needed for the onboarding feature
 void _initOnboardingFeature() {
   // Bloc
-  sl.registerFactory(() => OnboardingBloc(onboardingRepository: sl<IOnboardingRepository>()));
+  sl.registerFactory(() => OnboardingCubit(onboardingRepository: sl<IOnboardingRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOnboardingRepository>(
@@ -120,15 +120,15 @@ void _initWorkoutFeature() {
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => MarkDoneHandler(
-        weekBloc: sl<WeekBloc>(),
-        monthBloc: sl<MonthBloc>(),
-        oneRmBloc: sl<OneRmBloc>(),
+        weekCubit: sl<WeekCubit>(),
+        monthCubit: sl<MonthCubit>(),
+        oneRmCubit: sl<OneRmCubit>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => MarkUndoneHandler(
-        weekBloc: sl<WeekBloc>(),
-        monthBloc: sl<MonthBloc>(),
-        oneRmBloc: sl<OneRmBloc>(),
+        weekCubit: sl<WeekCubit>(),
+        monthCubit: sl<MonthCubit>(),
+        oneRmCubit: sl<OneRmCubit>(),
         workoutRepository: sl<IWorkoutRepository>(),
       ));
   sl.registerFactory(() => RemoveHandler(
@@ -137,7 +137,7 @@ void _initWorkoutFeature() {
 
   // Bloc
   sl.registerFactory(
-    () => WorkoutBloc(
+    () => WorkoutCubit(
       generateHandler: sl<GenerateHandler>(),
       markDoneHandler: sl<MarkDoneHandler>(),
       markUndoneHandler: sl<MarkUndoneHandler>(),
@@ -157,7 +157,7 @@ void _initWorkoutFeature() {
 
 void _initOneRmFeature() {
   // Bloc
-  sl.registerFactory(() => OneRmBloc(oneRmRepository: sl<IOneRmRepository>()));
+  sl.registerFactory(() => OneRmCubit(oneRmRepository: sl<IOneRmRepository>()));
 
   // Repositories
   sl.registerLazySingleton<IOneRmRepository>(
@@ -170,7 +170,7 @@ void _initOneRmFeature() {
 
 void _initSettingsFeature() {
   // Bloc
-  sl.registerFactory(() => SettingsBloc(settingsRepository: sl<ISettingsRepository>()));
+  sl.registerFactory(() => SettingsCubit(settingsRepository: sl<ISettingsRepository>()));
 
   // Repositories
   sl.registerLazySingleton<ISettingsRepository>(

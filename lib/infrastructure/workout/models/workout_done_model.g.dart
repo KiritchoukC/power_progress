@@ -8,13 +8,13 @@ part of 'workout_done_model.dart';
 
 class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
   @override
-  final typeId = 1;
+  final int typeId = 1;
 
   @override
   WorkoutDoneModel read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WorkoutDoneModel(
       exerciseId: fields[1] as int,
@@ -39,4 +39,14 @@ class WorkoutDoneModelAdapter extends TypeAdapter<WorkoutDoneModel> {
       ..writeByte(4)
       ..write(obj.repsDone);
   }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WorkoutDoneModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

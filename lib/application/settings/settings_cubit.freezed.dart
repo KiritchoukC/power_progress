@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'settings_bloc.dart';
+part of 'settings_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,303 +9,39 @@ part of 'settings_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$SettingsEventTearOff {
-  const _$SettingsEventTearOff();
-
-  UpdateTheme updateTheme({@required bool isThemeDark}) {
-    return UpdateTheme(
-      isThemeDark: isThemeDark,
-    );
-  }
-
-  Fetch fetch() {
-    return const Fetch();
-  }
-}
-
-// ignore: unused_element
-const $SettingsEvent = _$SettingsEventTearOff();
-
-mixin _$SettingsEvent {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateTheme(bool isThemeDark),
-    @required Result fetch(),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateTheme(bool isThemeDark),
-    Result fetch(),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateTheme(UpdateTheme value),
-    @required Result fetch(Fetch value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateTheme(UpdateTheme value),
-    Result fetch(Fetch value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $SettingsEventCopyWith<$Res> {
-  factory $SettingsEventCopyWith(
-          SettingsEvent value, $Res Function(SettingsEvent) then) =
-      _$SettingsEventCopyWithImpl<$Res>;
-}
-
-class _$SettingsEventCopyWithImpl<$Res>
-    implements $SettingsEventCopyWith<$Res> {
-  _$SettingsEventCopyWithImpl(this._value, this._then);
-
-  final SettingsEvent _value;
-  // ignore: unused_field
-  final $Res Function(SettingsEvent) _then;
-}
-
-abstract class $UpdateThemeCopyWith<$Res> {
-  factory $UpdateThemeCopyWith(
-          UpdateTheme value, $Res Function(UpdateTheme) then) =
-      _$UpdateThemeCopyWithImpl<$Res>;
-  $Res call({bool isThemeDark});
-}
-
-class _$UpdateThemeCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
-    implements $UpdateThemeCopyWith<$Res> {
-  _$UpdateThemeCopyWithImpl(
-      UpdateTheme _value, $Res Function(UpdateTheme) _then)
-      : super(_value, (v) => _then(v as UpdateTheme));
-
-  @override
-  UpdateTheme get _value => super._value as UpdateTheme;
-
-  @override
-  $Res call({
-    Object isThemeDark = freezed,
-  }) {
-    return _then(UpdateTheme(
-      isThemeDark:
-          isThemeDark == freezed ? _value.isThemeDark : isThemeDark as bool,
-    ));
-  }
-}
-
-class _$UpdateTheme with DiagnosticableTreeMixin implements UpdateTheme {
-  const _$UpdateTheme({@required this.isThemeDark})
-      : assert(isThemeDark != null);
-
-  @override
-  final bool isThemeDark;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SettingsEvent.updateTheme(isThemeDark: $isThemeDark)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SettingsEvent.updateTheme'))
-      ..add(DiagnosticsProperty('isThemeDark', isThemeDark));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is UpdateTheme &&
-            (identical(other.isThemeDark, isThemeDark) ||
-                const DeepCollectionEquality()
-                    .equals(other.isThemeDark, isThemeDark)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isThemeDark);
-
-  @override
-  $UpdateThemeCopyWith<UpdateTheme> get copyWith =>
-      _$UpdateThemeCopyWithImpl<UpdateTheme>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateTheme(bool isThemeDark),
-    @required Result fetch(),
-  }) {
-    assert(updateTheme != null);
-    assert(fetch != null);
-    return updateTheme(isThemeDark);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateTheme(bool isThemeDark),
-    Result fetch(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (updateTheme != null) {
-      return updateTheme(isThemeDark);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateTheme(UpdateTheme value),
-    @required Result fetch(Fetch value),
-  }) {
-    assert(updateTheme != null);
-    assert(fetch != null);
-    return updateTheme(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateTheme(UpdateTheme value),
-    Result fetch(Fetch value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (updateTheme != null) {
-      return updateTheme(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateTheme implements SettingsEvent {
-  const factory UpdateTheme({@required bool isThemeDark}) = _$UpdateTheme;
-
-  bool get isThemeDark;
-  $UpdateThemeCopyWith<UpdateTheme> get copyWith;
-}
-
-abstract class $FetchCopyWith<$Res> {
-  factory $FetchCopyWith(Fetch value, $Res Function(Fetch) then) =
-      _$FetchCopyWithImpl<$Res>;
-}
-
-class _$FetchCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
-    implements $FetchCopyWith<$Res> {
-  _$FetchCopyWithImpl(Fetch _value, $Res Function(Fetch) _then)
-      : super(_value, (v) => _then(v as Fetch));
-
-  @override
-  Fetch get _value => super._value as Fetch;
-}
-
-class _$Fetch with DiagnosticableTreeMixin implements Fetch {
-  const _$Fetch();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SettingsEvent.fetch()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'SettingsEvent.fetch'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Fetch);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateTheme(bool isThemeDark),
-    @required Result fetch(),
-  }) {
-    assert(updateTheme != null);
-    assert(fetch != null);
-    return fetch();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateTheme(bool isThemeDark),
-    Result fetch(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (fetch != null) {
-      return fetch();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateTheme(UpdateTheme value),
-    @required Result fetch(Fetch value),
-  }) {
-    assert(updateTheme != null);
-    assert(fetch != null);
-    return fetch(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateTheme(UpdateTheme value),
-    Result fetch(Fetch value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (fetch != null) {
-      return fetch(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Fetch implements SettingsEvent {
-  const factory Fetch() = _$Fetch;
-}
-
 class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   ThemeUpdateInProgress themeUpdateInProgress() {
     return const ThemeUpdateInProgress();
   }
 
+// ignore: unused_element
   ThemeUpdated themeUpdated({@required Settings updatedSettings}) {
     return ThemeUpdated(
       updatedSettings: updatedSettings,
     );
   }
 
+// ignore: unused_element
   FetchInProgress fetchInProgress() {
     return const FetchInProgress();
   }
 
+// ignore: unused_element
   Fetched fetched({@required Settings settings}) {
     return Fetched(
       settings: settings,
     );
   }
 
+// ignore: unused_element
   Error error({@required String message}) {
     return Error(
       message: message,

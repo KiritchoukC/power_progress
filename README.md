@@ -9,7 +9,9 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/kiritchoukc/power_progress)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/kiritchoukc/power_progress)
 ![GitHub](https://img.shields.io/github/license/kiritchoukc/power_progress)
+[![time tracker](https://wakatime.com/badge/github/KiritchoukC/power_progress.svg)](https://wakatime.com/badge/github/KiritchoukC/power_progress)
 ![GitHub stars](https://img.shields.io/github/stars/kiritchoukc/power_progress?style=social)
+
 
 ---
 ## Demo <small>`(2020-07-21)`</small>
@@ -17,7 +19,7 @@
 <div style="width: 100%;display: flex; justify-content: center">
   <div style="width: 256px">
 
-  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/assets/20200721_demo.gif)
+  ![Demo Power Progress](https://raw.githubusercontent.com/KiritchoukC/power_progress/master/docs/20200721_demo.gif)
 
   </div>
 </div>

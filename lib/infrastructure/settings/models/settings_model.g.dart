@@ -8,13 +8,13 @@ part of 'settings_model.dart';
 
 class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
   @override
-  final typeId = 3;
+  final int typeId = 3;
 
   @override
   SettingsModel read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SettingsModel(
       isThemeDark: fields[0] as bool,
@@ -28,4 +28,14 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       ..writeByte(0)
       ..write(obj.isThemeDark);
   }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SettingsModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

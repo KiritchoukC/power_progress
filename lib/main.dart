@@ -48,16 +48,11 @@ void initBlocLogging() {
 
 class SimpleBlocDelegate extends BlocObserver {
   final _logger = Logger('Bloc');
-  @override
-  void onEvent(Bloc bloc, Object event) {
-    super.onEvent(bloc, event);
-    _logger.info(event);
-  }
 
   @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    _logger.info(transition);
+  void onChange(Cubit cubit, Change change) {
+    _logger.info(change);
+    super.onChange(cubit, change);
   }
 
   @override

@@ -1,4 +1,4 @@
-part of 'selection_bloc.dart';
+part of 'selection_cubit.dart';
 
 @freezed
 abstract class SelectionState with _$SelectionState {

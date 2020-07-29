@@ -1,4 +1,4 @@
-part of 'one_rm_bloc.dart';
+part of 'one_rm_cubit.dart';
 
 @freezed
 abstract class OneRmState with _$OneRmState {

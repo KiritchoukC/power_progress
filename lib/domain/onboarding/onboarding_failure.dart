@@ -9,3 +9,12 @@ part 'onboarding_failure.freezed.dart';
 abstract class OnboardingFailure with _$OnboardingFailure {
   const factory OnboardingFailure.common(CommonFailure failure) = _Common;
 }
+
+/// Extension methods of the exercise failure class
+extension OnboardingFailureX on OnboardingFailure {
+  String toErrorMessage() {
+    return when(
+      common: (failure) => failure.toErrorMessage(),
+    );
+  }
+}

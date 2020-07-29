@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.38.14](https://github.com/KiritchoukC/power_progress/compare/v2.38.13...v2.38.14) (2020-07-29)
+
+
+### Bug Fixes
+
+* **cubit-migration:** fix workout generate ([6cc8350](https://github.com/KiritchoukC/power_progress/commit/6cc8350))
+
+### [2.38.13](https://github.com/KiritchoukC/power_progress/compare/v2.38.12...v2.38.13) (2020-07-28)
+
+### [2.38.12](https://github.com/KiritchoukC/power_progress/compare/v2.38.11...v2.38.12) (2020-07-28)
+
+### [2.38.11](https://github.com/KiritchoukC/power_progress/compare/v2.38.10...v2.38.11) (2020-07-28)
+
+### [2.38.10](https://github.com/KiritchoukC/power_progress/compare/v2.38.9...v2.38.10) (2020-07-27)
+
+### [2.38.9](https://github.com/KiritchoukC/power_progress/compare/v2.38.8...v2.38.9) (2020-07-27)
+
+
+### Bug Fixes
+
+* **cubit-migration:** fix exercise cubit ([258b910](https://github.com/KiritchoukC/power_progress/commit/258b910))
+
+### [2.38.8](https://github.com/KiritchoukC/power_progress/compare/v2.38.7...v2.38.8) (2020-07-27)
+
+### [2.38.7](https://github.com/KiritchoukC/power_progress/compare/v2.38.6...v2.38.7) (2020-07-27)
+
+### [2.38.6](https://github.com/KiritchoukC/power_progress/compare/v2.38.5...v2.38.6) (2020-07-25)
+
+### [2.38.5](https://github.com/KiritchoukC/power_progress/compare/v2.38.4...v2.38.5) (2020-07-25)
+
+### [2.38.4](https://github.com/KiritchoukC/power_progress/compare/v2.38.3...v2.38.4) (2020-07-25)
+
+### [2.38.3](https://github.com/KiritchoukC/power_progress/compare/v2.38.2...v2.38.3) (2020-07-25)
+
+### [2.38.2](https://github.com/KiritchoukC/power_progress/compare/v2.38.1...v2.38.2) (2020-07-25)
+
+### [2.38.1](https://github.com/KiritchoukC/power_progress/compare/v2.38.0...v2.38.1) (2020-07-25)
+
+## [2.38.0](https://github.com/KiritchoukC/power_progress/compare/v2.37.4...v2.38.0) (2020-07-24)
+
+
+### Features
+
+* **onerm-icon:** add custom one rm icon ([e73a399](https://github.com/KiritchoukC/power_progress/commit/e73a399)), closes [#100](https://github.com/KiritchoukC/power_progress/issues/100)
+
+### [2.37.4](https://github.com/KiritchoukC/power_progress/compare/v2.37.3...v2.37.4) (2020-07-24)
+
 ### [2.37.3](https://github.com/KiritchoukC/power_progress/compare/v2.37.2...v2.37.3) (2020-07-23)
 
 ### [2.37.2](https://github.com/KiritchoukC/power_progress/compare/v2.37.1...v2.37.2) (2020-07-23)

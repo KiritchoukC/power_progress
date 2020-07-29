@@ -10,8 +10,8 @@ class AboutSettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(Icons.info_outline),
-        title: Text('About'),
+        leading: const Icon(Icons.info_outline),
+        title: const Text('About'),
         onTap: () async {
           final packageInfo = PackageInfo.fromPlatform();
 

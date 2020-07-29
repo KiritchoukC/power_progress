@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'selection_bloc.dart';
+part of 'selection_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,166 +9,22 @@ part of 'selection_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$SelectionEventTearOff {
-  const _$SelectionEventTearOff();
-
-  SwitchMode switchMode(
-      {@required bool isInSelectionMode, @required List<int> selectedIds}) {
-    return SwitchMode(
-      isInSelectionMode: isInSelectionMode,
-      selectedIds: selectedIds,
-    );
-  }
-}
-
-// ignore: unused_element
-const $SelectionEvent = _$SelectionEventTearOff();
-
-mixin _$SelectionEvent {
-  bool get isInSelectionMode;
-  List<int> get selectedIds;
-
-  $SelectionEventCopyWith<SelectionEvent> get copyWith;
-}
-
-abstract class $SelectionEventCopyWith<$Res> {
-  factory $SelectionEventCopyWith(
-          SelectionEvent value, $Res Function(SelectionEvent) then) =
-      _$SelectionEventCopyWithImpl<$Res>;
-  $Res call({bool isInSelectionMode, List<int> selectedIds});
-}
-
-class _$SelectionEventCopyWithImpl<$Res>
-    implements $SelectionEventCopyWith<$Res> {
-  _$SelectionEventCopyWithImpl(this._value, this._then);
-
-  final SelectionEvent _value;
-  // ignore: unused_field
-  final $Res Function(SelectionEvent) _then;
-
-  @override
-  $Res call({
-    Object isInSelectionMode = freezed,
-    Object selectedIds = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isInSelectionMode: isInSelectionMode == freezed
-          ? _value.isInSelectionMode
-          : isInSelectionMode as bool,
-      selectedIds: selectedIds == freezed
-          ? _value.selectedIds
-          : selectedIds as List<int>,
-    ));
-  }
-}
-
-abstract class $SwitchModeCopyWith<$Res>
-    implements $SelectionEventCopyWith<$Res> {
-  factory $SwitchModeCopyWith(
-          SwitchMode value, $Res Function(SwitchMode) then) =
-      _$SwitchModeCopyWithImpl<$Res>;
-  @override
-  $Res call({bool isInSelectionMode, List<int> selectedIds});
-}
-
-class _$SwitchModeCopyWithImpl<$Res> extends _$SelectionEventCopyWithImpl<$Res>
-    implements $SwitchModeCopyWith<$Res> {
-  _$SwitchModeCopyWithImpl(SwitchMode _value, $Res Function(SwitchMode) _then)
-      : super(_value, (v) => _then(v as SwitchMode));
-
-  @override
-  SwitchMode get _value => super._value as SwitchMode;
-
-  @override
-  $Res call({
-    Object isInSelectionMode = freezed,
-    Object selectedIds = freezed,
-  }) {
-    return _then(SwitchMode(
-      isInSelectionMode: isInSelectionMode == freezed
-          ? _value.isInSelectionMode
-          : isInSelectionMode as bool,
-      selectedIds: selectedIds == freezed
-          ? _value.selectedIds
-          : selectedIds as List<int>,
-    ));
-  }
-}
-
-class _$SwitchMode with DiagnosticableTreeMixin implements SwitchMode {
-  const _$SwitchMode(
-      {@required this.isInSelectionMode, @required this.selectedIds})
-      : assert(isInSelectionMode != null),
-        assert(selectedIds != null);
-
-  @override
-  final bool isInSelectionMode;
-  @override
-  final List<int> selectedIds;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SelectionEvent.switchMode(isInSelectionMode: $isInSelectionMode, selectedIds: $selectedIds)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SelectionEvent.switchMode'))
-      ..add(DiagnosticsProperty('isInSelectionMode', isInSelectionMode))
-      ..add(DiagnosticsProperty('selectedIds', selectedIds));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is SwitchMode &&
-            (identical(other.isInSelectionMode, isInSelectionMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.isInSelectionMode, isInSelectionMode)) &&
-            (identical(other.selectedIds, selectedIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedIds, selectedIds)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isInSelectionMode) ^
-      const DeepCollectionEquality().hash(selectedIds);
-
-  @override
-  $SwitchModeCopyWith<SwitchMode> get copyWith =>
-      _$SwitchModeCopyWithImpl<SwitchMode>(this, _$identity);
-}
-
-abstract class SwitchMode implements SelectionEvent {
-  const factory SwitchMode(
-      {@required bool isInSelectionMode,
-      @required List<int> selectedIds}) = _$SwitchMode;
-
-  @override
-  bool get isInSelectionMode;
-  @override
-  List<int> get selectedIds;
-  @override
-  $SwitchModeCopyWith<SwitchMode> get copyWith;
-}
-
 class _$SelectionStateTearOff {
   const _$SelectionStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   Selected selected({@required List<int> selectedIds}) {
     return Selected(
       selectedIds: selectedIds,
     );
   }
 
+// ignore: unused_element
   Unselected unselected({@required List<int> unselectedIds}) {
     return Unselected(
       unselectedIds: unselectedIds,

@@ -8,13 +8,13 @@ part of 'one_rm_model.dart';
 
 class OneRmModelAdapter extends TypeAdapter<OneRmModel> {
   @override
-  final typeId = 2;
+  final int typeId = 2;
 
   @override
   OneRmModel read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return OneRmModel(
       exerciseId: fields[1] as int,
@@ -36,4 +36,14 @@ class OneRmModelAdapter extends TypeAdapter<OneRmModel> {
       ..writeByte(3)
       ..write(obj.oneRm);
   }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OneRmModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

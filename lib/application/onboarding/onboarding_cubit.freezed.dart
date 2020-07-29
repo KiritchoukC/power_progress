@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'onboarding_bloc.dart';
+part of 'onboarding_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,270 +9,40 @@ part of 'onboarding_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$OnboardingEventTearOff {
-  const _$OnboardingEventTearOff();
-
-  MarkDone markDone() {
-    return const MarkDone();
-  }
-
-  IsDone isDone() {
-    return const IsDone();
-  }
-}
-
-// ignore: unused_element
-const $OnboardingEvent = _$OnboardingEventTearOff();
-
-mixin _$OnboardingEvent {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result markDone(),
-    @required Result isDone(),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result markDone(),
-    Result isDone(),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result markDone(MarkDone value),
-    @required Result isDone(IsDone value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result markDone(MarkDone value),
-    Result isDone(IsDone value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $OnboardingEventCopyWith<$Res> {
-  factory $OnboardingEventCopyWith(
-          OnboardingEvent value, $Res Function(OnboardingEvent) then) =
-      _$OnboardingEventCopyWithImpl<$Res>;
-}
-
-class _$OnboardingEventCopyWithImpl<$Res>
-    implements $OnboardingEventCopyWith<$Res> {
-  _$OnboardingEventCopyWithImpl(this._value, this._then);
-
-  final OnboardingEvent _value;
-  // ignore: unused_field
-  final $Res Function(OnboardingEvent) _then;
-}
-
-abstract class $MarkDoneCopyWith<$Res> {
-  factory $MarkDoneCopyWith(MarkDone value, $Res Function(MarkDone) then) =
-      _$MarkDoneCopyWithImpl<$Res>;
-}
-
-class _$MarkDoneCopyWithImpl<$Res> extends _$OnboardingEventCopyWithImpl<$Res>
-    implements $MarkDoneCopyWith<$Res> {
-  _$MarkDoneCopyWithImpl(MarkDone _value, $Res Function(MarkDone) _then)
-      : super(_value, (v) => _then(v as MarkDone));
-
-  @override
-  MarkDone get _value => super._value as MarkDone;
-}
-
-class _$MarkDone with DiagnosticableTreeMixin implements MarkDone {
-  const _$MarkDone();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OnboardingEvent.markDone()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'OnboardingEvent.markDone'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is MarkDone);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result markDone(),
-    @required Result isDone(),
-  }) {
-    assert(markDone != null);
-    assert(isDone != null);
-    return markDone();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result markDone(),
-    Result isDone(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (markDone != null) {
-      return markDone();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result markDone(MarkDone value),
-    @required Result isDone(IsDone value),
-  }) {
-    assert(markDone != null);
-    assert(isDone != null);
-    return markDone(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result markDone(MarkDone value),
-    Result isDone(IsDone value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (markDone != null) {
-      return markDone(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MarkDone implements OnboardingEvent {
-  const factory MarkDone() = _$MarkDone;
-}
-
-abstract class $IsDoneCopyWith<$Res> {
-  factory $IsDoneCopyWith(IsDone value, $Res Function(IsDone) then) =
-      _$IsDoneCopyWithImpl<$Res>;
-}
-
-class _$IsDoneCopyWithImpl<$Res> extends _$OnboardingEventCopyWithImpl<$Res>
-    implements $IsDoneCopyWith<$Res> {
-  _$IsDoneCopyWithImpl(IsDone _value, $Res Function(IsDone) _then)
-      : super(_value, (v) => _then(v as IsDone));
-
-  @override
-  IsDone get _value => super._value as IsDone;
-}
-
-class _$IsDone with DiagnosticableTreeMixin implements IsDone {
-  const _$IsDone();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OnboardingEvent.isDone()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'OnboardingEvent.isDone'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is IsDone);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result markDone(),
-    @required Result isDone(),
-  }) {
-    assert(markDone != null);
-    assert(isDone != null);
-    return isDone();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result markDone(),
-    Result isDone(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (isDone != null) {
-      return isDone();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result markDone(MarkDone value),
-    @required Result isDone(IsDone value),
-  }) {
-    assert(markDone != null);
-    assert(isDone != null);
-    return isDone(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result markDone(MarkDone value),
-    Result isDone(IsDone value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (isDone != null) {
-      return isDone(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class IsDone implements OnboardingEvent {
-  const factory IsDone() = _$IsDone;
-}
-
 class _$OnboardingStateTearOff {
   const _$OnboardingStateTearOff();
 
+// ignore: unused_element
   Initial initial() {
     return const Initial();
   }
 
+// ignore: unused_element
   MarkDoneInProgress markDoneInProgress() {
     return const MarkDoneInProgress();
   }
 
+// ignore: unused_element
   MarkedDone markedDone() {
     return const MarkedDone();
   }
 
+// ignore: unused_element
   IsDoneInProgress isDoneInProgress() {
     return const IsDoneInProgress();
   }
 
+// ignore: unused_element
   Done done() {
     return const Done();
   }
 
+// ignore: unused_element
   NotDone notDone() {
     return const NotDone();
   }
 
+// ignore: unused_element
   Error error({@required String message}) {
     return Error(
       message: message,

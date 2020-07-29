@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/application/workout/workout_bloc.dart';
+import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
@@ -131,15 +131,13 @@ class UncheckButton extends StatelessWidget {
     return IconButton(
       onPressed: enabled
           ? () {
-              context.bloc<WorkoutBloc>().add(
-                    WorkoutEvent.markUndone(
-                      id: workoutDoneId,
-                      exerciseId: exerciseId,
-                      incrementation: incrementation,
-                      week: week,
-                      month: month,
-                      oneRm: oneRm,
-                    ),
+              context.bloc<WorkoutCubit>().markUndone(
+                    id: workoutDoneId,
+                    exerciseId: exerciseId,
+                    incrementation: incrementation,
+                    week: week,
+                    month: month,
+                    oneRm: oneRm,
                   );
             }
           : null,
@@ -163,15 +161,13 @@ class CheckButton extends StatelessWidget {
   void _handleWeekValidation(BuildContext context) {
     week.maybeWhen(
       realization: () => _handleRealizationWeekValidation(context),
-      orElse: () => context.bloc<WorkoutBloc>().add(
-            WorkoutEvent.markDone(
-              exerciseId: exerciseId,
-              incrementation: incrementation,
-              month: month,
-              week: week,
-              oneRm: oneRm,
-              repsDone: none(),
-            ),
+      orElse: () => context.bloc<WorkoutCubit>().markDone(
+            exerciseId: exerciseId,
+            incrementation: incrementation,
+            month: month,
+            week: week,
+            oneRm: oneRm,
+            repsDone: none(),
           ),
     );
   }
@@ -181,15 +177,13 @@ class CheckButton extends StatelessWidget {
       context: context,
       builder: (context) => RealizationDialog(
         initialValue: realizationReps,
-        onValidate: (value) => context.bloc<WorkoutBloc>().add(
-              WorkoutEvent.markDone(
-                exerciseId: exerciseId,
-                incrementation: incrementation,
-                month: month,
-                week: week,
-                oneRm: oneRm,
-                repsDone: some(value),
-              ),
+        onValidate: (value) => context.bloc<WorkoutCubit>().markDone(
+              exerciseId: exerciseId,
+              incrementation: incrementation,
+              month: month,
+              week: week,
+              oneRm: oneRm,
+              repsDone: some(value),
             ),
       ),
     );

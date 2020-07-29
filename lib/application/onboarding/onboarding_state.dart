@@ -1,4 +1,4 @@
-part of 'onboarding_bloc.dart';
+part of 'onboarding_cubit.dart';
 
 @freezed
 abstract class OnboardingState with _$OnboardingState {
