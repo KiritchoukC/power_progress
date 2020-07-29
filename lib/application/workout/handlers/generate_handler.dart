@@ -37,7 +37,7 @@ class GenerateHandler {
 
     output.fold(
       (failure) => emit(WorkoutState.error(message: failure.toErrorMessage())),
-      (workout) => WorkoutState.generated(workout: workout, month: month),
+      (workout) => emit(WorkoutState.generated(workout: workout, month: month)),
     );
   }
 
