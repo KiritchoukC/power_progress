@@ -11,6 +11,7 @@ import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
+import 'package:power_progress/presentation/widgets/exercise_picker.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
@@ -34,7 +35,12 @@ class ExerciseAddPage extends StatelessWidget {
             ),
             body: const CenteredLoading(),
           ),
-          orElse: () => const _ExerciseForm(),
+          orElse: () => Scaffold(
+              appBar: PPAppBar(
+                context: context,
+                titleLabel: 'New exercise',
+              ),
+              body: ExercisePicker()),
         );
       },
     );
