@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.40.0](https://github.com/KiritchoukC/power_progress/compare/v2.39.0...v2.40.0) (2020-08-03)
+
+
+### Features
+
+* **predefined-exercises:** continue on exercise picker ui ([cc32b87](https://github.com/KiritchoukC/power_progress/commit/cc32b87)), closes [#76](https://github.com/KiritchoukC/power_progress/issues/76)
+
 ## [2.39.0](https://github.com/KiritchoukC/power_progress/compare/v2.38.14...v2.39.0) (2020-07-30)
 
 
