@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:power_progress/presentation/theme/pp_theme.dart';
+import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/exercise_picker.dart';
 
 class OnboardingExercisePage extends StatelessWidget {
@@ -9,7 +9,7 @@ class OnboardingExercisePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: PPTheme.redBlackGradient,
+          gradient: redBlackGradient,
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),

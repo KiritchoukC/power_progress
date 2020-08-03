@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/theme/pp_theme.dart';
 
 class MainButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class MainButton extends StatelessWidget {
       onPressed: onPressed,
       child: Ink(
         decoration: BoxDecoration(
-          gradient: PPTheme.pinkYellowGradient,
+          gradient: pinkYellowGradient,
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Container(
