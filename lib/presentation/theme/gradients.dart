@@ -100,3 +100,13 @@ LinearGradient haikusGradient = const LinearGradient(
   end: Alignment.bottomRight,
   stops: [0, 1],
 );
+
+LinearGradient lightGradient = const LinearGradient(
+  colors: [
+    Color(0x00000000),
+    Color(0xFFeeeeee),
+  ],
+  begin: Alignment.bottomRight,
+  end: Alignment.topLeft,
+  stops: [0.5, 1],
+);
