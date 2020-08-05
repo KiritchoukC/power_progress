@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.41.0](https://github.com/KiritchoukC/power_progress/compare/v2.40.0...v2.41.0) (2020-08-05)
+
+
+### Features
+
+* **predefined-exercises:** continue on ui ([a11bf15](https://github.com/KiritchoukC/power_progress/commit/a11bf15)), closes [#76](https://github.com/KiritchoukC/power_progress/issues/76)
+
 ## [2.40.0](https://github.com/KiritchoukC/power_progress/compare/v2.39.0...v2.40.0) (2020-08-03)
 
 
