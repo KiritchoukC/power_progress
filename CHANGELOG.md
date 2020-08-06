@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.42.0](https://github.com/KiritchoukC/power_progress/compare/v2.41.0...v2.42.0) (2020-08-06)
+
+
+### Features
+
+* **predefined-exercises:** update onboarding flow to include exercise picking and finish ui ([58d5951](https://github.com/KiritchoukC/power_progress/commit/58d5951)), closes [#76](https://github.com/KiritchoukC/power_progress/issues/76)
+
 ## [2.41.0](https://github.com/KiritchoukC/power_progress/compare/v2.40.0...v2.41.0) (2020-08-05)
 
 
