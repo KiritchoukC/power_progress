@@ -44,7 +44,7 @@ class OnboardingWelcomePage extends StatelessWidget {
                 children: [
                   FloatingActionButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(RoutePaths.onboardingExercise);
+                      Navigator.of(context).pushNamed(RoutePaths.onboardingExercisePicker);
                     },
                     child: const Icon(Icons.arrow_forward),
                   ),

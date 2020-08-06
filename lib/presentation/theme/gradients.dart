@@ -83,18 +83,49 @@ LinearGradient ohhappinessGradient = const LinearGradient(
 
 LinearGradient orcaGradient = const LinearGradient(
   colors: [
-    Color(0xFF44A08D),
     Color(0xFF093637),
+    Color(0xFF093637),
+    Color(0xFF44A08D),
   ],
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-  stops: [0, 1],
+  begin: Alignment.bottomRight,
+  end: Alignment.topLeft,
+  stops: [0, 0.7, 1],
 );
 
 LinearGradient haikusGradient = const LinearGradient(
   colors: [
     Color(0xFFfd746c),
     Color(0xFFff9068),
+  ],
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  stops: [0, 1],
+);
+
+LinearGradient cherryGradient = const LinearGradient(
+  colors: [
+    Color(0xFFEB3349),
+    Color(0xFFF45C43),
+  ],
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  stops: [0, 1],
+);
+
+LinearGradient juicyOrangeGradient = const LinearGradient(
+  colors: [
+    Color(0xFFFF8008),
+    Color(0xFFFFC837),
+  ],
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  stops: [0, 1],
+);
+
+LinearGradient namnGradient = const LinearGradient(
+  colors: [
+    Color(0xFFa73737),
+    Color(0xFF7a2828),
   ],
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,

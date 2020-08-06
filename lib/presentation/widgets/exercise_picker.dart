@@ -5,12 +5,20 @@ import 'package:power_progress/presentation/widgets/svg_wdigets/benchpress_svg_w
 import 'package:power_progress/presentation/widgets/svg_wdigets/clean_and_jerk_svg_widget.dart';
 import 'package:power_progress/presentation/widgets/svg_wdigets/deadlift_svg_widget.dart';
 import 'package:power_progress/presentation/widgets/svg_wdigets/squat_svg_widget.dart';
+import 'package:power_progress/presentation/widgets/utils/shadow_elevation.dart';
 
 class ExercisePicker extends StatelessWidget {
+  final Function(String) onExerciseTap;
+
+  const ExercisePicker({
+    @required this.onExerciseTap,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GridView.extent(
           maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
@@ -24,21 +32,25 @@ class ExercisePicker extends StatelessWidget {
               gradient: burningOrangeGradient,
               exerciseName: 'Bench press',
               svg: BenchpressSvgWidget(),
+              onTap: onExerciseTap,
             ),
             _ExerciseTile(
               gradient: citrusPeelGradient,
               exerciseName: 'Deadlift',
               svg: DeadliftSvgWidget(),
+              onTap: onExerciseTap,
             ),
             _ExerciseTile(
               gradient: haikusGradient,
               exerciseName: 'Squat',
               svg: SquatSvgWidget(),
+              onTap: onExerciseTap,
             ),
             _ExerciseTile(
-              gradient: blueRaspberryGradient,
+              gradient: namnGradient,
               exerciseName: 'Clean & Jerk',
               svg: CleanAndJerkSvgWidget(),
+              onTap: onExerciseTap,
             ),
           ],
         ),
@@ -48,12 +60,16 @@ class ExercisePicker extends StatelessWidget {
 }
 
 class _ExerciseTile extends StatelessWidget {
+  final Function(String) onTap;
   final Gradient gradient;
   final String exerciseName;
   final Widget svg;
 
-  const _ExerciseTile({
+  final borderRadius = BorderRadius.circular(10);
+
+  _ExerciseTile({
     Key key,
+    @required this.onTap,
     @required this.gradient,
     @required this.exerciseName,
     @required this.svg,
@@ -63,64 +79,113 @@ class _ExerciseTile extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          decoration: BoxDecoration(
-              gradient: gradient,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ]),
-          transform: Transform.scale(scale: 0.8).transform,
+        _Background(
+          gradient: gradient,
+          borderRadius: borderRadius,
         ),
         Positioned(
-          top: 0,
+          top: 3,
           left: 5,
-          child: Container(
-            height: 30,
-            child: Text(
-              exerciseName,
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ),
+          child: _Title(exerciseName: exerciseName),
         ),
-        Container(
-          transform: Transform.translate(offset: Offset(20, 20)).transform,
-          child: Container(
-            transform: Transform.scale(scale: 0.8).transform,
-            child: svg,
-          ),
+        _Illustration(svg: svg),
+        _Ripple(
+          borderRadius: borderRadius,
+          onTap: () {
+            onTap(exerciseName);
+          },
         ),
       ],
     );
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      onTap: () {},
+  }
+}
+
+class _Ripple extends StatelessWidget {
+  final Function() onTap;
+  final BorderRadius borderRadius;
+
+  const _Ripple({
+    Key key,
+    @required this.borderRadius,
+    @required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
       child: Material(
-        borderRadius: BorderRadius.circular(10),
-        elevation: 3.0,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: GridTile(
-            footer: Container(
-              height: 30,
-              color: Theme.of(context).backgroundColor.withAlpha(50),
-              child: Center(child: Text(exerciseName)),
-            ),
-            child: Container(
-              decoration: BoxDecoration(gradient: gradient),
-              child: Center(
-                child: svg,
-              ),
-            ),
-          ),
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: borderRadius,
+          radius: 80,
+          onTap: onTap,
         ),
       ),
+    );
+  }
+}
+
+class _Illustration extends StatelessWidget {
+  const _Illustration({
+    Key key,
+    @required this.svg,
+  }) : super(key: key);
+
+  final Widget svg;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      transform: Transform.translate(offset: Offset(20, 20)).transform,
+      child: Container(
+        transform: Transform.scale(scale: 0.8).transform,
+        child: svg,
+      ),
+    );
+  }
+}
+
+class _Title extends StatelessWidget {
+  const _Title({
+    Key key,
+    @required this.exerciseName,
+  }) : super(key: key);
+
+  final String exerciseName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30,
+      child: Text(
+        exerciseName,
+        textAlign: TextAlign.left,
+        style: Theme.of(context).textTheme.headline5,
+      ),
+    );
+  }
+}
+
+class _Background extends StatelessWidget {
+  const _Background({
+    Key key,
+    @required this.gradient,
+    @required this.borderRadius,
+  }) : super(key: key);
+
+  final Gradient gradient;
+  final BorderRadius borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: gradient,
+        borderRadius: borderRadius,
+        boxShadow: elevation3,
+      ),
+      transform: Transform.scale(scale: 0.8).transform,
     );
   }
 }
