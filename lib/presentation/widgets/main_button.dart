@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import 'package:power_progress/presentation/theme/gradients.dart';
-import 'package:power_progress/presentation/theme/pp_theme.dart';
 
 class MainButton extends StatelessWidget {
   final VoidCallback onPressed;

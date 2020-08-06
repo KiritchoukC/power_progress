@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+
 import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/svg_wdigets/benchpress_svg_widget.dart';
 import 'package:power_progress/presentation/widgets/svg_wdigets/clean_and_jerk_svg_widget.dart';
@@ -17,12 +17,10 @@ class ExercisePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GridView.extent(
           maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,
-          scrollDirection: Axis.vertical,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           shrinkWrap: true,
@@ -137,7 +135,7 @@ class _Illustration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      transform: Transform.translate(offset: Offset(20, 20)).transform,
+      transform: Transform.translate(offset: const Offset(20, 20)).transform,
       child: Container(
         transform: Transform.scale(scale: 0.8).transform,
         child: svg,
