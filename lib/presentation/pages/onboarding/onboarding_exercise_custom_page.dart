@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:power_progress/presentation/theme/pp_theme.dart';
 
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 
-class OnboardingExercisePage extends StatelessWidget {
+class OnboardingExerciseCustomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: PPTheme.redBlackGradient,
+          gradient: LinearGradient(
+            colors: [
+              Colors.transparent,
+              Colors.transparent,
+              Colors.red.withAlpha(150),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -51,13 +58,11 @@ class _ExerciseFormState extends State<_ExerciseForm> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 24.0,
-              color: Colors.white,
             ),
           ),
           const VSpacing.medium(),
           ExerciseNameInput(
             controller: _exerciseController,
-            color: Colors.white,
           ),
           const VSpacing.medium(),
           Row(

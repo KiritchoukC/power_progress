@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/presentation/pages/exercise/add/exercise_add_page.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_page.dart';
-import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_page.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_custom_page.dart';
+import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_picker_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_welcome_page.dart';
 import 'package:power_progress/presentation/pages/settings/settings_page.dart';
@@ -27,8 +28,11 @@ class Router {
       case RoutePaths.onboardingWelcome:
         return OnboardingWelcomePageRoute();
 
-      case RoutePaths.onboardingExercise:
-        return OnboardingExercisePageRoute();
+      case RoutePaths.onboardingExercisePicker:
+        return OnboardingExercisePickerPageRoute();
+
+      case RoutePaths.onboardingExerciseCustom:
+        return OnboardingExerciseCustomPageRoute();
 
       case RoutePaths.onboardingInformations:
         return OnboardingInformationsPageRoute(
@@ -86,12 +90,22 @@ class OnboardingWelcomePageRoute extends MaterialPageRoute {
         );
 }
 
-class OnboardingExercisePageRoute extends MaterialPageRoute {
-  OnboardingExercisePageRoute()
+class OnboardingExerciseCustomPageRoute extends MaterialPageRoute {
+  OnboardingExerciseCustomPageRoute()
       : super(
-          builder: (_) => OnboardingExercisePage(),
+          builder: (_) => OnboardingExerciseCustomPage(),
           settings: const RouteSettings(
-            name: RoutePaths.onboardingExercise,
+            name: RoutePaths.onboardingExerciseCustom,
+          ),
+        );
+}
+
+class OnboardingExercisePickerPageRoute extends MaterialPageRoute {
+  OnboardingExercisePickerPageRoute()
+      : super(
+          builder: (_) => OnboardingExercisePickerPage(),
+          settings: const RouteSettings(
+            name: RoutePaths.onboardingExercisePicker,
           ),
         );
 }

@@ -22,6 +22,7 @@ dependencies:
   google_fonts: ^1.1.0
   package_info: ^0.4.1
   avatar_glow: ^1.2.0
+  flutter_svg: ^0.18.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,6 +43,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/exercises/benchpress.svg
+    - assets/images/exercises/clean-jerk.svg
+    - assets/images/exercises/deadlift.svg
+    - assets/images/exercises/squat.svg
   fonts:
     - family:  CustomIcons
       fonts:
