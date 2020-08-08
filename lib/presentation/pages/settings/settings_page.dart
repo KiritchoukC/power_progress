@@ -9,8 +9,10 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PPAppBar(
-          context: context,
-          titleLabel: 'Settings',
+          title: Text(
+            'Settings',
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
           automaticallyImplyLeading: true,
         ),
         body: SingleChildScrollView(
