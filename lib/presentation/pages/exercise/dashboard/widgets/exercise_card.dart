@@ -70,9 +70,12 @@ class _Card extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(
-                exercise.name.getOrCrash(),
-                style: Theme.of(context).textTheme.headline6,
+              Hero(
+                tag: 'exercise-${exercise.id}',
+                child: Text(
+                  exercise.name.getOrCrash(),
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
               OneRmWidget(exercise: exercise),
               Row(

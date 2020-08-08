@@ -53,8 +53,10 @@ class DashboardPage extends StatelessWidget {
         ),
       ),
       appBar: PPAppBar(
-        context: context,
-        titleLabel: 'Dashboard',
+        title: Text(
+          'Dashboard',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
         actions: [
           _RemoveButton(),
         ],

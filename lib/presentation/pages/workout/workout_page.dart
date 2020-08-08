@@ -39,8 +39,13 @@ class WorkoutPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: PPAppBar(
-          context: context,
-          titleLabel: exercise.name.getOrCrash(),
+          title: Hero(
+            tag: 'exercise-${exercise.id}',
+            child: Text(
+              exercise.name.getOrCrash(),
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
+          ),
           actions: [
             RemoveButton(
               onPressed: () {

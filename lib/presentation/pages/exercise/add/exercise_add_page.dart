@@ -29,8 +29,10 @@ class ExerciseAddPage extends StatelessWidget {
         return state.maybeWhen(
           addInProgress: () => Scaffold(
             appBar: PPAppBar(
-              context: context,
-              titleLabel: 'New exercise',
+              title: Text(
+                'New exercise',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
             ),
             body: const CenteredLoading(),
           ),
@@ -84,8 +86,10 @@ class _ExerciseFormState extends State<_ExerciseForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PPAppBar(
-        context: context,
-        titleLabel: 'New exercise',
+        title: Text(
+          'New exercise',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
