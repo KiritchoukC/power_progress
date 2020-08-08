@@ -41,9 +41,16 @@ class WorkoutPage extends StatelessWidget {
         appBar: PPAppBar(
           title: Hero(
             tag: 'exercise-${exercise.id}',
-            child: Text(
-              exercise.name.getOrCrash(),
-              style: TextStyle(color: Theme.of(context).primaryColor),
+            transitionOnUserGestures: true,
+            child: Material(
+              type: MaterialType.transparency, // likely needed
+              child: Text(
+                exercise.name.getOrCrash(),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .apply(color: Theme.of(context).primaryColor),
+              ),
             ),
           ),
           actions: [
