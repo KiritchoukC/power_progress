@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.43.0](https://github.com/KiritchoukC/power_progress/compare/v2.42.1...v2.43.0) (2020-08-08)
+
+
+### Features
+
+* **shadow-elevation:** add all elevation as shadows ([e441378](https://github.com/KiritchoukC/power_progress/commit/e441378))
+
 ### [2.42.1](https://github.com/KiritchoukC/power_progress/compare/v2.42.0...v2.42.1) (2020-08-06)
 
 ## [2.42.0](https://github.com/KiritchoukC/power_progress/compare/v2.41.0...v2.42.0) (2020-08-06)
