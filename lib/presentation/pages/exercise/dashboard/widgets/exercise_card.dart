@@ -72,9 +72,13 @@ class _Card extends StatelessWidget {
             children: [
               Hero(
                 tag: 'exercise-${exercise.id}',
-                child: Text(
-                  exercise.name.getOrCrash(),
-                  style: Theme.of(context).textTheme.headline6,
+                transitionOnUserGestures: true,
+                child: Material(
+                  type: MaterialType.transparency, // likely needed
+                  child: Text(
+                    exercise.name.getOrCrash(),
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
               ),
               OneRmWidget(exercise: exercise),
