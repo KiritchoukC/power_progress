@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.44.0](https://github.com/KiritchoukC/power_progress/compare/v2.43.0...v2.44.0) (2020-08-08)
+
+
+### Features
+
+* **routing-animation:** add animation between dashboard and workout pages ([a412bf0](https://github.com/KiritchoukC/power_progress/commit/a412bf0)), closes [#56](https://github.com/KiritchoukC/power_progress/issues/56)
+
 ## [2.43.0](https://github.com/KiritchoukC/power_progress/compare/v2.42.1...v2.43.0) (2020-08-08)
 
 
