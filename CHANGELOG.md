@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.45.0](https://github.com/KiritchoukC/power_progress/compare/v2.44.2...v2.45.0) (2020-08-09)
+
+
+### Features
+
+* **routing-animation:** use flutter pub package animations to update routing animation ([d8c4068](https://github.com/KiritchoukC/power_progress/commit/d8c4068)), closes [#56](https://github.com/KiritchoukC/power_progress/issues/56)
+
 ### [2.44.2](https://github.com/KiritchoukC/power_progress/compare/v2.44.1...v2.44.2) (2020-08-09)
 
 ### [2.44.1](https://github.com/KiritchoukC/power_progress/compare/v2.44.0...v2.44.1) (2020-08-08)
