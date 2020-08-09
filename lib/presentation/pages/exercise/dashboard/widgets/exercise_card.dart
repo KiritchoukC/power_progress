@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:power_progress/domain/exercise/exercise.dart';
@@ -24,29 +25,34 @@ class ExerciseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).cardColor,
-      elevation: 1,
-      child: InkWell(
-        onLongPress: () {
-          onSelect();
-        },
-        onTap: () {
-          if (isInSelectionMode) {
-            onSelect();
-            return;
-          }
-
-          Navigator.of(context).pushNamed(
-            RoutePaths.exerciseWorkout,
-            arguments: WorkoutPageArguments(exercise: exercise),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: OpenContainer(
+        closedBuilder: (context, openContainer) {
+          return InkWell(
+            onLongPress: () {
+              onSelect();
+            },
+            onTap: () {
+              if (isInSelectionMode) {
+                onSelect();
+                return;
+              }
+              openContainer();
+            },
+            child: Container(
+              color: isSelected ? Theme.of(context).selectedRowColor : null,
+              height: 100,
+              child: _Card(exercise: exercise),
+            ),
           );
         },
-        child: Container(
-          color: isSelected ? Theme.of(context).selectedRowColor : null,
-          height: 100,
-          child: _Card(exercise: exercise),
-        ),
+        closedColor: Theme.of(context).cardColor,
+        closedElevation: 1,
+        tappable: false,
+        openBuilder: (context, action) {
+          return WorkoutPage(exercise: exercise);
+        },
       ),
     );
   }
@@ -74,7 +80,7 @@ class _Card extends StatelessWidget {
               Text(
                 exercise.name.getOrCrash(),
                 style: Theme.of(context).textTheme.headline6,
-              ).hero("exercise-${exercise.id}"),
+              ),
               OneRmWidget(exercise: exercise),
               Row(
                 children: [

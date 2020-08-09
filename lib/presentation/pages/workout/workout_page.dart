@@ -43,7 +43,7 @@ class WorkoutPage extends StatelessWidget {
           title: Text(
             exercise.name.getOrCrash(),
             style: Theme.of(context).textTheme.headline6,
-          ).hero("exercise-${exercise.id}"),
+          ),
           actions: [
             RemoveButton(
               onPressed: () {
