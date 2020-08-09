@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.45.1](https://github.com/KiritchoukC/power_progress/compare/v2.45.0...v2.45.1) (2020-08-09)
+
+
+### Bug Fixes
+
+* **routing-animation:** fix files referencing text_extensions.dart ([62a7d4e](https://github.com/KiritchoukC/power_progress/commit/62a7d4e)), closes [#56](https://github.com/KiritchoukC/power_progress/issues/56)
+
 ## [2.45.0](https://github.com/KiritchoukC/power_progress/compare/v2.44.2...v2.45.0) (2020-08-09)
 
 

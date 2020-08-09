@@ -5,9 +5,7 @@ import 'package:power_progress/domain/exercise/exercise.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/week_widget.dart';
-import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
-import 'package:power_progress/presentation/widgets/utils/text_extensions.dart';
 
 class ExerciseCard extends StatelessWidget {
   final Exercise exercise;
