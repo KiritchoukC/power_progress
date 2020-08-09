@@ -15,6 +15,7 @@ import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
+import 'package:power_progress/presentation/widgets/utils/text_extensions.dart';
 import 'package:power_progress/presentation/pages/workout/widgets/week_set_widget.dart';
 
 class WorkoutPageArguments {
@@ -39,19 +40,9 @@ class WorkoutPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: PPAppBar(
-          title: Hero(
-            tag: 'exercise-${exercise.id}',
-            transitionOnUserGestures: true,
-            child: Material(
-              type: MaterialType.transparency, // likely needed
-              child: Text(
-                exercise.name.getOrCrash(),
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    .apply(color: Theme.of(context).primaryColor),
-              ),
-            ),
+          title: Text(
+            exercise.name.getOrCrash(),
+            style: Theme.of(context).textTheme.headline6,
           ),
           actions: [
             RemoveButton(

@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:power_progress/domain/exercise/exercise.dart';
@@ -6,6 +7,7 @@ import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/week_widget.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
+import 'package:power_progress/presentation/widgets/utils/text_extensions.dart';
 
 class ExerciseCard extends StatelessWidget {
   final Exercise exercise;
@@ -23,29 +25,34 @@ class ExerciseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Theme.of(context).cardColor,
-      elevation: 1,
-      child: InkWell(
-        onLongPress: () {
-          onSelect();
-        },
-        onTap: () {
-          if (isInSelectionMode) {
-            onSelect();
-            return;
-          }
-
-          Navigator.of(context).pushNamed(
-            RoutePaths.exerciseWorkout,
-            arguments: WorkoutPageArguments(exercise: exercise),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: OpenContainer(
+        closedBuilder: (context, openContainer) {
+          return InkWell(
+            onLongPress: () {
+              onSelect();
+            },
+            onTap: () {
+              if (isInSelectionMode) {
+                onSelect();
+                return;
+              }
+              openContainer();
+            },
+            child: Container(
+              color: isSelected ? Theme.of(context).selectedRowColor : null,
+              height: 100,
+              child: _Card(exercise: exercise),
+            ),
           );
         },
-        child: Container(
-          color: isSelected ? Theme.of(context).selectedRowColor : null,
-          height: 100,
-          child: _Card(exercise: exercise),
-        ),
+        closedColor: Theme.of(context).cardColor,
+        closedElevation: 1,
+        tappable: false,
+        openBuilder: (context, action) {
+          return WorkoutPage(exercise: exercise);
+        },
       ),
     );
   }
@@ -70,16 +77,9 @@ class _Card extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Hero(
-                tag: 'exercise-${exercise.id}',
-                transitionOnUserGestures: true,
-                child: Material(
-                  type: MaterialType.transparency, // likely needed
-                  child: Text(
-                    exercise.name.getOrCrash(),
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                ),
+              Text(
+                exercise.name.getOrCrash(),
+                style: Theme.of(context).textTheme.headline6,
               ),
               OneRmWidget(exercise: exercise),
               Row(
