@@ -49,7 +49,7 @@ class WorkoutPage extends StatelessWidget {
               onPressed: () {
                 showModal(
                   context: context,
-                  builder: (BuildContext context) {
+                  builder: (_) {
                     return DeleteConfirmDialog(exerciseIds: [exercise.id]);
                   },
                 );

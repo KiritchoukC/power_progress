@@ -141,7 +141,7 @@ class _RemoveButton extends StatelessWidget {
             onPressed: () {
               showModal(
                 context: context,
-                builder: (context) => DeleteConfirmDialog(exerciseIds: selectedIds),
+                builder: (_) => DeleteConfirmDialog(exerciseIds: selectedIds),
               );
             },
           ),
