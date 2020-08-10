@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,7 +47,7 @@ class WorkoutPage extends StatelessWidget {
           actions: [
             RemoveButton(
               onPressed: () {
-                showDialog(
+                showModal(
                   context: context,
                   builder: (BuildContext context) {
                     return DeleteConfirmDialog(exerciseIds: [exercise.id]);
