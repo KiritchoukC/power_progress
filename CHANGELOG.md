@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.46.0](https://github.com/KiritchoukC/power_progress/compare/v2.45.1...v2.46.0) (2020-08-10)
+
+
+### Features
+
+* **routing-animation:** animate delete dialog ([2a8808f](https://github.com/KiritchoukC/power_progress/commit/2a8808f)), closes [#56](https://github.com/KiritchoukC/power_progress/issues/56)
+
 ### [2.45.1](https://github.com/KiritchoukC/power_progress/compare/v2.45.0...v2.45.1) (2020-08-09)
 
 
