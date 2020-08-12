@@ -32,7 +32,15 @@ class OnboardingInformationsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: royalBlueGradient,
+          gradient: LinearGradient(
+            colors: [
+              Colors.black,
+              Colors.black,
+              Color(0xFFFF416C),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
         child: BlocConsumer<ExerciseCubit, ExerciseState>(
           listener: (BuildContext context, ExerciseState state) {

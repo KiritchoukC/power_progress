@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -138,11 +139,9 @@ class _RemoveButton extends StatelessWidget {
         return state.maybeWhen(
           selected: (selectedIds) => RemoveButton(
             onPressed: () {
-              showDialog(
+              showModal(
                 context: context,
-                builder: (BuildContext context) {
-                  return DeleteConfirmDialog(exerciseIds: selectedIds);
-                },
+                builder: (_) => DeleteConfirmDialog(exerciseIds: selectedIds),
               );
             },
           ),

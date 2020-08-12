@@ -10,12 +10,12 @@ class OnboardingExerciseCustomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.transparent,
-              Colors.transparent,
-              Colors.red.withAlpha(150),
+              Colors.black,
+              Colors.black,
+              Color(0xFFFF416C),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -56,13 +56,12 @@ class _ExerciseFormState extends State<_ExerciseForm> {
           const Text(
             'On which exercise do you want to progress ?',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24.0,
-            ),
+            style: TextStyle(fontSize: 24.0, color: Colors.white),
           ),
           const VSpacing.medium(),
           ExerciseNameInput(
             controller: _exerciseController,
+            color: Colors.white,
           ),
           const VSpacing.medium(),
           Row(

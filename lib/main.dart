@@ -18,6 +18,8 @@ Future main() async {
   // init logging of BLoC transitions
   initBlocLogging();
 
+  initLicenseRegistry();
+
   // init hive local storage
   await initHive();
 
@@ -29,6 +31,19 @@ Future main() async {
 
   // run the app
   runApp(App());
+}
+
+void initLicenseRegistry() {
+  LicenseRegistry.addLicense(() async* {
+    yield const LicenseEntryWithLineBreaks(
+      ['people-gym'],
+      'Designed by pikisuperstar / Freepik',
+    );
+    yield const LicenseEntryWithLineBreaks(
+      ['set-men-training-body-male-lifting-weights'],
+      'Designed by katemangostar / Freepik',
+    );
+  });
 }
 
 Future initHive() async {
