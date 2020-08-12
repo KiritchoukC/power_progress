@@ -12,7 +12,7 @@ class OnboardingWelcomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: purplePinkGradient,
+          gradient: burningOrangeGradient,
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),

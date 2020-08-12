@@ -18,7 +18,7 @@ class MainButton extends StatelessWidget {
       onPressed: onPressed,
       child: Ink(
         decoration: BoxDecoration(
-          gradient: pinkYellowGradient,
+          gradient: burningOrangeGradient,
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Container(
