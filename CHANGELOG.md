@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.48.0](https://github.com/KiritchoukC/power_progress/compare/v2.47.0...v2.48.0) (2020-08-12)
+
+
+### Features
+
+* **colors:** update onboarding and main button colors ([6d9724c](https://github.com/KiritchoukC/power_progress/commit/6d9724c))
+
 ## [2.47.0](https://github.com/KiritchoukC/power_progress/compare/v2.46.1...v2.47.0) (2020-08-12)
 
 
