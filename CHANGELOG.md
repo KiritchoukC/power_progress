@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.47.0](https://github.com/KiritchoukC/power_progress/compare/v2.46.1...v2.47.0) (2020-08-12)
+
+
+### Features
+
+* **routing-animation:** change default routing animation to horizontal shared axis animation ([b412af3](https://github.com/KiritchoukC/power_progress/commit/b412af3)), closes [#56](https://github.com/KiritchoukC/power_progress/issues/56)
+
 ### [2.46.1](https://github.com/KiritchoukC/power_progress/compare/v2.46.0...v2.46.1) (2020-08-10)
 
 ## [2.46.0](https://github.com/KiritchoukC/power_progress/compare/v2.45.1...v2.46.0) (2020-08-10)
