@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.49.0](https://github.com/KiritchoukC/power_progress/compare/v2.48.0...v2.49.0) (2020-08-14)
+
+
+### Features
+
+* **add-rework:** implement add exercise popup ui ([88ac191](https://github.com/KiritchoukC/power_progress/commit/88ac191)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.48.0](https://github.com/KiritchoukC/power_progress/compare/v2.47.0...v2.48.0) (2020-08-12)
 
 
