@@ -9,6 +9,7 @@ import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bot
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
@@ -21,36 +22,42 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<WorkoutCubit, WorkoutState>(
-        listener: (previous, current) {
-          void fetch(_) {
-            context.bloc<ExerciseCubit>().fetch();
-          }
-
-          current.maybeMap(
-            markedDone: fetch,
-            markedUndone: fetch,
-            orElse: () {},
-          );
-        },
-        child: BlocBuilder<ExerciseCubit, ExerciseState>(
-          builder: (context, state) {
-            Widget fetch() {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                BlocProvider.of<ExerciseCubit>(context).fetch();
-              });
-
-              return const CenteredLoading();
+      body: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: MediaQuery.of(context).size.width,
+          minHeight: MediaQuery.of(context).size.height,
+        ),
+        child: BlocListener<WorkoutCubit, WorkoutState>(
+          listener: (previous, current) {
+            void fetch(_) {
+              context.bloc<ExerciseCubit>().fetch();
             }
 
-            return state.maybeWhen(
-              removed: fetch,
-              initial: fetch,
-              added: fetch,
-              fetched: (exercises) => _Body(exercises: exercises),
-              orElse: () => const CenteredLoading(),
+            current.maybeMap(
+              markedDone: fetch,
+              markedUndone: fetch,
+              orElse: () {},
             );
           },
+          child: BlocBuilder<ExerciseCubit, ExerciseState>(
+            builder: (context, state) {
+              Widget fetch() {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  BlocProvider.of<ExerciseCubit>(context).fetch();
+                });
+
+                return const CenteredLoading();
+              }
+
+              return state.maybeWhen(
+                removed: fetch,
+                initial: fetch,
+                added: fetch,
+                fetched: (exercises) => _Temp(exercises: exercises),
+                orElse: () => const CenteredLoading(),
+              );
+            },
+          ),
         ),
       ),
       appBar: PPAppBar(
@@ -69,10 +76,33 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
+class _Temp extends StatelessWidget {
+  final List<Exercise> exercises;
+
+  const _Temp({Key key, @required this.exercises}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: _Body(
+            exercises: exercises,
+          ),
+        ),
+        Positioned(
+          bottom: 30,
+          child: ExerciseAdd(),
+        ),
+      ],
+    );
+  }
+}
+
 class _Body extends StatefulWidget {
   final List<Exercise> exercises;
 
-  const _Body({Key key, this.exercises}) : super(key: key);
+  const _Body({Key key, @required this.exercises}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
