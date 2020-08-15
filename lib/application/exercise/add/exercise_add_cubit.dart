@@ -14,4 +14,16 @@ class ExerciseAddCubit extends Cubit<ExerciseAddState> {
   void hideForm() {
     emit(const ExerciseAddState.formHidden());
   }
+
+  void validationRequired() {
+    emit(const ExerciseAddState.formValidationRequired());
+  }
+
+  void validForm() {
+    emit(const ExerciseAddState.formValid());
+  }
+
+  void invalidForm() {
+    emit(const ExerciseAddState.formInvalid());
+  }
 }

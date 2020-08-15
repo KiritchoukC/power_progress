@@ -20,10 +20,17 @@ class AddButton extends StatelessWidget {
 
         Widget validateButton() {
           return FloatingActionButton(
-            child: Icon(Icons.check),
             onPressed: () {
-              context.bloc<ExerciseAddCubit>().hideForm();
+              context.bloc<ExerciseAddCubit>().validationRequired();
             },
+            child: const Icon(Icons.check),
+          );
+        }
+
+        Widget disabledValidateButton() {
+          return const FloatingActionButton(
+            onPressed: null,
+            child: Icon(Icons.check),
           );
         }
 
@@ -31,6 +38,9 @@ class AddButton extends StatelessWidget {
           inital: addButton,
           formHidden: addButton,
           formShown: validateButton,
+          formValidationRequired: disabledValidateButton,
+          formInvalid: validateButton,
+          formValid: addButton,
         );
       },
     );

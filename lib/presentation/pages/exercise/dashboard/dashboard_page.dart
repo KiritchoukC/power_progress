@@ -3,8 +3,8 @@ import 'dart:core';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 
+import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
@@ -101,24 +101,17 @@ class _BodyStacked extends StatelessWidget {
               ),
               Positioned(
                 bottom: -20,
-                child: BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
-                  builder: (context, state) {
-                    return state.when(
-                      inital: () => Container(),
-                      formShown: () => ExerciseAdd(),
-                      formHidden: () => Container(),
-                    );
-                  },
-                ),
+                child: ExerciseAdd(),
               ),
             ],
           );
         }
 
-        return state.when(
-          inital: noForm,
-          formHidden: noForm,
+        return state.maybeWhen(
           formShown: withForm,
+          formInvalid: withForm,
+          formValidationRequired: withForm,
+          orElse: noForm,
         );
       },
     );
