@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.51.0](https://github.com/KiritchoukC/power_progress/compare/v2.50.0...v2.51.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** add dismiss on outside tap ([e156aea](https://github.com/KiritchoukC/power_progress/commit/e156aea)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.50.0](https://github.com/KiritchoukC/power_progress/compare/v2.49.0...v2.50.0) (2020-08-15)
 
 
