@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.52.0](https://github.com/KiritchoukC/power_progress/compare/v2.51.0...v2.52.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** implement add cubit logic ([aad8f52](https://github.com/KiritchoukC/power_progress/commit/aad8f52)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.51.0](https://github.com/KiritchoukC/power_progress/compare/v2.50.0...v2.51.0) (2020-08-15)
 
 
