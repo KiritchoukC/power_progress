@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
 import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
@@ -42,8 +44,8 @@ class _ExerciseAddState extends State<ExerciseAdd> {
                 boxShadow: elevation3,
               ),
               height: 200,
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   ExerciseNameInput(
@@ -57,15 +59,6 @@ class _ExerciseAddState extends State<ExerciseAdd> {
                   ),
                 ],
               ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 20,
-            child: FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: Colors.black,
-              child: Icon(Icons.check),
             ),
           ),
         ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:power_progress/presentation/pages/onboarding/onboarding_informations_page.dart';
 import 'package:power_progress/presentation/router/route_paths.dart';
-import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/exercise_picker.dart';
 
 class OnboardingExercisePickerPage extends StatelessWidget {
@@ -10,7 +9,7 @@ class OnboardingExercisePickerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.black,

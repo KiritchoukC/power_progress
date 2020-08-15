@@ -3,6 +3,7 @@ import 'dart:core';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
@@ -53,7 +54,7 @@ class DashboardPage extends StatelessWidget {
                 removed: fetch,
                 initial: fetch,
                 added: fetch,
-                fetched: (exercises) => _Temp(exercises: exercises),
+                fetched: (exercises) => _BodyStacked(exercises: exercises),
                 orElse: () => const CenteredLoading(),
               );
             },
@@ -76,10 +77,10 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
-class _Temp extends StatelessWidget {
+class _BodyStacked extends StatelessWidget {
   final List<Exercise> exercises;
 
-  const _Temp({Key key, @required this.exercises}) : super(key: key);
+  const _BodyStacked({Key key, @required this.exercises}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,8 +92,16 @@ class _Temp extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 30,
-          child: ExerciseAdd(),
+          bottom: -20,
+          child: BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
+            builder: (context, state) {
+              return state.when(
+                inital: () => Container(),
+                formShown: () => ExerciseAdd(),
+                formHidden: () => Container(),
+              );
+            },
+          ),
         ),
       ],
     );
