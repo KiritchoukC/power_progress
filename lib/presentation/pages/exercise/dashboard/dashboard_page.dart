@@ -23,42 +23,36 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: MediaQuery.of(context).size.width,
-          minHeight: MediaQuery.of(context).size.height,
-        ),
-        child: BlocListener<WorkoutCubit, WorkoutState>(
-          listener: (previous, current) {
-            void fetch(_) {
-              context.bloc<ExerciseCubit>().fetch();
+      body: BlocListener<WorkoutCubit, WorkoutState>(
+        listener: (previous, current) {
+          void fetch(_) {
+            context.bloc<ExerciseCubit>().fetch();
+          }
+
+          current.maybeMap(
+            markedDone: fetch,
+            markedUndone: fetch,
+            orElse: () {},
+          );
+        },
+        child: BlocBuilder<ExerciseCubit, ExerciseState>(
+          builder: (context, state) {
+            Widget fetch() {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                BlocProvider.of<ExerciseCubit>(context).fetch();
+              });
+
+              return const CenteredLoading();
             }
 
-            current.maybeMap(
-              markedDone: fetch,
-              markedUndone: fetch,
-              orElse: () {},
+            return state.maybeWhen(
+              removed: fetch,
+              initial: fetch,
+              added: fetch,
+              fetched: (exercises) => _BodyStacked(exercises: exercises),
+              orElse: () => const CenteredLoading(),
             );
           },
-          child: BlocBuilder<ExerciseCubit, ExerciseState>(
-            builder: (context, state) {
-              Widget fetch() {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  BlocProvider.of<ExerciseCubit>(context).fetch();
-                });
-
-                return const CenteredLoading();
-              }
-
-              return state.maybeWhen(
-                removed: fetch,
-                initial: fetch,
-                added: fetch,
-                fetched: (exercises) => _BodyStacked(exercises: exercises),
-                orElse: () => const CenteredLoading(),
-              );
-            },
-          ),
         ),
       ),
       appBar: PPAppBar(
@@ -84,26 +78,49 @@ class _BodyStacked extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SingleChildScrollView(
-          child: _Body(
-            exercises: exercises,
-          ),
-        ),
-        Positioned(
-          bottom: -20,
-          child: BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
-            builder: (context, state) {
-              return state.when(
-                inital: () => Container(),
-                formShown: () => ExerciseAdd(),
-                formHidden: () => Container(),
-              );
-            },
-          ),
-        ),
-      ],
+    return BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
+      builder: (context, state) {
+        Widget noForm() {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: _Body(exercises: exercises),
+              ),
+            ],
+          );
+        }
+
+        Widget withForm() {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: _Body(exercises: exercises),
+              ),
+              GestureDetector(
+                onTap: () => context.bloc<ExerciseAddCubit>().hideForm(),
+              ),
+              Positioned(
+                bottom: -20,
+                child: BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
+                  builder: (context, state) {
+                    return state.when(
+                      inital: () => Container(),
+                      formShown: () => ExerciseAdd(),
+                      formHidden: () => Container(),
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        }
+
+        return state.when(
+          inital: noForm,
+          formHidden: noForm,
+          formShown: withForm,
+        );
+      },
     );
   }
 }
