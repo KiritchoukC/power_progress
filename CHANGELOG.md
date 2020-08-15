@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.50.0](https://github.com/KiritchoukC/power_progress/compare/v2.49.0...v2.50.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** add cubit to manage form display ([8c4ecf4](https://github.com/KiritchoukC/power_progress/commit/8c4ecf4)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.49.0](https://github.com/KiritchoukC/power_progress/compare/v2.48.0...v2.49.0) (2020-08-14)
 
 
