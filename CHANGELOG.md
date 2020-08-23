@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.55.0](https://github.com/KiritchoukC/power_progress/compare/v2.54.1...v2.55.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** update animation curve to easeOutExpo ([78aa2ae](https://github.com/KiritchoukC/power_progress/commit/78aa2ae)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ### [2.54.1](https://github.com/KiritchoukC/power_progress/compare/v2.54.0...v2.54.1) (2020-08-23)
 
 ## [2.54.0](https://github.com/KiritchoukC/power_progress/compare/v2.53.0...v2.54.0) (2020-08-23)
