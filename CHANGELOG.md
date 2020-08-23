@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.56.0](https://github.com/KiritchoukC/power_progress/compare/v2.55.1...v2.56.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** animate add button ([c102d98](https://github.com/KiritchoukC/power_progress/commit/c102d98)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ### [2.55.1](https://github.com/KiritchoukC/power_progress/compare/v2.55.0...v2.55.1) (2020-08-23)
 
 ## [2.55.0](https://github.com/KiritchoukC/power_progress/compare/v2.54.1...v2.55.0) (2020-08-23)
