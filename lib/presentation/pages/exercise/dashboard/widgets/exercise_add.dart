@@ -21,7 +21,7 @@ class ExerciseAdd extends StatefulWidget {
   _ExerciseAddState createState() => _ExerciseAddState();
 }
 
-class _ExerciseAddState extends State<ExerciseAdd> {
+class _ExerciseAddState extends State<ExerciseAdd> with SingleTickerProviderStateMixin {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _exerciseNameController;
   TextEditingController _oneRmController;
@@ -29,10 +29,11 @@ class _ExerciseAddState extends State<ExerciseAdd> {
 
   @override
   void initState() {
+    super.initState();
+
     _exerciseNameController = TextEditingController();
     _oneRmController = TextEditingController();
     _oneRmFocusNode = FocusNode();
-    super.initState();
   }
 
   @override
@@ -40,6 +41,7 @@ class _ExerciseAddState extends State<ExerciseAdd> {
     _exerciseNameController?.dispose();
     _oneRmController?.dispose();
     _oneRmFocusNode?.dispose();
+
     super.dispose();
   }
 
@@ -68,53 +70,119 @@ class _ExerciseAddState extends State<ExerciseAdd> {
           context.bloc<ExerciseAddCubit>().invalidForm();
         }
       },
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width,
-          maxHeight: 300,
-        ),
-        child: Stack(
-          children: [
-            Container(
-              height: 240,
-            ),
-            Positioned(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: burningOrangeGradient,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: elevation3,
-                ),
-                height: 200,
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: _formKey,
-                  autovalidate: true,
-                  child: SingleChildScrollView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ExerciseNameInput(
-                          controller: _exerciseNameController,
-                          nextFocusNode: _oneRmFocusNode,
-                          color: Colors.white,
-                        ),
-                        const VSpacing.extraSmall(),
-                        OneRmInput(
-                          controller: _oneRmController,
-                          focusNode: _oneRmFocusNode,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
+      child: _FormCard(
+        formKey: _formKey,
+        exerciseNameController: _exerciseNameController,
+        oneRmFocusNode: _oneRmFocusNode,
+        oneRmController: _oneRmController,
+      ),
+    );
+  }
+}
+
+class _FormCard extends StatefulWidget {
+  const _FormCard({
+    Key key,
+    @required GlobalKey<FormState> formKey,
+    @required TextEditingController exerciseNameController,
+    @required FocusNode oneRmFocusNode,
+    @required TextEditingController oneRmController,
+  })  : _formKey = formKey,
+        _exerciseNameController = exerciseNameController,
+        _oneRmFocusNode = oneRmFocusNode,
+        _oneRmController = oneRmController,
+        super(key: key);
+
+  final GlobalKey<FormState> _formKey;
+  final TextEditingController _exerciseNameController;
+  final FocusNode _oneRmFocusNode;
+  final TextEditingController _oneRmController;
+
+  @override
+  _FormCardState createState() => _FormCardState();
+}
+
+class _FormCardState extends State<_FormCard> with SingleTickerProviderStateMixin {
+  bool _isVisible = false;
+
+  AnimationController _animationController;
+  Animation<double> _scale;
+
+  @override
+  void initState() {
+    _isVisible = true;
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+
+    _scale = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
+
+    _animationController.forward();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width,
+        maxHeight: 300,
+      ),
+      child: Stack(
+        children: [
+          Container(
+            height: 240,
+          ),
+          ScaleTransition(
+            scale: _scale,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: burningOrangeGradient,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: elevation3,
+              ),
+              height: 200,
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(20),
+              child: Form(
+                key: widget._formKey,
+                autovalidate: true,
+                child: SingleChildScrollView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ExerciseNameInput(
+                        controller: widget._exerciseNameController,
+                        nextFocusNode: widget._oneRmFocusNode,
+                        color: Colors.white,
+                      ),
+                      const VSpacing.extraSmall(),
+                      OneRmInput(
+                        controller: widget._oneRmController,
+                        focusNode: widget._oneRmFocusNode,
+                        color: Colors.white,
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
