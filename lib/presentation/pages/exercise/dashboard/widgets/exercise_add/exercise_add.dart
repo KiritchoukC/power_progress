@@ -11,7 +11,7 @@ import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add_animation.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/exercise_add_animation.dart';
 import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';

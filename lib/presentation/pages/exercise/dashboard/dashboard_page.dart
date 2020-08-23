@@ -10,12 +10,12 @@ import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bot
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/exercise_add.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/add_button.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/add_button.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/dummy_card.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/exercise_card.dart';
 
