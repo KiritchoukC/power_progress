@@ -11,6 +11,7 @@ import 'package:power_progress/domain/exercise/value_objects/week.dart';
 import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add_animation.dart';
 import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
@@ -21,7 +22,7 @@ class ExerciseAdd extends StatefulWidget {
   _ExerciseAddState createState() => _ExerciseAddState();
 }
 
-class _ExerciseAddState extends State<ExerciseAdd> with SingleTickerProviderStateMixin {
+class _ExerciseAddState extends State<ExerciseAdd> {
   static final _formKey = GlobalKey<FormState>();
   TextEditingController _exerciseNameController;
   TextEditingController _oneRmController;
@@ -70,119 +71,57 @@ class _ExerciseAddState extends State<ExerciseAdd> with SingleTickerProviderStat
           context.bloc<ExerciseAddCubit>().invalidForm();
         }
       },
-      child: _FormCard(
-        formKey: _formKey,
-        exerciseNameController: _exerciseNameController,
-        oneRmFocusNode: _oneRmFocusNode,
-        oneRmController: _oneRmController,
-      ),
-    );
-  }
-}
-
-class _FormCard extends StatefulWidget {
-  const _FormCard({
-    Key key,
-    @required GlobalKey<FormState> formKey,
-    @required TextEditingController exerciseNameController,
-    @required FocusNode oneRmFocusNode,
-    @required TextEditingController oneRmController,
-  })  : _formKey = formKey,
-        _exerciseNameController = exerciseNameController,
-        _oneRmFocusNode = oneRmFocusNode,
-        _oneRmController = oneRmController,
-        super(key: key);
-
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController _exerciseNameController;
-  final FocusNode _oneRmFocusNode;
-  final TextEditingController _oneRmController;
-
-  @override
-  _FormCardState createState() => _FormCardState();
-}
-
-class _FormCardState extends State<_FormCard> with SingleTickerProviderStateMixin {
-  bool _isVisible = false;
-
-  AnimationController _animationController;
-  Animation<double> _scale;
-
-  @override
-  void initState() {
-    _isVisible = true;
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250),
-    );
-
-    _scale = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeOutCubic,
-      ),
-    );
-
-    _animationController.forward();
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: MediaQuery.of(context).size.width,
-        maxHeight: 300,
-      ),
-      child: Stack(
-        children: [
-          Container(
-            height: 240,
-          ),
-          ScaleTransition(
-            scale: _scale,
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: burningOrangeGradient,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: elevation3,
-              ),
-              height: 200,
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(20),
-              child: Form(
-                key: widget._formKey,
-                autovalidate: true,
-                child: SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ExerciseNameInput(
-                        controller: widget._exerciseNameController,
-                        nextFocusNode: widget._oneRmFocusNode,
-                        color: Colors.white,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width,
+          maxHeight: 300,
+        ),
+        child: Stack(
+          children: [
+            Container(
+              height: 240,
+            ),
+            ExerciseAddAnimation(
+              child: Transform.translate(
+                // set initial position to +100y before animation
+                offset: const Offset(0, 300),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: burningOrangeGradient,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: elevation3,
+                  ),
+                  height: 200,
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(20),
+                  child: Form(
+                    key: _formKey,
+                    autovalidate: true,
+                    child: SingleChildScrollView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ExerciseNameInput(
+                            controller: _exerciseNameController,
+                            nextFocusNode: _oneRmFocusNode,
+                            color: Colors.white,
+                          ),
+                          const VSpacing.extraSmall(),
+                          OneRmInput(
+                            controller: _oneRmController,
+                            focusNode: _oneRmFocusNode,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
-                      const VSpacing.extraSmall(),
-                      OneRmInput(
-                        controller: widget._oneRmController,
-                        focusNode: widget._oneRmFocusNode,
-                        color: Colors.white,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
