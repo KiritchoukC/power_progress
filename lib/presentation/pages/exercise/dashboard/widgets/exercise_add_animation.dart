@@ -13,7 +13,7 @@ class ExerciseAddAnimation extends StatelessWidget {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: 0, end: 1),
       duration: const Duration(milliseconds: 250),
-      curve: Curves.easeOut,
+      curve: Curves.easeOutExpo,
       builder: (BuildContext context, double value, Widget child) {
         return Transform.scale(
           scale: value,
