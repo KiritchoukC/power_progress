@@ -16,8 +16,8 @@ import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/add_button.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/dummy_card.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/dummy_card.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/exercise_card.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
