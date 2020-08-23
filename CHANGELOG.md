@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.56.1](https://github.com/KiritchoukC/power_progress/compare/v2.56.0...v2.56.1) (2020-08-23)
+
+
+### Bug Fixes
+
+* **add-rework:** fix form input not tappable ([147b97d](https://github.com/KiritchoukC/power_progress/commit/147b97d)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.56.0](https://github.com/KiritchoukC/power_progress/compare/v2.55.1...v2.56.0) (2020-08-23)
 
 
