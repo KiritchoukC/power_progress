@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.53.0](https://github.com/KiritchoukC/power_progress/compare/v2.52.0...v2.53.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** add ease out animation ([fe6013c](https://github.com/KiritchoukC/power_progress/commit/fe6013c)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.52.0](https://github.com/KiritchoukC/power_progress/compare/v2.51.0...v2.52.0) (2020-08-15)
 
 
