@@ -12,6 +12,7 @@ import 'package:power_progress/domain/shared/value_objects/month.dart';
 import 'package:power_progress/domain/shared/value_objects/one_rm.dart';
 import 'package:power_progress/domain/shared/week_enum.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/exercise_add_animation.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/exercise_add_form_animation.dart';
 import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/presentation/widgets/inputs/exercise_name_input.dart';
 import 'package:power_progress/presentation/widgets/inputs/one_rm_input.dart';
@@ -83,13 +84,18 @@ class _ExerciseAddState extends State<ExerciseAdd> {
             ),
             ExerciseAddAnimation(
               child: Container(
+                height: 200,
                 decoration: BoxDecoration(
                   gradient: burningOrangeGradient,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: elevation3,
                 ),
-                height: 200,
                 margin: const EdgeInsets.all(10),
+              ),
+            ),
+            ExerciseAddFormAnimation(
+              child: Container(
+                height: 200,
                 padding: const EdgeInsets.all(20),
                 child: Form(
                   key: _formKey,
@@ -99,6 +105,7 @@ class _ExerciseAddState extends State<ExerciseAdd> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        const VSpacing.extraSmall(),
                         ExerciseNameInput(
                           controller: _exerciseNameController,
                           nextFocusNode: _oneRmFocusNode,

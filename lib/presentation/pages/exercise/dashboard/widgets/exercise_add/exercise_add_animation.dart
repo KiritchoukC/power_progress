@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Animation of the exercise add card form
+/// Animation of the exercise add card container
 class ExerciseAddAnimation extends StatelessWidget {
   /// Animated child
   final Widget child;
