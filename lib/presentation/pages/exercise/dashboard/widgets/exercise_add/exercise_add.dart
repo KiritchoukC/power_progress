@@ -82,39 +82,35 @@ class _ExerciseAddState extends State<ExerciseAdd> {
               height: 240,
             ),
             ExerciseAddAnimation(
-              child: Transform.translate(
-                // set initial position to +100y before animation
-                offset: const Offset(0, 300),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: burningOrangeGradient,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: elevation3,
-                  ),
-                  height: 200,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.all(20),
-                  child: Form(
-                    key: _formKey,
-                    autovalidate: true,
-                    child: SingleChildScrollView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ExerciseNameInput(
-                            controller: _exerciseNameController,
-                            nextFocusNode: _oneRmFocusNode,
-                            color: Colors.white,
-                          ),
-                          const VSpacing.extraSmall(),
-                          OneRmInput(
-                            controller: _oneRmController,
-                            focusNode: _oneRmFocusNode,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: burningOrangeGradient,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: elevation3,
+                ),
+                height: 200,
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(20),
+                child: Form(
+                  key: _formKey,
+                  autovalidate: true,
+                  child: SingleChildScrollView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ExerciseNameInput(
+                          controller: _exerciseNameController,
+                          nextFocusNode: _oneRmFocusNode,
+                          color: Colors.white,
+                        ),
+                        const VSpacing.extraSmall(),
+                        OneRmInput(
+                          controller: _oneRmController,
+                          focusNode: _oneRmFocusNode,
+                          color: Colors.white,
+                        ),
+                      ],
                     ),
                   ),
                 ),

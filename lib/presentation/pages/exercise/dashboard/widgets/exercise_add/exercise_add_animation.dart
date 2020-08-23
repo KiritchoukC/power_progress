@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+/// Animation of the exercise add card form
 class ExerciseAddAnimation extends StatelessWidget {
+  /// Animated child
   final Widget child;
+
+  /// Y transition of the animation
+  static const double yTransition = 300;
 
   const ExerciseAddAnimation({
     Key key,
@@ -18,7 +23,7 @@ class ExerciseAddAnimation extends StatelessWidget {
         return Transform.scale(
           scale: value,
           child: Transform.translate(
-            offset: Offset(0, -value * 300),
+            offset: Offset(0, -value * yTransition),
             child: Opacity(
               opacity: value,
               child: child,
@@ -26,7 +31,10 @@ class ExerciseAddAnimation extends StatelessWidget {
           ),
         );
       },
-      child: child,
+      child: Transform.translate(
+        offset: const Offset(0, yTransition),
+        child: child,
+      ),
     );
   }
 }
