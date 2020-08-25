@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.56.2](https://github.com/KiritchoukC/power_progress/compare/v2.56.1...v2.56.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* **add-rework:** fix form input ([ad99a51](https://github.com/KiritchoukC/power_progress/commit/ad99a51)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ### [2.56.1](https://github.com/KiritchoukC/power_progress/compare/v2.56.0...v2.56.1) (2020-08-23)
 
 
