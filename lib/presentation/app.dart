@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/exercise/month/month_cubit.dart';
@@ -23,6 +24,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ExerciseCubit>(create: (_) => di.sl<ExerciseCubit>()),
+        BlocProvider<ExerciseAddCubit>(create: (_) => di.sl<ExerciseAddCubit>()),
         BlocProvider<OnboardingCubit>(create: (_) => di.sl<OnboardingCubit>()),
         BlocProvider<WorkoutCubit>(create: (_) => di.sl<WorkoutCubit>()),
         BlocProvider<OneRmCubit>(create: (_) => di.sl<OneRmCubit>()),

@@ -2,6 +2,87 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.57.0](https://github.com/KiritchoukC/power_progress/compare/v2.56.2...v2.57.0) (2020-08-25)
+
+
+### Features
+
+* **add-rework:** add animation to add button ([f5a3465](https://github.com/KiritchoukC/power_progress/commit/f5a3465)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+### [2.56.2](https://github.com/KiritchoukC/power_progress/compare/v2.56.1...v2.56.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* **add-rework:** fix form input ([ad99a51](https://github.com/KiritchoukC/power_progress/commit/ad99a51)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+### [2.56.1](https://github.com/KiritchoukC/power_progress/compare/v2.56.0...v2.56.1) (2020-08-23)
+
+
+### Bug Fixes
+
+* **add-rework:** fix form input not tappable ([147b97d](https://github.com/KiritchoukC/power_progress/commit/147b97d)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.56.0](https://github.com/KiritchoukC/power_progress/compare/v2.55.1...v2.56.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** animate add button ([c102d98](https://github.com/KiritchoukC/power_progress/commit/c102d98)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+### [2.55.1](https://github.com/KiritchoukC/power_progress/compare/v2.55.0...v2.55.1) (2020-08-23)
+
+## [2.55.0](https://github.com/KiritchoukC/power_progress/compare/v2.54.1...v2.55.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** update animation curve to easeOutExpo ([78aa2ae](https://github.com/KiritchoukC/power_progress/commit/78aa2ae)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+### [2.54.1](https://github.com/KiritchoukC/power_progress/compare/v2.54.0...v2.54.1) (2020-08-23)
+
+## [2.54.0](https://github.com/KiritchoukC/power_progress/compare/v2.53.0...v2.54.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** add opacity and translation animation ([ad9e3c1](https://github.com/KiritchoukC/power_progress/commit/ad9e3c1)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.53.0](https://github.com/KiritchoukC/power_progress/compare/v2.52.0...v2.53.0) (2020-08-23)
+
+
+### Features
+
+* **add-rework:** add ease out animation ([fe6013c](https://github.com/KiritchoukC/power_progress/commit/fe6013c)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.52.0](https://github.com/KiritchoukC/power_progress/compare/v2.51.0...v2.52.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** implement add cubit logic ([aad8f52](https://github.com/KiritchoukC/power_progress/commit/aad8f52)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.51.0](https://github.com/KiritchoukC/power_progress/compare/v2.50.0...v2.51.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** add dismiss on outside tap ([e156aea](https://github.com/KiritchoukC/power_progress/commit/e156aea)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.50.0](https://github.com/KiritchoukC/power_progress/compare/v2.49.0...v2.50.0) (2020-08-15)
+
+
+### Features
+
+* **add-rework:** add cubit to manage form display ([8c4ecf4](https://github.com/KiritchoukC/power_progress/commit/8c4ecf4)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
+## [2.49.0](https://github.com/KiritchoukC/power_progress/compare/v2.48.0...v2.49.0) (2020-08-14)
+
+
+### Features
+
+* **add-rework:** implement add exercise popup ui ([88ac191](https://github.com/KiritchoukC/power_progress/commit/88ac191)), closes [#105](https://github.com/KiritchoukC/power_progress/issues/105)
+
 ## [2.48.0](https://github.com/KiritchoukC/power_progress/compare/v2.47.0...v2.48.0) (2020-08-12)
 
 

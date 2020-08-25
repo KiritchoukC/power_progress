@@ -2,9 +2,9 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:power_progress/domain/exercise/exercise.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/month_widget.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/one_rm_widget.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/week_widget.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/month_widget.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/one_rm_widget.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/week_widget.dart';
 import 'package:power_progress/presentation/pages/workout/workout_page.dart';
 
 class ExerciseCard extends StatelessWidget {

@@ -4,18 +4,20 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:power_progress/application/exercise/add/exercise_add_cubit.dart';
 import 'package:power_progress/application/exercise/selection/selection_cubit.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/bottom_bar.dart';
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/workout/workout_cubit.dart';
 import 'package:power_progress/domain/exercise/exercise.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/exercise_add.dart';
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
 import 'package:power_progress/presentation/widgets/pp_appbar.dart';
 import 'package:power_progress/presentation/widgets/remove_button.dart';
 import 'package:power_progress/presentation/widgets/delete_confirm_dialog.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/add_button.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/dummy_card.dart';
-import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_add/add_button.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/dummy_card.dart';
+import 'package:power_progress/presentation/pages/exercise/dashboard/widgets/exercise_card/exercise_card.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -47,7 +49,7 @@ class DashboardPage extends StatelessWidget {
               removed: fetch,
               initial: fetch,
               added: fetch,
-              fetched: (exercises) => _Body(exercises: exercises),
+              fetched: (exercises) => _BodyStacked(exercises: exercises),
               orElse: () => const CenteredLoading(),
             );
           },
@@ -69,10 +71,57 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
+class _BodyStacked extends StatelessWidget {
+  final List<Exercise> exercises;
+
+  const _BodyStacked({Key key, @required this.exercises}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ExerciseAddCubit, ExerciseAddState>(
+      builder: (context, state) {
+        Widget noForm() {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: _Body(exercises: exercises),
+              ),
+            ],
+          );
+        }
+
+        Widget withForm() {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: _Body(exercises: exercises),
+              ),
+              GestureDetector(
+                onTap: () => context.bloc<ExerciseAddCubit>().hideForm(),
+              ),
+              Positioned(
+                bottom: -20,
+                child: ExerciseAdd(),
+              ),
+            ],
+          );
+        }
+
+        return state.maybeWhen(
+          formShown: withForm,
+          formInvalid: withForm,
+          formValidationRequired: withForm,
+          orElse: noForm,
+        );
+      },
+    );
+  }
+}
+
 class _Body extends StatefulWidget {
   final List<Exercise> exercises;
 
-  const _Body({Key key, this.exercises}) : super(key: key);
+  const _Body({Key key, @required this.exercises}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();

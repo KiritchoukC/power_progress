@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:power_progress/presentation/widgets/centered_loading.dart';
-import 'package:power_progress/presentation/theme/gradients.dart';
 import 'package:power_progress/application/exercise/exercise_cubit.dart';
 import 'package:power_progress/application/onboarding/onboarding_cubit.dart';
 import 'package:power_progress/core/util/spacing.dart';
@@ -31,7 +30,7 @@ class OnboardingInformationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.black,

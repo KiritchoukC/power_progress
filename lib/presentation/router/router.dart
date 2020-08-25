@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:power_progress/presentation/pages/exercise/add/exercise_add_page.dart';
 import 'package:power_progress/presentation/pages/exercise/dashboard/dashboard_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_custom_page.dart';
 import 'package:power_progress/presentation/pages/onboarding/onboarding_exercise_picker_page.dart';
@@ -18,9 +17,6 @@ class Router {
     switch (settings.name) {
       case RoutePaths.dashboard:
         return DashboardPageRoute();
-
-      case RoutePaths.exerciseAdd:
-        return ExerciseAddPageRoute();
 
       case RoutePaths.exerciseWorkout:
         return WorkoutPageRoute(settings.arguments as WorkoutPageArguments);
@@ -66,17 +62,6 @@ class DashboardPageRoute extends MaterialPageRoute {
           settings: const RouteSettings(
             name: RoutePaths.dashboard,
           ),
-        );
-}
-
-class ExerciseAddPageRoute extends MaterialPageRoute {
-  ExerciseAddPageRoute()
-      : super(
-          builder: (_) => ExerciseAddPage(),
-          settings: const RouteSettings(
-            name: RoutePaths.exerciseAdd,
-          ),
-          fullscreenDialog: true,
         );
 }
 
