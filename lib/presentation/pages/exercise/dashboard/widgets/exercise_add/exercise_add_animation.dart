@@ -6,7 +6,7 @@ class ExerciseAddAnimation extends StatelessWidget {
   final Widget child;
 
   /// Y transition of the animation
-  static const double yTransition = 300;
+  static const double yTransition = 10;
 
   const ExerciseAddAnimation({
     Key key,
@@ -17,13 +17,13 @@ class ExerciseAddAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: 0, end: 1),
-      duration: const Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.easeOutExpo,
       builder: (BuildContext context, double value, Widget child) {
         return Transform.scale(
           scale: value,
-          child: Transform.translate(
-            offset: Offset(0, -value * yTransition),
+          child: FractionalTranslation(
+            translation: Offset(0, (1 - value) * yTransition),
             child: Opacity(
               opacity: value,
               child: child,
@@ -31,8 +31,8 @@ class ExerciseAddAnimation extends StatelessWidget {
           ),
         );
       },
-      child: Transform.translate(
-        offset: const Offset(0, yTransition),
+      child: FractionalTranslation(
+        translation: const Offset(0, 0),
         child: child,
       ),
     );
