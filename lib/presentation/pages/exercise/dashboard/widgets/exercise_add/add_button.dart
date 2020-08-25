@@ -32,11 +32,13 @@ class AddButton extends StatelessWidget {
 class _AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MainButton(
-      onPressed: () {
-        context.bloc<ExerciseAddCubit>().showForm();
-      },
-      icon: Icons.add,
+    return ExerciseAddAnimation(
+      child: MainButton(
+        onPressed: () {
+          context.bloc<ExerciseAddCubit>().showForm();
+        },
+        icon: Icons.add,
+      ),
     );
   }
 }
